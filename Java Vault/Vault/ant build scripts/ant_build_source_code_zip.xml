@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_source_code_zip" name="Create Zip File with Source Code">
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_source_code_zip">
+    	<property name="deployroot" location="c:/temp/Vault3" />
+		<property name="desktop_sourceroot" location="../../.." />
+		<property name="desktop_source_code_zip_file" location="${deployroot}/Vault3DesktopSourceCode.zip" />
+		<delete file="${desktop_source_code_zip_file}" />
+		<mkdir dir="${deployroot}" />
+    	<zip destfile="${desktop_source_code_zip_file}">
+    		<fileset dir="${desktop_sourceroot}">
+    			<include name="CommonCode/**/*" />
+    			<exclude name="CommonCode/**/*.jar" />
+    			<exclude name="**/.externalToolBuilders/" />
+    			<exclude name="**/.settings/" />
+    			<exclude name="**/deploy/" />
+				<exclude name="**/bin/" />
+
+    			<include name="Java Vault/Vault/**/*" />
+    			<exclude name="Java Vault/Vault/**/*.properties" />
+    			<exclude name="Java Vault/Vault/**/*Dialog*.txt" />
+    			<exclude name="Java Vault/Vault/**/*.jar" />
+    			<exclude name="Java Vault/Vault/**/src.zip" />
+				<exclude name="**/bin/" />
+				<exclude name="**/deploy/" />
+				<exclude name="**/Testing Resources/" />
+    		</fileset>
+    	</zip>
+
+		<property name="android_sourceroot" location="C:\Users\Eric Terrell\Documents\software development\Vault3.Android" />
+		<property name="android_source_code_zip_file" location="${deployroot}/Vault3AndroidSourceCode.zip" />
+		<delete file="${android_source_code_zip_file}" />
+		<zip destfile="${android_source_code_zip_file}">
+			<fileset dir="${android_sourceroot}">
+				<include name="**/*" />
+				<exclude name="**/.gradle/" />
+				<exclude name="**/gradle/" />
+				<exclude name="**/.idea/" />
+				<exclude name="**/build/" />
+				<exclude name="**/libs/" />
+			</fileset>
+		</zip>
+
+		<property name="ebtcalc_sourceroot" location="C:\Users\Eric Terrell\Documents\software development\EBTCalc" />
+		<property name="ebtcalc_source_code_zip_file" location="${deployroot}/EBTCalcSourceCode.zip" />
+		<delete file="${ebtcalc_source_code_zip_file}" />
+		<zip destfile="${ebtcalc_source_code_zip_file}">
+			<fileset dir="${ebtcalc_sourceroot}">
+				<include name="**/*" />
+				<exclude name="**/.gradle/" />
+				<exclude name="**/gradle/" />
+				<exclude name="**/.idea/" />
+				<exclude name="**/build/" />
+				<exclude name="**/libs/" />
+			</fileset>
+		</zip>
+    </target>
+</project>

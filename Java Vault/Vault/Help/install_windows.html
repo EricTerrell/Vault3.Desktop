@@ -1,0 +1,41 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Help.css" />
+	<title>Vault 3 On-Line Help: How to Install Vault 3 on Windows Operating Systems</title>
+</head>
+<body>
+	<h1>How to Install Vault 3 on Windows Operating Systems</h1>
+	<p><strong>Step 1: Install the Java Runtime Environment</strong></p>
+	<p>
+		<ol>
+			<li>Browse to this url: <a href="http://java.sun.com/javase/downloads/index.jsp">http://java.sun.com/javase/downloads/index.jsp</a>.</li>
+			<li>Download the Java SE Runtime Environment (JRE) 6 Update 11 for the Windows Platform if you run a 32-bit Windows Operating System, otherwise download the Windows x64 version.</li>
+			<li>After the download completes, run the file to install the Java Runtime Environment.</li>
+		</ol>
+	</p>
+	<p><strong>Step 2: Install Vault 3</strong></p>
+	<p>
+		<ol>
+			<li>Download <a href="http://www.ericbt.com/Vault3/Download">Vault 3 for 32-bit Windows</a> or
+			<a href="http://www.ericbt.com/Vault3/Download">Vault 3 for 64-bit Windows</a>.</li>
+			<li>Unzip the file to your Windows "Program Files" folder, in a folder named "Vault 3".</li>
+			<li>Right-click the desktop and select New / Shortcut.</li>
+			<li>In the location text box enter this: javaw.exe -DConfigPath="%AppData%\Vault 3" -jar "%ProgramFiles%\Vault 3\vault_win.jar"</li>
+			<li>Click the "Change Icon" button and specify this file path: %ProgramFiles%\Vault 3\vault3.ico.</li>
+		</ol>
+	</p>
+	<p><strong>Step 3: Run Vault 3</strong></p>
+	<p>
+		Double-click the desktop shortcut to launch Vault 3.
+	</p>
+	<p>
+		Vault 3 listens to a TCP/IP socket in order to ensure that only one instance of the program runs. If you have Windows Firewall enabled you'll see the
+		following warning message. Click Unblock.
+	</p>
+	<img src="artwork/WindowsSecurityAlert.png" alt="Windows Security Alert" />
+	<div class="PreviousNextTopics">
+		<span class="PreviousTopic"><a href="gettingstarted.html" class="PreviousTopicLink">Previous Topic</a></span>
+		<span class="NextTopic"><a href="install_ubuntu.html" class="NextTopicLink">Next Topic</a></span>
+	</div>
+</body>
+</html>

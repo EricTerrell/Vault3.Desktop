@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project Vault">
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+    	<property name="deployroot" location="c:/temp/Vault3" />
+        <property name="sourcerootCommonCode" location="../../../CommonCode" />
+        <property name="sourcerootVault" location=".." />
+    	<property name="projectroot" location="../../.." />
+    	<property name="dest.dir" location="${deployroot}/Vault3Win64" />
+    	<property name="zipfile" location="${deployroot}/Vault3Win64.zip" />
+    	<delete file="${zipfile}" />
+    	<delete dir="${dest.dir}"/>
+    	<mkdir dir="${dest.dir}" />
+        <jar destfile="${dest.dir}/vault_win.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Main-Class" value="mainPackage.MainApplicationWindow"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${sourcerootVault}/bin"/>
+            <fileset dir="${sourcerootCommonCode}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\swt-4.18-win32-win32-x86_64\swt.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.core.commands_3.9.800.v20201021-1339.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.core.runtime_3.20.0.v20201027-1526.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.equinox.common_3.14.0.v20201102-2053.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.jface.text_3.16.500.v20201112-1545.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.jface_3.22.0.v20201106-0834.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.osgi_3.16.100.v20201030-1916.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.18\eclipse-platform-4.18-win32-x86_64\eclipse\plugins\org.eclipse.text_3.10.400.v20200925-0557.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/javamail-1.4.4/mail.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/imgscalr-lib-4.2/imgscalr-lib-4.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\sqlite4java-282\sqlite4java.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/perf4j/perf4j-0.9.16.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\itext-5.2.1\itextpdf-5.2.1.jar"/>
+        </jar>
+    	<copy todir="${dest.dir}" failonerror="true">
+    		<fileset file="${sourcerootVault}/example.vl3" />
+    		<fileset file="${sourcerootVault}/src/mainPackage/artwork/vault3.ico" />
+    		<fileset file="${sourcerootVault}/LicenseTerms.txt" />
+            <fileset file="C:\Program Files\sqlite4java-282\sqlite4java-win32-x64.dll"/>
+    	</copy>
+    	<copy todir="${dest.dir}/Help" failonerror="true">
+    		<fileset dir="${sourcerootVault}/Help" />
+    	</copy>
+    	<zip destfile="${zipfile}">
+    		<fileset dir="${dest.dir}" />
+    	</zip>
+    </target>
+</project>

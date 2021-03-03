@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<project name="CommonCode" default="jar">
+    <target name="jar">
+        <jar destfile="deploy/CommonCode.jar">
+            <fileset dir="bin" />
+        </jar>
+    </target>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="build_everything" name="Build Everything">
+    <!--ANT 1.7 is required                                        -->
+    <target name="build_everything">
+    	<ant antfile="ant_build_linux_gtk_64.xml"/>
+    	<ant antfile="ant_build_win64.xml"/>
+    	<ant antfile="ant_build_cocoa_x86_64.xml"/>
+    	<ant antfile="ant_build_source_code_zip.xml"/>
+    </target>
+</project>
