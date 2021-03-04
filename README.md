@@ -31,10 +31,12 @@ Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www
 1. If you're developing on Linux, copy the .classpath file from Java Vault/Vault/classpaths/linux_gtk_64 to the .classpath at the project's root level
 1. Download the latest version of the [`Eclipse libraries`](https://download.eclipse.org/eclipse/downloads/).
 1. Download additional libraries:
-    1. [`JavaMail`](https://www.oracle.com/java/technologies/javamail-api.html)
-    1. [`sqlite4java`](https://bitbucket.org/almworks/sqlite4java/downloads/)
-    1. [`itextpdf`](https://github.com/itext/itextpdf/releases)
-    1. [`perf4j`](https://mvnrepository.com/artifact/org.perf4j/perf4j)
+    1. JavaMail: [`JavaMail`](https://www.oracle.com/java/technologies/javamail-api.html)
+    1. sqlite4java: [`sqlite4java`](https://bitbucket.org/almworks/sqlite4java/downloads/)
+    1. itextpdf: [`itextpdf`](https://github.com/itext/itextpdf/releases)
+    1. perf4j: [`perf4j`](https://mvnrepository.com/artifact/org.perf4j/perf4j)
+    1. imgscalr: I'd recommend building this library from the [GitHub repo](https://github.com/rkalla/imgscalr). Otherwise, you can download the .jar [`here`](http://www.java2s.com/Code/Jar/i/Downloadimgscalrlib42jar.htm). 
+__Note__: The "thebuzzmedia" url mentioned on the GitHub page is __NOT__ legitimate. I do not recommend browsing to it.
 1. Unpack the library files completely. If you're on Windows, [`7-Zip`](https://www.7-zip.org/) is ideal for this purpose. 
 1. Store the library files in a single folder. For example, C:\Eclipse\4.18.
 1. Update the project root level .classpath to point to the libraries you downloaded.
