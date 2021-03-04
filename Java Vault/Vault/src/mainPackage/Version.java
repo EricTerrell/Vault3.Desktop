@@ -74,9 +74,10 @@ import java.text.MessageFormat;
  * 0.70				1.2				 Bug Fixes:
  * 										1) In previous versions (0.67-0.69), the app's window would be drawn, hidden, and re-drawn, when the app was launched.
  * 									    2) In previous versions, on Linux, the password prompt dialog did not include a title bar and could not be moved.
+ * 0.71				1.2				 Additional fixes allowing Vault 3 to save and restore the maximized window state.
  */
 public class Version {
-	private static final float versionNumber = 0.70f;
+	private static final float versionNumber = 0.71f;
 	private static final int copyrightYear = 2021;
 
 	public static float getVersionNumber() {

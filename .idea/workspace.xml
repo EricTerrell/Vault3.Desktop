@@ -7,8 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Linux .classpath">
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="No longer build source code .zip file as source code is in GitHub.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +69,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.text_3.10.400.v20200925-0557.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../github/test/Vault3.Desktop" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -231,41 +232,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00021">
-      <created>1446646766895</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1446646766895</updated>
-    </task>
-    <task id="LOCAL-00022">
-      <created>1447876386314</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1447876386314</updated>
-    </task>
-    <task id="LOCAL-00023">
-      <created>1458260928807</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1458260928807</updated>
-    </task>
-    <task id="LOCAL-00024">
-      <created>1458261740624</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1458261740624</updated>
-    </task>
-    <task id="LOCAL-00025">
-      <created>1458261821834</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1458261821834</updated>
     </task>
     <task id="LOCAL-00026">
       <created>1458307505854</created>
@@ -575,7 +541,42 @@
       <option name="project" value="LOCAL" />
       <updated>1614536601502</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Added logging. Investigating why app doesn't come up maximized after being maximized and closed and re-opened.">
+      <created>1614794233253</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1614794233253</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor.">
+      <created>1614796935066</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1614796935066</updated>
+    </task>
+    <task id="LOCAL-00072" summary="No longer build source code .zip file as source code is in GitHub.">
+      <created>1614797063285</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1614797063285</updated>
+    </task>
+    <task id="LOCAL-00073" summary="No longer build source code .zip file as source code is in GitHub.">
+      <created>1614800614347</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1614800614347</updated>
+    </task>
+    <task id="LOCAL-00074" summary="No longer build source code .zip file as source code is in GitHub.">
+      <created>1614809718219</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1614809718219</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -605,7 +606,10 @@
     <MESSAGE value="cleanup" />
     <MESSAGE value="Bug Fix: On Linux (Mint) password prompt dialog was missing the title. Setting shell to null fixed it." />
     <MESSAGE value="Linux .classpath" />
-    <option name="LAST_COMMIT_MESSAGE" value="Linux .classpath" />
+    <MESSAGE value="Added logging. Investigating why app doesn't come up maximized after being maximized and closed and re-opened." />
+    <MESSAGE value="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor." />
+    <MESSAGE value="No longer build source code .zip file as source code is in GitHub." />
+    <option name="LAST_COMMIT_MESSAGE" value="No longer build source code .zip file as source code is in GitHub." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -700,14 +704,9 @@
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java</url>
-          <line>674</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java</url>
-          <line>754</line>
-          <option name="timeStamp" value="77" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

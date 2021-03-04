@@ -968,10 +968,16 @@ public class MainApplicationWindow extends ApplicationWindow {
 					rectangle.x, rectangle.y, rectangle.width, rectangle.height));
 		}
 
-		Globals.getPreferenceStore().setValue(PreferenceKeys.IsMainWindowMaximized, getShell().getMaximized());
+		final boolean isMaximized = getShell().getMaximized();
+
+		Globals.getLogger().info(String.format("isMaximized: %b", isMaximized));
+
+		Globals.getPreferenceStore().setValue(PreferenceKeys.IsMainWindowMaximized, isMaximized);
 	}
 
 	private void imposePreviousLocationAndSize(Shell shell) {
+		Globals.getLogger().info("imposePreviousLocationAndSize");
+
 		final Rectangle rectangle = new Rectangle(Globals.getPreferenceStore().getInt(PreferenceKeys.MainWindowX),
 				Globals.getPreferenceStore().getInt(PreferenceKeys.MainWindowY),
 				Globals.getPreferenceStore().getInt(PreferenceKeys.MainWindowWidth),
@@ -999,6 +1005,10 @@ public class MainApplicationWindow extends ApplicationWindow {
 		shell.setMinimumSize(minimumSize);
 
 		if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.IsMainWindowMaximized)) {
+			shell.setLocation(0, 0);
+			shell.setSize(new Point(-1, -1));
+
+			Globals.getLogger().info("shell.setMaximized(true);");
 			shell.setMaximized(true);
 		} else {
 			imposePreviousLocationAndSize(shell);
