@@ -37,8 +37,8 @@ Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www
     1. [`perf4j`](https://mvnrepository.com/artifact/org.perf4j/perf4j)
     1. [`imgscalr`](https://github.com/downloads/thebuzzmedia/imgscalr/imgscalr-lib-4.2.zip)
 1. Unpack the library files completely. If you're on Windows, [`7-Zip`](https://www.7-zip.org/) is ideal for this purpose. 
-1. Store the library files in a single folder. For example, C:\Eclipse\4.18.
 1. Update the project root level .classpath to point to the libraries you downloaded.
+1. Update the ant build scripts to point to the libraries.   
 1. Run!
 
 ## Deployment Build
