@@ -4,9 +4,9 @@ Vault 3 stores your notes and photographs as an outline. Vault 3 organizes your 
 
 # Screenshots
 
-![`EBTCalc Screenshot`](https://ericbt.com/images/Vault3/vault3.png "Vault 3 Screenshot")
+![`Vault 3 Screenshot`](https://ericbt.com/images/Vault3/vault3.png "Vault 3 Screenshot")
 
-![`EBTCalc Screenshot`](https://ericbt.com/images/Vault3/photos.jpg "Vault 3 Screenshot")
+![`Vault 3 Screenshot`](https://ericbt.com/images/Vault3/photos.jpg "Vault 3 Screenshot")
 
 # Copyright
 
@@ -15,7 +15,8 @@ Vault 3 &#169; Copyright 2021, [`Eric Bergman-Terrell`](https://www.ericbt.com)
 # Links
 
 * [`website`](https://ericbt.com/vault3)
-* [`github repo`](https://github.com/EricTerrell/Vault3.Desktop)
+* [`GitHub repo (Desktop)`](https://github.com/EricTerrell/Vault3.Desktop)
+* [`GitHub repo (Android)`](https://github.com/EricTerrell/Vault3.Android)
 
 # Android Version
 
