@@ -45,7 +45,7 @@ Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www
 ## Deployment Build
 
 If you intend to distribute Vault 3 to other users, use the scripts in the "Vault/ant build scripts" folder. 
-These scripts will create the operating-system specific folders that you can distribute.
+These scripts will create the folders that you can distribute.
 
 1. Download the libraries mentioned in the Development Build section, above.
 2. Update the ant build scripts to point to the downloaded libraries

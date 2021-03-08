@@ -37,11 +37,11 @@ public class VideoUtils {
 	
 	/**
 	 * Return true if the specified File points to a video.
-	 * @param path file path
+	 * @param file file path
 	 * @return true if the path points to a video
 	 */
 	public static boolean isVideoFile(File file) {
-		String fileType = FileUtils.getFileType(file);
+		final String fileType = FileUtils.getFileType(file);
 
 		return isVideoFileType(fileType);
 	}

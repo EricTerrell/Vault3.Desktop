@@ -50,9 +50,7 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.*;
-
 import commonCode.DocumentMetadata;
-import org.eclipse.swt.widgets.Composite;
 
 public class MainApplicationWindow extends ApplicationWindow {
 	private boolean checkForModificationsWaiting;

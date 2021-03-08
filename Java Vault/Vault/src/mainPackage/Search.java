@@ -92,14 +92,13 @@ public class Search {
 		}
 
 		// Create a list containing all tokens, quoted and unquoted.
-		List<String> tokenList = new ArrayList<>();
-		tokenList.addAll(quotedTextList);
+		final List<String> tokenList = new ArrayList<>(quotedTextList);
 		
-		String[] unquotedTokens = unquotedText.toString().split(" ");
+		final String[] unquotedTokens = unquotedText.toString().split(" ");
 
 		Collections.addAll(tokenList, unquotedTokens);
 
-		List<String> finalTokenList = new ArrayList<>();
+		final List<String> finalTokenList = new ArrayList<>();
 		
 		for (String token : tokenList) {
 			token = token.trim();
@@ -110,7 +109,7 @@ public class Search {
 			}
 		}
 
-		return finalTokenList.toArray(new String[finalTokenList.size()]);
+		return finalTokenList.toArray(new String[0]);
 	}
 
 	/**
@@ -121,7 +120,7 @@ public class Search {
 	 * @return array of Pattern objects
 	 */
 	public static Pattern[] getSearchPatterns(String searchText, boolean matchCase, boolean fullWord) {
-		String[] searchTokens = getSearchTokens(searchText);
+		final String[] searchTokens = getSearchTokens(searchText);
 		
 		Globals.getLogger().info("Search Tokens:");
 		
@@ -129,20 +128,20 @@ public class Search {
 			Globals.getLogger().info(searchToken);
 		}
 	
-		List<Pattern> patterns = new ArrayList<>(searchTokens.length);
+		final List<Pattern> patterns = new ArrayList<>(searchTokens.length);
 		
 		Globals.getLogger().info("Search regular expressions:");
 		
-		String wordBoundary = fullWord ? "\\b" : "";
+		final String wordBoundary = fullWord ? "\\b" : "";
 		
 		for (String searchToken : searchTokens) {
-			Pattern pattern = matchCase ? Pattern.compile(wordBoundary + Pattern.quote(searchToken) + wordBoundary) : Pattern.compile(wordBoundary + Pattern.quote(searchToken) + wordBoundary, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+			final Pattern pattern = matchCase ? Pattern.compile(wordBoundary + Pattern.quote(searchToken) + wordBoundary) : Pattern.compile(wordBoundary + Pattern.quote(searchToken) + wordBoundary, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 			patterns.add(pattern);
 			
 			Globals.getLogger().info(searchToken);
 		}
 		
-		return patterns.toArray(new Pattern[patterns.size()]);
+		return patterns.toArray(new Pattern[0]);
 	}
 	
 	public static SearchResults DoSearch(String searchText, boolean searchSelected, boolean matchCase, boolean fullWord, boolean matchAll, SearchMode searchMode) {

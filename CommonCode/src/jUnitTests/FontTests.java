@@ -52,7 +52,7 @@ public class FontTests {
 
 		String serializedText = FontList.serialize(fontList);
 		
-		System.out.println(String.format("Length: %d Text: %s", serializedText.length(), serializedText));
+		System.out.printf("Length: %d Text: %s%n", serializedText.length(), serializedText);
 		
 		FontList roundTripFontList = FontList.deserialize(serializedText);
 		Assert.assertNotNull(roundTripFontList);

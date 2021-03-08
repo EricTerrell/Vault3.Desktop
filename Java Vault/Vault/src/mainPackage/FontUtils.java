@@ -59,7 +59,7 @@ public class FontUtils {
 					fontList.add(currentFontData);
 				}
 				
-				fontData = fontList.toArray(new FontData[fontList.size()]);
+				fontData = fontList.toArray(new FontData[0]);
 			}
 		}
 		

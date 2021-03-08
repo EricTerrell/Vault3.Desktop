@@ -49,15 +49,10 @@ public class InsertUrlDialog extends VaultDialog {
 	}
 
 	private Button okButton;
-
 	private Combo protocolCombo;
-	
 	private Text urlText;
-	
 	private Label statusLabel;
-	
 	private Color nonErrorBackground, errorBackground;
-	
 	private String url;
 	
 	public String getUrl() { 
@@ -65,7 +60,7 @@ public class InsertUrlDialog extends VaultDialog {
 	}
 
 	private void enableDisableOKButton() {
-		boolean enabled = protocolCombo.getSelectionIndex() >= 0 && urlText.getText().trim().length() > 0;
+		final boolean enabled = protocolCombo.getSelectionIndex() >= 0 && urlText.getText().trim().length() > 0;
 		
 	    if (!enabled) {
 	    	statusLabel.setText("Please enter URL.");
@@ -81,7 +76,7 @@ public class InsertUrlDialog extends VaultDialog {
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 		
 	    statusLabel = new Label(parent, SWT.BORDER);
 	
@@ -108,7 +103,7 @@ public class InsertUrlDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 
 		GridData gridData = new GridData(SWT.FILL);
@@ -118,7 +113,7 @@ public class InsertUrlDialog extends VaultDialog {
 		gridData.verticalAlignment = SWT.FILL;
 		composite.setLayoutData(gridData);
 
-		Composite urlComposite = new Composite(composite, SWT.NONE);
+		final Composite urlComposite = new Composite(composite, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(4, false);
 		gridLayout.marginWidth = 0;
 		urlComposite.setLayout(gridLayout);
@@ -129,7 +124,7 @@ public class InsertUrlDialog extends VaultDialog {
 		gridData.horizontalIndent = 0;
 		urlComposite.setLayoutData(gridData);
 		
-		Label urlLabel = new Label(urlComposite, SWT.NONE);
+		final Label urlLabel = new Label(urlComposite, SWT.NONE);
 		urlLabel.setText("&URL:");
 		
 		protocolCombo = new Combo(urlComposite, SWT.DROP_DOWN | SWT.READ_ONLY);
@@ -183,7 +178,7 @@ public class InsertUrlDialog extends VaultDialog {
 			}
 		});
 		
-		Composite hintsComposite = new Composite(composite, SWT.NONE);
+		final Composite hintsComposite = new Composite(composite, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		gridLayout.horizontalSpacing = SWT.FILL;
 		gridLayout.verticalSpacing = SWT.FILL;
@@ -199,10 +194,10 @@ public class InsertUrlDialog extends VaultDialog {
 		Text hintsText = new Text(hintsComposite, SWT.WRAP | SWT.MULTI | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL);
 		hintsText.setText("Hints:\r\n\r\nInsert an http:// or https:// URL to browse to a website using the default web browser.\r\n\r\nInsert a file:/// URL to load a file into the default application for that file. For example, a file URL of \"file:///c:\\documents\\memo.doc\" will load the memo.doc file into Word.\r\n\r\nOnce you've inserted a URL, when you right-click the URL and select Browse URL, the web page or file will be displayed.\r\n\r\nYou can also browse URLs by selecting Edit / Browse URLs (Ctrl+U).");
 		
-		GC gc = new GC(hintsText.getDisplay());
+		final GC gc = new GC(hintsText.getDisplay());
 		
-		final int height = gc.getFontMetrics().getHeight() * 5;
-		final int width = gc.getFontMetrics().getAverageCharWidth() * 40;
+		final int height = gc.getFontMetrics().getHeight() * 7;
+		final int width = height * 4;
 		
 		gc.dispose();
 		

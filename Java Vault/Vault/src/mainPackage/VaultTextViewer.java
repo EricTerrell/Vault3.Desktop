@@ -69,13 +69,9 @@ import fonts.SWTFont;
  */
 public class VaultTextViewer extends TextViewer implements ISelectionChangedListener {
 	private String previousInsertTextFileFilterPath = null;
-	
 	private boolean doNotRecordUndoInfo = false, menusArmed = false;
-
 	private boolean isModified;
-	
-	private OutlineItem outlineItem; 
-	
+	private OutlineItem outlineItem;
 	private boolean usingNonDefaultFont = false;
 
 	private class UndoInfo {
@@ -90,7 +86,6 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 
 	private Stack<UndoInfo> undoBuffer = new Stack<>();
-
 	private Pattern[] searchPatterns;
 
 	public void setSearchPatterns(Pattern[] searchPatterns, boolean searchHitsFound) {
@@ -177,23 +172,23 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 				
 				Display.getCurrent().setCursorLocation(cursorLocation.x + 1, cursorLocation.y + 1);
 				
-				Point mappedPoint = Display.getCurrent().map(null, getTextWidget(), cursorLocation);
+				final Point mappedPoint = Display.getCurrent().map(null, getTextWidget(), cursorLocation);
 				
 				// Try to move the cursor to the current mouse position.
 				
 				int offset = -1;
 				
 				try {
-					offset = getTextWidget().getOffsetAtLocation(mappedPoint);
+					offset = getTextWidget().getOffsetAtPoint(mappedPoint);
 				}
 				catch (Throwable ex) {
 					// The cursor was probably to the right of the text on a given line. Get the offset at the beginning
 					// of the line by moving the point all the way to the left.
-					Point newPoint = new Point(0, mappedPoint.y);
+					final Point newPoint = new Point(0, mappedPoint.y);
 					
 					try {
 						// If we got the offset, move to the end of the line.
-						offset = getTextWidget().getOffsetAtLocation(newPoint);
+						offset = getTextWidget().getOffsetAtPoint(newPoint);
 						int lineIndex = getTextWidget().getLineAtOffset(offset);
 						offset += getTextWidget().getLine(lineIndex).length();
 					}
@@ -224,15 +219,15 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 
 	public void setBackgroundColor() {
-		PreferenceStore preferenceStore = Globals.getPreferenceStore();
+		final PreferenceStore preferenceStore = Globals.getPreferenceStore();
 		
-		RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
+		final RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
 				  						  preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
 				  						  preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
 		
-		StyledText textWidget = getTextWidget();
+		final StyledText textWidget = getTextWidget();
 		
-		Point selection = textWidget.getSelection();
+		final Point selection = textWidget.getSelection();
 		
 		textWidget.setFocus();
 		textWidget.setSelection(0, 0);
@@ -263,16 +258,16 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	 * use the default font and color.
 	 */
 	private void setFontAndColor(boolean forceColorChangeToBeVisible) {
-		String newFontString = getFontString();
+		final String newFontString = getFontString();
 
-		String currentFontString = FontUtils.fontListToString(getTextWidget().getFont().getFontData());
+		final String currentFontString = FontUtils.fontListToString(getTextWidget().getFont().getFontData());
 		
 		if (newFontString != null && !currentFontString.equals(newFontString)) {
-			FontData fontList[] = FontUtils.stringToFontList(newFontString);
+			final FontData fontList[] = FontUtils.stringToFontList(newFontString);
 			
-			Font previousFont = getTextWidget().getFont();
+			final Font previousFont = getTextWidget().getFont();
 			
-			Font font = new Font(getTextWidget().getDisplay(), fontList);
+			final Font font = new Font(getTextWidget().getDisplay(), fontList);
 			getTextWidget().setFont(font);
 			
 			if (usingNonDefaultFont) {
@@ -292,21 +287,21 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		// is several lines below the text, the text change will not be visible when getTextWidget().setForegroundColor is called.
 		
 		// Save text and caret position.
-		int savedCaretOffset = getTextWidget().getCaretOffset();
-		String savedText = getTextWidget().getText();
+		final int savedCaretOffset = getTextWidget().getCaretOffset();
+		final String savedText = getTextWidget().getText();
 		
 		if (forceColorChangeToBeVisible) {
 			getTextWidget().setText("");
 		}
 		
 		if (rgb != null) {
-			Color color = Globals.getColorRegistry().get(rgb);
+			final Color color = Globals.getColorRegistry().get(rgb);
 			getTextWidget().setForeground(color);
 		}
 		else {
-			int red   = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontRed);
-			int green = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontGreen);
-			int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontBlue);
+			final int red   = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontRed);
+			final int green = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontGreen);
+			final int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontBlue);
 			
 			getTextWidget().setForeground(Globals.getColorRegistry().get(red, green, blue));
 		}
@@ -331,7 +326,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		this.outlineItem = outlineItem;
 		isModified = false;
 		
-    	Document document = new Document();
+    	final Document document = new Document();
 
     	setFontAndColor();
 
@@ -358,7 +353,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 
 	public void saveChanges() {
 		if (outlineItem != null && isModified) {
-			IDocument document = getDocument();
+			final IDocument document = getDocument();
 			
 			outlineItem.setText(document.get());
 			
@@ -367,7 +362,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 	
 	private boolean isEnabledAndEditable() {
-		StyledText textWidget = getTextWidget();
+		final StyledText textWidget = getTextWidget();
 		return textWidget.getEnabled() && textWidget.getEditable();
 	}
 	
@@ -377,7 +372,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	
 	public void insertDate() {
 		if (canInsertDate()) {
-			String dateText = SimpleDateFormat.getDateInstance().format(new Date());
+			final String dateText = SimpleDateFormat.getDateInstance().format(new Date());
 			getTextWidget().insert(dateText);
 		}
 	}
@@ -388,7 +383,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	
 	public void insertTime() {
 		if (canInsertTime()) {
-			String timeText = SimpleDateFormat.getTimeInstance().format(new Date());
+			final String timeText = SimpleDateFormat.getTimeInstance().format(new Date());
 			getTextWidget().insert(timeText);
 		}
 	}
@@ -399,8 +394,8 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	
 	public void insertDateAndTime() {
 		if (canInsertDateAndTime()) {
-			Date now = new Date();
-			String dateAndTimeText = SimpleDateFormat.getDateTimeInstance().format(now);
+			final Date now = new Date();
+			final String dateAndTimeText = SimpleDateFormat.getDateTimeInstance().format(now);
 			getTextWidget().insert(dateAndTimeText);
 		}
 	}
@@ -411,10 +406,10 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	
 	public void insertUrl() {
 		if (canInsertUrl()) {
-			InsertUrlDialog insertUrlDialog = new InsertUrlDialog(Globals.getMainApplicationWindow().getShell());
+			final InsertUrlDialog insertUrlDialog = new InsertUrlDialog(Globals.getMainApplicationWindow().getShell());
 				
 			if (insertUrlDialog.open() == IDialogConstants.OK_ID) {
-				String url = insertUrlDialog.getUrl();
+				final String url = insertUrlDialog.getUrl();
 								
 				getTextWidget().insert(url);
 			}
@@ -429,26 +424,26 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		String specifiedUrl = null;
 		
 		if (isEnabledAndEditable()) {
-			Point cursorLocation = Display.getCurrent().getCursorLocation();
-			Point mappedPoint = Display.getCurrent().map(null, getTextWidget(), cursorLocation);
+			final Point cursorLocation = Display.getCurrent().getCursorLocation();
+			final Point mappedPoint = Display.getCurrent().map(null, getTextWidget(), cursorLocation);
 			
 			// Try to move the cursor to the current mouse position.
 			
 			int caretOffset = getTextWidget().getCaretOffset();
 			
 			try {
-				caretOffset = getTextWidget().getOffsetAtLocation(mappedPoint);
+				caretOffset = getTextWidget().getOffsetAtPoint(mappedPoint);
 			}
 			catch (Throwable ex) {
 				ex.printStackTrace();
 			}
 
 			if (caretOffset > -1) {
-				Pattern pattern = Pattern.compile(Globals.getPreferenceStore().getString(PreferenceKeys.URLRegex));
+				final Pattern pattern = Pattern.compile(Globals.getPreferenceStore().getString(PreferenceKeys.URLRegex));
 	
-				String itemText = getTextWidget().getText();
+				final String itemText = getTextWidget().getText();
 				
-				Matcher matcher = pattern.matcher(itemText);
+				final Matcher matcher = pattern.matcher(itemText);
 				
 				while (matcher.find()) {
 					if (matcher.start() <= caretOffset && matcher.end() >= caretOffset) {
@@ -474,7 +469,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	
 	public void undo() {
 		if (canUndo()) {
-			UndoInfo undoInfo = undoBuffer.pop();
+			final UndoInfo undoInfo = undoBuffer.pop();
 
 			try
 			{
@@ -518,12 +513,12 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	public boolean canPaste() {
 		String clipboardData;
 		
-		Clipboard clipboard = new Clipboard(Display.getCurrent());
-		TextTransfer textTransfer = TextTransfer.getInstance();
+		final Clipboard clipboard = new Clipboard(Display.getCurrent());
+		final TextTransfer textTransfer = TextTransfer.getInstance();
 		clipboardData = (String)clipboard.getContents(textTransfer);
 
 		if (clipboardData == null) {
-			RTFTransfer rtfTransfer = RTFTransfer.getInstance();
+			final RTFTransfer rtfTransfer = RTFTransfer.getInstance();
 			clipboardData = (String)clipboard.getContents(rtfTransfer);
 		}
 		
@@ -537,9 +532,9 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 	
 	public boolean canSelectAll() {
-		Point selectionRange = getSelectedRange();
+		final Point selectionRange = getSelectedRange();
 		
-		boolean allTextSelected = selectionRange.x == 0 && selectionRange.y == this.getTextWidget().getText().length();
+		final boolean allTextSelected = selectionRange.x == 0 && selectionRange.y == this.getTextWidget().getText().length();
 		
 		return isEnabledAndEditable() && !allTextSelected;
 	}
@@ -558,7 +553,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 				Globals.getFindAndReplaceDialog().close();
 			}
 			
-			FindAndReplaceDialog findDialog = new FindAndReplaceDialog(shell, false);
+			final FindAndReplaceDialog findDialog = new FindAndReplaceDialog(shell, false);
 			Globals.setFindAndReplaceDialog(findDialog);
 			
 			findDialog.open();
@@ -572,13 +567,13 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	public void replace(Shell shell) {
 		if (canReplace()) {
 			if (Globals.getFindAndReplaceDialog() == null) {
-				FindAndReplaceDialog findDialog = new FindAndReplaceDialog(shell, true);
+				final FindAndReplaceDialog findDialog = new FindAndReplaceDialog(shell, true);
 				Globals.setFindAndReplaceDialog(findDialog);
 			}
 			else {
 				Globals.getFindAndReplaceDialog().close();
 
-				FindAndReplaceDialog findDialog = new FindAndReplaceDialog(shell, true);
+				final FindAndReplaceDialog findDialog = new FindAndReplaceDialog(shell, true);
 				Globals.setFindAndReplaceDialog(findDialog);
 			}
 			
@@ -591,7 +586,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 	
 	public void setFont() {
-		FontDialog fontDialog = new FontDialog(getTextWidget().getShell());
+		final FontDialog fontDialog = new FontDialog(getTextWidget().getShell());
 		fontDialog.setText("Set Font");
 
 		if (getOutlineItem().getRGB() != null) {
@@ -604,16 +599,16 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 			fontDialog.setFontList(fontList);
 		}
 		
-		FontData fontData = fontDialog.open();
+		final FontData fontData = fontDialog.open();
 		
 		if (fontData != null) {
 			fontList = fontDialog.getFontList();
 			
 			String fontString = FontUtils.fontListToString(fontList);
 			
-			SWTFont font = new SWTFont(fontList[0].getName(), Globals.getPlatform(), fontString);
+			final SWTFont font = new SWTFont(fontList[0].getName(), Globals.getPlatform(), fontString);
 			
-			OutlineItem outlineItem = getOutlineItem();
+			final OutlineItem outlineItem = getOutlineItem();
 			
 			if (outlineItem.getFontList() == null) {
 				outlineItem.setFontList(new FontList());
@@ -631,7 +626,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 			}
 			
 			// rgb will be null for Ubuntu.
-			RGB rgb = fontDialog.getRGB();
+			final RGB rgb = fontDialog.getRGB();
 			
 			boolean colorChanged = false;
 			
@@ -648,7 +643,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
-    	IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+    	final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 
     	if (selection.size() != 1) {
     		setOutlineItem(null);
@@ -734,7 +729,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		}
 		else {
 			// Clear existing highlights.
-			StyleRange styleRange = new StyleRange(0, getTextWidget().getText().length(), getTextWidget().getForeground(), getTextWidget().getBackground());
+			final StyleRange styleRange = new StyleRange(0, getTextWidget().getText().length(), getTextWidget().getForeground(), getTextWidget().getBackground());
 			getTextWidget().setStyleRange(styleRange);
 		}
 	}
@@ -750,7 +745,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 			String text = getTextWidget().getText();
 
 			for (Pattern pattern : searchPatterns) {
-				Matcher matcher = pattern.matcher(text);
+				final Matcher matcher = pattern.matcher(text);
 				
 				while (matcher.find()) {
 					if ((next && matcher.start() > caretOffset) || (!next && matcher.start() < caretOffset)) {

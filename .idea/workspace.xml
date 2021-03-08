@@ -9,7 +9,17 @@
   <component name="ChangeListManager">
     <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/Vault.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/Vault.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/InsertUrlDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/InsertUrlDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VideoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VideoUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +79,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Vault3.Android/README.md" />
+    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/hamcrest-core-1.3.jar" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -176,8 +186,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FontTests.addItemsAndSerializeAndDeserialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CommonCode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.FontTests" />
+      <option name="METHOD_NAME" value="addItemsAndSerializeAndDeserialize" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchParametersSerializationDeserializationTests.roundTrip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.SearchParametersSerializationDeserializationTests" />
+      <option name="METHOD_NAME" value="roundTrip" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jUnitTests in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -195,9 +254,15 @@
     <list>
       <item itemvalue="Application.Vault 3" />
       <item itemvalue="JUnit.Base64TestCase" />
+      <item itemvalue="JUnit.FontTests.addItemsAndSerializeAndDeserialize" />
+      <item itemvalue="JUnit.jUnitTests in Vault" />
+      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.jUnitTests in Vault" />
+        <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
+        <item itemvalue="JUnit.FontTests.addItemsAndSerializeAndDeserialize" />
         <item itemvalue="JUnit.Base64TestCase" />
       </list>
     </recent_temporary>
@@ -232,20 +297,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Version 0.62.">
-      <created>1465914126086</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1465914126086</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Version 0.62.">
-      <created>1465919270653</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1465919270653</updated>
     </task>
     <task id="LOCAL-00034" summary="Version 0.62.">
       <created>1466000533896</created>
@@ -576,7 +627,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614876005825</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="README.md">
+      <created>1614877959124</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1614877959124</updated>
+    </task>
+    <task id="LOCAL-00082" summary="README.md">
+      <created>1614892951163</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1614892951163</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -709,6 +774,36 @@
           <line>174</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -727,6 +822,8 @@
         <watch expression="toolBar.getItemCount()" language="JAVA" />
         <watch expression="coolBarManager.getControl()" language="JAVA" />
         <watch expression="coolBarManager.get" language="JAVA" />
+        <watch expression="getTextWidget().getOffsetAtLocation(mappedPoint)" language="JAVA" />
+        <watch expression="getTextWidget().getOffsetAtPoint(mappedPoint)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

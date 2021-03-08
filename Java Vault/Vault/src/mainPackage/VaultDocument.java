@@ -524,10 +524,10 @@ public class VaultDocument {
 			for (ArrayList<OutlineItemWithIDs> arrayList : map.values()) {
 				for (OutlineItemWithIDs outlineItem : arrayList) {
 					// Retrieve all children for the current outline item.
-					ArrayList<OutlineItemWithIDs> children = map.get(outlineItem.getID());
+					final ArrayList<OutlineItemWithIDs> children = map.get(outlineItem.getID());
 					
 					if (children != null) {
-						OutlineItemWithIDs[] sortedChildren = children.toArray(new OutlineItemWithIDs[children.size()]);
+						final OutlineItemWithIDs[] sortedChildren = children.toArray(new OutlineItemWithIDs[0]);
 						Arrays.sort(sortedChildren, new OutlineItemWithIDsComparitor());
 						
 						for (OutlineItemWithIDs child : sortedChildren) {

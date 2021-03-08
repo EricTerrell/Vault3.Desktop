@@ -79,7 +79,7 @@ public class PhotoUtils {
 	
 	/**
 	 * Return true if the specified File points to a digital photo (as opposed to, for example, a video file).
-	 * @param path file path
+	 * @param file file path
 	 * @return true if the path points to a photo
 	 */
 	public static boolean isPhotoFile(File file) {

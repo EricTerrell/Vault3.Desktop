@@ -47,7 +47,7 @@ public class SearchParametersSerializationDeserializationTests {
 		
 		String serializedText = SearchParameters.serialize(searchParametersList);
 		
-		System.out.println(String.format("Length: %d Text: %s", serializedText.length(), serializedText));
+		System.out.printf("Length: %d Text: %s%n", serializedText.length(), serializedText);
 
 		Assert.assertNotNull(serializedText);
 		

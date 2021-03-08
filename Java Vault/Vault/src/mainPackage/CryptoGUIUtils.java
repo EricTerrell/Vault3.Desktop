@@ -24,12 +24,8 @@
 package mainPackage;
 
 import java.io.File;
-
 import javax.crypto.Cipher;
-
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.swt.widgets.Shell;
-
 import commonCode.VaultDocumentVersion;
 
 /**
