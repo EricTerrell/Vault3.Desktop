@@ -7,20 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/Vault.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/Vault.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/InsertUrlDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/InsertUrlDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VideoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VideoUtils.java" afterDir="false" />
-    </list>
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.72&#10;&#10;Added image rotation." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,13 +24,13 @@
     <favorites_list name="Vault3.Desktop" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/ToolBarManager.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/ApplicationWindow.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/CoolBarManager.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/Window.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/SWT.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/IllegalArgumentException.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/widgets/CoolBar.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/Window.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/IllegalArgumentException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/ApplicationWindow.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/SWT.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/ToolBarManager.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1Ob95eQ7ddWPhRhToPl51PJHspT" />
   <component name="ProjectViewState">
@@ -51,6 +38,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
@@ -75,24 +63,27 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="339" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="339" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="868" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/hamcrest-core-1.3.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java Vault/Vault/Help" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help" />
+      <recent name="C:\development\Vault3.Desktop\Java Vault\Vault\Help" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="mainPackage" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\development\Vault3.Desktop\Java Vault\Vault\Help" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Vault 3">
@@ -108,6 +99,8 @@
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -120,14 +113,18 @@
       <Java />
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -147,12 +144,14 @@
       <Java />
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Vault 3" type="Application" factoryName="Application">
@@ -166,6 +165,15 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -253,14 +261,16 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
+      <item itemvalue="JUnit.All in Vault" />
       <item itemvalue="JUnit.Base64TestCase" />
       <item itemvalue="JUnit.FontTests.addItemsAndSerializeAndDeserialize" />
-      <item itemvalue="JUnit.jUnitTests in Vault" />
       <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
+      <item itemvalue="JUnit.jUnitTests in Vault" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.jUnitTests in Vault" />
+        <item itemvalue="JUnit.All in Vault" />
         <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
         <item itemvalue="JUnit.FontTests.addItemsAndSerializeAndDeserialize" />
         <item itemvalue="JUnit.Base64TestCase" />
@@ -297,55 +307,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Version 0.62.">
-      <created>1466000533896</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1466000533896</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Version 0.62.">
-      <created>1466515179718</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1466515179718</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Adding ability to automatically delete outline item when photo file is deleted.">
-      <created>1473380845126</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1473380845126</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Version 0.63.">
-      <created>1473381298471</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1473381298471</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Version 0.63.">
-      <created>1473386034083</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1473386034083</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Version 0.63.">
-      <created>1473428825258</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1473428825258</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Version 0.63.">
-      <created>1473429236486</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1473429236486</updated>
     </task>
     <task id="LOCAL-00041" summary="Version 0.63.">
       <created>1473470385689</created>
@@ -641,7 +602,56 @@
       <option name="project" value="LOCAL" />
       <updated>1614892951163</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Code inspection cleanup">
+      <created>1615221444685</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1615221444685</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Code inspection cleanup">
+      <created>1615221558366</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1615221558366</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633467838556</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1633467838556</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633473090397</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1633473090397</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633473962626</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1633473962626</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633478566271</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1633478566271</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633479300202</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1633479300202</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -675,7 +685,9 @@
     <MESSAGE value="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor." />
     <MESSAGE value="No longer build source code .zip file as source code is in GitHub." />
     <MESSAGE value="README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md" />
+    <MESSAGE value="Code inspection cleanup" />
+    <MESSAGE value="Version 0.72&#10;&#10;Added image rotation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.72&#10;&#10;Added image rotation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -731,7 +743,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
-          <line>244</line>
+          <line>247</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -756,7 +768,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
-          <line>238</line>
+          <line>241</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -795,18 +807,16 @@
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="100" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PDFExport.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="StringLiterals.ProgramName" language="JAVA" />
+      </configuration>
       <configuration name="Application">
         <watch expression="scaledImage.getWidth()" language="JAVA" />
         <watch expression="scaledImage.getHeight()" language="JAVA" />
@@ -824,6 +834,7 @@
         <watch expression="coolBarManager.get" language="JAVA" />
         <watch expression="getTextWidget().getOffsetAtLocation(mappedPoint)" language="JAVA" />
         <watch expression="getTextWidget().getOffsetAtPoint(mappedPoint)" language="JAVA" />
+        <watch expression="((ArrayList) Globals.getVaultDocument().getContent().getChildren()).size" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

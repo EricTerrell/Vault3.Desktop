@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -115,7 +115,7 @@ public class PasswordDialog extends VaultDialog {
 		requirePasswordCheckBox.setSelection(Globals.getVaultDocument().isEncrypted());
 		
 		Label spacerLabel = new Label(composite, SWT.NONE);
-		spacerLabel.setText("");
+		spacerLabel.setText(StringLiterals.EmptyString);
 		GridData gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
@@ -163,7 +163,7 @@ public class PasswordDialog extends VaultDialog {
         });
 		
 		spacerLabel = new Label(composite, SWT.NONE);
-		spacerLabel.setText("");
+		spacerLabel.setText(StringLiterals.EmptyString);
 		gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
@@ -298,7 +298,7 @@ public class PasswordDialog extends VaultDialog {
 				okButton.setEnabled(false);
 			}
 			else {
-	      	  statusLabel.setText("");
+	      	  statusLabel.setText(StringLiterals.EmptyString);
 	      	  statusLabel.setBackground(nonErrorBackground);
 	      	  okButton.setEnabled(true);
 			}
@@ -331,6 +331,6 @@ public class PasswordDialog extends VaultDialog {
 	public PasswordDialog(Shell parentShell, String password) {
 		super(parentShell);
 
-		this.password = password == null ? "" : password;
+		this.password = password == null ? StringLiterals.EmptyString : password;
 	}
 }

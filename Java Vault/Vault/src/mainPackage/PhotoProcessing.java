@@ -98,22 +98,38 @@ public class PhotoProcessing {
 			}
 		}
 	}
-	
+
 	public static boolean canEditPictureFile() {
 		String photoEditorPath = Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath).trim();
-		
+
 		return photoEditorPath.length() > 0 && selectedItemHasPictureFile();
 	}
-	
+
 	public static void editPictureFile() {
 		if (canEditPictureFile()) {
 			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
 
-			 ProcessBuilder processBuilder = new ProcessBuilder(Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath), selectedItemPhotoPath);
+			ProcessBuilder processBuilder = new ProcessBuilder(Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath), selectedItemPhotoPath);
 
-			 try {
+			try {
 				processBuilder.start();
 			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+
+	public static boolean canRotatePictureFile() {
+		return selectedItemHasPictureFile();
+	}
+
+	public static void rotatePictureFile(float degrees) {
+		if (canRotatePictureFile()) {
+			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
+
+			try {
+				GraphicsUtils.rotate(selectedItemPhotoPath, degrees);
+			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}

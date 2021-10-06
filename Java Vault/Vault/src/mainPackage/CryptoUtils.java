@@ -205,7 +205,7 @@ public class CryptoUtils {
 	public static String encryptString(Cipher cipher, String plainText) throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
 		// Silently convert null strings to empty strings.
 		if (plainText == null) {
-			plainText = "";
+			plainText = StringLiterals.EmptyString;
 		}
 		
 		byte[] plainTextBytes = plainText.getBytes("UTF-8");

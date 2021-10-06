@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -111,7 +111,7 @@ public class VaultTreeViewer extends TreeViewer {
 			getControl().getMenu().addMenuListener(new MenuListener() {
 				@Override
 				public void menuHidden(MenuEvent e) {
-					Globals.getMainApplicationWindow().setStatusLineMessage("");
+					Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 				}
 	
 				@Override
@@ -251,23 +251,35 @@ public class VaultTreeViewer extends TreeViewer {
 		getControl().forceFocus();
 		getTree().setSelection(getTree().getItems());
 	}
-	
+
+	public void refreshCurrentItem() {
+		final List<OutlineItem> selectedItems = getSelectedItems();
+
+		if (selectedItems.size() == 1) {
+			renderFirstItem(selectedItems.get(0));
+		}
+	}
+
 	public void selectFirstItem() {
 		getControl().forceFocus();
 		
 		if (Globals.getVaultDocument().getContent().getChildren().size() >= 1) {
-			Display.getCurrent().asyncExec(() -> {
-                StructuredSelection structuredSelection = new StructuredSelection(Globals.getVaultDocument().getContent().getChildren().get(0));
-
-                setSelection(structuredSelection);
-
-                // Force selected item to be rendered with the proper font and color.
-                SelectionChangedEvent event = new SelectionChangedEvent(VaultTreeViewer.this, structuredSelection);
-                Globals.getVaultTextViewer().selectionChanged(event);
-            });
+			renderFirstItem(Globals.getVaultDocument().getContent().getChildren().get(0));
 		}
 	}
-	
+
+	private void renderFirstItem(OutlineItem outlineItem) {
+		Display.getCurrent().asyncExec(() -> {
+			StructuredSelection structuredSelection = new StructuredSelection(outlineItem);
+
+			setSelection(structuredSelection);
+
+			// Force selected item to be rendered with the proper font and color.
+			SelectionChangedEvent event = new SelectionChangedEvent(VaultTreeViewer.this, structuredSelection);
+			Globals.getVaultTextViewer().selectionChanged(event);
+		});
+	}
+
 	public void load(OutlineItem rootNode) {
 		getTree().setRedraw(false);
 

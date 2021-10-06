@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -154,7 +154,7 @@ public class SettingsDialog extends VaultDialog {
 	        okButton.setEnabled(false);
 	    }
 	    else {
-	    	statusLabel.setText("");
+	    	statusLabel.setText(StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 	}
@@ -281,7 +281,7 @@ public class SettingsDialog extends VaultDialog {
 
 		startupFilePathText.addFocusListener(new TextFocusListener());
 		
-		new Label(startupComposite, SWT.NONE).setText("");
+		new Label(startupComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Button specifyFileButton = new Button(startupComposite, SWT.NONE);
 		specifyFileButton.setText("Specify Startup &File...");
@@ -321,7 +321,7 @@ public class SettingsDialog extends VaultDialog {
 			}
 		});
 		
-		new Label(startupComposite, SWT.NONE).setText("");
+		new Label(startupComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
 		loadMostRecentlyUsedFileButton = new Button(startupComposite, SWT.RADIO);
 		loadMostRecentlyUsedFileButton.setText("Open &Most Recently Opened File on Startup");
@@ -646,7 +646,7 @@ public class SettingsDialog extends VaultDialog {
 		substituteFolderLabel.setLayoutData(gridData);
 		
 		// Spacer.
-		new Label(substituteFolderComposite, SWT.NONE).setText("");
+		new Label(substituteFolderComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
 		Button specifyFolderButton = new Button(substituteFolderComposite, SWT.NONE);
 		specifyFolderButton.setText("Specify &Folder...");
@@ -722,7 +722,7 @@ public class SettingsDialog extends VaultDialog {
 		slideshowExclusionText.setLayoutData(gridData);
 		
 		// Spacer.
-		new Label(photosComposite, SWT.NONE).setText("");
+		new Label(photosComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Button specifyPhotoEditingProgramButton = new Button(photosComposite, SWT.NONE);
 		specifyPhotoEditingProgramButton.setText("Specify Photo Editing &Program...");

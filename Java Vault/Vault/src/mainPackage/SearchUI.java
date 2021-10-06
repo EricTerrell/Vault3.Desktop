@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -127,8 +127,8 @@ public class SearchUI extends Composite {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				searchComboViewer.getCombo().removeAll();
-				searchComboViewer.getCombo().setText("");
-				Globals.getPreferenceStore().setValue(getSavedSearchesKey(), "");
+				searchComboViewer.getCombo().setText(StringLiterals.EmptyString);
+				Globals.getPreferenceStore().setValue(getSavedSearchesKey(), StringLiterals.EmptyString);
 			}
 			
 			@Override

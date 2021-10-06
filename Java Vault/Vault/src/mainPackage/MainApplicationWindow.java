@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -140,6 +140,8 @@ public class MainApplicationWindow extends ApplicationWindow {
 	private final FileActions.DeletePictureFileAction deletePictureFileAction = new FileActions.DeletePictureFileAction();
 	private final FileActions.RenamePictureFileAction renamePictureFileAction = new FileActions.RenamePictureFileAction();
 	private final FileActions.EditPictureFileAction editPictureFileAction = new FileActions.EditPictureFileAction();
+	private final FileActions.RotateLeftFileAction rotateLeftFileAction = new FileActions.RotateLeftFileAction();
+	private final FileActions.RotateRightFileAction rotateRightFileAction = new FileActions.RotateRightFileAction();
 	private final FileActions.EmailAction emailAction = new FileActions.EmailAction();
 
 	// Outline actions:
@@ -278,12 +280,15 @@ public class MainApplicationWindow extends ApplicationWindow {
 	private void addActions() {
 		Action actionsArray[] = new Action[] 
 		{ 
-			addAction, aboutAction, copyPictureFileAction, deletePictureFileAction, renamePictureFileAction, editPictureFileAction, importPicturesAction, removeAction, moveUpAction, moveDownAction, 
-			indentAction, unindentAction, moveAction, outlineSelectAllAction, cutOutlineItemAction, copyOutlineItemAction, pasteOutlineItemAction, expandAction,
-			expandAllAction, collapseAction, collapseAllAction, editOutlineAction, sortAction, outlineSetFontAction, undoAction, cutTextAction, copyTextAction,
-			pasteTextAction, selectAllTextAction, insertDateAction, insertTimeAction, insertDateAndTimeAction, insertTextFileAction, setFontAction,
-			goToWebsitesAction, findAction, replaceAction, insertUrlAction, displayUrlAction, nextSearchHitAction, previousSearchHitAction, nextSearchItemAction, previousSearchItemAction, clearSearchAction,  
-			softwareUpdatesAction, settingsAction
+			addAction, aboutAction, copyPictureFileAction, deletePictureFileAction, renamePictureFileAction,
+			editPictureFileAction, rotateLeftFileAction, rotateRightFileAction, importPicturesAction,
+			removeAction, moveUpAction, moveDownAction, indentAction, unindentAction, moveAction,
+			outlineSelectAllAction, cutOutlineItemAction, copyOutlineItemAction, pasteOutlineItemAction, expandAction,
+			expandAllAction, collapseAction, collapseAllAction, editOutlineAction, sortAction, outlineSetFontAction,
+			undoAction, cutTextAction, copyTextAction, pasteTextAction, selectAllTextAction, insertDateAction,
+			insertTimeAction, insertDateAndTimeAction, insertTextFileAction, setFontAction, goToWebsitesAction,
+			findAction, replaceAction, insertUrlAction, displayUrlAction, nextSearchHitAction, previousSearchHitAction,
+			nextSearchItemAction, previousSearchItemAction, clearSearchAction, softwareUpdatesAction, settingsAction
 		};
 		
 		for (Action action : actionsArray) {
@@ -458,7 +463,12 @@ public class MainApplicationWindow extends ApplicationWindow {
 		fileMenuManager.add(new Separator());
 		
 		fileMenuManager.add(editPictureFileAction);
-		
+
+		fileMenuManager.add(new Separator());
+
+		fileMenuManager.add(rotateLeftFileAction);
+		fileMenuManager.add(rotateRightFileAction);
+
 		fileMenuManager.add(new Separator());
 		
 		List<MRUFileList.MRUFile> mruFiles = Globals.getMRUFiles().getMRUFiles();
@@ -823,11 +833,14 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		selectionChangedListeners = new ISelectionChangedListener[] 
 		{ 
-				Globals.getVaultTextViewer(), removeAction, indentAction, unindentAction, moveAction, expandAction, collapseAction, 
-				cutOutlineItemAction, copyOutlineItemAction, pasteOutlineItemAction, moveUpAction, moveDownAction, editOutlineAction, sortAction, 
-				insertTextFileAction, setFontAction, addAction, importPicturesAction, importFromXMLFileAction, importFromFileSystemAction,
-				slideShowAction, searchAction, printAction, photoAndTextUI.getPhotoUI(), photoAndTextUI, textExportAction, xmlExportAction, pdfExportAction,
-				outlineSelectAllAction, copyPictureFileAction, deletePictureFileAction, renamePictureFileAction, editPictureFileAction, emailAction, 
+				Globals.getVaultTextViewer(), removeAction, indentAction, unindentAction, moveAction, expandAction,
+				collapseAction, cutOutlineItemAction, copyOutlineItemAction, pasteOutlineItemAction, moveUpAction,
+				moveDownAction, editOutlineAction, sortAction, insertTextFileAction, setFontAction, addAction,
+				importPicturesAction, importFromXMLFileAction, importFromFileSystemAction, slideShowAction,
+				searchAction, printAction, photoAndTextUI.getPhotoUI(), photoAndTextUI, textExportAction,
+				xmlExportAction, pdfExportAction, outlineSelectAllAction, copyPictureFileAction,
+				deletePictureFileAction, renamePictureFileAction, editPictureFileAction,
+				rotateLeftFileAction, rotateRightFileAction, emailAction,
 				moveHorizontalSplitAction, exportPhotosToDeviceAction, importFromVault3XMLFileAction
 		};
 		

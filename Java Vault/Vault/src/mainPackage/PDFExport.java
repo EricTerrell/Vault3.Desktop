@@ -44,27 +44,28 @@ import com.itextpdf.text.pdf.PdfWriter;
 import fonts.IFont;
 
 public class PDFExport {
-	private static String textExportPreviousFolder = System.getProperty("user.home");
+	private final static int DEFAULT_SIZE = 12;
+	private final static String textExportPreviousFolder = System.getProperty("user.home");
 	private Boolean defaultFontIsVariableWidth;
 	private Font titleFont;
 	
 	public void pdfFileExport(Shell shell) {
 		Globals.getVaultTextViewer().saveChanges();
 		
-		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
+		final FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 		fileDialog.setFilterNames(new String[] { "PDF Files", "All Files" });
 		fileDialog.setFilterExtensions(new String[] { StringLiterals.PDFFileTypeWildcardedCaseInsensitive, StringLiterals.Wildcard });
 		fileDialog.setFilterPath(textExportPreviousFolder);
 		
 		fileDialog.setText("Export");
 		
-		String filePath = fileDialog.open();
+		final String filePath = fileDialog.open();
 		
 		if (filePath != null) {
 			try {
 				Globals.setBusyCursor();
 
-				List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+				final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 
 		        Document document = null;
 		
@@ -96,8 +97,8 @@ public class PDFExport {
 				ex.printStackTrace();
 				Globals.getLogger().info(String.format("PDFExport.pdfFileExport: Exception %s", ex));
 
-				String message = MessageFormat.format("Cannot export PDF file {0}.{1}{1}{2}", filePath, PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(shell, StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+				final String message = MessageFormat.format("Cannot export PDF file {0}.{1}{1}{2}", filePath, PortabilityUtils.getNewLine(),  ex.getMessage());
+				final MessageDialog messageDialog = new MessageDialog(shell, StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 				messageDialog.open();
 			}
 			finally {
@@ -108,7 +109,7 @@ public class PDFExport {
 	
 	private void exportOutlineItem(Document document, OutlineItem outlineItem, boolean tocOnly, int nestingDepth) throws DocumentException {
 		if (!tocOnly || outlineItem.hasChildren()) {
-			Chunk chunk = new Chunk(outlineItem.getTitle(), getTitleFont());
+			final Chunk chunk = new Chunk(outlineItem.getTitle(), getTitleFont());
 	
 			if (!tocOnly && outlineItem.getParent() != null) {
 				chunk.setLocalDestination(outlineItem.getUuid().toString());
@@ -119,7 +120,7 @@ public class PDFExport {
 				chunk.setUnderline(0.1f, -2f);
 			}
 			
-			Paragraph titleParagraph = new Paragraph(chunk);
+			final Paragraph titleParagraph = new Paragraph(chunk);
 
 			if (tocOnly) {
 				titleParagraph.setIndentationLeft(nestingDepth * 15);
@@ -132,7 +133,7 @@ public class PDFExport {
 			}
 			
 			if (!tocOnly) {
-				Font textFont = getTextFont(outlineItem);
+				final Font textFont = getTextFont(outlineItem);
 				
 				if (outlineItem.getText().trim().length() > 0) {
 					Paragraph textParagraph = new Paragraph(outlineItem.getText(), textFont);
@@ -149,7 +150,7 @@ public class PDFExport {
 
 	private Font getTitleFont() {
 		if (titleFont == null) {
-			titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12);
+			titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, DEFAULT_SIZE);
 		}
 		
 		return titleFont;
@@ -194,17 +195,17 @@ public class PDFExport {
 			}
 		}
 		else {
-			IFont iFont = outlineItem.getFontList().getFont();
+			final IFont iFont = outlineItem.getFontList().getFont();
 		
 			if (iFont != null) {
-				java.awt.Font font = new java.awt.Font(iFont.getName(), 12, java.awt.Font.PLAIN); 
+				final java.awt.Font font = new java.awt.Font(iFont.getName(), java.awt.Font.PLAIN, DEFAULT_SIZE);
 
-				Map<TextAttribute, ?> attributeMap = font.getAttributes();
+				final Map<TextAttribute, ?> attributeMap = font.getAttributes();
 			    variableWidth = attributeMap.containsValue("Monospaced");
 			}
 		}
 
-		textFont = FontFactory.getFont(variableWidth ? FontFactory.HELVETICA : FontFactory.COURIER, 12);
+		textFont = FontFactory.getFont(variableWidth ? FontFactory.HELVETICA : FontFactory.COURIER, DEFAULT_SIZE);
 
 		return textFont;
 	}

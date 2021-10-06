@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -192,7 +192,7 @@ public class VaultPrinter {
 					}
 
 					// If this is the last item, and it's blank, quit.
-					if (i == textToPrint.size() - 1 && textWithFont.text.toString().replace("\n", "").trim().length() == 0) {
+					if (i == textToPrint.size() - 1 && textWithFont.text.toString().replace("\n", StringLiterals.EmptyString).trim().length() == 0) {
 						break;
 					}
 					

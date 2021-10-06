@@ -20,6 +20,7 @@
 
 package jUnitTests;
 
+import mainPackage.StringLiterals;
 import org.junit.Assert;
 import mainPackage.CodePointString;
 import org.junit.Test;
@@ -52,7 +53,7 @@ public class CodePointStringTests {
 		CodePointString codePointString = new CodePointString();
 		Assert.assertEquals(0, codePointString.length());
 		
-		codePointString = new CodePointString("");
+		codePointString = new CodePointString(StringLiterals.EmptyString);
 		Assert.assertEquals(0, codePointString.length());
 		
 		codePointString = new CodePointString(new CodePointString());
@@ -91,7 +92,7 @@ public class CodePointStringTests {
 	@Test
 	public void testToString() {
 		CodePointString empty = new CodePointString();
-		Assert.assertEquals("", empty.toString());
+		Assert.assertEquals(StringLiterals.EmptyString, empty.toString());
 		
 		CodePointString hello = new CodePointString("Hello");
 		Assert.assertEquals("Hello", hello.toString());

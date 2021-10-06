@@ -30,6 +30,7 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+import mainPackage.StringLiterals;
 import org.junit.Assert;
 import mainPackage.CryptoUtils;
 
@@ -61,7 +62,7 @@ public class CryptoTests {
 	
 	@Test
 	public void emptyStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeySpecException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
-		final String plainText = "";
+		final String plainText = StringLiterals.EmptyString;
 		final String password = "PASSWORD";
 
 		Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(password);
@@ -86,6 +87,6 @@ public class CryptoTests {
 		String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 		
 		String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
-		Assert.assertTrue(decryptedText.equals(""));
+		Assert.assertTrue(decryptedText.equals(StringLiterals.EmptyString));
 	}
 }

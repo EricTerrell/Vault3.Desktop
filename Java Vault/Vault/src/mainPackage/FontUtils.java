@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -79,12 +79,12 @@ public class FontUtils {
 	}
 
 	public static String stringToDescription(String fontString) {
-		String fontDescription = "";
+		String fontDescription = StringLiterals.EmptyString;
 		
 		if (fontString != null && fontString.length() > 0) {
 			FontData fontData[] = FontUtils.stringToFontList(fontString);
 		
-			String style = "";
+			String style = StringLiterals.EmptyString;
 			
 			if ((fontData[0].getStyle() & SWT.BOLD) != 0) {
 				style = "bold";

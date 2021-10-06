@@ -1,6 +1,6 @@
 /*
 Vault 3
-(C) Copyright 2009, Eric Bergman-Terrell
+(C) Copyright 2021, Eric Bergman-Terrell
 
 This file is part of Vault 3.
 
@@ -66,7 +66,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		Globals.getPreferenceStore().setValue(PreferenceKeys.ExportPhotosWidth, widthText.getText());
 		Globals.getPreferenceStore().setValue(PreferenceKeys.ExportPhotosPhotosPerFolder, photosPerFolderText.getText());
 		
-		String totalPhotos = totalPhotosCheckBox.getSelection() ? totalPhotosText.getText() : "";
+		String totalPhotos = totalPhotosCheckBox.getSelection() ? totalPhotosText.getText() : StringLiterals.EmptyString;
 		Globals.getPreferenceStore().setValue(PreferenceKeys.ExportPhotosTotalPhotos, totalPhotos);
 		
 		Globals.getPreferenceStore().setValue(PreferenceKeys.ExportPhotosShuffle, shuffleCheckBox.getSelection());
@@ -130,7 +130,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		}
 		else {
 			statusLabel.setBackground(nonErrorBackground);
-			statusLabel.setText("");
+			statusLabel.setText(StringLiterals.EmptyString);
 			okButton.setEnabled(true);
 		}
 	}

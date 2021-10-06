@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -35,632 +35,733 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * @author Eric Bergman-Terrell
- *
  */
 public class FileActions {
-	public static class NewAction extends Action {
-		@Override
-		public String getDescription() {
-			return "Create a new document";
-		}
+    public static class NewAction extends Action {
+        @Override
+        public String getDescription() {
+            return "Create a new document";
+        }
 
-		public NewAction() {
-			super("New", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/file_new.png"))));
-			setAccelerator(SWT.MOD1 | 'N');
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void run() {
-			boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
-			
-			if (!cancelled) {
-				Globals.getVaultTreeViewer().fileNew();
-				Globals.getMainApplicationWindow().getSearchUI().reset();
-				Globals.getMainApplicationWindow().notifyDocumentLoadUnloadListeners();
-			}
-		}
-	}
-	
-	public static class OpenAction extends Action {
-		@Override
-		public String getDescription() {
-			return "Open an existing document";
-		}
+        public NewAction() {
+            super("New", ImageDescriptor.createFromImage(
+                    new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/file_new.png"))));
+            setAccelerator(SWT.MOD1 | 'N');
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-		public OpenAction() {
-			super("&Open", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/file_open.png"))));
-			setAccelerator(SWT.MOD1 | 'O');
-			setEnabled(true);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void run() {
-			String filePath = null;
-			StringWrapper filePathStringWrapper = new StringWrapper(filePath);
-			
-			try {
-				boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
-				
-				if (!cancelled) {
-					filePath = VaultDocumentIO.fileOpen(Globals.getMainApplicationWindow().getShell(), filePathStringWrapper);
+        public void run() {
+            boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
 
-					if (filePath != null) {
-						Globals.getMainApplicationWindow().getSearchUI().reset();
-						Globals.getVaultTreeViewer().selectFirstItem();
-						Globals.getMainApplicationWindow().notifyDocumentLoadUnloadListeners();
-					}
-				}
-			}
-			catch (Throwable ex) {
-				boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, filePathStringWrapper.getValue());
+            if (!cancelled) {
+                Globals.getVaultTreeViewer().fileNew();
+                Globals.getMainApplicationWindow().getSearchUI().reset();
+                Globals.getMainApplicationWindow().notifyDocumentLoadUnloadListeners();
+            }
+        }
+    }
 
-				if (!processedException) {
-					String message = MessageFormat.format("Cannot open file {2}.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage(), filePathStringWrapper.getValue());
-					MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-					messageDialog.open();
-				}
+    public static class OpenAction extends Action {
+        @Override
+        public String getDescription() {
+            return "Open an existing document";
+        }
 
-				ex.printStackTrace();
-			}
-		}
-	}
-	
-	public static class SaveAction extends Action {
-		@Override
-		public String getDescription() {
-			return "Save the active document";
-		}
+        public OpenAction() {
+            super("&Open", ImageDescriptor.createFromImage(
+                    new Image(Display.getCurrent(),
+                            MainApplicationWindow.class.getResourceAsStream("artwork/file_open.png"))));
+            setAccelerator(SWT.MOD1 | 'O');
+            setEnabled(true);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-		public SaveAction() {
-			super("&Save", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/file_save.png"))));
-			setAccelerator(SWT.MOD1 | 'S');
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentIO.fileSave(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				String message = MessageFormat.format("Cannot save file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
+        public void run() {
+            String filePath = null;
+            StringWrapper filePathStringWrapper = new StringWrapper(filePath);
 
-				ex.printStackTrace();
-			}
-		}
-	}
-	
-	public static class SaveAsAction extends Action {
-		@Override
-		public String getDescription() {
-			return "Save the active document with a new name";
-		}
+            try {
+                boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
 
-		public SaveAsAction() {
-			super("Save &As...");
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentIO.fileSaveAs(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				String message = MessageFormat.format("Cannot save file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
+                if (!cancelled) {
+                    filePath = VaultDocumentIO.fileOpen(
+                            Globals.getMainApplicationWindow().getShell(), filePathStringWrapper);
 
-				ex.printStackTrace();
-			}
-		}
-	}
-	
-	public static class PasswordAction extends Action {
-		@Override
-		public String getDescription() {
-			return "Specify whether or not a password is required to access this document";
-		}
+                    if (filePath != null) {
+                        Globals.getMainApplicationWindow().getSearchUI().reset();
+                        Globals.getVaultTreeViewer().selectFirstItem();
+                        Globals.getMainApplicationWindow().notifyDocumentLoadUnloadListeners();
+                    }
+                }
+            } catch (Throwable ex) {
+                boolean processedException =
+                        DatabaseVersionTooHigh.displayMessaging(ex, filePathStringWrapper.getValue());
 
-		public PasswordAction() {
-			super("Pass&word...", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/key.png"))));
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void run() {
-			PasswordDialog passwordDialog = new PasswordDialog(Globals.getMainApplicationWindow().getShell(), Globals.getVaultDocument().getPassword());
-			
-			if (passwordDialog.open() == IDialogConstants.OK_ID) {
-				Globals.getVaultDocument().setPassword(passwordDialog.getPassword());
-			}
-		}
-	}
-	
-	public static class PrintAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Print the active document";
-		}
+                if (!processedException) {
+                    final String message = MessageFormat.format("Cannot open file {2}.{0}{0}{1}",
+                            PortabilityUtils.getNewLine(),
+                            ex.getMessage(),
+                            filePathStringWrapper.getValue());
 
-		public PrintAction() {
-			super("&Print", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/file_print.png"))));
-			setAccelerator(SWT.MOD1 | 'P');
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(Printing.canPrint());
-		}
-		
-		public void run() {
-			if (Printing.canPrint()) {
-				Globals.getVaultTextViewer().saveChanges();
-				Printing.print(Globals.getMainApplicationWindow().getShell());
-			}
-		}
+                    final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(),
+                            StringLiterals.ProgramName,
+                            Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+                            message,
+                            MessageDialog.ERROR,
+                            new String[]{"&OK"},
+                            0);
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class ImportFromXMLFileAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return MessageFormat.format("Insert an XML file ({0}) exported from Vault or The Photo Program into the current {1} document", StringLiterals.XMLFileTypeWildcarded, StringLiterals.ProgramName);
-		}
+                    messageDialog.open();
+                }
 
-		public ImportFromXMLFileAction() {
-			super("&Import Vault or The Photo Program XML File...");
-			setEnabled(true);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(VaultDocumentImports.canFileImport());
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentImports.legacyXMLFileImport(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				String message = MessageFormat.format("Cannot Import XML File.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
+                ex.printStackTrace();
+            }
+        }
+    }
 
-				ex.printStackTrace();
-			}
-		}
+    public static class SaveAction extends Action {
+        @Override
+        public String getDescription() {
+            return "Save the active document";
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
+        public SaveAction() {
+            super("&Save", ImageDescriptor.createFromImage(
+                    new Image(Display.getCurrent(),
+                            MainApplicationWindow.class.getResourceAsStream("artwork/file_save.png"))));
+            setAccelerator(SWT.MOD1 | 'S');
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-	public static class ImportFromVault3FileAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return MessageFormat.format("Insert an XML file previously exported from {0} into the current {0} document", StringLiterals.ProgramName, StringLiterals.ProgramFileTypeWildcarded, StringLiterals.XMLFileTypeWildcarded);
-		}
+        public void run() {
+            try {
+                VaultDocumentIO.fileSave(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                final String message = MessageFormat.format("Cannot save file.{0}{0}{1}",
+                        PortabilityUtils.getNewLine(),
+                        ex.getMessage());
 
-		public ImportFromVault3FileAction() {
-			super(MessageFormat.format("Import {0} XML File...", StringLiterals.ProgramName));
-			setEnabled(true);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(VaultDocumentImports.canFileImport());
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentImports.vault3FileImport(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				String message = MessageFormat.format("Cannot Import {2} File.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage(), StringLiterals.ProgramName);
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
+                final MessageDialog messageDialog =
+                        new MessageDialog(Globals.getMainApplicationWindow().getShell(),
+                                StringLiterals.ProgramName,
+                                Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+                                message,
+                                MessageDialog.ERROR,
+                                new String[]{"&OK"},
+                                0);
 
-				ex.printStackTrace();
-			}
-		}
+                messageDialog.open();
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
+                ex.printStackTrace();
+            }
+        }
+    }
 
-	public static class ImportFromFileSystemAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Import text files, photos, and videos from a filesystem folder";
-		}
+    public static class SaveAsAction extends Action {
+        @Override
+        public String getDescription() {
+            return "Save the active document with a new name";
+        }
 
-		public ImportFromFileSystemAction() {
-			super("&Import Text Files, Photos, and Videos from Disk Folder...");
-			setId(HelpUtils.helpIDFromClass(this));
-			setEnabled(true);
-		}
-		
-		private void setEnabled() {
-			setEnabled(VaultDocumentImports.canFolderImport());
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentImports.folderImport(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				String message = MessageFormat.format("Cannot import from folder.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
+        public SaveAsAction() {
+            super("Save &As...");
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-				ex.printStackTrace();
-			}
-		}
+        public void run() {
+            try {
+                VaultDocumentIO.fileSaveAs(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                final String message = MessageFormat.format("Cannot save file.{0}{0}{1}",
+                        PortabilityUtils.getNewLine(),
+                        ex.getMessage());
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
+                final MessageDialog messageDialog =
+                        new MessageDialog(Globals.getMainApplicationWindow().getShell(),
+                                StringLiterals.ProgramName,
+                                Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+                                message,
+                                MessageDialog.ERROR,
+                                new String[]{"&OK"},
+                                0);
 
-	public static class XMLExportAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Export the selected items to an XML file";
-		}
+                messageDialog.open();
 
-		public XMLExportAction() {
-			super("&Export Selected Items to XML File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(VaultDocumentExports.canXmlFileExport());
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentExports.xmlFileExport(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+                ex.printStackTrace();
+            }
+        }
+    }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
+    public static class PasswordAction extends Action {
+        @Override
+        public String getDescription() {
+            return "Specify whether or not a password is required to access this document";
+        }
 
-	public static class PDFExportAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Export the selected items to an XML file";
-		}
+        public PasswordAction() {
+            super("Pass&word...",
+                    ImageDescriptor.createFromImage(
+                            new Image(Display.getCurrent(),
+                                    MainApplicationWindow.class.getResourceAsStream("artwork/key.png"))));
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-		public PDFExportAction() {
-			super("Export Selected Items to &PDF File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(VaultDocumentExports.canPDFFileExport());
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentExports.pdfFileExport(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+        public void run() {
+            final PasswordDialog passwordDialog =
+                    new PasswordDialog(Globals.getMainApplicationWindow().getShell(),
+                            Globals.getVaultDocument().getPassword());
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
+            if (passwordDialog.open() == IDialogConstants.OK_ID) {
+                Globals.getVaultDocument().setPassword(passwordDialog.getPassword());
+            }
+        }
+    }
 
-	public static class ExportPhotosToDeviceAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Export selected photo(s) to device";
-		}
+    public static class PrintAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Print the active document";
+        }
 
-		public ExportPhotosToDeviceAction() {
-			super("Export Photos to &Device...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(VaultDocumentExports.canExportPhotosToDevice());
-		}
-		
-		public void run() {
-			try {
-				// Need to save changes to current item, in case this affects the exclusions.
-				Globals.getVaultTextViewer().saveChanges();
+        public PrintAction() {
+            super("&Print", ImageDescriptor.createFromImage(
+                    new Image(Display.getCurrent(),
+                            MainApplicationWindow.class.getResourceAsStream("artwork/file_print.png"))));
+            setAccelerator(SWT.MOD1 | 'P');
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-				ExportPhotosToDeviceDialog exportPhotosToDeviceDialog = new ExportPhotosToDeviceDialog(Globals.getMainApplicationWindow().getShell());
-				
-				if (exportPhotosToDeviceDialog.open() != IDialogConstants.CANCEL_ID) {
-					Point deviceDimensions = new Point(Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosWidth),
-							                           Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosHeight));
+        public void setEnabled() {
+            setEnabled(Printing.canPrint());
+        }
 
-					boolean shuffle = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosShuffle);
-					String destinationFolder = Globals.getPreferenceStore().getString(PreferenceKeys.ExportPhotosDestFolder);
-					int maxPhotosPerFolder = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosPhotosPerFolder);
-					int maxPhotos = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosTotalPhotos);
-					boolean deleteFolderContents = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosDeleteFolderContents);
-					
-					VaultDocumentExports.exportPhotosToDevice(Globals.getMainApplicationWindow().getShell(), deviceDimensions, destinationFolder, maxPhotos, maxPhotosPerFolder, shuffle, deleteFolderContents);
-				}
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot export photo file(s) to device.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+        public void run() {
+            if (Printing.canPrint()) {
+                Globals.getVaultTextViewer().saveChanges();
+                Printing.print(Globals.getMainApplicationWindow().getShell());
+            }
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class CopyPictureFileAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Copy the current photo file to a new file";
-		}
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
 
-		public CopyPictureFileAction() {
-			super("&Copy Photo File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(PhotoProcessing.canCopyPictureFile());
-		}
-		
-		public void run() {
-			try {
-				PhotoProcessing.copyPictureFile(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot copy photo file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+    public static class ImportFromXMLFileAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return MessageFormat.format(
+                    "Insert an XML file ({0}) exported from Vault or The Photo Program into the current {1} document",
+                    StringLiterals.XMLFileTypeWildcarded,
+                    StringLiterals.ProgramName);
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class DeletePictureFileAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Delete the current photo file";
-		}
+        public ImportFromXMLFileAction() {
+            super("&Import Vault or The Photo Program XML File...");
+            setEnabled(true);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-		public DeletePictureFileAction() {
-			super("&Delete Photo File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(PhotoProcessing.canDeletePictureFile());
-		}
-		
-		public void run() {
-			try {
-				setEnabled(false);
-				DeletePhotoFileDialog deletePhotoFileDialog = new DeletePhotoFileDialog(Globals.getMainApplicationWindow().getShell(), PhotoProcessing.selectedItemPhotoPath());
-				deletePhotoFileDialog.open();
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot delete photo file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-			finally {
-				setEnabled(true);
-			}
-		}
+        public void setEnabled() {
+            setEnabled(VaultDocumentImports.canFileImport());
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class RenamePictureFileAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Rename the current photo file";
-		}
+        public void run() {
+            try {
+                VaultDocumentImports.legacyXMLFileImport(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                final String message = MessageFormat.format("Cannot Import XML File.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
 
-		public RenamePictureFileAction() {
-			super("&Rename Photo File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(PhotoProcessing.canRenamePictureFile());
-		}
-		
-		public void run() {
-			try {
-				PhotoProcessing.renamePictureFile(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot rename photo file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+                ex.printStackTrace();
+            }
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class EditPictureFileAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Edit the current photo file";
-		}
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
 
-		public EditPictureFileAction() {
-			super("Edit P&hoto File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void setEnabled() {
-			setEnabled(PhotoProcessing.canEditPictureFile());
-		}
-		
-		public void run() {
-			try {
-				PhotoProcessing.editPictureFile();
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot edit picture file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+    public static class ImportFromVault3FileAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return MessageFormat.format("Insert an XML file previously exported from {0} into the current {0} document", StringLiterals.ProgramName, StringLiterals.ProgramFileTypeWildcarded, StringLiterals.XMLFileTypeWildcarded);
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class TextExportAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Export selected items to a text File";
-		}
+        public ImportFromVault3FileAction() {
+            super(MessageFormat.format("Import {0} XML File...", StringLiterals.ProgramName));
+            setEnabled(true);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
 
-		public TextExportAction() {
-			super("Export &Selected Items to Text File...");
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
+        public void setEnabled() {
+            setEnabled(VaultDocumentImports.canFileImport());
+        }
 
-		public void setEnabled() {
-			setEnabled(VaultDocumentExports.canTextFileExport());
-		}
-		
-		public void run() {
-			try {
-				VaultDocumentExports.textFileExport(Globals.getMainApplicationWindow().getShell());
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
+        public void run() {
+            try {
+                VaultDocumentImports.vault3FileImport(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                final String message = MessageFormat.format("Cannot Import {2} File.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage(), StringLiterals.ProgramName);
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
 
-				String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+                ex.printStackTrace();
+            }
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
 
-	public static class EmailAction extends Action implements ISelectionChangedListener {
-		@Override
-		public String getDescription() {
-			return "Send selected items via email"; 
-		}
-		
-		public EmailAction() {
-			super("Send E&mail...", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/email.png"))));
-			setEnabled(false);
-			setId(HelpUtils.helpIDFromClass(this));
-		}
+    public static class ImportFromFileSystemAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Import text files, photos, and videos from a filesystem folder";
+        }
 
-		public void setEnabled() {
-			setEnabled(EmailUI.canEmail());
-		}
-		
-		public void run() {
-			try {
-				Globals.getVaultTextViewer().saveChanges();
-				EmailUI.email();
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
+        public ImportFromFileSystemAction() {
+            super("&Import Text Files, Photos, and Videos from Disk Folder...");
+            setId(HelpUtils.helpIDFromClass(this));
+            setEnabled(true);
+        }
 
-				String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
+        private void setEnabled() {
+            setEnabled(VaultDocumentImports.canFolderImport());
+        }
 
-		@Override
-		public void selectionChanged(SelectionChangedEvent event) {
-			setEnabled();
-		}
-	}
-	
-	public static class ExitAction extends Action {
-		@Override
-		public String getDescription() {
-			return "Quit the application; prompts to save the document"; 
-		}
+        public void run() {
+            try {
+                VaultDocumentImports.folderImport(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                final String message = MessageFormat.format("Cannot import from folder.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
 
-		public ExitAction() {
-			super("E&xit");
-			setId(HelpUtils.helpIDFromClass(this));
-		}
-		
-		public void run() {
-			Globals.getMainApplicationWindow().getShell().close();
-		}
-	}
+                ex.printStackTrace();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class XMLExportAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Export the selected items to an XML file";
+        }
+
+        public XMLExportAction() {
+            super("&Export Selected Items to XML File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(VaultDocumentExports.canXmlFileExport());
+        }
+
+        public void run() {
+            try {
+                VaultDocumentExports.xmlFileExport(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class PDFExportAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Export the selected items to an XML file";
+        }
+
+        public PDFExportAction() {
+            super("Export Selected Items to &PDF File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(VaultDocumentExports.canPDFFileExport());
+        }
+
+        public void run() {
+            try {
+                VaultDocumentExports.pdfFileExport(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class ExportPhotosToDeviceAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Export selected photo(s) to device";
+        }
+
+        public ExportPhotosToDeviceAction() {
+            super("Export Photos to &Device...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(VaultDocumentExports.canExportPhotosToDevice());
+        }
+
+        public void run() {
+            try {
+                // Need to save changes to current item, in case this affects the exclusions.
+                Globals.getVaultTextViewer().saveChanges();
+
+                ExportPhotosToDeviceDialog exportPhotosToDeviceDialog = new ExportPhotosToDeviceDialog(Globals.getMainApplicationWindow().getShell());
+
+                if (exportPhotosToDeviceDialog.open() != IDialogConstants.CANCEL_ID) {
+                    Point deviceDimensions = new Point(Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosWidth),
+                            Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosHeight));
+
+                    boolean shuffle = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosShuffle);
+                    String destinationFolder = Globals.getPreferenceStore().getString(PreferenceKeys.ExportPhotosDestFolder);
+                    int maxPhotosPerFolder = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosPhotosPerFolder);
+                    int maxPhotos = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosTotalPhotos);
+                    boolean deleteFolderContents = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosDeleteFolderContents);
+
+                    VaultDocumentExports.exportPhotosToDevice(Globals.getMainApplicationWindow().getShell(), deviceDimensions, destinationFolder, maxPhotos, maxPhotosPerFolder, shuffle, deleteFolderContents);
+                }
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot export photo file(s) to device.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class CopyPictureFileAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Copy the current photo file to a new file";
+        }
+
+        public CopyPictureFileAction() {
+            super("&Copy Photo File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(PhotoProcessing.canCopyPictureFile());
+        }
+
+        public void run() {
+            try {
+                PhotoProcessing.copyPictureFile(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot copy photo file.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class DeletePictureFileAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Delete the current photo file";
+        }
+
+        public DeletePictureFileAction() {
+            super("&Delete Photo File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(PhotoProcessing.canDeletePictureFile());
+        }
+
+        public void run() {
+            try {
+                setEnabled(false);
+                DeletePhotoFileDialog deletePhotoFileDialog = new DeletePhotoFileDialog(Globals.getMainApplicationWindow().getShell(), PhotoProcessing.selectedItemPhotoPath());
+                deletePhotoFileDialog.open();
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot delete photo file.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            } finally {
+                setEnabled(true);
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class RenamePictureFileAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Rename the current photo file";
+        }
+
+        public RenamePictureFileAction() {
+            super("&Rename Photo File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(PhotoProcessing.canRenamePictureFile());
+        }
+
+        public void run() {
+            try {
+                PhotoProcessing.renamePictureFile(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot rename photo file.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class EditPictureFileAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Edit the current photo file";
+        }
+
+        public EditPictureFileAction() {
+            super("Edit P&hoto File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(PhotoProcessing.canEditPictureFile());
+        }
+
+        public void run() {
+            try {
+                PhotoProcessing.editPictureFile();
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot edit picture file.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    private static class RotateFileAction extends Action implements ISelectionChangedListener {
+        final String description;
+        final float angle;
+
+        public RotateFileAction(String description, String menuText, float angle) {
+            this.description = description;
+            this.angle = angle;
+
+            setText(menuText);
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        @Override
+        public String getDescription() {
+            return description;
+        }
+
+        public void setEnabled() {
+            setEnabled(PhotoProcessing.canRotatePictureFile());
+        }
+
+        public void run() {
+            try {
+                Globals.setBusyCursor();
+
+                PhotoProcessing.rotatePictureFile(angle);
+
+                Globals.setPreviousCursor();
+
+                Globals.getVaultTreeViewer().refreshCurrentItem();
+            } catch (Throwable ex) {
+                Globals.setPreviousCursor();
+
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot rotate picture file.{0}{0}{1}",
+                        PortabilityUtils.getNewLine(), ex.getMessage());
+
+                final MessageDialog messageDialog =
+                        new MessageDialog(Globals.getMainApplicationWindow().getShell(),
+                                StringLiterals.ProgramName,
+                                Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+                                message, MessageDialog.ERROR,
+                                new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class RotateLeftFileAction extends RotateFileAction {
+        public RotateLeftFileAction() {
+            super("Rotate current photo file 90° counter-clockwise", "Rotate Photo File &Left",
+                    -90.0f);
+        }
+    }
+
+    public static class RotateRightFileAction extends RotateFileAction {
+        public RotateRightFileAction() {
+            super("Rotate current photo file 90° clockwise", "Rotate Photo File Righ&t", 90.0f);
+        }
+    }
+
+    public static class TextExportAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Export selected items to a text File";
+        }
+
+        public TextExportAction() {
+            super("Export &Selected Items to Text File...");
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(VaultDocumentExports.canTextFileExport());
+        }
+
+        public void run() {
+            try {
+                VaultDocumentExports.textFileExport(Globals.getMainApplicationWindow().getShell());
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class EmailAction extends Action implements ISelectionChangedListener {
+        @Override
+        public String getDescription() {
+            return "Send selected items via email";
+        }
+
+        public EmailAction() {
+            super("Send E&mail...", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/email.png"))));
+            setEnabled(false);
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void setEnabled() {
+            setEnabled(EmailUI.canEmail());
+        }
+
+        public void run() {
+            try {
+                Globals.getVaultTextViewer().saveChanges();
+                EmailUI.email();
+            } catch (Throwable ex) {
+                ex.printStackTrace();
+
+                final String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
+                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
+                messageDialog.open();
+            }
+        }
+
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
+            setEnabled();
+        }
+    }
+
+    public static class ExitAction extends Action {
+        @Override
+        public String getDescription() {
+            return "Quit the application; prompts to save the document";
+        }
+
+        public ExitAction() {
+            super("E&xit");
+            setId(HelpUtils.helpIDFromClass(this));
+        }
+
+        public void run() {
+            Globals.getMainApplicationWindow().getShell().close();
+        }
+    }
 }

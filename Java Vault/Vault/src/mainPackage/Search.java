@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -132,7 +132,7 @@ public class Search {
 		
 		Globals.getLogger().info("Search regular expressions:");
 		
-		final String wordBoundary = fullWord ? "\\b" : "";
+		final String wordBoundary = fullWord ? "\\b" : StringLiterals.EmptyString;
 		
 		for (String searchToken : searchTokens) {
 			final Pattern pattern = matchCase ? Pattern.compile(wordBoundary + Pattern.quote(searchToken) + wordBoundary) : Pattern.compile(wordBoundary + Pattern.quote(searchToken) + wordBoundary, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);

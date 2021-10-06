@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -655,7 +655,7 @@ public class VaultDocument {
 
 		    OutlineItem rootOutlineItem = Globals.getVaultDocument().getContent();
 		    
-		    String title = "", text = "";
+		    String title = StringLiterals.EmptyString, text = StringLiterals.EmptyString;
 		    
 			if (encryptionCipher != null) {
 				title = CryptoUtils.encryptString(encryptionCipher, title);

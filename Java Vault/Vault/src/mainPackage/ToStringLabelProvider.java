@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -33,7 +33,7 @@ public class ToStringLabelProvider implements ILabelProvider {
 
 	@Override
 	public String getText(Object obj) {
-		return obj != null ? obj.toString() : "";
+		return obj != null ? obj.toString() : StringLiterals.EmptyString;
 	}
 
 	@Override

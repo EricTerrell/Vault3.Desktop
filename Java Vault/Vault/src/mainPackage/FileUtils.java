@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -287,7 +287,7 @@ public class FileUtils {
 						String fileType = getFileType(child);
 
 						if (fileType == null) {
-							fileType = "";
+							fileType = StringLiterals.EmptyString;
 						}
 
 						uniqueFileTypes.put(fileType.toLowerCase(), Boolean.TRUE);

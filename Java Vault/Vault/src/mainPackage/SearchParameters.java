@@ -97,7 +97,7 @@ public class SearchParameters implements Serializable {
 		SearchParameters searchParameters = new SearchParameters();
 		searchParameters.setSearchText("search text");
 
-		String serializedText = "";
+		String serializedText = StringLiterals.EmptyString;
 		
 		try {
 			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

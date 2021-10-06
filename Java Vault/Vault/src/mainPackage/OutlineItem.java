@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -43,7 +43,7 @@ public class OutlineItem {
 
 	@Override
 	public String toString() {
-		return title != null ? title : "";
+		return title != null ? title : StringLiterals.EmptyString;
 	}
 
 	public void setTitle(String title) {
@@ -54,7 +54,7 @@ public class OutlineItem {
 	private String text;
 
 	public String getText() {
-		return text != null ? text : "";
+		return text != null ? text : StringLiterals.EmptyString;
 	}
 
 	public void setText(String text) {

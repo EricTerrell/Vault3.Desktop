@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -52,12 +52,12 @@ public class MenuUtils {
 				menuManager2.getMenu().addMenuListener(new MenuListener() {
 					@Override
 					public void menuHidden(MenuEvent e) {
-						Globals.getMainApplicationWindow().setStatusLineMessage("");					
+						Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 					}
 	
 					@Override
 					public void menuShown(MenuEvent e) {
-						Globals.getMainApplicationWindow().setStatusLineMessage("");
+						Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 					}
 				});
 			}
@@ -97,7 +97,7 @@ public class MenuUtils {
 				Globals.getMainApplicationWindow().setStatusLineMessage(iAction.getDescription());
 			}
 			else {
-				Globals.getMainApplicationWindow().setStatusLineMessage("");
+				Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 			}
 		}
 	}

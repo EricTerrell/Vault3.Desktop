@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -84,7 +84,7 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 		}
 
 		Label spacerLabel = new Label(composite, SWT.NONE);
-		spacerLabel.setText("");
+		spacerLabel.setText(StringLiterals.EmptyString);
 
 		// We want to unconditionally include the label and button, and hide them if necessary, leaving a gap in the dialog,
 		// otherwise the dialog may be sized too small and the Donate button will be hidden.
@@ -133,7 +133,7 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 			}
 		});
 
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Button vault3ForAndroidButton = new Button(composite, SWT.PUSH);
 		vault3ForAndroidButton.setText("&Vault 3 for Android");

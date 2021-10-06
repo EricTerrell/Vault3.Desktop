@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -149,7 +149,7 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
       	  statusLabel.setBackground(errorBackground);
         }
         else {
-      	  statusLabel.setText("");
+      	  statusLabel.setText(StringLiterals.EmptyString);
       	  statusLabel.setBackground(nonErrorBackground);
         }
 	}

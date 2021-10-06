@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MRUFileList {
-	public class MRUFile {
+	public static class MRUFile {
 		private String filePath;
 		
 		public String getFilePath() {
@@ -108,7 +108,7 @@ public class MRUFileList {
 
 		for (int i = 0; i < maxMRUFiles; i++) {
 			String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
-			Globals.getPreferenceStore().setValue(name, "");
+			Globals.getPreferenceStore().setValue(name, StringLiterals.EmptyString);
 		}
 		
 		for (int i = 0; i < Globals.getMRUFiles().getMRUFiles().size(); i++) {

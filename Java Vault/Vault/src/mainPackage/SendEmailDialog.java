@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -173,7 +173,7 @@ public class SendEmailDialog extends VaultDialog {
 		if (sendButton != null) {
 			boolean enabled = true;
 
-			String errorMessage = "";
+			String errorMessage = StringLiterals.EmptyString;
 
 			if (fromText == null || fromText.getText().trim().length() == 0) {
 				errorMessage = "Please specify From email address.";
@@ -189,7 +189,7 @@ public class SendEmailDialog extends VaultDialog {
 				statusLabel.setText(errorMessage);
 				statusLabel.setBackground(errorBackground);
 			} else {
-				statusLabel.setText("");
+				statusLabel.setText(StringLiterals.EmptyString);
 				statusLabel.setBackground(nonErrorBackground);
 			}
 		}

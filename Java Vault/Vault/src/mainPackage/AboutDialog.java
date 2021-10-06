@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -55,7 +55,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Composite eclipseComposite = new Composite(composite, SWT.NONE);
 		RowLayout rowLayout = new RowLayout();
@@ -191,7 +191,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Button donateButton = new Button(composite, SWT.PUSH);
 		donateButton.setText("&Donate");
@@ -207,7 +207,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Button licenseTermsButton = new Button(composite, SWT.PUSH);
 		licenseTermsButton.setText("&Read License Terms");
@@ -224,7 +224,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
 		Button feedbackButton = new Button(composite, SWT.PUSH);
 		feedbackButton.setText(MessageFormat.format("Send &Feedback about {0}", StringLiterals.ProgramName));
@@ -248,7 +248,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
 		Button checkForUpdatesButton = new Button(composite, SWT.PUSH);
 		checkForUpdatesButton.setText("Check for &Updates");
@@ -269,7 +269,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 
-		new Label(composite, SWT.NONE).setText("");
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
 		Button vault3ForAndroidButton = new Button(composite, SWT.PUSH);
 		vault3ForAndroidButton.setText("&Vault 3 for Android");
@@ -285,7 +285,7 @@ public class AboutDialog extends VaultDialog {
 		});
 
 		if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.DebuggingMode)) {
-			new Label(composite, SWT.NONE).setText("");
+			new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 			Button gcButton = new Button(composite, SWT.PUSH);
 			gcButton.setText("Force Garbage Collection");

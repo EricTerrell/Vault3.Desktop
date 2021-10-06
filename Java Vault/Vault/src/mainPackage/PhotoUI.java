@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -205,7 +205,7 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 		canvas.getMenu().addMenuListener(new MenuListener() {
 			@Override
 			public void menuHidden(MenuEvent e) {
-				Globals.getMainApplicationWindow().setStatusLineMessage("");
+				Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 			}
 
 			@Override

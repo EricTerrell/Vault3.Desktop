@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -189,7 +189,7 @@ public class PrintScopeDialog extends VaultDialog {
 				startPage = endPage = Integer.parseInt(pageNumberStrings[0]);
 				
 				if (startPage > 0) {
-					statusLabel.setText("");
+					statusLabel.setText(StringLiterals.EmptyString);
 					statusLabel.setBackground(nonErrorBackground);
 				}
 				else {
@@ -204,7 +204,7 @@ public class PrintScopeDialog extends VaultDialog {
 				endPage = Integer.parseInt(pageNumberStrings[1]);
 
 				if (startPage > 0 && endPage >= startPage) {
-					statusLabel.setText("");
+					statusLabel.setText(StringLiterals.EmptyString);
 					statusLabel.setBackground(nonErrorBackground);
 				}
 				else {
@@ -238,7 +238,7 @@ public class PrintScopeDialog extends VaultDialog {
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {
-	    	statusLabel.setText("");
+	    	statusLabel.setText(StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 	}

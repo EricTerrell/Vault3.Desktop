@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -74,7 +74,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	private OutlineItem outlineItem;
 	private boolean usingNonDefaultFont = false;
 
-	private class UndoInfo {
+	private static class UndoInfo {
 		private int start, length;
 		private String replacedText;
 
@@ -151,7 +151,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		getControl().getMenu().addMenuListener(new MenuListener() {
 			@Override
 			public void menuHidden(MenuEvent e) {
-				Globals.getMainApplicationWindow().setStatusLineMessage("");
+				Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 			}
 
 			@Override
@@ -291,7 +291,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		final String savedText = getTextWidget().getText();
 		
 		if (forceColorChangeToBeVisible) {
-			getTextWidget().setText("");
+			getTextWidget().setText(StringLiterals.EmptyString);
 		}
 		
 		if (rgb != null) {
@@ -334,7 +334,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	    	document.set(outlineItem.getText());
 		}
     	else {
-    		document.set("");
+    		document.set(StringLiterals.EmptyString);
     	}
     	
     	document.addDocumentListener(new DocumentListener());

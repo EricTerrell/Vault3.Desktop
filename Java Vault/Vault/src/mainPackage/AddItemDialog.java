@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -279,7 +279,7 @@ public class AddItemDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				photoFileText.setText("");
+				photoFileText.setText(StringLiterals.EmptyString);
 			}
 		});
 		
@@ -345,7 +345,7 @@ public class AddItemDialog extends VaultDialog {
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {
-	    	statusLabel.setText("");
+	    	statusLabel.setText(StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 	}

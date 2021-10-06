@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -20,13 +20,6 @@
 
 package mainPackage;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.imageio.ImageIO;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -36,6 +29,16 @@ import org.eclipse.swt.widgets.Display;
 import org.imgscalr.Scalr;
 import org.imgscalr.Scalr.Method;
 import org.perf4j.LoggingStopWatch;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
 
 /**
  * Various graphics utility methods.
@@ -296,5 +299,52 @@ public class GraphicsUtils {
 		}
 		
 		return image;
+	}
+
+	// https://stackoverflow.com/questions/37758061/rotate-a-buffered-image-in-java
+	static void rotate(String imagePath, float angle) {
+		try (FileInputStream inputStream = new FileInputStream(imagePath)) {
+			final BufferedImage originalImage = ImageIO.read(inputStream);
+
+			final double rads = Math.toRadians(angle);
+			final double sin = Math.abs(Math.sin(rads)), cos = Math.abs(Math.cos(rads));
+
+			final int w = originalImage.getWidth();
+			final int h = originalImage.getHeight();
+
+			final int newWidth = (int) Math.floor(w * cos + h * sin);
+			final int newHeight = (int) Math.floor(h * cos + w * sin);
+
+			final BufferedImage rotated = new BufferedImage(newWidth, newHeight, originalImage.getType());
+
+			final Graphics2D g2d = rotated.createGraphics();
+
+			final AffineTransform transform = new AffineTransform();
+			transform.translate((newWidth - w) / 2, (newHeight - h) / 2);
+
+			final int x = w / 2;
+			final int y = h / 2;
+
+			transform.rotate(rads, x, y);
+			g2d.setTransform(transform);
+			g2d.drawImage(originalImage, 0, 0, null);
+
+			g2d.dispose();
+
+			try (FileOutputStream outputStream = new FileOutputStream(imagePath)) {
+				final String formatName = imagePath.substring(imagePath
+						.lastIndexOf(".") + 1);
+
+				ImageIO.write(rotated, formatName, outputStream);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				Globals.getLogger().info(String.format("GraphicsUtils.rotate %f \"%s\" %s",
+						angle, imagePath, ex.getMessage()));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			Globals.getLogger().info(String.format("GraphicsUtils.rotate %f \"%s\" %s",
+					angle, imagePath, ex.getMessage()));
+		}
 	}
 }

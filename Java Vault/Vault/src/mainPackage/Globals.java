@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2009, Eric Bergman-Terrell
+  (C) Copyright 2021, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -196,7 +196,7 @@ public class Globals {
 	}
 	
 	private static void setDefaultPreferenceValues() {
-		preferenceStore.setDefault(PreferenceKeys.OutlineFontString, "");
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontString, StringLiterals.EmptyString);
 		preferenceStore.setDefault(PreferenceKeys.TextMarginWidth, 5);
 		preferenceStore.setDefault(PreferenceKeys.TextMarginHeight, 5);
 		preferenceStore.setDefault(PreferenceKeys.AutoSaveMinutes, 0);
@@ -205,7 +205,7 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.SlideshowInterval, 5);
 		preferenceStore.setDefault(PreferenceKeys.SlideshowAllItems, true);
 		preferenceStore.setDefault(PreferenceKeys.SlideshowContinuousLoop, true);
-		preferenceStore.setDefault(PreferenceKeys.SlideshowExclusions, "");
+		preferenceStore.setDefault(PreferenceKeys.SlideshowExclusions, StringLiterals.EmptyString);
 		preferenceStore.setDefault(PreferenceKeys.MainWindowX, -1);
 		preferenceStore.setDefault(PreferenceKeys.MainWindowY, -1);
 		preferenceStore.setDefault(PreferenceKeys.MainWindowWidth, -1);
@@ -218,8 +218,8 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.SashWidthLeft, 50);
 		preferenceStore.setDefault(PreferenceKeys.SashWidthRight, 50);
 		preferenceStore.setDefault(PreferenceKeys.MaxMRUFiles, 9);
-		preferenceStore.setDefault(PreferenceKeys.FindReplaceFindText, "");
-		preferenceStore.setDefault(PreferenceKeys.FindReplaceReplaceText, "");
+		preferenceStore.setDefault(PreferenceKeys.FindReplaceFindText, StringLiterals.EmptyString);
+		preferenceStore.setDefault(PreferenceKeys.FindReplaceReplaceText, StringLiterals.EmptyString);
 		preferenceStore.setDefault(PreferenceKeys.FindReplaceMatchCase, false);
 		preferenceStore.setDefault(PreferenceKeys.FindReplaceMatchWholeWord, false);
 		preferenceStore.setDefault(PreferenceKeys.HidePasswordCharacters, true);
@@ -236,17 +236,17 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.SingletonSocketPort, 54321);
 		preferenceStore.setDefault(PreferenceKeys.CachePasswords, true);
 		preferenceStore.setDefault(PreferenceKeys.AllowMultipleInstances, false);
-		preferenceStore.setDefault(PreferenceKeys.EmailFromAddress, "");
-		preferenceStore.setDefault(PreferenceKeys.EmailServerAddress, "");
-		preferenceStore.setDefault(PreferenceKeys.EmailUserName, "");
-		preferenceStore.setDefault(PreferenceKeys.EmailPassword, "");
+		preferenceStore.setDefault(PreferenceKeys.EmailFromAddress, StringLiterals.EmptyString);
+		preferenceStore.setDefault(PreferenceKeys.EmailServerAddress, StringLiterals.EmptyString);
+		preferenceStore.setDefault(PreferenceKeys.EmailUserName, StringLiterals.EmptyString);
+		preferenceStore.setDefault(PreferenceKeys.EmailPassword, StringLiterals.EmptyString);
 		preferenceStore.setDefault(PreferenceKeys.EmailAuthentication, false);
 		preferenceStore.setDefault(PreferenceKeys.EmailScaleImagesSelection, 0);
 		preferenceStore.setDefault(PreferenceKeys.HorizontalSplitterWeight0, 90);
 		preferenceStore.setDefault(PreferenceKeys.HorizontalSplitterWeight1, 10);
 		preferenceStore.setDefault(PreferenceKeys.ImportAllFileTypes, false);
 		preferenceStore.setDefault(PreferenceKeys.AdvancedGraphics, true);
-		preferenceStore.setDefault(PreferenceKeys.ExportPhotosDestFolder, "");
+		preferenceStore.setDefault(PreferenceKeys.ExportPhotosDestFolder, StringLiterals.EmptyString);
 		preferenceStore.setDefault(PreferenceKeys.ExportPhotosDeleteFolderContents, false);
 		preferenceStore.setDefault(PreferenceKeys.ExportPhotosWidth, 0);
 		preferenceStore.setDefault(PreferenceKeys.ExportPhotosHeight, 0);
