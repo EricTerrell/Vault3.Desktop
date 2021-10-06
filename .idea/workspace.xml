@@ -7,7 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.72&#10;&#10;Added image rotation." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.72&#10;&#10;Added image rotation.">
+      <change afterPath="$PROJECT_DIR$/Java Vault/Vault/Help/artwork/arrow_rotate_anticlockwise.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Vault/Vault/Help/artwork/arrow_rotate_clockwise.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/artwork/arrow_rotate_anticlockwise.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/artwork/arrow_rotate_clockwise.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/Help/FileActions_RotateLeftFileAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/Help/FileActions_RotateLeftFileAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/Help/FileActions_RotateRightFileAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/Help/FileActions_RotateRightFileAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/Help/outline.html" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/Help/outline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java Vault/Vault/Help" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java Vault/Vault/Help/artwork" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -79,6 +89,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\artwork" />
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help" />
       <recent name="C:\development\Vault3.Desktop\Java Vault\Vault\Help" />
     </key>
@@ -811,6 +823,21 @@
           <line>197</line>
           <option name="timeStamp" value="104" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
+          <line>665</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
+          <line>676</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
+          <line>613</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -818,23 +845,7 @@
         <watch expression="StringLiterals.ProgramName" language="JAVA" />
       </configuration>
       <configuration name="Application">
-        <watch expression="scaledImage.getWidth()" language="JAVA" />
-        <watch expression="scaledImage.getHeight()" language="JAVA" />
-        <watch expression="this.getShell()" language="JAVA" />
-        <watch expression="getShell()" language="JAVA" />
-        <watch expression="coolItems" language="JAVA" />
-        <watch expression="getToolBarManager()" language="JAVA" />
-        <watch expression="getCoolBarManager()" language="JAVA" />
-        <watch expression="getCoolBarManager().getControl()" language="JAVA" />
-        <watch expression="coolBarManager" language="JAVA" />
-        <watch expression="coolBarManager.getItems()" language="JAVA" />
-        <watch expression="((CoolBarManager) coolBarManager).getControl().getItem(0).getControl()" language="JAVA" />
-        <watch expression="toolBar.getItemCount()" language="JAVA" />
-        <watch expression="coolBarManager.getControl()" language="JAVA" />
-        <watch expression="coolBarManager.get" language="JAVA" />
-        <watch expression="getTextWidget().getOffsetAtLocation(mappedPoint)" language="JAVA" />
-        <watch expression="getTextWidget().getOffsetAtPoint(mappedPoint)" language="JAVA" />
-        <watch expression="((ArrayList) Globals.getVaultDocument().getContent().getChildren()).size" language="JAVA" />
+        <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;artwork/file_print.png&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

@@ -51,7 +51,7 @@ public class FileActions {
         }
 
         public void run() {
-            boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
+            final boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
 
             if (!cancelled) {
                 Globals.getVaultTreeViewer().fileNew();
@@ -78,7 +78,7 @@ public class FileActions {
 
         public void run() {
             String filePath = null;
-            StringWrapper filePathStringWrapper = new StringWrapper(filePath);
+            final StringWrapper filePathStringWrapper = new StringWrapper(filePath);
 
             try {
                 boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
@@ -102,7 +102,6 @@ public class FileActions {
                             PortabilityUtils.getNewLine(),
                             ex.getMessage(),
                             filePathStringWrapper.getValue());
-
                     final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(),
                             StringLiterals.ProgramName,
                             Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
@@ -110,7 +109,6 @@ public class FileActions {
                             MessageDialog.ERROR,
                             new String[]{"&OK"},
                             0);
-
                     messageDialog.open();
                 }
 
@@ -140,7 +138,6 @@ public class FileActions {
                 final String message = MessageFormat.format("Cannot save file.{0}{0}{1}",
                         PortabilityUtils.getNewLine(),
                         ex.getMessage());
-
                 final MessageDialog messageDialog =
                         new MessageDialog(Globals.getMainApplicationWindow().getShell(),
                                 StringLiterals.ProgramName,
@@ -149,7 +146,6 @@ public class FileActions {
                                 MessageDialog.ERROR,
                                 new String[]{"&OK"},
                                 0);
-
                 messageDialog.open();
 
                 ex.printStackTrace();
@@ -175,7 +171,6 @@ public class FileActions {
                 final String message = MessageFormat.format("Cannot save file.{0}{0}{1}",
                         PortabilityUtils.getNewLine(),
                         ex.getMessage());
-
                 final MessageDialog messageDialog =
                         new MessageDialog(Globals.getMainApplicationWindow().getShell(),
                                 StringLiterals.ProgramName,
@@ -184,7 +179,6 @@ public class FileActions {
                                 MessageDialog.ERROR,
                                 new String[]{"&OK"},
                                 0);
-
                 messageDialog.open();
 
                 ex.printStackTrace();
@@ -443,17 +437,17 @@ public class FileActions {
                 // Need to save changes to current item, in case this affects the exclusions.
                 Globals.getVaultTextViewer().saveChanges();
 
-                ExportPhotosToDeviceDialog exportPhotosToDeviceDialog = new ExportPhotosToDeviceDialog(Globals.getMainApplicationWindow().getShell());
+                final ExportPhotosToDeviceDialog exportPhotosToDeviceDialog = new ExportPhotosToDeviceDialog(Globals.getMainApplicationWindow().getShell());
 
                 if (exportPhotosToDeviceDialog.open() != IDialogConstants.CANCEL_ID) {
                     Point deviceDimensions = new Point(Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosWidth),
                             Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosHeight));
 
-                    boolean shuffle = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosShuffle);
-                    String destinationFolder = Globals.getPreferenceStore().getString(PreferenceKeys.ExportPhotosDestFolder);
-                    int maxPhotosPerFolder = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosPhotosPerFolder);
-                    int maxPhotos = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosTotalPhotos);
-                    boolean deleteFolderContents = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosDeleteFolderContents);
+                    final boolean shuffle = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosShuffle);
+                    final String destinationFolder = Globals.getPreferenceStore().getString(PreferenceKeys.ExportPhotosDestFolder);
+                    final int maxPhotosPerFolder = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosPhotosPerFolder);
+                    final int maxPhotos = Globals.getPreferenceStore().getInt(PreferenceKeys.ExportPhotosTotalPhotos);
+                    final boolean deleteFolderContents = Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosDeleteFolderContents);
 
                     VaultDocumentExports.exportPhotosToDevice(Globals.getMainApplicationWindow().getShell(), deviceDimensions, destinationFolder, maxPhotos, maxPhotosPerFolder, shuffle, deleteFolderContents);
                 }
@@ -616,11 +610,12 @@ public class FileActions {
         final String description;
         final float angle;
 
-        public RotateFileAction(String description, String menuText, float angle) {
+        public RotateFileAction(String description, String menuText, ImageDescriptor imageDescriptor, float angle) {
+            super(menuText, imageDescriptor);
+
             this.description = description;
             this.angle = angle;
 
-            setText(menuText);
             setEnabled(false);
             setId(HelpUtils.helpIDFromClass(this));
         }
@@ -650,7 +645,6 @@ public class FileActions {
 
                 final String message = MessageFormat.format("Cannot rotate picture file.{0}{0}{1}",
                         PortabilityUtils.getNewLine(), ex.getMessage());
-
                 final MessageDialog messageDialog =
                         new MessageDialog(Globals.getMainApplicationWindow().getShell(),
                                 StringLiterals.ProgramName,
@@ -669,14 +663,24 @@ public class FileActions {
 
     public static class RotateLeftFileAction extends RotateFileAction {
         public RotateLeftFileAction() {
-            super("Rotate current photo file 90° counter-clockwise", "Rotate Photo File &Left",
+            super("Rotate current photo file 90° counter-clockwise",
+                    "Rotate Photo File &Left",
+                    ImageDescriptor.createFromImage(
+                            new Image(Display.getCurrent(),
+                                    MainApplicationWindow.class.getResourceAsStream("artwork/arrow_rotate_anticlockwise.png"))),
                     -90.0f);
         }
     }
 
     public static class RotateRightFileAction extends RotateFileAction {
         public RotateRightFileAction() {
-            super("Rotate current photo file 90° clockwise", "Rotate Photo File Righ&t", 90.0f);
+            super(
+                    "Rotate current photo file 90° clockwise",
+                    "Rotate Photo File Righ&t",
+                    ImageDescriptor.createFromImage(
+                            new Image(Display.getCurrent(),
+                                    MainApplicationWindow.class.getResourceAsStream("artwork/arrow_rotate_clockwise.png"))),
+                    90.0f);
         }
     }
 
