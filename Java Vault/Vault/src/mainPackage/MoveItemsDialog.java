@@ -82,7 +82,7 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 		boolean result = false;
 		
 		if (vaultTreeViewer.getTree().getSelectionCount() == 1) {
-			TreeItem selectedItems[] = vaultTreeViewer.getTree().getSelection();
+			TreeItem[] selectedItems = vaultTreeViewer.getTree().getSelection();
 
 			result = vaultTreeViewer.getTree().getItems()[0] == selectedItems[0];
 		}

@@ -278,7 +278,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	}
 
 	private void addActions() {
-		Action actionsArray[] = new Action[] 
+		Action[] actionsArray = new Action[]
 		{ 
 			addAction, aboutAction, copyPictureFileAction, deletePictureFileAction, renamePictureFileAction,
 			editPictureFileAction, rotateLeftFileAction, rotateRightFileAction, importPicturesAction,
@@ -825,7 +825,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 			Globals.getVaultTextViewer().addTextListener(textListener);
 		}
 
-		ISelectionChangedListener textSelectionChangedListeners[] = new ISelectionChangedListener[] { cutTextAction, copyTextAction, selectAllTextAction };
+		ISelectionChangedListener[] textSelectionChangedListeners = new ISelectionChangedListener[] { cutTextAction, copyTextAction, selectAllTextAction };
 		
 		for (ISelectionChangedListener textSelectionChangedListener : textSelectionChangedListeners) {
 			Globals.getVaultTextViewer().addSelectionChangedListener(textSelectionChangedListener);

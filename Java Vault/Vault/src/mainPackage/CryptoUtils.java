@@ -24,6 +24,7 @@
 package mainPackage;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
@@ -60,7 +61,7 @@ public class CryptoUtils {
 	}
 	
 	private static byte[] getPasswordMessageDigestVaultDocument_1_1(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		return MessageDigest.getInstance("SHA-512").digest(password.getBytes("UTF-8"));
+		return MessageDigest.getInstance("SHA-512").digest(password.getBytes(StandardCharsets.UTF_8));
 	}
 	
 	private static SecretKey createSecretKeyVaultDocumentVersion_1_0(String password) throws NoSuchAlgorithmException {
@@ -208,7 +209,7 @@ public class CryptoUtils {
 			plainText = StringLiterals.EmptyString;
 		}
 		
-		byte[] plainTextBytes = plainText.getBytes("UTF-8");
+		byte[] plainTextBytes = plainText.getBytes(StandardCharsets.UTF_8);
 		
 		byte[] cipherTextBytes = cipher.doFinal(plainTextBytes);
 		
@@ -221,6 +222,6 @@ public class CryptoUtils {
 		
 		byte[] plainTextBytes = cipher.doFinal(cipherTextBytes);
 		
-		return new String(plainTextBytes, "UTF-8");
+		return new String(plainTextBytes, StandardCharsets.UTF_8);
 	}
 }

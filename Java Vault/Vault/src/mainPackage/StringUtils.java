@@ -38,7 +38,7 @@ public class StringUtils {
 		boolean equals = string1 == null && string2 == null;
 		
 		if (!equals) {
-			equals = string1 != null && string2 != null && string1.equals(string2);
+			equals = string1 != null && string1.equals(string2);
 		}
 		
 		return equals;

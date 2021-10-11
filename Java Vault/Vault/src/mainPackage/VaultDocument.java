@@ -82,7 +82,7 @@ public class VaultDocument {
 	}
 
 	private boolean filePathsEqual(String filePath, String defaultFilePath) {
-		return filePath != null && defaultFilePath != null && filePath.equals(defaultFilePath);
+		return StringUtils.equals(filePath, defaultFilePath);
 	}
 	
 	public void setFilePath(String filePath) {

@@ -7,7 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Added artwork for rotation menu items" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Code inspection cleanup">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +34,9 @@
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/ApplicationWindow.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/SWT.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/ToolBarManager.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="3" />
   </component>
   <component name="ProjectId" id="1Ob95eQ7ddWPhRhToPl51PJHspT" />
   <component name="ProjectViewState">
@@ -309,27 +315,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00044">
-      <created>1473516521493</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1473516521493</updated>
-    </task>
-    <task id="LOCAL-00045">
-      <created>1473516577017</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1473516577017</updated>
-    </task>
-    <task id="LOCAL-00046">
-      <created>1473516715236</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1473516715236</updated>
     </task>
     <task id="LOCAL-00047" summary="update">
       <created>1473776236094</created>
@@ -653,7 +638,28 @@
       <option name="project" value="LOCAL" />
       <updated>1633549348053</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093">
+      <created>1633551633735</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1633551633736</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Code inspection cleanup">
+      <created>1633965586502</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1633965586502</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Code inspection cleanup">
+      <created>1633966165621</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1633966165621</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -687,10 +693,10 @@
     <MESSAGE value="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor." />
     <MESSAGE value="No longer build source code .zip file as source code is in GitHub." />
     <MESSAGE value="README.md" />
-    <MESSAGE value="Code inspection cleanup" />
     <MESSAGE value="Version 0.72&#10;&#10;Added image rotation." />
     <MESSAGE value="Added artwork for rotation menu items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added artwork for rotation menu items" />
+    <MESSAGE value="Code inspection cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code inspection cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -701,27 +707,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
-          <line>144</line>
+          <line>145</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
-          <line>116</line>
+          <line>117</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
-          <line>125</line>
+          <line>126</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
-          <line>76</line>
+          <line>77</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
-          <line>88</line>
+          <line>89</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -815,19 +821,19 @@
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
-          <line>665</line>
-          <option name="timeStamp" value="105" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
-          <line>676</line>
-          <option name="timeStamp" value="106" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
-          <line>613</line>
-          <option name="timeStamp" value="107" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

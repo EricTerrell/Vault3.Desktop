@@ -217,7 +217,7 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void applyUserPreferences() {
 		String fontString = Globals.getPreferenceStore().getString(PreferenceKeys.OutlineFontString);
-		FontData fontData[] = FontUtils.stringToFontList(fontString);
+		FontData[] fontData = FontUtils.stringToFontList(fontString);
 
 		if (fontData != null) {
 			font = new Font(getTree().getDisplay(), fontData);
@@ -334,16 +334,14 @@ public class VaultTreeViewer extends TreeViewer {
 
 	@SuppressWarnings("unchecked")
 	public List<OutlineItem> getSelectedItems() {
-		ArrayList<OutlineItem> items = new ArrayList<>();
+		final ArrayList<OutlineItem> items = new ArrayList<>();
 		
-		ISelection selection = getSelection();
+		final ISelection selection = getSelection();
 		
 		if (!selection.isEmpty() && selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			
-			for (Iterator<OutlineItem> iterator = structuredSelection.iterator(); iterator.hasNext();) {
-				OutlineItem node = iterator.next();
-				
+
+			for (final OutlineItem node : (Iterable<OutlineItem>) structuredSelection) {
 				// Make sure list of selected nodes does not contain a node multiple times - for example
 				// when the node is selected, as well as one if its ancestors.
 				if (!Contains(items, node)) {
@@ -670,7 +668,7 @@ public class VaultTreeViewer extends TreeViewer {
 			vaultTreeContentProvider.addListenerTo(newItem);
 			
 			if (!nodeIsRoot) {
-				TreeItem selectedTreeItems[] = getTree().getSelection();
+				TreeItem[] selectedTreeItems = getTree().getSelection();
 				boolean nodeIsExpanded = TreeHelper.isExpanded(selectedTreeItems[0]);
 				
 				if (nodeIsExpanded && addDirection == AddDirection.Below) {
@@ -749,7 +747,7 @@ public class VaultTreeViewer extends TreeViewer {
 				IStructuredSelection selection = (IStructuredSelection) getSelection();
 				OutlineItem targetNode = (OutlineItem) selection.getFirstElement();
 
-				TreeItem selectedTreeItems[] = getTree().getSelection();
+				TreeItem[] selectedTreeItems = getTree().getSelection();
 				final boolean targetNodeIsExpanded = TreeHelper.isExpanded(selectedTreeItems[0]);
 				
 				List<OutlineItem> selectedItems = Globals.getClipboard().getItems();

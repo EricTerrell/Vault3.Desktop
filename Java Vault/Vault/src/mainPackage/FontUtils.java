@@ -31,7 +31,7 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
 
 public class FontUtils {
-	public static String fontListToString(FontData fontList[]) {
+	public static String fontListToString(FontData[] fontList) {
 		StringBuilder fontString = new StringBuilder();
 		
 		for (int i = 0; i < fontList.length; i++) {
@@ -46,10 +46,10 @@ public class FontUtils {
 	}
 	
 	public static FontData[] stringToFontList(String fontString) {
-		FontData fontData[] = null;
+		FontData[] fontData = null;
 		
 		if (fontString != null && fontString.length() > 0) {
-			String fontStringArray[] = fontString.split("\0");
+			String[] fontStringArray = fontString.split("\0");
 			
 			if (fontStringArray != null && fontStringArray.length > 0) {
 				List<FontData> fontList = new ArrayList<>();
@@ -82,7 +82,7 @@ public class FontUtils {
 		String fontDescription = StringLiterals.EmptyString;
 		
 		if (fontString != null && fontString.length() > 0) {
-			FontData fontData[] = FontUtils.stringToFontList(fontString);
+			FontData[] fontData = FontUtils.stringToFontList(fontString);
 		
 			String style = StringLiterals.EmptyString;
 			

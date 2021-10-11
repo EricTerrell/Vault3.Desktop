@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -101,8 +102,8 @@ public class VaultDocumentExports {
 					}
 
 					try (FileOutputStream fileOutputStream = new FileOutputStream(filePath);
-						 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF8");
-						 BufferedWriter writer = new BufferedWriter(outputStreamWriter)) {
+                         OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
+                         BufferedWriter writer = new BufferedWriter(outputStreamWriter)) {
 						fileOutputStream.write(FileUtils.getUTF8BOM());
 
 						writer.write(textToExport.toString());

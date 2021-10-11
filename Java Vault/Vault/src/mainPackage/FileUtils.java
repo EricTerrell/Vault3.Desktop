@@ -71,31 +71,32 @@ public class FileUtils {
 	 * @return encoding of specified file
 	 */
 	private static String getEncoding(String filePath) {
-		String encoding = System.getProperty("file.encoding");  
+		String encoding = System.getProperty("file.encoding");
 
-		try (FileInputStream fileInputStream = new FileInputStream(new File(filePath))) {
-			byte[] buffer = new byte[3];
-			int length = fileInputStream.read(buffer);
-			
+		try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
+			final byte[] buffer = new byte[3];
+			final int length = fileInputStream.read(buffer);
+
 			if (length >= 2) {
-				byte[] utf16LittleEndianBOM = getUTF16LittleEndianBOM();
-				byte[] utf16BigEndianBOM = getUTF16BigEndianBOM();
-				
-				if ((buffer[0] == utf16LittleEndianBOM[0] && buffer[1] == utf16LittleEndianBOM[1]) /* UTF-16, little endian */ || 
-				    (buffer[0] == utf16BigEndianBOM[0]    && buffer[1] == utf16BigEndianBOM[1]   ) /* UTF-16, big endian */) {
+				final byte[] utf16LittleEndianBOM = getUTF16LittleEndianBOM();
+				final byte[] utf16BigEndianBOM = getUTF16BigEndianBOM();
+
+				if ((buffer[0] == utf16LittleEndianBOM[0] && buffer[1] == utf16LittleEndianBOM[1]) /* UTF-16, little endian */ ||
+						(buffer[0] == utf16BigEndianBOM[0] && buffer[1] == utf16BigEndianBOM[1]) /* UTF-16, big endian */) {
 					encoding = "UTF16";
 				}
 			}
+
 			if (length >= 3) {
 				byte[] utf8BOM = getUTF8BOM();
-				
-				if (buffer[0] == utf8BOM[0] && buffer[1] == utf8BOM[1] && buffer[2] == utf8BOM[2]) /* UTF-8 */  {
+
+				if (buffer[0] == utf8BOM[0] && buffer[1] == utf8BOM[1] && buffer[2] == utf8BOM[2]) /* UTF-8 */ {
 					encoding = "UTF8";
 				}
 			}
-		}
-		catch (IOException ioException) {
-			Globals.getLogger().info(String.format("FielUtils.getEncoding - exception %s filepath: %s", ioException.getMessage(), filePath));
+		} catch (IOException ioException) {
+			Globals.getLogger().info(String.format("FileUtils.getEncoding - exception %s filepath: %s",
+					ioException.getMessage(), filePath));
 			ioException.printStackTrace();
 		}
 

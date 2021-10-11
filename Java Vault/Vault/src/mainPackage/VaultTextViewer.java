@@ -263,7 +263,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		final String currentFontString = FontUtils.fontListToString(getTextWidget().getFont().getFontData());
 		
 		if (newFontString != null && !currentFontString.equals(newFontString)) {
-			final FontData fontList[] = FontUtils.stringToFontList(newFontString);
+			final FontData[] fontList = FontUtils.stringToFontList(newFontString);
 			
 			final Font previousFont = getTextWidget().getFont();
 			
