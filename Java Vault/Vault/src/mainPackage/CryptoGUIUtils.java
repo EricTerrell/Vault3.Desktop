@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -46,7 +46,9 @@ public class CryptoGUIUtils {
 				Globals.getLogger().info("XML File is encrypted, Decrypting");
 
 				try {
-					plainText = CryptoUtils.decrypt(passwordPromptDialog.getPassword(), cipherText, vaultDocumentVersion);
+					final Cipher cipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(), vaultDocumentVersion);
+
+					plainText = CryptoUtils.decrypt(cipher, cipherText);
 					decrypted = true;
 					
 					password.setValue(passwordPromptDialog.getPassword());
@@ -66,7 +68,7 @@ public class CryptoGUIUtils {
 		return plainText;
 	}
 
-	public static void promptUserForPasswordAndDecrypt(String filePath, String cipherText, StringWrapper password) throws Exception {
+	public static void promptUserForPasswordAndDecrypt(String filePath, String cipherText, StringWrapper password, VaultDocumentVersion vaultDocumentVersion) throws Exception {
 		boolean decrypted = false;
 
 		do 
@@ -76,7 +78,7 @@ public class CryptoGUIUtils {
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
 
 				try {
-					Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword());
+					Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(), vaultDocumentVersion);
 
 					CryptoUtils.decryptString(decryptionCipher, cipherText);
 					decrypted = true;

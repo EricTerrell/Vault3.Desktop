@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import commonCode.Base64Coder;
+
+import javax.crypto.Cipher;
 
 public class SearchParameters implements Serializable {
 	private static final long serialVersionUID = -3767549351231644670L;
@@ -111,7 +113,9 @@ public class SearchParameters implements Serializable {
 			byte[] serializedBytes = byteArrayOutputStream.toByteArray();
 			
 			if (Globals.getVaultDocument().isEncrypted()) {
-				serializedBytes = CryptoUtils.encrypt(Globals.getVaultDocument().getPassword(), serializedBytes);
+				final Cipher cipher = CryptoUtils.createEncryptionCipher(Globals.getVaultDocument().getPassword());
+
+				serializedBytes = CryptoUtils.encrypt(cipher, serializedBytes);
 			}
 			
 			char[] results = Base64Coder.encode(serializedBytes);
@@ -137,7 +141,9 @@ public class SearchParameters implements Serializable {
 			byte[] serializedBytes = Base64Coder.decode(serializedText);
 			
 			if (Globals.getVaultDocument().isEncrypted()) {
-				serializedBytes = CryptoUtils.decrypt(Globals.getVaultDocument().getPassword(), serializedBytes, Globals.getVaultDocument().getVaultDocumentVersion());
+				final Cipher cipher = CryptoUtils.createDecryptionCipher(Globals.getVaultDocument().getPassword(), Globals.getVaultDocument().getVaultDocumentVersion());
+
+				serializedBytes = CryptoUtils.decrypt(cipher, serializedBytes);
 			}
 			
 			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(serializedBytes);

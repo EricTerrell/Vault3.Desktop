@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -76,10 +76,12 @@ import java.text.MessageFormat;
  * 									    2) In previous versions, on Linux, the password prompt dialog did not include a title bar and could not be moved.
  * 0.71				1.2				 Additional fixes allowing Vault 3 to save and restore the maximized window state.
  * 0.72				1.2				 Rotate Photos Right / Left
+ * 0.73				1.2				 Preparations for improved encryption/decription
+ * 0.74				1.2				 Bug Fix: vertical slider position was not properly restored after being moved.
  */
 public class Version {
-	private static final float versionNumber = 0.72f;
-	private static final int copyrightYear = 2021;
+	private static final float versionNumber = 0.74f;
+	private static final int copyrightYear = 2022;
 
 	public static float getVersionNumber() {
 		return versionNumber;

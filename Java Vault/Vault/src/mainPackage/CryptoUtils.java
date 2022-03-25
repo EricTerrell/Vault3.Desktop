@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -18,9 +18,6 @@
     along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/**
- * 
- */
 package mainPackage;
 
 import java.io.UnsupportedEncodingException;
@@ -112,7 +109,7 @@ public class CryptoUtils {
 
 	/**
 	 * Encrypt the specified plainText using the specified password. Encryption is always done for the latest document version.
-	 * @param password password
+	 * @param cipher encryption cipher
 	 * @param plainText plaintext
 	 * @return
 	 * @throws NoSuchAlgorithmException
@@ -124,14 +121,8 @@ public class CryptoUtils {
 	 * @throws InvalidAlgorithmParameterException
 	 * @throws UnsupportedEncodingException 
 	 */
-	public static byte[] encrypt(String password, byte[] plainText) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
-        SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
-        
-		Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
-
+	public static byte[] encrypt(Cipher cipher, byte[] plainText) throws IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
 		Globals.getLogger().info(String.format("encrypt: cipher algorithm: %s", cipher.getAlgorithm()));
-		
-		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 		
 		byte[] cipherText = cipher.doFinal(plainText);
 		
@@ -140,70 +131,46 @@ public class CryptoUtils {
 		return cipherText;
 	}
 	
-	private static byte[] decryptVaultDocumentVersion_1_0(String password, byte[] cipherText) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
-		Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm));
-
+	public static byte[] decrypt(Cipher cipher, byte[] cipherText) throws IllegalBlockSizeException, BadPaddingException {
 		Globals.getLogger().info(String.format("decrypt: cipher algorithm: %s", cipher.getAlgorithm()));
 
-		SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_0(password);
-
-		cipher.init(Cipher.DECRYPT_MODE, secretKey);
-		
 		byte[] plainText = cipher.doFinal(cipherText);
+
 		Globals.getLogger().info("finished decryption");
-		
-		return plainText;
-	}
-
-	private static byte[] decryptVaultDocumentVersion_1_1(String password, byte[] cipherText) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
-        SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
-        
-		Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
-
-		Globals.getLogger().info(String.format("decrypt: cipher algorithm: %s", cipher.getAlgorithm()));
-
-		cipher.init(Cipher.DECRYPT_MODE, secretKey);
-		
-		byte[] plainText = cipher.doFinal(cipherText);
-		Globals.getLogger().info("finished decryption");
-		
-		return plainText;
-	}
-
-	public static byte[] decrypt(String password, byte[] cipherText, VaultDocumentVersion vaultDocumentVersion) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
-		byte[] plainText = null;
-		
-		if (vaultDocumentVersion.compareTo(new VaultDocumentVersion(1, 0)) == 0) {
-			plainText = decryptVaultDocumentVersion_1_0(password, cipherText);
-		}
-		else {
-			plainText = decryptVaultDocumentVersion_1_1(password, cipherText);
-		}
 		
 		return plainText;
 	}
 
 	public static Cipher createEncryptionCipher(String password) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException {
-		SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
+		final SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
 		
-		Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
+		final Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
 
 		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 		
 		return cipher;
 	}
 	
-	public static Cipher createDecryptionCipher(String password) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException {
-		SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
+	public static Cipher createDecryptionCipher(String password, VaultDocumentVersion vaultDocumentVersion) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException {
+		SecretKey secretKey;
+		Cipher cipher;
 
-		Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
+		if (vaultDocumentVersion.compareTo(VaultDocumentVersion.VERSION_1_0) == 0) {
+			secretKey = createSecretKeyVaultDocumentVersion_1_0(password);
+
+			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm));
+		} else {
+			secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
+
+			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
+		}
 
 		cipher.init(Cipher.DECRYPT_MODE, secretKey);
 		
 		return cipher;
 	}
 	
-	public static String encryptString(Cipher cipher, String plainText) throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+	public static String encryptString(Cipher cipher, String plainText) throws IllegalBlockSizeException, BadPaddingException {
 		// Silently convert null strings to empty strings.
 		if (plainText == null) {
 			plainText = StringLiterals.EmptyString;
@@ -217,7 +184,7 @@ public class CryptoUtils {
 		return new String(cipherTextArray);
 	}
 	
-	public static String decryptString(Cipher cipher, String cipherText) throws IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
+	public static String decryptString(Cipher cipher, String cipherText) throws IllegalBlockSizeException, BadPaddingException {
 		byte[] cipherTextBytes = Base64Coder.decode(cipherText);
 		
 		byte[] plainTextBytes = cipher.doFinal(cipherTextBytes);

@@ -20,7 +20,13 @@
 
 package commonCode;
 
+import java.util.Objects;
+
 public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
+	public static final VaultDocumentVersion VERSION_1_0 = new VaultDocumentVersion(1, 0);
+	public static final VaultDocumentVersion VERSION_1_1 = new VaultDocumentVersion(1, 1);
+	public static final VaultDocumentVersion VERSION_1_2 = new VaultDocumentVersion(1, 2);
+
 	public VaultDocumentVersion() {
 		majorVersion = 1;
 		minorVersion = 0;
@@ -64,7 +70,7 @@ public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
 	 * Latest Vault 3 document version
 	 */
 	public static VaultDocumentVersion getLatestVaultDocumentVersion() {
-		return new VaultDocumentVersion(1, 2);
+		return VERSION_1_2;
 	}
 	
 	@Override
@@ -83,5 +89,21 @@ public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
 		}
 
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+
+		if (o == null || getClass() != o.getClass()) return false;
+
+		final VaultDocumentVersion that = (VaultDocumentVersion) o;
+
+		return majorVersion == that.majorVersion && minorVersion == that.minorVersion;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(majorVersion, minorVersion);
 	}
 }

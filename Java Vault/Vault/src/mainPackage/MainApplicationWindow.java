@@ -804,21 +804,6 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		photoAndTextUI = new PhotoAndTextUI(sashForm);
 		
-		ControlListener controlListener = new ControlListener() {
-			@Override
-			public void controlMoved(ControlEvent e) {}
-
-			@Override
-			public void controlResized(ControlEvent e) {
-				int[] weights = sashForm.getWeights();
-				Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
-				Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
-			}
-		};
-
-		navigateAndSearchTabFolder.addControlListener(controlListener);
-		photoAndTextUI.addControlListener(controlListener);
-		
 		ITextListener[] textListeners = new ITextListener[] { insertDateAction, insertTimeAction, insertDateAndTimeAction, undoAction, selectAllTextAction, findAction, replaceAction, insertUrlAction };
 		
 		for (ITextListener textListener : textListeners) {
@@ -1130,7 +1115,11 @@ public class MainApplicationWindow extends ApplicationWindow {
 	@Override
 	public boolean close() {
 		boolean result = true;
-		
+
+		int[] weights = sashForm.getWeights();
+		Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
+		Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
+
 		boolean cancelled = saveCurrentDocument();
 		
 		if (!cancelled) {

@@ -37,15 +37,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="sqlite4java.jar">
-        <CLASSES>
-          <root url="jar://C:/Program Files/sqlite4java-282/sqlite4java.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="itextpdf-5.2.1.jar">
         <CLASSES>
           <root url="jar://C:/Program Files/itext-5.2.1/itextpdf-5.2.1.jar!/" />
@@ -71,6 +62,15 @@
         <JAVADOC>
           <root url="file://C:/Program Files/imgscalr-lib-4.2/javadoc" />
         </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Program Files/sqlite4java-392/sqlite4java.jar!/" />
+        </CLASSES>
+        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>

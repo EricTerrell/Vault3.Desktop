@@ -7,9 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Code inspection cleanup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java" afterDir="false" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/LicenseTerms.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/LicenseTerms.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,17 +22,25 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Vault3.Desktop" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/CoolBarManager.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/widgets/CoolBar.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/Window.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/CoolBarManager.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/IllegalArgumentException.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/Window.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/ApplicationWindow.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/SWT.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/ToolBarManager.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="3" />
@@ -76,7 +83,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java Vault/Vault/Help/artwork" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Program Files/sqlite4java-392/sqlite4java.jar" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -177,17 +184,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CodePointStringTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Base64TestCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CommonCode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jUnitTests.*" />
@@ -195,15 +193,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.Base64TestCase" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.CodePointStringTests" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FontTests.addItemsAndSerializeAndDeserialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CommonCode" />
+    <configuration name="CryptoTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jUnitTests.*" />
@@ -211,9 +209,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.FontTests" />
-      <option name="METHOD_NAME" value="addItemsAndSerializeAndDeserialize" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.CryptoTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchParametersSerializationDeserializationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.SearchParametersSerializationDeserializationTests" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -269,19 +282,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
-      <item itemvalue="JUnit.All in Vault" />
-      <item itemvalue="JUnit.Base64TestCase" />
-      <item itemvalue="JUnit.FontTests.addItemsAndSerializeAndDeserialize" />
-      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
       <item itemvalue="JUnit.jUnitTests in Vault" />
+      <item itemvalue="JUnit.CryptoTests" />
+      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
+      <item itemvalue="JUnit.CodePointStringTests" />
+      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.jUnitTests in Vault" />
-        <item itemvalue="JUnit.All in Vault" />
         <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
-        <item itemvalue="JUnit.FontTests.addItemsAndSerializeAndDeserialize" />
-        <item itemvalue="JUnit.Base64TestCase" />
+        <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
+        <item itemvalue="JUnit.CodePointStringTests" />
+        <item itemvalue="JUnit.CryptoTests" />
+        <item itemvalue="JUnit.jUnitTests in Vault" />
       </list>
     </recent_temporary>
   </component>
@@ -315,34 +328,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00047" summary="update">
-      <created>1473776236094</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1473776236094</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Bug Fix: image scaling could exceed maximum width or height.">
-      <created>1477797325373</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1477797325373</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Version 0.64.">
-      <created>1477836969980</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1477836969980</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Version 0.65. Built with latest Eclipse libraries.">
-      <created>1525558820550</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1525558820550</updated>
     </task>
     <task id="LOCAL-00051" summary="Version 0.65. Built with latest Eclipse libraries.">
       <created>1525559763203</created>
@@ -659,7 +644,35 @@
       <option name="project" value="LOCAL" />
       <updated>1633966165621</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Version 0.73 Preparing for improved crypto.">
+      <created>1647624331467</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1647624331467</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Version 0.73 Preparing for improved crypto.">
+      <created>1647629130288</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1647629130288</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved.">
+      <created>1648151243854</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1648151243854</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved.">
+      <created>1648151494100</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1648151494100</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -696,7 +709,9 @@
     <MESSAGE value="Version 0.72&#10;&#10;Added image rotation." />
     <MESSAGE value="Added artwork for rotation menu items" />
     <MESSAGE value="Code inspection cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code inspection cleanup" />
+    <MESSAGE value="Version 0.73 Preparing for improved crypto." />
+    <MESSAGE value="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -737,12 +752,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
-          <line>47</line>
+          <line>48</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
-          <line>107</line>
+          <line>110</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -835,15 +850,36 @@
           <line>102</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchParameters.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchParameters.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="StringLiterals.ProgramName" language="JAVA" />
+        <watch expression="Globals.getVaultDocument()" language="JAVA" />
       </configuration>
       <configuration name="Application">
         <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;artwork/file_print.png&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Vault3_Desktop$CodePointStringTests.ic" NAME="CodePointStringTests Coverage Results" MODIFIED="1647628088244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>jUnitTests.*</FILTER>
+    </SUITE>
   </component>
 </project>

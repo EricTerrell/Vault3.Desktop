@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -264,7 +264,9 @@ public class VaultDocument {
 	private void encryptCleartextXmlToStream(ByteArrayOutputStream input, OutputStream outputStream) throws Exception {
 		Globals.getLogger().info("start");
 
-		byte[] cipherText = CryptoUtils.encrypt(password, input.toByteArray());
+		final Cipher cipher = CryptoUtils.createEncryptionCipher(password);
+
+		byte[] cipherText = CryptoUtils.encrypt(cipher, input.toByteArray());
 		
 		XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
 		XMLStreamWriter xmlStreamWriter = null;
@@ -409,7 +411,9 @@ public class VaultDocument {
 		try {
 			db = new SQLiteConnection(new File(filePath));
 			db.open();
-			
+
+			final VaultDocumentVersion vaultDocumentVersion = verifyVaultDocumentVersion(db);
+
 			boolean isEncrypted = databaseIsEncrypted(db);
 			
 			if (isEncrypted) {
@@ -419,7 +423,7 @@ public class VaultDocument {
 				
 				if (password.getValue() != null) {
 					try {
-						Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue());
+						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
 						CryptoUtils.decryptString(decryptionCipher, cipherText);
 						decrypted = true;
 						setPassword(password.getValue());
@@ -431,15 +435,13 @@ public class VaultDocument {
 				}
 	
 				if (!decrypted) {
-					CryptoGUIUtils.promptUserForPasswordAndDecrypt(filePath, cipherText, password);
+					CryptoGUIUtils.promptUserForPasswordAndDecrypt(filePath, cipherText, password, vaultDocumentVersion);
 					setPassword(password.getValue());
 				}
 			}
 
 			Globals.setBusyCursor();
 
-			VaultDocumentVersion vaultDocumentVersion = verifyVaultDocumentVersion(db);
-			
 			boolean dbVersion1_2OrLater = vaultDocumentVersion.compareTo(new VaultDocumentVersion(1, 2)) >= 0;
 			
 			String columns;
@@ -458,7 +460,7 @@ public class VaultDocument {
 			Cipher decryptionCipher = null;
 			
 			if (isEncrypted) {
-				decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue());
+				decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
 			}
 			
 			while (statement.step()) {

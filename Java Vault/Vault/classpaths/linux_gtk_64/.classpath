@@ -11,7 +11,7 @@
 	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/Eclipse 4.18/eclipse-platform-4.18-linux-gtk-x86_64/eclipse/plugins/org.eclipse.jface.text_3.16.500.v20201112-1545.jar"/>
 	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/Eclipse 4.18/eclipse-platform-4.18-linux-gtk-x86_64/eclipse/plugins/plugins/org.eclipse.osgi_3.16.100.v20201030-1916.jar"/>
 	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/Eclipse 4.18/eclipse-platform-4.18-linux-gtk-x86_64/eclipse/plugins/org.eclipse.text_3.10.400.v20200925-0557.jar"/>
-	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/sqlite4java-282/sqlite4java.jar"/>
+	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/sqlite4java-392/sqlite4java.jar"/>
 	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/itext-5.2.1/itextpdf-5.2.1.jar"/>
 	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/perf4j/perf4j-0.9.16.jar"/>
 	<classpathentry kind="lib" path="/home/eric/Vault 3 Development/Libraries/imgscalr-lib-4.2/imgscalr-lib-4.2.jar">

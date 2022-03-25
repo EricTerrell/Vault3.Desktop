@@ -27,6 +27,7 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 
+import javax.crypto.Cipher;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -66,7 +67,7 @@ public class VaultDocumentXML {
 			Globals.getLogger().info(String.format("Finished SAX parsing Pass 1. Parsed %s Version: %d.%d", 
 					filePath, nativeDefaultHandler.getMajorVersion(), nativeDefaultHandler.getMinorVersion()));
 			
-			VaultDocumentVersion vaultDocumentVersion = new VaultDocumentVersion(nativeDefaultHandler.getMajorVersion(), nativeDefaultHandler.getMinorVersion());
+			final VaultDocumentVersion vaultDocumentVersion = new VaultDocumentVersion(nativeDefaultHandler.getMajorVersion(), nativeDefaultHandler.getMinorVersion());
 			VaultDocumentVersion codeVaultDocumentVersion = VaultDocumentVersion.getLatestVaultDocumentVersion();
 			
 			if (vaultDocumentVersion.compareTo(codeVaultDocumentVersion) > 0) {
@@ -74,6 +75,8 @@ public class VaultDocumentXML {
 			}
 			
 			if (nativeDefaultHandler.getIsEncrypted()) {
+				final Cipher cipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
+
 				byte[] plainText = null;
 				byte[] cipherText = nativeDefaultHandler.getCipherText();
 				
@@ -81,7 +84,7 @@ public class VaultDocumentXML {
 				
 				if (password != null) {
 					try {
-						plainText = CryptoUtils.decrypt(password.getValue(), cipherText, vaultDocumentVersion);
+						plainText = CryptoUtils.decrypt(cipher, cipherText);
 						decrypted = true;
 					}
 					catch (Throwable ex) {
