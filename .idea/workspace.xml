@@ -1,14 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.44810542" />
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/LicenseTerms.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/LicenseTerms.txt" afterDir="false" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Minor cleanup">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/commonCode/Base64Coder.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/commonCode/Base64Coder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/commonCode/DocumentMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/commonCode/DocumentMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/commonCode/IPlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/commonCode/IPlatform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/commonCode/VaultDocumentVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/commonCode/VaultDocumentVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/commonCode/VaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/commonCode/VaultException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/fonts/AndroidFont.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/fonts/AndroidFont.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/fonts/FontList.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/fonts/FontList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/fonts/IFont.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/fonts/IFont.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/fonts/SWTFont.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/fonts/SWTFont.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/Base64TestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/Base64TestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontListInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontListInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommonCode/src/jUnitTests/VaultDocumentVersionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/CommonCode/src/jUnitTests/VaultDocumentVersionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CodePointStringTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CodePointStringTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/AboutDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/AboutDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/AddItemDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/AddItemDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ColorRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ColorRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ColorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ColorUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ConfigValueKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ConfigValueKeys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/DatabaseVersionTooHigh.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/DatabaseVersionTooHigh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/DeletePhotoFileDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/DeletePhotoFileDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/DeltaEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/DeltaEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/EmailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/EmailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDevice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDeviceDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDeviceDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileSystemImport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileSystemImport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FindAndReplaceDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FindAndReplaceDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontListInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontListInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FontUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Globals.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Globals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GoToWebsites.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GoToWebsites.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GoToWebsitesDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GoToWebsitesDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/HelpActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/HelpActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/HelpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/HelpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IClipboardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IClipboardListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ICustomListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ICustomListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IDeltaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IDeltaListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IDocumentLoadUnloadListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IDocumentLoadUnloadListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IPhotoListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IPhotoListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IconUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/IconUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ImportDefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ImportDefaultHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ImportFolderDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ImportFolderDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/InsertUrlDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/InsertUrlDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/LicenseTermsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/LicenseTermsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MRUFileActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MRUFileActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MRUFileList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MRUFileList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MenuUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MenuUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MoveItemsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MoveItemsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NativeDefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NativeDefaultHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NullDeltaListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NullDeltaListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OptionsActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OptionsActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItemClipboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItemClipboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItemWithTempText.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItemWithTempText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PDFExport.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PDFExport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordPromptDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordPromptDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasteAboveOrBelowDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasteAboveOrBelowDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoAndTextUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoAndTextUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUIActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUIActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PhotoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Platform.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Platform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PortabilityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PortabilityUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PreferenceKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PreferenceKeys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PrintScopeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PrintScopeDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SashFormUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SashFormUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchParametersContentProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchParametersContentProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchResultsContentProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchResultsContentProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SendEmailDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SendEmailDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SendEmailFeedbackDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SendEmailFeedbackDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SingletonApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SingletonApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/StringLiterals.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/StringLiterals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/StringWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/StringWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SyncDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SyncDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/TextActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/TextActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/TextFocusListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/TextFocusListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ToStringLabelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ToStringLabelProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/TreeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/TreeHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentImports.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentImports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultLabelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultLabelProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeContentProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeContentProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VideoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VideoUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ViewActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ViewActions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +156,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedIndex" value="3" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="1Ob95eQ7ddWPhRhToPl51PJHspT" />
   <component name="ProjectViewState">
@@ -184,40 +297,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CodePointStringTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Vault" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.CodePointStringTests" />
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="All in CommonCode (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CommonCode" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CryptoTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Vault" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.CryptoTests" />
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="All in CommonCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CommonCode" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchParametersSerializationDeserializationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Base64TestCase.encodeStringFailsForChineseText" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CommonCode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jUnitTests.*" />
@@ -225,8 +333,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.SearchParametersSerializationDeserializationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.Base64TestCase" />
+      <option name="METHOD_NAME" value="encodeStringFailsForChineseText" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -256,21 +365,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jUnitTests in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Vault" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -282,19 +376,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
-      <item itemvalue="JUnit.jUnitTests in Vault" />
-      <item itemvalue="JUnit.CryptoTests" />
-      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
-      <item itemvalue="JUnit.CodePointStringTests" />
       <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
+      <item itemvalue="JUnit.All in CommonCode" />
+      <item itemvalue="JUnit.Base64TestCase.encodeStringFailsForChineseText" />
+      <item itemvalue="JUnit.All in CommonCode (1)" />
+      <item itemvalue="JUnit.All in Vault" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Vault" />
+        <item itemvalue="JUnit.All in CommonCode (1)" />
+        <item itemvalue="JUnit.Base64TestCase.encodeStringFailsForChineseText" />
+        <item itemvalue="JUnit.All in CommonCode" />
         <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
-        <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
-        <item itemvalue="JUnit.CodePointStringTests" />
-        <item itemvalue="JUnit.CryptoTests" />
-        <item itemvalue="JUnit.jUnitTests in Vault" />
       </list>
     </recent_temporary>
   </component>
@@ -807,18 +901,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>174</line>
+          <line>171</line>
           <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Search.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java</url>
@@ -851,19 +935,14 @@
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchParameters.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>47</line>
+          <line>45</line>
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SearchParameters.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="115" />
+          <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/Base64TestCase.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="121" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

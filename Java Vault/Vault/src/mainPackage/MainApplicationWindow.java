@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -37,8 +37,6 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
-import org.eclipse.swt.events.ControlEvent;
-import org.eclipse.swt.events.ControlListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MenuEvent;
@@ -867,7 +865,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		startCheckForModificationsTimer();
 
 		sashForm.setSashWidth(Globals.getPreferenceStore().getInt(PreferenceKeys.SashWidth));
-		sashForm.setWeights(new int[] { Globals.getPreferenceStore().getInt(PreferenceKeys.SashWidthLeft), Globals.getPreferenceStore().getInt(PreferenceKeys.SashWidthRight) });
+		sashForm.setWeights(Globals.getPreferenceStore().getInt(PreferenceKeys.SashWidthLeft), Globals.getPreferenceStore().getInt(PreferenceKeys.SashWidthRight));
 
 		expandAllAction.setEnabled();
 		expandAction.setEnabled();

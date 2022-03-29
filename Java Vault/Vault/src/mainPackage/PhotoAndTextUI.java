@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -130,7 +130,7 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 			}
 		});
 		
-		sashForm.setWeights(new int[] { 0, 100 });
+		sashForm.setWeights(0, 100);
 		
 		int[] currentWeights = sashForm.getWeights();
 
@@ -166,7 +166,7 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 	public void selectionChanged() {
 		if (photoUI.photoIsInvisible()) {
 			photoUI.setVisible(false);
-			sashForm.setWeights(new int[] { 0, 100 });
+			sashForm.setWeights(0, 100);
 		}
 		else {
 			photoUI.setVisible(true);

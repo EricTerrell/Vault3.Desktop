@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2013, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -65,8 +65,8 @@ public class VaultDocumentVersionTests {
 	public void testEqual() {
 		VaultDocumentVersion vaultDocumentVersion_1_1  = new VaultDocumentVersion(1, 1);
 		VaultDocumentVersion vaultDocumentVersion_1_1b = new VaultDocumentVersion(1, 1);
-		
-		Assert.assertTrue(vaultDocumentVersion_1_1b.compareTo(vaultDocumentVersion_1_1) == 0);
+
+		Assert.assertEquals(0, vaultDocumentVersion_1_1b.compareTo(vaultDocumentVersion_1_1));
 	}
 	
 	@Test

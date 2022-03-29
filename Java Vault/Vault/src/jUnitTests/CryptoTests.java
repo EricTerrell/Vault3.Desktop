@@ -52,11 +52,11 @@ public class CryptoTests {
 		
 		for (int i = 0; i < 1000000; i++) {
 			String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
-			
-			Assert.assertTrue(!plainText.equals(cipherText));
+
+			Assert.assertNotEquals(plainText, cipherText);
 			
 			String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
-			Assert.assertTrue(plainText.equals(decryptedText));
+			Assert.assertEquals(plainText, decryptedText);
 		}
 	}
 	
@@ -69,11 +69,11 @@ public class CryptoTests {
 		Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password, VaultDocumentVersion.getLatestVaultDocumentVersion());
 		
 		String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
-		
-		Assert.assertTrue(!plainText.equals(cipherText));
+
+		Assert.assertNotEquals(plainText, cipherText);
 		
 		String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
-		Assert.assertTrue(plainText.equals(decryptedText));
+		Assert.assertEquals(plainText, decryptedText);
 	}
 
 	@Test
@@ -87,6 +87,6 @@ public class CryptoTests {
 		String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 		
 		String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
-		Assert.assertTrue(decryptedText.equals(StringLiterals.EmptyString));
+		Assert.assertEquals(StringLiterals.EmptyString, decryptedText);
 	}
 }

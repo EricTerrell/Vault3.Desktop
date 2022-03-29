@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2010, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -35,7 +35,7 @@ public class Base64TestCase {
 	 * @throws UnsupportedEncodingException
 	 */
 	@Test
-	public void encodeStringFailsForChineseText() throws UnsupportedEncodingException {
+	public void encodeStringFailsForChineseText() {
 		String originalText = "å†¯æ­£è™Žæ˜ŸæœŸå››ï¼ˆ1æœˆ21æ—¥ï¼‰å¯¹BBCä¸­æ–‡éƒ¨è¯´ï¼Œç‰§é‡Žè¡¨ç¤ºï¼Œä»–æ˜¯å…³å¿ƒå†¯æ­£è™Žçš„äººæ�ƒé—®é¢˜è€Œæ�¥ï¼Œå¾�è¯¢å†¯æ­£è™Žæœ‰ä½•éœ€æ±‚ã€‚";
 		
 		String encodedText = Base64Coder.encodeString(originalText);
@@ -47,8 +47,8 @@ public class Base64TestCase {
 		System.out.println("Original Text: " + originalText);
 		System.out.println("Encoded Text:  " + encodedText);
 		System.out.println("Decoded Text:  " + decodedText);
-		
-		Assert.assertFalse(originalText.equals(decodedText));
+
+		Assert.assertNotEquals(originalText, decodedText);
 	}
 
 	@Test
@@ -97,8 +97,8 @@ public class Base64TestCase {
 	public void nullTextRoundTrip() throws UnsupportedEncodingException {
 		String encodedText = Base64Coder.i18nEncode(null);
 		String decodedText = Base64Coder.i18nDecode(encodedText);
-		
-		Assert.assertTrue(decodedText == null);
+
+		Assert.assertNull(decodedText);
 	}
 
 	private String getRandomString(int maxLength) {

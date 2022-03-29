@@ -266,11 +266,11 @@ public class VaultDocument {
 
 		final Cipher cipher = CryptoUtils.createEncryptionCipher(password);
 
-		byte[] cipherText = CryptoUtils.encrypt(cipher, input.toByteArray());
+		final byte[] cipherText = CryptoUtils.encrypt(cipher, input.toByteArray());
 		
-		XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+		final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
 		XMLStreamWriter xmlStreamWriter = null;
-		
+
 		final int itemMaxLength = 1024;
 		
 		try {
@@ -285,26 +285,17 @@ public class VaultDocument {
 	        
 	        int index = 0;
 
-			// Pre-compute the hex values to save time.
-			String[] hexValues = new String[256];
-			
-			byte b = Byte.MIN_VALUE;
-			
-			for (int i = 0; i < hexValues.length; i++) {
-				hexValues[i] = String.format("%02x", b++);
-			}
-			
 			while (index < cipherText.length) {
 	        	xmlStreamWriter.writeStartElement(NativeDefaultHandler.ENCRYPTEDITEM);
 
-	        	int segmentLength = Math.min(itemMaxLength, cipherText.length - index);
+	        	final int segmentLength = Math.min(itemMaxLength, cipherText.length - index);
 
-	        	byte[] segment = new byte[segmentLength];
+	        	final byte[] segment = new byte[segmentLength];
 
 				System.arraycopy(cipherText, index, segment, 0, segment.length);
 	        	
-	        	char[] base64EncodedChars = Base64Coder.encode(segment);
-	        	String base64EncodedString = new String(base64EncodedChars);
+	        	final char[] base64EncodedChars = Base64Coder.encode(segment);
+	        	final String base64EncodedString = new String(base64EncodedChars);
 	        	
 	        	xmlStreamWriter.writeCharacters(base64EncodedString);
 	        	
@@ -726,7 +717,9 @@ public class VaultDocument {
 		Globals.getMRUFiles().update(filePath, password);
 	}
 	
-	private void addToSQLiteDatabase(OutlineItem outlineItem, int parentID, int sortOrder, SQLiteConnection db, Cipher encryptionCipher) throws SQLiteException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+	private void addToSQLiteDatabase(OutlineItem outlineItem, int parentID, int sortOrder, SQLiteConnection db,
+									 Cipher encryptionCipher) throws SQLiteException, IllegalBlockSizeException,
+			BadPaddingException {
 		SQLiteStatement insertStatement = db.prepare("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder, FontList, Red, Green, Blue, PhotoPath, AllowScaling) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		
 		String title = outlineItem.getTitle();

@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -20,8 +20,6 @@
 
 package jUnitTests;
 
-import java.io.IOException;
-
 import org.junit.Assert;
 import mainPackage.SearchParameters;
 
@@ -35,7 +33,7 @@ public class SearchParametersSerializationDeserializationTests {
 	private static final String searchText = "this is some wonderful and long search text";
 	
 	@Test
-	public void roundTrip() throws IOException, ClassNotFoundException {
+	public void roundTrip() {
 		SearchParameters searchParameters = new SearchParameters();
 		searchParameters.setSearchText(searchText);
 		

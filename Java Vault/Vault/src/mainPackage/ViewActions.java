@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -142,7 +142,7 @@ public class ViewActions {
 		}
 		
 		public void run() {
-			Globals.getMainApplicationWindow().getSashForm().setWeights(new int[] { maxSashWeight, minSashWeight });
+			Globals.getMainApplicationWindow().getSashForm().setWeights(maxSashWeight, minSashWeight);
 		}
 	}
 
@@ -158,7 +158,7 @@ public class ViewActions {
 		}
 		
 		public void run() {
-			Globals.getMainApplicationWindow().getSashForm().setWeights(new int[] { minSashWeight, maxSashWeight });
+			Globals.getMainApplicationWindow().getSashForm().setWeights(minSashWeight, maxSashWeight);
 		}
 	}
 
@@ -173,7 +173,7 @@ public class ViewActions {
 		}
 		
 		public void run() {
-			Globals.getMainApplicationWindow().getSashForm().setWeights(new int[] { 50, 50 });
+			Globals.getMainApplicationWindow().getSashForm().setWeights(50, 50);
 		}
 	}
 

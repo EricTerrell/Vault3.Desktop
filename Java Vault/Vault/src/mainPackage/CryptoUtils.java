@@ -57,7 +57,7 @@ public class CryptoUtils {
 		return MessageDigest.getInstance("SHA-512").digest(password.getBytes());
 	}
 	
-	private static byte[] getPasswordMessageDigestVaultDocument_1_1(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	private static byte[] getPasswordMessageDigestVaultDocument_1_1(String password) throws NoSuchAlgorithmException {
 		return MessageDigest.getInstance("SHA-512").digest(password.getBytes(StandardCharsets.UTF_8));
 	}
 	
@@ -77,20 +77,20 @@ public class CryptoUtils {
         return secretKey;
 	}
 	
-	private static SecretKey createSecretKeyVaultDocumentVersion_1_1(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        int keyLengthBits = Globals.getPreferenceStore().getInt(PreferenceKeys.KeyLength1_1);
-        int keyLengthBytes = keyLengthBits / 8;
-        String keyAlgorithm = Globals.getPreferenceStore().getString(PreferenceKeys.KeyAlgorithm1_1);
+	private static SecretKey createSecretKeyVaultDocumentVersion_1_1(String password) throws NoSuchAlgorithmException {
+        final int keyLengthBits = Globals.getPreferenceStore().getInt(PreferenceKeys.KeyLength1_1);
+        final int keyLengthBytes = keyLengthBits / 8;
+        final String keyAlgorithm = Globals.getPreferenceStore().getString(PreferenceKeys.KeyAlgorithm1_1);
         
-		byte[] passwordMessageDigest = getPasswordMessageDigestVaultDocument_1_1(password);
+		final byte[] passwordMessageDigest = getPasswordMessageDigestVaultDocument_1_1(password);
 		
         Globals.getLogger().info(
         		String.format("Create Key: key length (bits): %d, key length (bytes): %d, algorithm: %s message digest length: %d", 
         				keyLengthBits, keyLengthBytes, keyAlgorithm, passwordMessageDigest.length));
         
-		List<Byte> passwordBytes = new ArrayList<>();
+		final List<Byte> passwordBytes = new ArrayList<>();
 		
-		for (byte passwordByte : passwordMessageDigest) {
+		for (final byte passwordByte : passwordMessageDigest) {
 			passwordBytes.add(passwordByte);
 		}
 		
@@ -98,7 +98,7 @@ public class CryptoUtils {
 			passwordBytes.add((byte) 0);
 		}
 		
-		byte[] passwordByteArray = new byte[keyLengthBytes];
+		final byte[] passwordByteArray = new byte[keyLengthBytes];
 		
 		for (int i = 0; i < keyLengthBytes; i++) {
 			passwordByteArray[i] = passwordBytes.get(i);
@@ -121,7 +121,8 @@ public class CryptoUtils {
 	 * @throws InvalidAlgorithmParameterException
 	 * @throws UnsupportedEncodingException 
 	 */
-	public static byte[] encrypt(Cipher cipher, byte[] plainText) throws IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
+	public static byte[] encrypt(Cipher cipher, byte[] plainText) throws IllegalBlockSizeException,
+			BadPaddingException {
 		Globals.getLogger().info(String.format("encrypt: cipher algorithm: %s", cipher.getAlgorithm()));
 		
 		byte[] cipherText = cipher.doFinal(plainText);

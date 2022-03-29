@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2021, Eric Bergman-Terrell
+  (C) Copyright 2022, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -317,19 +317,25 @@ public class GraphicsUtils {
 
 			final BufferedImage rotated = new BufferedImage(newWidth, newHeight, originalImage.getType());
 
-			final Graphics2D g2d = rotated.createGraphics();
+			Graphics2D g2d = null;
 
-			final AffineTransform transform = new AffineTransform();
-			transform.translate((newWidth - w) / 2, (newHeight - h) / 2);
+			try {
+				g2d = rotated.createGraphics();
 
-			final int x = w / 2;
-			final int y = h / 2;
+				final AffineTransform transform = new AffineTransform();
+				transform.translate((newWidth - w) / 2.0, (newHeight - h) / 2.0);
 
-			transform.rotate(rads, x, y);
-			g2d.setTransform(transform);
-			g2d.drawImage(originalImage, 0, 0, null);
+				final int x = w / 2;
+				final int y = h / 2;
 
-			g2d.dispose();
+				transform.rotate(rads, x, y);
+				g2d.setTransform(transform);
+				g2d.drawImage(originalImage, 0, 0, null);
+			} finally {
+				if (g2d != null) {
+					g2d.dispose();
+				}
+			}
 
 			try (FileOutputStream outputStream = new FileOutputStream(imagePath)) {
 				final String formatName = imagePath.substring(imagePath
