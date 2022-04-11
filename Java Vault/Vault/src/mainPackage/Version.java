@@ -78,9 +78,10 @@ import java.text.MessageFormat;
  * 0.72				1.2				 Rotate Photos Right / Left
  * 0.73				1.2				 Preparations for improved encryption/decription
  * 0.74				1.2				 Bug Fix: vertical slider position was not properly restored after being moved.
+ * 0.75				1.2				 Bug Fix: For Mac OSX, "cannot load library: java.lang.UnsatisfiedLinkError: no sqlite4java-osx-x86_64 in java.library.path" error.
  */
 public class Version {
-	private static final float versionNumber = 0.74f;
+	private static final float versionNumber = 0.75f;
 	private static final int copyrightYear = 2022;
 
 	public static float getVersionNumber() {
