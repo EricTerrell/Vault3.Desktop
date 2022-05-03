@@ -21,19 +21,16 @@
 package mainPackage;
 
 import java.util.*;
+import java.util.List;
 
+import commonCode.IPlatform;
 import mainPackage.OutlineItem.AddDirection;
 
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeViewerListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.*;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
@@ -42,16 +39,8 @@ import org.eclipse.swt.events.MenuListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.TreeListener;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FontDialog;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.swt.graphics.*;
+import org.eclipse.swt.widgets.*;
 
 /**
  * @author Eric Bergman-Terrell
@@ -165,8 +154,27 @@ public class VaultTreeViewer extends TreeViewer {
 				}
 			}
 		});
+
+		ensureTextIsVisible();
 	}
-	
+
+	/**
+	 * Work-around for bug in OSX and Linux when "dark mode" is enabled. In this case, the tree is rendered with
+	 * black graphics, and black text, with a black background.
+	 */
+	public void ensureTextIsVisible() {
+		Globals.getLogger().info("ensureTextIsVisible");
+
+		final IPlatform.PlatformEnum platform = Globals.getPlatform();
+
+		if (platform.equals(IPlatform.PlatformEnum.MacOSX) || platform.equals(IPlatform.PlatformEnum.Linux)) {
+			Globals.getLogger().info("OSX or Linux");
+
+			getTree().setBackgroundMode(SWT.INHERIT_FORCE);
+			getTree().setBackground(Globals.getColorRegistry().get(Globals.getWhiteColor()));
+		}
+	}
+
 	public VaultTreeViewer(Composite parent, int style, boolean readOnly) {
 		super(parent, style);
 		

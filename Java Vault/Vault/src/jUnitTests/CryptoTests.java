@@ -20,7 +20,6 @@
 
 package jUnitTests;
 
-import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -43,7 +42,7 @@ import org.junit.Test;
  */
 public class CryptoTests {
 	@Test
-	public void roundTrip() throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+	public void roundTrip() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		final String plainText = "Robert Eric Terrell is my name.";
 		final String password = "PASSWORD";
 
@@ -61,7 +60,7 @@ public class CryptoTests {
 	}
 	
 	@Test
-	public void emptyStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+	public void emptyStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		final String plainText = StringLiterals.EmptyString;
 		final String password = "PASSWORD";
 
@@ -77,7 +76,7 @@ public class CryptoTests {
 	}
 
 	@Test
-	public void nullStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+	public void nullStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		final String plainText = null;
 		final String password = "PASSWORD";
 

@@ -8,8 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Attempt to fix Mac OSX build.">
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +34,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/widgets/CoolBar.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/CoolBarManager.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/IllegalArgumentException.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/Window.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/ApplicationWindow.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/SWT.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/action/ToolBarManager.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/ApplicationWindow.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/eclipse-platform-4.18-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.22.0.v20201106-0834.jar!/org/eclipse/jface/window/Window.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/SWT.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/widgets/CoolBar.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/IllegalArgumentException.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,46 +53,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5" value="5" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="391" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="391" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="392" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="242" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="277" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="916" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="339" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="339" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="337" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="339" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="339" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="868" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Program Files/sqlite4java-392/sqlite4java.jar" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Eric Terrell/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts/ant_build_cocoa_x86_64.xml",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
@@ -171,7 +145,7 @@
       </method>
     </configuration>
     <configuration name="Vault 3" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="mainPackage.MainApplicationWindow" />
       <module name="Vault" />
@@ -292,6 +266,10 @@
           <option name="myVcsRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop" />
           <option name="myCopyRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop" />
         </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
+          <option name="myCopyRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
+        </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
@@ -310,27 +288,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Version 0.65. Built with latest Eclipse libraries.">
-      <created>1525613632818</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1525613632818</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Version 0.65. Built with latest Eclipse libraries.">
-      <created>1525615138099</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1525615138099</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Version 0.65. Built with latest Eclipse libraries.">
-      <created>1564236241021</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1564236241021</updated>
     </task>
     <task id="LOCAL-00057" summary="Version 0.67. Built with latest Eclipse libraries.">
       <created>1613518784269</created>
@@ -654,7 +611,28 @@
       <option name="project" value="LOCAL" />
       <updated>1649598936632</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1651337049541</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1651337049542</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1651337064339</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1651337064339</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1651337090867</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1651337090867</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -668,7 +646,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.62." />
     <MESSAGE value="update" />
     <MESSAGE value="Bug Fix: image scaling could exceed maximum width or height." />
     <MESSAGE value="Version 0.64." />
@@ -693,7 +670,8 @@
     <MESSAGE value="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved." />
     <MESSAGE value="Minor cleanup" />
     <MESSAGE value="Attempt to fix Mac OSX build." />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to fix Mac OSX build." />
+    <MESSAGE value="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -831,6 +809,32 @@
           <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/Base64TestCase.java</url>
           <line>38</line>
           <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="string.contains(&quot;hello&quot;)" language="JAVA" />
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1693</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1590</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1584</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1578</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeViewer.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

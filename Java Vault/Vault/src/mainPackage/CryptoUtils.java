@@ -142,7 +142,7 @@ public class CryptoUtils {
 		return plainText;
 	}
 
-	public static Cipher createEncryptionCipher(String password) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException {
+	public static Cipher createEncryptionCipher(String password) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
 		final SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
 		
 		final Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
@@ -152,7 +152,7 @@ public class CryptoUtils {
 		return cipher;
 	}
 	
-	public static Cipher createDecryptionCipher(String password, VaultDocumentVersion vaultDocumentVersion) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, UnsupportedEncodingException {
+	public static Cipher createDecryptionCipher(String password, VaultDocumentVersion vaultDocumentVersion) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
 		SecretKey secretKey;
 		Cipher cipher;
 
