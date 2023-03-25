@@ -165,11 +165,9 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 		canvas.setLayoutData(gridData);
 
 		canvas.addPaintListener(e -> {
-            Rectangle rect = canvas.getClientArea();
+            final Rectangle rect = canvas.getClientArea();
 
             if (resizedImage == null || !resizedImage.getBounds().equals(rect)) {
-                canvas.setBackgroundImage(null);
-
                 if (resizedImage != null) {
                     resizedImage.dispose();
                     resizedImage = null;

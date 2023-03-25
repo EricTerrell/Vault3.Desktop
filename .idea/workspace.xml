@@ -8,10 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="&lt;bytecodeTargetLevel target=&quot;11&quot; /&gt;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,18 +43,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eric Terrell/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts/ant_build_cocoa_x86_64.xml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.text_3.12.0.v20210512-1644.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
@@ -84,13 +81,13 @@
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
@@ -115,13 +112,15 @@
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_NAME_REGEX" value="" />
       <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
       <option name="EXTRA_OPTIONS" value="" />
-      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="RETENTION_ENABLED" value="No" />
+      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
+      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
@@ -260,6 +259,14 @@
           <option name="myCopyRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop" />
         </SvnCopyRootSimple>
         <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\.idea" />
+          <option name="myCopyRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\.idea" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\CommonCode" />
+          <option name="myCopyRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\CommonCode" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
           <option name="myVcsRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
           <option name="myCopyRoot" value="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
         </SvnCopyRootSimple>
@@ -281,20 +288,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Version 0.67. Built with latest Eclipse libraries.">
-      <created>1613518784269</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1613518784269</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Version 0.68. Can now import files without file types.">
-      <created>1613576564842</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1613576564842</updated>
     </task>
     <task id="LOCAL-00059" summary="Added missing &quot;.jar&quot; in .classpath">
       <created>1614457702100</created>
@@ -625,7 +618,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651337090867</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1679772608048</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1679772608049</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working.">
+      <created>1679773428470</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1679773428470</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -639,7 +646,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="update" />
     <MESSAGE value="Bug Fix: image scaling could exceed maximum width or height." />
     <MESSAGE value="Version 0.64." />
     <MESSAGE value="Version 0.65. Built with latest Eclipse libraries." />
@@ -664,7 +670,8 @@
     <MESSAGE value="Minor cleanup" />
     <MESSAGE value="Attempt to fix Mac OSX build." />
     <MESSAGE value="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries." />
+    <MESSAGE value="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
