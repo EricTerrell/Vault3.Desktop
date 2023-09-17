@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2022, Eric Bergman-Terrell
+  (C) Copyright 2023, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -1013,6 +1013,8 @@ public class MainApplicationWindow extends ApplicationWindow {
 	}
 	
 	public static void main(String[] args) {
+		Globals.getLogger().info(String.format("Java version %s", System.getProperty("java.version")));
+
 		Display.setAppName(StringLiterals.ProgramName);
 		
 		boolean singleInstance = !Globals.getPreferenceStore().getBoolean(PreferenceKeys.AllowMultipleInstances);

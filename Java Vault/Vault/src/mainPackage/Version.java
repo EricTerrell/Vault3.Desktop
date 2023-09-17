@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2022, Eric Bergman-Terrell
+  (C) Copyright 2023, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -81,10 +81,11 @@ import java.text.MessageFormat;
  * 0.75				1.2				 Bug Fix: For Mac OSX, "cannot load library: java.lang.UnsatisfiedLinkError: no sqlite4java-osx-x86_64 in java.library.path" error.
  * 0.76				1.2				 Now use Eclpise 4.18 libraries.
  * 0.77				1.2				 Bug Fix: On Linux, after displaying 1 image, images stopped displaying.
+ * 0.78				1.2				 Now use version Eclipse v4.29 dependencies. File references for ant scripts auto-generated. Added OSX "aarch64" version.
  */
 public class Version {
-	private static final float versionNumber = 0.77f;
-	private static final int copyrightYear = 2022;
+	private static final float versionNumber = 0.78f;
+	private static final int copyrightYear = 2023;
 
 	public static float getVersionNumber() {
 		return versionNumber;

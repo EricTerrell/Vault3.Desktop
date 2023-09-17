@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2022, Eric Bergman-Terrell
+  (C) Copyright 2023, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -208,7 +208,7 @@ public class OutlineActions {
 		}
 
 		public MoveUpAction() {
-			super("Move &Up", IconUtils.getTransparentImageDescriptor("artwork/arrow_up.png", Globals.getWhiteColor()));
+			super("Move &Up", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/arrow_up.png"))));
 			setAccelerator(SWT.ALT | SWT.ARROW_UP);
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));
@@ -237,7 +237,7 @@ public class OutlineActions {
 		}
 
 		public MoveDownAction() {
-			super("Move &Down", IconUtils.getTransparentImageDescriptor("artwork/arrow_down.png", Globals.getWhiteColor()));
+			super("Move &Down", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/arrow_down.png"))));
 			
 			setAccelerator(SWT.ALT | SWT.ARROW_DOWN);
 			setEnabled(false);
@@ -267,7 +267,7 @@ public class OutlineActions {
 		}
 
 		public IndentAction() {
-			super("I&ndent", IconUtils.getTransparentImageDescriptor("artwork/arrow_right.png", Globals.getWhiteColor()));
+			super("I&ndent", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/arrow_right.png"))));
 			setAccelerator(SWT.ALT | SWT.ARROW_RIGHT);
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));
@@ -290,7 +290,7 @@ public class OutlineActions {
 		}
 
 		public UnindentAction() {
-			super("Uninden&t", IconUtils.getTransparentImageDescriptor("artwork/arrow_left.png", Globals.getWhiteColor()));
+			super("Uninden&t", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/arrow_left.png"))));
 			setAccelerator(SWT.ALT | SWT.ARROW_LEFT);
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));

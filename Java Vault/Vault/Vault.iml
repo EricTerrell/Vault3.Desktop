@@ -97,7 +97,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/swt-4.23-win32-win32-x86_64/swt.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/swt-4.29-win32-win32-x86_64/swt.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -106,7 +106,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.core.commands_3.10.100.v20210722-1426.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.core.commands_3.11.100.v20230708-0916.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -115,7 +115,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.core.runtime_3.24.100.v20220211-2001.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.core.runtime_3.29.0.v20230726-0617.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -124,7 +124,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.equinox.common_3.16.0.v20220211-2322.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.equinox.common_3.18.100.v20230730-1117.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -133,7 +133,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.jface.text_3.20.0.v20220218-1549.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.jface.text_3.24.100.v20230727-0604.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -142,7 +142,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.25.0.v20220218-1636.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.jface_3.31.0.v20230821-1552.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -151,7 +151,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.osgi_3.17.200.v20220215-2237.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.osgi_3.18.500.v20230801-1826.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -160,7 +160,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.text_3.12.0.v20210512-1644.jar!/" />
+          <root url="jar://C:/Eclipse 4.29/eclipse-platform-4.29-win32-x86_64/eclipse/plugins/org.eclipse.text_3.13.100.v20230801-1334.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

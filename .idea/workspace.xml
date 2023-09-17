@@ -2,13 +2,14 @@
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="SPLITTER_PROPORTION" value="0.44810542" />
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.78&#10;&#10;Updated to Eclipse 4.29 dependencies.&#10;Updated copyright year to 2023.&#10;Vault 3 now requires Java 1.7.&#10;Java version now displayed in About dialog.&#10;There is now an OSX arm version." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +39,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="1Ob95eQ7ddWPhRhToPl51PJHspT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,16 +51,18 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Eclipse 4.23/eclipse-platform-4.23-win32-x86_64/eclipse/plugins/org.eclipse.text_3.12.0.v20210512-1644.jar",
-    "project.structure.last.edited": "Modules",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Eclipse 4.29/swt-4.29-win32-win32-x86_64/swt.jar",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\artwork" />
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help" />
@@ -82,7 +88,6 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -90,7 +95,10 @@
       <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_PROFILING_ENABLED" value="false" />
@@ -123,7 +131,10 @@
       <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="DEBUGGER_TYPE" value="Java" />
-      <Java />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_PROFILING_ENABLED" value="false" />
@@ -138,7 +149,6 @@
     </configuration>
     <configuration name="Vault 3" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="mainPackage.MainApplicationWindow" />
       <module name="Vault" />
       <method v="2">
@@ -288,13 +298,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1429109483091</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added missing &quot;.jar&quot; in .classpath">
-      <created>1614457702100</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1614457702100</updated>
     </task>
     <task id="LOCAL-00060" summary="Version 0.70&#10;&#10;Bug Fix: main window is no longer drawn, hidden, and moved when app is launched.">
       <created>1614479343272</created>
@@ -632,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679773428470</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working.">
+      <created>1679773724153</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1679773724153</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -646,7 +656,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Bug Fix: image scaling could exceed maximum width or height." />
     <MESSAGE value="Version 0.64." />
     <MESSAGE value="Version 0.65. Built with latest Eclipse libraries." />
     <MESSAGE value="Version 0.67. Built with latest Eclipse libraries." />
@@ -671,7 +680,8 @@
     <MESSAGE value="Attempt to fix Mac OSX build." />
     <MESSAGE value="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries." />
     <MESSAGE value="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working." />
+    <MESSAGE value="Version 0.78&#10;&#10;Updated to Eclipse 4.29 dependencies.&#10;Updated copyright year to 2023.&#10;Vault 3 now requires Java 1.7.&#10;Java version now displayed in About dialog.&#10;There is now an OSX arm version." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.78&#10;&#10;Updated to Eclipse 4.29 dependencies.&#10;Updated copyright year to 2023.&#10;Vault 3 now requires Java 1.7.&#10;Java version now displayed in About dialog.&#10;There is now an OSX arm version." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -836,6 +846,16 @@
           <line>170</line>
           <option name="timeStamp" value="135" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>165</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineActions.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -847,6 +867,10 @@
         <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;artwork/file_print.png&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Vault3_Desktop$CodePointStringTests.ic" NAME="CodePointStringTests Coverage Results" MODIFIED="1647628088244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

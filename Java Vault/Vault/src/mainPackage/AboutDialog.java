@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2022, Eric Bergman-Terrell
+  (C) Copyright 2023, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -191,6 +191,10 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
+		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
+
+		new Label(composite, SWT.NONE).setText(String.format("Using Java version %s", System.getProperty("java.version")));
+
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		Button donateButton = new Button(composite, SWT.PUSH);
