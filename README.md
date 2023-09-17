@@ -29,7 +29,7 @@ A version of [`Vault 3 for Android`](https://play.google.com/store/apps/details?
 Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www.eclipse.org/) project. It is currently using version 4.29 of the libraries.
 
 1. These instructions assume you're using [`Intellij IDEA`](https://www.jetbrains.com/idea/). The procedure for other development tools will be similar to the following.
-2. Make sure you have a Java Development Kit (JDK) with a version of 17 or later. You can download a JDK [`here`](https://www.oracle.com/java/technologies/downloads/).
+2. Make sure you have a Java Development Kit (JDK) with a version of **17 or later**. You can download a JDK [`here`](https://www.oracle.com/java/technologies/downloads/).
 3. Download the latest version of the [`Eclipse libraries`](https://download.eclipse.org/eclipse/downloads/).
 4. Download additional libraries:
     1. [`JavaMail`](https://www.oracle.com/java/technologies/javamail-api.html)
