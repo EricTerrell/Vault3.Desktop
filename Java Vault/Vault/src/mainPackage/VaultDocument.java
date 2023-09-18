@@ -29,6 +29,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
+import java.sql.*;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,9 +49,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
 import org.perf4j.LoggingStopWatch;
 
-import com.almworks.sqlite4java.SQLiteConnection;
-import com.almworks.sqlite4java.SQLiteException;
-import com.almworks.sqlite4java.SQLiteStatement;
 import commonCode.Base64Coder;
 import commonCode.DocumentMetadata;
 import commonCode.VaultDocumentVersion;
@@ -88,7 +86,7 @@ public class VaultDocument {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 		
-		String caption = String.format("%s - %s", new File(filePath).getName(), StringLiterals.ProgramName);
+		final String caption = String.format("%s - %s", new File(filePath).getName(), StringLiterals.ProgramName);
 		
 		Globals.getMainApplicationWindow().setText(caption);
 	}
@@ -174,14 +172,14 @@ public class VaultDocument {
 		
 		xmlStreamWriter.writeStartElement(NativeDefaultHandler.TEXTELEMENTNAME);
 		
-		RGB rgb = outlineItem.getRGB();
+		final RGB rgb = outlineItem.getRGB();
 		
 		if (rgb != null) {
 			String rgbString = String.format("%d,%d,%d", rgb.red, rgb.green, rgb.blue);
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.RGBATTRIBUTENAME, rgbString);
 		}
 		
-		String fontListString = Base64Coder.i18nEncode(outlineItem.getFontListString());
+		final String fontListString = Base64Coder.i18nEncode(outlineItem.getFontListString());
 		
 		if (fontListString != null) {
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.FONTLISTATTRIBUTENAME, fontListString);
@@ -190,7 +188,7 @@ public class VaultDocument {
 		xmlStreamWriter.writeCharacters(Base64Coder.i18nEncode(outlineItem.getText()));
 		xmlStreamWriter.writeEndElement();
 		
-		String photoPath = Base64Coder.i18nEncode(outlineItem.getPhotoPath());
+		final String photoPath = Base64Coder.i18nEncode(outlineItem.getPhotoPath());
 		
 		if (photoPath != null) {
 			xmlStreamWriter.writeStartElement(NativeDefaultHandler.PHOTOELEMENTNAME);
@@ -318,9 +316,9 @@ public class VaultDocument {
 	}
 	
 	private String getRandomPlainText() {
-		SecureRandom secureRandom = new SecureRandom();
+		final SecureRandom secureRandom = new SecureRandom();
 
-		byte[] randomBytes = new byte[100];
+		final byte[] randomBytes = new byte[100];
 		secureRandom.nextBytes(randomBytes);
 
 		return new String(Base64Coder.encode(randomBytes));
@@ -337,11 +335,11 @@ public class VaultDocument {
 
 		try (FileInputStream fileInputStream = new FileInputStream(filePath)) {
 			// http://www.sqlite.org/fileformat.html
-			byte[] sqliteFileMarker = new byte[] { 0x53, 0x51, 0x4c, 0x69, 0x74, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x20, 0x33, 0x00 };
+			final byte[] sqliteFileMarker = new byte[] { 0x53, 0x51, 0x4c, 0x69, 0x74, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x20, 0x33, 0x00 };
 
-			byte[] fileContents = new byte[sqliteFileMarker.length];
+			final byte[] fileContents = new byte[sqliteFileMarker.length];
 			
-			int bytesRead = (fileInputStream.read(fileContents));
+			final int bytesRead = (fileInputStream.read(fileContents));
 			
 			if (bytesRead == fileContents.length) {
 				isDatabase = Arrays.equals(sqliteFileMarker, fileContents);
@@ -391,24 +389,23 @@ public class VaultDocument {
 	}
 	
 	public OutlineItem loadFromDatabase(Shell shell, String filePath, StringWrapper password) throws Exception {
-		LoggingStopWatch stopwatch = new LoggingStopWatch("VaultDocument.loadFromDatabase");
+		final LoggingStopWatch stopwatch = new LoggingStopWatch("VaultDocument.loadFromDatabase");
 
 		Globals.getLogger().info("Starting loadFromDatabase");
 		
-		SQLiteConnection db = null;
+		final Map<Integer, ArrayList<OutlineItemWithIDs>> map = new HashMap<>();
 
-		Map<Integer, ArrayList<OutlineItemWithIDs>> map = new HashMap<>();
+		final String dbURL = String.format("jdbc:sqlite:%s", filePath);
 
-		try {
-			db = new SQLiteConnection(new File(filePath));
-			db.open();
+		Globals.getLogger().info(String.format("About to open database: \"%s\"", dbURL));
 
+		try (final Connection db = DriverManager.getConnection(dbURL)) {
 			final VaultDocumentVersion vaultDocumentVersion = verifyVaultDocumentVersion(db);
 
-			boolean isEncrypted = databaseIsEncrypted(db);
+			final boolean isEncrypted = databaseIsEncrypted(db);
 			
 			if (isEncrypted) {
-				String cipherText = getVaultDocumentInfo(db, "Ciphertext");
+				final String cipherText = getVaultDocumentInfo(db, "Ciphertext");
 	
 				boolean decrypted = false;
 				
@@ -433,7 +430,7 @@ public class VaultDocument {
 
 			Globals.setBusyCursor();
 
-			boolean dbVersion1_2OrLater = vaultDocumentVersion.compareTo(new VaultDocumentVersion(1, 2)) >= 0;
+			final boolean dbVersion1_2OrLater = vaultDocumentVersion.compareTo(new VaultDocumentVersion(1, 2)) >= 0;
 			
 			String columns;
 			
@@ -444,43 +441,45 @@ public class VaultDocument {
 				columns = "ID, Title, Text, ParentID, SortOrder, Red, Green, Blue, PhotoPath, AllowScaling";
 			}
 				
-			String select = String.format("SELECT %s FROM OutlineItem", columns);
+			final String select = String.format("SELECT %s FROM OutlineItem", columns);
 			
-			SQLiteStatement statement = db.prepare(select);
+			final PreparedStatement statement = db.prepareStatement(select);
 
 			Cipher decryptionCipher = null;
 			
 			if (isEncrypted) {
 				decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
 			}
-			
-			while (statement.step()) {
+
+			final ResultSet resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
 				OutlineItemWithIDs outlineItem = new OutlineItemWithIDs();
-				
-				outlineItem.setID(statement.columnInt(0));
-				
-				outlineItem.setTitle(statement.columnString(1));
-				outlineItem.setText(statement.columnString(2));
+
+				outlineItem.setID(resultSet.getInt(1));
+
+				outlineItem.setTitle(resultSet.getString(2));
+				outlineItem.setText(resultSet.getString(3));
 				
 				if (isEncrypted) {
 					outlineItem.setTitle(CryptoUtils.decryptString(decryptionCipher, outlineItem.getTitle()));
 					outlineItem.setText(CryptoUtils.decryptString(decryptionCipher, outlineItem.getText()));
 				}
 				
-				outlineItem.setParentID(statement.columnInt(3));
-				outlineItem.setSortOrder(statement.columnInt(4));
+				outlineItem.setParentID(resultSet.getInt(4));
+				outlineItem.setSortOrder(resultSet.getInt(5));
 				
-				RGB rgb = new RGB(statement.columnInt(5), statement.columnInt(6), statement.columnInt(7));
+				final RGB rgb = new RGB(resultSet.getInt(6), resultSet.getInt(7), resultSet.getInt(8));
 				outlineItem.setRGB(rgb);
 				
-				outlineItem.setPhotoPath(statement.columnString(8));
-				outlineItem.setAllowScaling(statement.columnInt(9) == 1);
+				outlineItem.setPhotoPath(resultSet.getString(9));
+				outlineItem.setAllowScaling(resultSet.getInt(10) == 1);
 				
 				if (dbVersion1_2OrLater) {
 					String fontListText = null;
 					
 					try {
-						fontListText = statement.columnString(10);
+						fontListText = resultSet.getString(11);
 						
 						FontList fontList = FontList.deserialize(fontListText);
 						outlineItem.setFontList(fontList);
@@ -500,12 +499,10 @@ public class VaultDocument {
 				
 				arrayList.add(outlineItem);
 			}
+
+			statement.close();
 		}
 		finally {
-			if (db != null) {
-				db.dispose();
-			}
-			
 			Globals.setPreviousCursor();
 		}
 		
@@ -546,11 +543,11 @@ public class VaultDocument {
 	 * @param db
 	 * @throws Exception
 	 */
-	private VaultDocumentVersion verifyVaultDocumentVersion(SQLiteConnection db) throws Exception {
-		VaultDocumentVersion codeVaultDocumentVersion = VaultDocumentVersion.getLatestVaultDocumentVersion();
+	private VaultDocumentVersion verifyVaultDocumentVersion(Connection db) throws Exception {
+		final VaultDocumentVersion codeVaultDocumentVersion = VaultDocumentVersion.getLatestVaultDocumentVersion();
 		
-		String dbVaultDocumentVersionString = getVaultDocumentInfo(db, "DocumentVersion");
-		VaultDocumentVersion dbVaultDocumentVersion = new VaultDocumentVersion(dbVaultDocumentVersionString);
+		final String dbVaultDocumentVersionString = getVaultDocumentInfo(db, "DocumentVersion");
+		final VaultDocumentVersion dbVaultDocumentVersion = new VaultDocumentVersion(dbVaultDocumentVersionString);
 		
 		if (dbVaultDocumentVersion.compareTo(codeVaultDocumentVersion) > 0) {
 			throw new VaultException("Database version is too high", VaultException.ExceptionCode.DatabaseVersionTooHigh);
@@ -559,25 +556,27 @@ public class VaultDocument {
 		return dbVaultDocumentVersion;
 	}
 	
-	private static String getVaultDocumentInfo(SQLiteConnection db, String name) throws SQLiteException {
-		LoggingStopWatch stopwatch = new LoggingStopWatch("VaultDocument.getVaultDocumentInfo");
+	private static String getVaultDocumentInfo(Connection db, String name) throws SQLException {
+		final LoggingStopWatch stopwatch = new LoggingStopWatch("VaultDocument.getVaultDocumentInfo");
 
 		String value = null;
 
-		SQLiteStatement statement = db.prepare("SELECT Value FROM VaultDocumentInfo WHERE Name = ?");
-		statement.bind(1, name);
+		final PreparedStatement statement = db.prepareStatement("SELECT Value FROM VaultDocumentInfo WHERE Name = ?");
+		statement.setString(1, name);
 
-		if (statement.step()) {
-			value = statement.columnString(0);
+		if (statement.execute()) {
+			value = statement.getResultSet().getString(1);
 		}
-		
+
+		statement.close();
+
 		stopwatch.stop();
 		
 		return value;
 	}
 
-	private static boolean databaseIsEncrypted(SQLiteConnection db) throws SQLiteException {
-		String value = getVaultDocumentInfo(db, "Encrypted"); 
+	private static boolean databaseIsEncrypted(Connection db) throws SQLException {
+		final String value = getVaultDocumentInfo(db, "Encrypted");
 
 		return value.equals("1");
 	}
@@ -588,9 +587,9 @@ public class VaultDocument {
 	 * @throws Throwable 
 	 */
 	public void saveAsSQLiteFile(String filePath) throws Throwable {
-		String tempSaveFilePath = filePath + ".$$$";
+		final String tempSaveFilePath = filePath + ".$$$";
 
-		File tempSaveFile = new File(tempSaveFilePath);
+		final File tempSaveFile = new File(tempSaveFilePath);
 		
 		if (tempSaveFile.exists()) {
 			FileUtils.deleteFile(tempSaveFilePath);
@@ -602,39 +601,41 @@ public class VaultDocument {
 			encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword());
 		}
 		
-		SQLiteConnection db = new SQLiteConnection(tempSaveFile);
-		 
-		try {
-		    db.open(true);
+		final String dbURL = String.format("jdbc:sqlite:%s", tempSaveFile);
 
-		    db.exec("BEGIN TRANSACTION");
+		Globals.getLogger().info(String.format("About to open database: \"%s\"", tempSaveFile));
+
+		try (final Connection db = DriverManager.getConnection(dbURL)) {
+			final Statement statement = db.createStatement();
+
+		    statement.execute("BEGIN TRANSACTION");
 
 		    String createTable = "CREATE TABLE \"android_metadata\" (\"locale\" TEXT DEFAULT 'en_US')";
-		    db.exec(createTable);
+		    statement.execute(createTable);
 		    
-		    db.exec("INSERT INTO \"android_metadata\" VALUES ('en_US')");
+		    statement.execute("INSERT INTO \"android_metadata\" VALUES ('en_US')");
 		    
 		    createTable = 
 		    	"CREATE TABLE VaultDocumentInfo(" +
 		    	"Name TEXT NOT NULL PRIMARY KEY, Value TEXT NOT NULL)";
-		    db.exec(createTable);
+		    statement.execute(createTable);
 		    
-		    String maxVersion = VaultDocumentVersion.getLatestVaultDocumentVersion().toString();
+		    final String maxVersion = VaultDocumentVersion.getLatestVaultDocumentVersion().toString();
 
-		    db.exec(String.format("INSERT INTO VaultDocumentInfo(Name, Value) VALUES('DocumentVersion', '%s')", maxVersion));
-		    db.exec(String.format("INSERT INTO VaultDocumentInfo(Name, Value) VALUES('Encrypted', '%d')", password == null ? 0 : 1));
+			statement.execute(String.format("INSERT INTO VaultDocumentInfo(Name, Value) VALUES('DocumentVersion', '%s')", maxVersion));
+			statement.execute(String.format("INSERT INTO VaultDocumentInfo(Name, Value) VALUES('Encrypted', '%d')", password == null ? 0 : 1));
 		    
 		    if (encryptionCipher != null) {
-				SQLiteStatement insertStatement = db.prepare("INSERT INTO VaultDocumentInfo(Name, Value) VALUES(?, ?)");
-				insertStatement.bind(1, "Ciphertext");
+				final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO VaultDocumentInfo(Name, Value) VALUES(?, ?)");
+				insertStatement.setString(1, "Ciphertext");
 				
 				String plainText = getRandomPlainText();
 				String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 				
-				insertStatement.bind(2, cipherText);
+				insertStatement.setString(2, cipherText);
 
-				insertStatement.step();
-				insertStatement.dispose();
+				insertStatement.execute();
+				insertStatement.close();
 		    }
 
 		    createTable = 
@@ -644,7 +645,7 @@ public class VaultDocument {
 		    	"PhotoPath TEXT, AllowScaling INTEGER DEFAULT 1, SortOrder INTEGER" +
 		    	")";
 		    			    
-		    db.exec(createTable);
+		    statement.execute(createTable);
 
 		    OutlineItem rootOutlineItem = Globals.getVaultDocument().getContent();
 		    
@@ -656,42 +657,37 @@ public class VaultDocument {
 			}
 		    
 		    // Insert root OutlineItem.
-			SQLiteStatement insertStatement = db.prepare("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder) VALUES(?, ?, ?, ?)");
-			insertStatement.bind(1, title);
-			insertStatement.bind(2, text);
-			insertStatement.bind(3, 0);
-			insertStatement.bind(4, 0);
+			PreparedStatement insertStatement = db.prepareStatement("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder) VALUES(?, ?, ?, ?)");
+			insertStatement.setString(1, title);
+			insertStatement.setString(2, text);
+			insertStatement.setInt(3, 0);
+			insertStatement.setInt(4, 0);
 
-			insertStatement.step();
-			insertStatement.dispose();
-			
+			insertStatement.execute();
+			insertStatement.close();
+
 			int rootItemID = -1;
 			
-	    	SQLiteStatement statement = db.prepare("SELECT last_insert_rowid()");
-
-	    	if (statement.step()) {
-	    		rootItemID = statement.columnInt(0);
+	    	if (statement.execute("SELECT last_insert_rowid()")) {
+	    		rootItemID = statement.getResultSet().getInt(1);
 	    	}
 	    	
-	    	statement.dispose();
-
 		    int sortOrder = 0;
 
 	    	for (OutlineItem childOutlineItem : rootOutlineItem.getChildren()) {
 		    	addToSQLiteDatabase(childOutlineItem, rootItemID, sortOrder++, db, encryptionCipher);
 		    }
 		    
-		    String createIndex = "CREATE INDEX ParentIDIndex ON OutlineItem(ParentID)";
+		    final String createIndex = "CREATE INDEX ParentIDIndex ON OutlineItem(ParentID)";
 		    
-		    db.exec(createIndex);
+		    statement.execute(createIndex);
 		    
-		    db.exec("COMMIT");
+		    statement.execute("COMMIT");
+
+			statement.close();
 		}
-		finally {
-			 db.dispose();
-		}
-		
-		File newFile = new File(filePath);
+
+		final File newFile = new File(filePath);
 		
 		// If the destination file exists (for example, if the user has not chosen to save it as a .bak file, that file
 		// must be deleted before renaming the temporary file to it.
@@ -700,7 +696,7 @@ public class VaultDocument {
 			newFile.delete();
 		}
 		
-		boolean renamed = tempSaveFile.renameTo(newFile);
+		final boolean renamed = tempSaveFile.renameTo(newFile);
 		
 		if (!renamed) {
 			String errorMessage = MessageFormat.format("Cannot rename {0} to {1}.", tempSaveFile.getPath(), newFile.getPath());
@@ -717,10 +713,10 @@ public class VaultDocument {
 		Globals.getMRUFiles().update(filePath, password);
 	}
 	
-	private void addToSQLiteDatabase(OutlineItem outlineItem, int parentID, int sortOrder, SQLiteConnection db,
-									 Cipher encryptionCipher) throws SQLiteException, IllegalBlockSizeException,
+	private void addToSQLiteDatabase(OutlineItem outlineItem, int parentID, int sortOrder, Connection db,
+									 Cipher encryptionCipher) throws SQLException, IllegalBlockSizeException,
 			BadPaddingException {
-		SQLiteStatement insertStatement = db.prepare("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder, FontList, Red, Green, Blue, PhotoPath, AllowScaling) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder, FontList, Red, Green, Blue, PhotoPath, AllowScaling) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		
 		String title = outlineItem.getTitle();
 		String text = outlineItem.getText();
@@ -730,11 +726,11 @@ public class VaultDocument {
 			text = CryptoUtils.encryptString(encryptionCipher, text);
 		}
 		
-		insertStatement.bind(1, title);
-		insertStatement.bind(2, text);
-		insertStatement.bind(3, parentID);
-		insertStatement.bind(4, sortOrder);
-		insertStatement.bind(5, outlineItem.getFontListString());
+		insertStatement.setString(1, title);
+		insertStatement.setString(2, text);
+		insertStatement.setInt(3, parentID);
+		insertStatement.setInt(4, sortOrder);
+		insertStatement.setString(5, outlineItem.getFontListString());
 
 		RGB rgb = new RGB(0, 0, 0);
 		
@@ -742,25 +738,25 @@ public class VaultDocument {
 			rgb = outlineItem.getRGB();
 		}
 		
-		insertStatement.bind(6, rgb.red);
-		insertStatement.bind(7, rgb.green);
-		insertStatement.bind(8, rgb.blue);
+		insertStatement.setInt(6, rgb.red);
+		insertStatement.setInt(7, rgb.green);
+		insertStatement.setInt(8, rgb.blue);
 		
-		insertStatement.bind(9, outlineItem.getPhotoPath());
-		insertStatement.bind(10, outlineItem.getAllowScaling() ? 1 : 0);
+		insertStatement.setString(9, outlineItem.getPhotoPath());
+		insertStatement.setInt(10, outlineItem.getAllowScaling() ? 1 : 0);
 		
-		insertStatement.step();
-		insertStatement.dispose();
-		
+		insertStatement.execute();
+		insertStatement.close();
+
     	int id = 0;
     	
-    	SQLiteStatement statement = db.prepare("SELECT last_insert_rowid()");
+    	final PreparedStatement statement = db.prepareStatement("SELECT last_insert_rowid()");
 
-    	if (statement.step()) {
-    		id = statement.columnInt(0);
+    	if (statement.execute()) {
+    		id = statement.getResultSet().getInt(1);
     	}
     	
-    	statement.dispose();
+    	statement.close();
     	
     	int newSortOrder = 0;
     	
@@ -775,12 +771,12 @@ public class VaultDocument {
 	 */
 	public static void saveOldFileWithBakType(String filePath) throws VaultException {
 		if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.SaveOldFileWithBakType)) {
-			File originalFile = new File(filePath);
+			final File originalFile = new File(filePath);
 			
 			if (originalFile.exists()) {
 				String bakFilePath = String.format("%s.bak", filePath);
 				
-				File bakFile = new File(bakFilePath);
+				final File bakFile = new File(bakFilePath);
 				
 				// Remove previous .bak file if it exists.
 				if (bakFile.exists()) {
@@ -790,7 +786,7 @@ public class VaultDocument {
 				
 				// Rename file to {filepath}.bak
 				Globals.getLogger().info(String.format("saveOldFileWithBakType: renaming file %s to %s", originalFile.getPath(), bakFile.getPath()));
-				boolean renamed = originalFile.renameTo(bakFile);
+				final boolean renamed = originalFile.renameTo(bakFile);
 				
 				if (!renamed) {
 					String errorMessage = MessageFormat.format("Cannot rename {0} to {1}.", originalFile.getAbsolutePath(), bakFile.getAbsolutePath());
@@ -807,19 +803,19 @@ public class VaultDocument {
 	 * @throws Exception
 	 */
 	public void saveAsXMLFile(String filePath) throws Exception {
-		String tempSaveFilePath = filePath + ".$$$";
+		final String tempSaveFilePath = filePath + ".$$$";
 		
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 		
 		savePlaintextXmlToStream(byteArrayOutputStream);
 		
-		FileOutputStream fileOutputStream = new FileOutputStream(tempSaveFilePath);
+		final FileOutputStream fileOutputStream = new FileOutputStream(tempSaveFilePath);
 
 		if (!isEncrypted()) {
 			fileOutputStream.write(byteArrayOutputStream.toByteArray());
 		}
 		else {
-			ByteArrayOutputStream cipherText = new ByteArrayOutputStream();
+			final ByteArrayOutputStream cipherText = new ByteArrayOutputStream();
 			encryptCleartextXmlToStream(byteArrayOutputStream, cipherText);
 
 			// Need to write out the file in small pieces to avoid a java.io.IOException (Insufficient system resources exist to complete the requested service).
@@ -831,7 +827,7 @@ public class VaultDocument {
 	        while (index < buffer.length) {
 	        	int segmentLength = Math.min(maxSegmentLength, buffer.length - index);
 	        	
-	        	byte[] segment = new byte[segmentLength];
+	        	final byte[] segment = new byte[segmentLength];
 
 				System.arraycopy(buffer, index, segment, 0, segment.length);
 	        	

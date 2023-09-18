@@ -48,14 +48,13 @@
             <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.29\eclipse-platform-4.29-macosx-cocoa-x86_64\Eclipse\Eclipse.app\Contents\Eclipse\plugins\org.eclipse.text_3.13.100.v20230801-1334.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/javamail-1.4.4/mail.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/imgscalr-lib-4.2/imgscalr-lib-4.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\sqlite4java-392\sqlite4java.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\sqlite-jdbc\sqlite-jdbc-3.43.0.0.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/perf4j/perf4j-0.9.16.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\itext-5.2.1\itextpdf-5.2.1.jar"/>
         </jar>
     	<copy todir="${dest.dir}" failonerror="true">
     		<fileset file="${sourcerootVault}/example.vl3" />
     		<fileset file="${sourcerootVault}/LicenseTerms.txt" />
-    		<fileset file="C:/Program Files/sqlite4java-392/libsqlite4java-osx.dylib" />
     		<fileset file="${sourcerootVault}/src/mainPackage/artwork/vault3.png" />
     	</copy>
     	<copy todir="${dest.dir}/Help" failonerror="true">

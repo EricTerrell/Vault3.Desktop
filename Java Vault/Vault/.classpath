@@ -13,7 +13,6 @@
     <classpathentry kind="lib" path="C:\Eclipse 4.29\eclipse-platform-4.29-win32-x86_64\eclipse\plugins\org.eclipse.jface_3.31.0.v20230821-1552.jar"/>
     <classpathentry kind="lib" path="C:\Eclipse 4.29\eclipse-platform-4.29-win32-x86_64\eclipse\plugins\org.eclipse.osgi_3.18.500.v20230801-1826.jar"/>
     <classpathentry kind="lib" path="C:\Eclipse 4.29\eclipse-platform-4.29-win32-x86_64\eclipse\plugins\org.eclipse.text_3.13.100.v20230801-1334.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/sqlite4java-213/sqlite4java.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/itext-5.2.1/itextpdf-5.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/perf4j/perf4j-0.9.16.jar"/>
 	<classpathentry kind="lib" path="/CommonCode/deploy/CommonCode.jar" sourcepath="/CommonCode/src"/>
@@ -22,5 +21,6 @@
 			<attribute name="javadoc_location" value="file:/C:/Program Files/imgscalr-lib-4.2/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:\Program Files\sqlite-jdbc\sqlite-jdbc-3.43.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

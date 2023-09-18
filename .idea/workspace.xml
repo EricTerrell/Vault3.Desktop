@@ -9,14 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.78&#10;&#10;Added copyright notice to ant build scripts.&#10;No longer build aarch64 version (native libraries are not yet available)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_aarch64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_aarch64.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_x86_64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_x86_64.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_linux_gtk_64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_linux_gtk_64.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_win64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_win64.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.79&#10;&#10;Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX &quot;aarch64&quot; version." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,8 +52,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Eclipse 4.29/swt-4.29-win32-win32-x86_64/swt.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/sqlite-jdbc/sqlite-jdbc-3.43.0.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -79,7 +72,7 @@
       <recent name="mainPackage" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Vault 3">
+  <component name="RunManager" selected="JUnit.jUnitTests in Vault">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -212,7 +205,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchParametersSerializationDeserializationTests.roundTrip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jUnitTests in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
@@ -221,16 +221,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.SearchParametersSerializationDeserializationTests" />
-      <option name="METHOD_NAME" value="roundTrip" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -247,7 +238,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
-      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
+      <item itemvalue="JUnit.jUnitTests in Vault" />
       <item itemvalue="JUnit.All in CommonCode" />
       <item itemvalue="JUnit.Base64TestCase.encodeStringFailsForChineseText" />
       <item itemvalue="JUnit.All in CommonCode (1)" />
@@ -255,11 +246,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.jUnitTests in Vault" />
         <item itemvalue="JUnit.All in Vault" />
         <item itemvalue="JUnit.All in CommonCode (1)" />
         <item itemvalue="JUnit.Base64TestCase.encodeStringFailsForChineseText" />
         <item itemvalue="JUnit.All in CommonCode" />
-        <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests.roundTrip" />
       </list>
     </recent_temporary>
   </component>
@@ -649,7 +640,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -663,9 +654,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.64." />
-    <MESSAGE value="Version 0.65. Built with latest Eclipse libraries." />
-    <MESSAGE value="Version 0.67. Built with latest Eclipse libraries." />
     <MESSAGE value="Version 0.68. Can now import files without file types." />
     <MESSAGE value="Version 0.70&#10;&#10;Bug Fix: main window is no longer drawn, hidden, and moved when app is launched." />
     <MESSAGE value="Cleanup" />
@@ -688,7 +676,10 @@
     <MESSAGE value="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries." />
     <MESSAGE value="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working." />
     <MESSAGE value="Version 0.78&#10;&#10;Updated to Eclipse 4.29 dependencies.&#10;Updated copyright year to 2023.&#10;Vault 3 now requires Java 1.7.&#10;Java version now displayed in About dialog.&#10;There is now an OSX arm version." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.78&#10;&#10;Updated to Eclipse 4.29 dependencies.&#10;Updated copyright year to 2023.&#10;Vault 3 now requires Java 1.7.&#10;Java version now displayed in About dialog.&#10;There is now an OSX arm version." />
+    <MESSAGE value="Version 0.78&#10;&#10;Added copyright notice to ant build scripts.&#10;No longer build aarch64 version (native libraries are not yet available)" />
+    <MESSAGE value="Version 0.79&#10;&#10;Added copyright notice to ant build scripts.&#10;No longer build aarch64 version (native libraries are not yet available)" />
+    <MESSAGE value="Version 0.79&#10;&#10;Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX &quot;aarch64&quot; version." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.79&#10;&#10;Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX &quot;aarch64&quot; version." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -859,9 +850,24 @@
           <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineActions.java</url>
-          <line>210</line>
-          <option name="timeStamp" value="137" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>529</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>391</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>430</line>
+          <option name="timeStamp" value="146" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

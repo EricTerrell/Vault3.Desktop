@@ -33,7 +33,7 @@ Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www
 3. Download the latest version of the [`Eclipse libraries`](https://download.eclipse.org/eclipse/downloads/).
 4. Download additional libraries:
     1. [`JavaMail`](https://www.oracle.com/java/technologies/javamail-api.html)
-    1. [`sqlite4java`](https://bitbucket.org/almworks/sqlite4java/downloads/)
+    1. [`sqlite-jdbc`](https://github.com/xerial/sqlite-jdbc)
     1. [`itextpdf`](https://github.com/itext/itextpdf/releases)
     1. [`perf4j`](https://mvnrepository.com/artifact/org.perf4j/perf4j)
     1. [`imgscalr`](https://github.com/downloads/thebuzzmedia/imgscalr/imgscalr-lib-4.2.zip)

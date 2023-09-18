@@ -81,10 +81,12 @@ import java.text.MessageFormat;
  * 0.75				1.2				 Bug Fix: For Mac OSX, "cannot load library: java.lang.UnsatisfiedLinkError: no sqlite4java-osx-x86_64 in java.library.path" error.
  * 0.76				1.2				 Now use Eclpise 4.18 libraries.
  * 0.77				1.2				 Bug Fix: On Linux, after displaying 1 image, images stopped displaying.
- * 0.78				1.2				 Now use version Eclipse v4.29 dependencies. File references for ant scripts auto-generated. Added OSX "aarch64" version.
+ * 0.78				1.2				 Now use version Eclipse v4.29 dependencies. File references for ant scripts auto-generated. Made an abortive attempt to add an
+ * 									 OSX "aarch64" version. Problem: sqlite4 component doesn't support aarch64.
+ * 0.79				1.2				 Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX "aarch64" version.
  */
 public class Version {
-	private static final float versionNumber = 0.78f;
+	private static final float versionNumber = 0.79f;
 	private static final int copyrightYear = 2023;
 
 	public static float getVersionNumber() {

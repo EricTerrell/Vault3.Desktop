@@ -23,12 +23,7 @@
     <target name="build_everything">
     	<ant antfile="ant_build_linux_gtk_64.xml"/>
     	<ant antfile="ant_build_win64.xml"/>
-
-        <!--
-        NOTE: the aarch64 version is not ready (see ant_built_cocoa_aarch64.xml for details)
         <ant antfile="ant_build_cocoa_aarch64.xml"/>
-        -->
-
         <ant antfile="ant_build_cocoa_x86_64.xml"/>
     </target>
 
