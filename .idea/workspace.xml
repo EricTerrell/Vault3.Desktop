@@ -9,8 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="">
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.78&#10;&#10;Added copyright notice to ant build scripts.&#10;No longer build aarch64 version (native libraries are not yet available)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_aarch64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_aarch64.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_x86_64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_cocoa_x86_64.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_linux_gtk_64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_linux_gtk_64.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_win64.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_win64.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
