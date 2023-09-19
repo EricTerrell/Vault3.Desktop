@@ -4,18 +4,18 @@
   
   This file is part of Vault 3.
 
-    Vault 3 is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+  Vault 3 is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-    Vault 3 is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+  Vault 3 is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package mainPackage;
@@ -60,16 +60,16 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		Button closeButton = createButton(parent, IDialogConstants.CLOSE_ID, IDialogConstants.CLOSE_LABEL, true);
+		final Button closeButton = createButton(parent, IDialogConstants.CLOSE_ID, IDialogConstants.CLOSE_LABEL, true);
 		closeButton.forceFocus();
 	}
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 		
-		Label updatesLabel = new Label(composite, SWT.NONE);
+		final Label updatesLabel = new Label(composite, SWT.NONE);
 		
 		if (!cannotRetrieveLatestVersion) {
 			String updatesAvailableText = updatesAreAvailable ? MessageFormat.format("An updated version of {0} is available.", StringLiterals.ProgramName) : MessageFormat.format("You are running the latest version of {0}. Please check again in the future.", StringLiterals.ProgramName);
@@ -80,16 +80,16 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 			updatesLabel.setText("Cannot check for updates. Please try again later.");
 		}
 
-		Label spacerLabel = new Label(composite, SWT.NONE);
+		final Label spacerLabel = new Label(composite, SWT.NONE);
 		spacerLabel.setText(StringLiterals.EmptyString);
 
 		// We want to unconditionally include the label and button, and hide them if necessary, leaving a gap in the dialog,
 		// otherwise the dialog may be sized too small and the Donate button will be hidden.
 		
-		Label downloadLabel = new Label(composite, SWT.NONE);
+		final Label downloadLabel = new Label(composite, SWT.NONE);
 		downloadLabel.setText("Click the Download Updates button to visit the download web page.");
 
-		Button downloadUpdatesButton = new Button(composite, SWT.PUSH);
+		final Button downloadUpdatesButton = new Button(composite, SWT.PUSH);
 		downloadUpdatesButton.setText("Download &Updates");
 
 		if (updatesAreAvailable) {
@@ -116,7 +116,7 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 		new Label(composite, SWT.NONE).setText(MessageFormat.format("Click the Donate button to support continued {0} development.", StringLiterals.ProgramName));
 		new Label(composite, SWT.NONE);
 		
-		Button donateButton = new Button(composite, SWT.PUSH);
+		final Button donateButton = new Button(composite, SWT.PUSH);
 		donateButton.setText("&Donate");
 
 		donateButton.addSelectionListener(new SelectionListener() {
@@ -132,7 +132,7 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-		Button vault3ForAndroidButton = new Button(composite, SWT.PUSH);
+		final Button vault3ForAndroidButton = new Button(composite, SWT.PUSH);
 		vault3ForAndroidButton.setText("&Vault 3 for Android");
 
 		vault3ForAndroidButton.addSelectionListener(new SelectionListener() {
@@ -169,7 +169,7 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 		
 		if (!updatesAreAvailable) {
 			try {
-				float latestVersion = getLatestVersion();
+				final float latestVersion = getLatestVersion();
 				
 				updatesAreAvailable = latestVersion > Version.getVersionNumber();
 			}
@@ -178,8 +178,8 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 
 				cannotRetrieveLatestVersion = true;
 
-				Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-				MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, "Error checking for updates.", MessageDialog.ERROR, new String[] { "&OK" }, 0);
+				final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+				final MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, "Error checking for updates.", MessageDialog.ERROR, new String[] { "&OK" }, 0);
 				messageDialog.open();
 			}
 		}
@@ -188,9 +188,9 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 	private static float getLatestVersion() throws IOException {
 		float latestVersion = 0.00f;
 		
-		URL versionURL = new URL("https://www.EricBT.com/versions/vault3.txt");
+		final URL versionURL = new URL("https://www.EricBT.com/versions/vault3.txt");
 
-		StringBuilder text = new StringBuilder();
+		final StringBuilder text = new StringBuilder();
 		
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(versionURL.openStream()))) {
 			String inputLine;
@@ -211,17 +211,17 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 	
 	public static void displayUpdatesDialogIfUpdatesAreAvailable(Shell parentShell) {
 		try {
-			PreferenceStore preferenceStore = Globals.getPreferenceStore();
+			final PreferenceStore preferenceStore = Globals.getPreferenceStore();
 			
 			if (preferenceStore.getBoolean(PreferenceKeys.CheckForUpdatesAutomatically)) {
-				long lastCheckInstant = preferenceStore.getLong(PreferenceKeys.LastUpdateCheckDate);
-				long now = new Date().getTime();
+				final long lastCheckInstant = preferenceStore.getLong(PreferenceKeys.LastUpdateCheckDate);
+				final long now = new Date().getTime();
 				
 				final long sevenDaysInMilliseconds = 1000 * 60 * 60 * 24 * 7;
 	
 				if ((now - lastCheckInstant) >= sevenDaysInMilliseconds) {
 					if (getLatestVersion() > Version.getVersionNumber()) {
-						SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(parentShell, true);
+						final SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(parentShell, true);
 						
 						softwareUpdatesDialog.open();
 					}
