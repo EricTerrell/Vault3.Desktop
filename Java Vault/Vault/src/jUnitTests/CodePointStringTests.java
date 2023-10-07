@@ -104,7 +104,7 @@ public class CodePointStringTests {
 		Assert.assertEquals(5, new CodePointString("Hello").length());
 	}
 	
-	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	@Test(expected=IndexOutOfBoundsException.class)
 	public void setAtBadIndex1() {
 		CodePointString codePointString = new CodePointString("Hello");
 		codePointString.setAt(-1, '!');
@@ -132,7 +132,7 @@ public class CodePointStringTests {
 		Assert.assertEquals('o', codePointString.codePointAt(4));
 	}
 	
-	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	@Test(expected=IndexOutOfBoundsException.class)
 	public void codePointAtBadIndex1() {
 		CodePointString codePointString = new CodePointString("Hello");
 		codePointString.codePointAt(-1);

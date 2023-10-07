@@ -27,36 +27,12 @@ import commonCode.Base64Coder;
 import org.junit.Test;
 
 public class Base64TestCase {
-	/**
-	 * Some non-English text cannot round-trip with Base64Coder.encodeString and Base64Coder.decodeString. Reason:
-	 * the string is encoded with the default encoding, rather than a Unicode encoding. When Vault 3 runs on my box,
-	 * the default encoding is Cp1252. This encoding is set by going to the Eclipse Project / Properties / Run/Debug Settings /
-	 * VM Arguments textbox and entering -Dfile.encoding=Cp1252.
-	 * @throws UnsupportedEncodingException
-	 */
-	@Test
-	public void encodeStringFailsForChineseText() {
-		String originalText = "å†¯æ­£è™Žæ˜ŸæœŸå››ï¼ˆ1æœˆ21æ—¥ï¼‰å¯¹BBCä¸­æ–‡éƒ¨è¯´ï¼Œç‰§é‡Žè¡¨ç¤ºï¼Œä»–æ˜¯å…³å¿ƒå†¯æ­£è™Žçš„äººæ�ƒé—®é¢˜è€Œæ�¥ï¼Œå¾�è¯¢å†¯æ­£è™Žæœ‰ä½•éœ€æ±‚ã€‚";
-		
-		String encodedText = Base64Coder.encodeString(originalText);
-		String decodedText = Base64Coder.decodeString(encodedText);
-		
-		String defaultEncoding = new java.io.OutputStreamWriter(new java.io.ByteArrayOutputStream()).getEncoding();
-		Assert.assertEquals(defaultEncoding, "Cp1252");
-		
-		System.out.println("Original Text: " + originalText);
-		System.out.println("Encoded Text:  " + encodedText);
-		System.out.println("Decoded Text:  " + decodedText);
-
-		Assert.assertNotEquals(originalText, decodedText);
-	}
-
 	@Test
 	public void englishTextRoundTrip() throws UnsupportedEncodingException {
-		String originalText = "A man, a plan, a canal, Panama!";
+		final String originalText = "A man, a plan, a canal, Panama!";
 		
-		String encodedText = Base64Coder.i18nEncode(originalText);
-		String decodedText = Base64Coder.i18nDecode(encodedText);
+		final String encodedText = Base64Coder.i18nEncode(originalText);
+		final String decodedText = Base64Coder.i18nDecode(encodedText);
 		
 		Assert.assertEquals(originalText, decodedText);
 	}
@@ -65,46 +41,46 @@ public class Base64TestCase {
 	
 	@Test
 	public void chineseTextRoundTrip() throws UnsupportedEncodingException {
-		String originalText = "å†¯æ­£è™Žæ˜ŸæœŸå››ï¼ˆ1æœˆ21æ—¥ï¼‰å¯¹BBCä¸­æ–‡éƒ¨è¯´ï¼Œç‰§é‡Žè¡¨ç¤ºï¼Œä»–æ˜¯å…³å¿ƒå†¯æ­£è™Žçš„äººæ�ƒé—®é¢˜è€Œæ�¥ï¼Œå¾�è¯¢å†¯æ­£è™Žæœ‰ä½•éœ€æ±‚ã€‚";
+		final String originalText = "å†¯æ­£è™Žæ˜ŸæœŸå››ï¼ˆ1æœˆ21æ—¥ï¼‰å¯¹BBCä¸­æ–‡éƒ¨è¯´ï¼Œç‰§é‡Žè¡¨ç¤ºï¼Œä»–æ˜¯å…³å¿ƒå†¯æ­£è™Žçš„äººæ�ƒé—®é¢˜è€Œæ�¥ï¼Œå¾�è¯¢å†¯æ­£è™Žæœ‰ä½•éœ€æ±‚ã€‚";
 		
-		String encodedText = Base64Coder.i18nEncode(originalText);
-		String decodedText = Base64Coder.i18nDecode(encodedText);
+		final String encodedText = Base64Coder.i18nEncode(originalText);
+		final String decodedText = Base64Coder.i18nDecode(encodedText);
 		
 		Assert.assertEquals(originalText, decodedText);
 	}
 
 	@Test
 	public void arabicTextRoundTrip() throws UnsupportedEncodingException {
-		String originalText = "Ù�ÙŠ Ù„ÙˆØ¨Ø§Ù†ØºÙˆ Ù�ÙŠ Ù…Ù†Ø§Ù�Ø³Ø§Øª Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø±Ø§Ø¨Ø¹Ø© Ù„Ù†Ù‡Ø§Ø¦ÙŠØ§Øª ÙƒØ£Ø³ Ø§Ù�Ø±ÙŠÙ‚ÙŠØ§ Ù„Ù„Ø§Ù…Ù… Ù„ÙƒØ±Ø© Ø§Ù„Ù‚Ø¯Ù… Ø§Ù„ØªÙŠ ØªØ³ØªØ¶ÙŠÙ�Ù‡Ø§ Ø§Ù†ØºÙˆÙ„Ø§.";
+		final String originalText = "Ù�ÙŠ Ù„ÙˆØ¨Ø§Ù†ØºÙˆ Ù�ÙŠ Ù…Ù†Ø§Ù�Ø³Ø§Øª Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ø§Ù„Ø±Ø§Ø¨Ø¹Ø© Ù„Ù†Ù‡Ø§Ø¦ÙŠØ§Øª ÙƒØ£Ø³ Ø§Ù�Ø±ÙŠÙ‚ÙŠØ§ Ù„Ù„Ø§Ù…Ù… Ù„ÙƒØ±Ø© Ø§Ù„Ù‚Ø¯Ù… Ø§Ù„ØªÙŠ ØªØ³ØªØ¶ÙŠÙ�Ù‡Ø§ Ø§Ù†ØºÙˆÙ„Ø§.";
 		
-		String encodedText = Base64Coder.i18nEncode(originalText);
-		String decodedText = Base64Coder.i18nDecode(encodedText);
+		final String encodedText = Base64Coder.i18nEncode(originalText);
+		final String decodedText = Base64Coder.i18nDecode(encodedText);
 		
 		Assert.assertEquals(originalText, decodedText);
 	}
 
 	@Test
 	public void emptyTextRoundTrip() throws UnsupportedEncodingException {
-		String originalText = "";
+		final String originalText = "";
 		
-		String encodedText = Base64Coder.i18nEncode(originalText);
-		String decodedText = Base64Coder.i18nDecode(encodedText);
+		final String encodedText = Base64Coder.i18nEncode(originalText);
+		final String decodedText = Base64Coder.i18nDecode(encodedText);
 		
 		Assert.assertEquals(originalText, decodedText);
 	}
 
 	@Test
 	public void nullTextRoundTrip() throws UnsupportedEncodingException {
-		String encodedText = Base64Coder.i18nEncode(null);
-		String decodedText = Base64Coder.i18nDecode(encodedText);
+		final String encodedText = Base64Coder.i18nEncode(null);
+		final String decodedText = Base64Coder.i18nDecode(encodedText);
 
 		Assert.assertNull(decodedText);
 	}
 
 	private String getRandomString(int maxLength) {
-		Random random = new Random();
+		final Random random = new Random();
 		
-		int length = random.nextInt(maxLength + 1);
+		final int length = random.nextInt(maxLength + 1);
 		
 		StringBuilder stringBuilder = new StringBuilder(length);
 		
@@ -119,10 +95,10 @@ public class Base64TestCase {
 	
 	@Test
 	public void randomStringRoundTrip() throws UnsupportedEncodingException {
-		String originalText = getRandomString(1000000);
+		final String originalText = getRandomString(1000000);
 		
-		String encodedText = Base64Coder.i18nEncode(originalText);
-		String decodedText = Base64Coder.i18nDecode(encodedText);
+		final String encodedText = Base64Coder.i18nEncode(originalText);
+		final String decodedText = Base64Coder.i18nDecode(encodedText);
 		
 		Assert.assertEquals(originalText, decodedText);
 	}

@@ -41,20 +41,21 @@ import org.junit.Test;
  * Tests for the CryptoUtils class. 
  */
 public class CryptoTests {
+	final static String PASSWORD = "PASSWORD";
+
 	@Test
 	public void roundTrip() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		final String plainText = "Robert Eric Terrell is my name.";
-		final String password = "PASSWORD";
 
-		Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(password);
-		Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password, VaultDocumentVersion.getLatestVaultDocumentVersion());
+		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD);
+		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion());
 		
-		for (int i = 0; i < 1000000; i++) {
-			String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
+		for (int i = 0; i < 1_000_000; i++) {
+			final String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 
 			Assert.assertNotEquals(plainText, cipherText);
-			
-			String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
+
+			final String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
 			Assert.assertEquals(plainText, decryptedText);
 		}
 	}
@@ -62,30 +63,28 @@ public class CryptoTests {
 	@Test
 	public void emptyStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		final String plainText = StringLiterals.EmptyString;
-		final String password = "PASSWORD";
 
-		Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(password);
-		Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password, VaultDocumentVersion.getLatestVaultDocumentVersion());
-		
-		String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
+		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD);
+		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion());
+
+		final String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 
 		Assert.assertNotEquals(plainText, cipherText);
-		
-		String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
+
+		final String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
 		Assert.assertEquals(plainText, decryptedText);
 	}
 
 	@Test
 	public void nullStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		final String plainText = null;
-		final String password = "PASSWORD";
 
-		Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(password);
-		Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password, VaultDocumentVersion.getLatestVaultDocumentVersion());
-		
-		String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
-		
-		String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
+		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD);
+		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion());
+
+		final String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
+
+		final String decryptedText = CryptoUtils.decryptString(decryptionCipher, cipherText);
 		Assert.assertEquals(StringLiterals.EmptyString, decryptedText);
 	}
 }

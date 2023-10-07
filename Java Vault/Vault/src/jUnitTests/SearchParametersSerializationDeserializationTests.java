@@ -20,6 +20,10 @@
 
 package jUnitTests;
 
+import commonCode.VaultDocumentVersion;
+import mainPackage.Globals;
+import mainPackage.MainApplicationWindow;
+import mainPackage.VaultDocument;
 import org.junit.Assert;
 import mainPackage.SearchParameters;
 
@@ -28,28 +32,35 @@ import java.util.List;
 
 import org.junit.Test;
 
-
 public class SearchParametersSerializationDeserializationTests {
 	private static final String searchText = "this is some wonderful and long search text";
 	
 	@Test
 	public void roundTrip() {
-		SearchParameters searchParameters = new SearchParameters();
+		Globals.setMainApplicationWindow(new MainApplicationWindow());
+
+		final VaultDocument vaultDocument = new VaultDocument();
+		vaultDocument.setVaultDocumentVersion(VaultDocumentVersion.getLatestVaultDocumentVersion());
+		vaultDocument.setPassword("PASSWORD");
+
+		Globals.setVaultDocument(vaultDocument);
+
+		final SearchParameters searchParameters = new SearchParameters();
 		searchParameters.setSearchText(searchText);
 		
-		List<SearchParameters> searchParametersList = new ArrayList<>();
+		final List<SearchParameters> searchParametersList = new ArrayList<>();
 		
 		for (int i = 0; i < 50; i++) {
 			searchParametersList.add(searchParameters);
 		}
 		
-		String serializedText = SearchParameters.serialize(searchParametersList);
+		final String serializedText = SearchParameters.serialize(searchParametersList);
 		
 		System.out.printf("Length: %d Text: %s%n", serializedText.length(), serializedText);
 
 		Assert.assertNotNull(serializedText);
 		
-		List<SearchParameters> deserializedList = SearchParameters.deserialize(serializedText);
+		final List<SearchParameters> deserializedList = SearchParameters.deserialize(serializedText);
 		
 		Assert.assertEquals(searchParametersList.size(), deserializedList.size());
 	}
