@@ -174,17 +174,17 @@ public class VaultDocumentImports {
 			boolean finished = false;
 			
 			do {
-				String filePath = fileDialog.open();
+				final String filePath = fileDialog.open();
 				
 				if (filePath != null && new File(filePath).exists()) {
-					StringWrapper password = new StringWrapper();
+					final StringWrapper password = new StringWrapper();
 					
 					try {
-						OutlineItem importedOutlineItem = VaultDocumentXML.parseVault3File(shell, filePath, password);
+						final OutlineItem importedOutlineItem = VaultDocumentXML.parseVault3File(filePath, password);
 						importedOutlineItem.setTitle(filePath);
 						Globals.getVaultTreeViewer().addItem(importedOutlineItem, OutlineItem.AddDirection.Below);
 					} catch (Throwable ex) {
-						boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, filePath);
+						final boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, filePath);
 
 						if (!processedException) {
 							throw ex;

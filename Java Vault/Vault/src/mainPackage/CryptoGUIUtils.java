@@ -24,7 +24,10 @@
 package mainPackage;
 
 import java.io.File;
+import java.sql.Connection;
 import javax.crypto.Cipher;
+
+import commonCode.Base64Coder;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import commonCode.VaultDocumentVersion;
 
@@ -33,20 +36,21 @@ import commonCode.VaultDocumentVersion;
  *
  */
 public class CryptoGUIUtils {
-	public static byte[] promptUserForPasswordAndDecrypt(String filePath, byte[] cipherText, StringWrapper password, VaultDocumentVersion vaultDocumentVersion) throws Exception {
+	public static byte[] promptUserForPasswordAndDecrypt(String filePath, byte[] cipherText, byte[] salt, byte[] iv, StringWrapper password, VaultDocumentVersion vaultDocumentVersion) throws Exception {
 		boolean decrypted = false;
 
 		byte[] plainText = null;
 		
 		do 
 		{
-			PasswordPromptDialog passwordPromptDialog = new PasswordPromptDialog(null, new File(filePath).getName());
+			final PasswordPromptDialog passwordPromptDialog = new PasswordPromptDialog(null, new File(filePath).getName());
 
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
 				Globals.getLogger().info("XML File is encrypted, Decrypting");
 
 				try {
-					final Cipher cipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(), vaultDocumentVersion);
+					final Cipher cipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(),
+							vaultDocumentVersion, salt, iv);
 
 					plainText = CryptoUtils.decrypt(cipher, cipherText);
 					decrypted = true;
@@ -68,7 +72,7 @@ public class CryptoGUIUtils {
 		return plainText;
 	}
 
-	public static void promptUserForPasswordAndDecrypt(String filePath, String cipherText, StringWrapper password, VaultDocumentVersion vaultDocumentVersion) throws Exception {
+	public static void promptUserForPasswordAndDecrypt(Connection db, String filePath, StringWrapper password, VaultDocumentVersion vaultDocumentVersion) throws Exception {
 		boolean decrypted = false;
 
 		do 
@@ -78,7 +82,19 @@ public class CryptoGUIUtils {
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
 
 				try {
-					Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(), vaultDocumentVersion);
+					final String cipherText = VaultDocument.getVaultDocumentInfo(db,StringLiterals.CipherText);
+					final String saltString = VaultDocument.getVaultDocumentInfo(db,StringLiterals.Salt);
+					final String ivString = VaultDocument.getVaultDocumentInfo(db,StringLiterals.IV);
+
+					byte[] salt = null, iv = null;
+
+					if (saltString != null && ivString != null) {
+						salt = Base64Coder.decode(saltString);
+						iv = Base64Coder.decode(ivString);
+					}
+
+					final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(),
+							vaultDocumentVersion, salt, iv);
 
 					CryptoUtils.decryptString(decryptionCipher, cipherText);
 					decrypted = true;

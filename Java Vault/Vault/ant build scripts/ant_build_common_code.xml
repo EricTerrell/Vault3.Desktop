@@ -18,26 +18,22 @@
   You should have received a copy of the GNU General Public License
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<project default="build_everything" name="Build Everything">
+<project default="create_jar" name="Create CommonCode jar">
     <!--ANT 1.7 is required                                        -->
-    <target name="build_everything">
-    	<ant antfile="ant_build_linux_gtk_64.xml"/>
-    	<ant antfile="ant_build_win64.xml"/>
-        <ant antfile="ant_build_cocoa_aarch64.xml"/>
-        <ant antfile="ant_build_cocoa_x86_64.xml"/>
-        <ant antfile="ant_build_common_code.xml"/>
-    </target>
-
-    <target name="build_windows">
-        <ant antfile="ant_build_win64.xml"/>
-    </target>
-
-    <target name="build_linux">
-        <ant antfile="ant_build_linux_gtk_64.xml"/>
-    </target>
-
-    <target name="build_osx">
-        <ant antfile="ant_build_cocoa_x86_64.xml"/>
-        <ant antfile="ant_build_cocoa_aarch64.xml"/>
+    <target name="create_jar">
+    	<property name="deployroot" location="c:/temp/Vault3" />
+        <property name="sourcerootCommonCode" location="../../../CommonCode" />
+    	<property name="projectroot" location="../../.." />
+    	<property name="dest.dir" location="${deployroot}/CommonCode" />
+    	<delete dir="${dest.dir}"/>
+    	<mkdir dir="${dest.dir}" />
+        <jar destfile="${dest.dir}/CommonCode.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Main-Class" value="mainPackage.MainApplicationWindow"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${sourcerootCommonCode}/bin"/>
+        </jar>
     </target>
 </project>

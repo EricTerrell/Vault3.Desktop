@@ -4,5 +4,6 @@
     <buildFile url="file://$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml">
       <customJdkName value="17" />
     </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_common_code.xml" />
   </component>
 </project>

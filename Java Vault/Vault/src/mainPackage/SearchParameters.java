@@ -95,15 +95,15 @@ public class SearchParameters implements Serializable {
 		this.searchMode = searchMode;
 	}
 	
-	public static String serialize(List<SearchParameters> searchParametersList) {
-		SearchParameters searchParameters = new SearchParameters();
+	public static String serialize(List<SearchParameters> searchParametersList, byte[] salt, byte[] iv) {
+		final SearchParameters searchParameters = new SearchParameters();
 		searchParameters.setSearchText("search text");
 
 		String serializedText = StringLiterals.EmptyString;
 		
 		try {
-			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+			final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			final ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
 	
 			objectOutputStream.writeObject(searchParametersList);
 			objectOutputStream.flush();
@@ -113,12 +113,13 @@ public class SearchParameters implements Serializable {
 			byte[] serializedBytes = byteArrayOutputStream.toByteArray();
 			
 			if (Globals.getVaultDocument().isEncrypted()) {
-				final Cipher cipher = CryptoUtils.createEncryptionCipher(Globals.getVaultDocument().getPassword());
+				final Cipher cipher = CryptoUtils.createEncryptionCipher(Globals.getVaultDocument().getPassword(),
+						Globals.getVaultDocument().getVaultDocumentVersion(), salt, iv);
 
 				serializedBytes = CryptoUtils.encrypt(cipher, serializedBytes);
 			}
 			
-			char[] results = Base64Coder.encode(serializedBytes);
+			final char[] results = Base64Coder.encode(serializedBytes);
 			
 			byteArrayOutputStream.close();
 			objectOutputStream.close();
@@ -133,7 +134,7 @@ public class SearchParameters implements Serializable {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static List<SearchParameters> deserialize(String serializedText) {
+	public static List<SearchParameters> deserialize(String serializedText, byte[] salt,  byte[] iv) {
 		List<SearchParameters> result = new ArrayList<>();
 
 		try
@@ -141,13 +142,14 @@ public class SearchParameters implements Serializable {
 			byte[] serializedBytes = Base64Coder.decode(serializedText);
 			
 			if (Globals.getVaultDocument().isEncrypted()) {
-				final Cipher cipher = CryptoUtils.createDecryptionCipher(Globals.getVaultDocument().getPassword(), Globals.getVaultDocument().getVaultDocumentVersion());
+				final Cipher cipher = CryptoUtils.createDecryptionCipher(Globals.getVaultDocument().getPassword(),
+						Globals.getVaultDocument().getVaultDocumentVersion(), salt, iv);
 
 				serializedBytes = CryptoUtils.decrypt(cipher, serializedBytes);
 			}
 			
-			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(serializedBytes);
-			ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+			final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(serializedBytes);
+			final ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
 			
 			result = (List<SearchParameters>) objectInputStream.readObject();
 		}

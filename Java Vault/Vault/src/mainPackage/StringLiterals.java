@@ -35,4 +35,7 @@ public class StringLiterals {
 	public static final String ExecutableFileType                       = "*.exe;*.EXE";
 	public static final String DisplayWebsiteToolTip                    = "Press the spacebar to display selected website without dismissing this dialog box.";
 	public static final String EmptyString                              = "";
+	public static final String CipherText                               = "Ciphertext";
+	public static final String Salt                                     = "salt";
+	public static final String IV                                       = "iv";
 }

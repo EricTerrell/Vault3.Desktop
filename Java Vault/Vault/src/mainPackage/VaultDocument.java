@@ -28,25 +28,26 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.widgets.Shell;
 import org.perf4j.LoggingStopWatch;
 
 import commonCode.Base64Coder;
@@ -60,6 +61,8 @@ public class VaultDocument {
 	private final static String XML_ENCODING = "utf-8";
 	
 	private final static String VAULT_FILE_TYPE = ".vl3";
+
+	private final static String DOCUMENT_VERSION = "DocumentVersion";
 
 	private OutlineItem content;
 
@@ -131,6 +134,14 @@ public class VaultDocument {
 	public void setVaultDocumentVersion(VaultDocumentVersion vaultDocumentVersion) {
 		this.vaultDocumentVersion = vaultDocumentVersion;
 	}
+
+	private VaultDocumentVersion vaultDocumentOriginalVersion = null;
+
+	public void setVaultDocumentOriginalVersion(VaultDocumentVersion vaultDocumentVersion) {
+		this.vaultDocumentOriginalVersion = vaultDocumentVersion;
+	}
+
+	public VaultDocumentVersion getVaultDocumentOriginalVersion() { return vaultDocumentOriginalVersion; }
 
 	private boolean isModified;
 	
@@ -262,7 +273,10 @@ public class VaultDocument {
 	private void encryptCleartextXmlToStream(ByteArrayOutputStream input, OutputStream outputStream) throws Exception {
 		Globals.getLogger().info("start");
 
-		final Cipher cipher = CryptoUtils.createEncryptionCipher(password);
+		final byte[] salt = CryptoUtils.createSalt();
+		final byte[] iv = CryptoUtils.createIV();
+
+		final Cipher cipher = CryptoUtils.createEncryptionCipher(password, getVaultDocumentVersion(), salt, iv);
 
 		final byte[] cipherText = CryptoUtils.encrypt(cipher, input.toByteArray());
 		
@@ -280,7 +294,13 @@ public class VaultDocument {
 	        xmlStreamWriter.writeAttribute(NativeDefaultHandler.VERSIONATTRIBUTENAME, VaultDocumentVersion.getLatestVaultDocumentVersion().toString());
 	        
 	        xmlStreamWriter.writeStartElement(NativeDefaultHandler.ENCRYPTEDITEMS);
-	        
+
+			final String saltString = new String(Base64Coder.encode(salt));
+			xmlStreamWriter.writeAttribute(NativeDefaultHandler.SALTATTRIBUTE, saltString);
+
+			final String ivString = new String(Base64Coder.encode(iv));
+			xmlStreamWriter.writeAttribute(NativeDefaultHandler.IVATTRIBUTE, ivString);
+
 	        int index = 0;
 
 			while (index < cipherText.length) {
@@ -387,31 +407,59 @@ public class VaultDocument {
 			return outlineItem1.getSortOrder() - outlineItem2.getSortOrder();
 		}
 	}
-	
-	public OutlineItem loadFromDatabase(Shell shell, String filePath, StringWrapper password) throws Exception {
+
+	public static String getDBURL(String filePath) {
+		return String.format("jdbc:sqlite:%s", filePath);
+	}
+
+	public VaultDocumentVersion getOriginalDocumentVersion(Connection db) throws SQLException {
+		final String dbVaultDocumentVersionString = getVaultDocumentInfo(db, DOCUMENT_VERSION);
+
+		return new VaultDocumentVersion(dbVaultDocumentVersionString);
+	}
+
+	private HashSet<String> getColumnNames(ResultSet resultSet) throws SQLException {
+		final HashSet<String> columnNames = new HashSet<>();
+		final ResultSetMetaData metadata = resultSet.getMetaData();
+
+		for (int i = 1; i <= metadata.getColumnCount(); i++) {
+			columnNames.add(metadata.getColumnName(i));
+		}
+
+		return columnNames;
+	}
+
+	public OutlineItem loadFromDatabase(Connection db, String filePath, StringWrapper password) throws Exception {
 		final LoggingStopWatch stopwatch = new LoggingStopWatch("VaultDocument.loadFromDatabase");
 
 		Globals.getLogger().info("Starting loadFromDatabase");
 		
 		final Map<Integer, ArrayList<OutlineItemWithIDs>> map = new HashMap<>();
 
-		final String dbURL = String.format("jdbc:sqlite:%s", filePath);
-
-		Globals.getLogger().info(String.format("About to open database: \"%s\"", dbURL));
-
-		try (final Connection db = DriverManager.getConnection(dbURL)) {
+		try {
 			final VaultDocumentVersion vaultDocumentVersion = verifyVaultDocumentVersion(db);
 
 			final boolean isEncrypted = databaseIsEncrypted(db);
 			
 			if (isEncrypted) {
-				final String cipherText = getVaultDocumentInfo(db, "Ciphertext");
-	
 				boolean decrypted = false;
 				
 				if (password.getValue() != null) {
 					try {
-						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
+						final String cipherText = getVaultDocumentInfo(db, StringLiterals.CipherText);
+						final String saltString = getVaultDocumentInfo(db,StringLiterals.Salt);
+						final String ivString = getVaultDocumentInfo(db,StringLiterals.IV);
+
+						byte[] salt = null, iv = null;
+
+						if (saltString != null && ivString != null) {
+							salt = Base64Coder.decode(saltString);
+							iv = Base64Coder.decode(ivString);
+						}
+
+						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(),
+								vaultDocumentVersion, salt, iv);
+
 						CryptoUtils.decryptString(decryptionCipher, cipherText);
 						decrypted = true;
 						setPassword(password.getValue());
@@ -423,63 +471,80 @@ public class VaultDocument {
 				}
 	
 				if (!decrypted) {
-					CryptoGUIUtils.promptUserForPasswordAndDecrypt(filePath, cipherText, password, vaultDocumentVersion);
+					CryptoGUIUtils.promptUserForPasswordAndDecrypt(db, filePath, password, vaultDocumentVersion);
 					setPassword(password.getValue());
 				}
 			}
 
 			Globals.setBusyCursor();
 
-			final boolean dbVersion1_2OrLater = vaultDocumentVersion.compareTo(new VaultDocumentVersion(1, 2)) >= 0;
-			
-			String columns;
-			
-			if (dbVersion1_2OrLater) {
-				columns = "ID, Title, Text, ParentID, SortOrder, Red, Green, Blue, PhotoPath, AllowScaling, FontList";
-			}
-			else {
-				columns = "ID, Title, Text, ParentID, SortOrder, Red, Green, Blue, PhotoPath, AllowScaling";
-			}
-				
-			final String select = String.format("SELECT %s FROM OutlineItem", columns);
-			
-			final PreparedStatement statement = db.prepareStatement(select);
-
-			Cipher decryptionCipher = null;
-			
-			if (isEncrypted) {
-				decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
-			}
-
+			final PreparedStatement statement = db.prepareStatement("SELECT * FROM OutlineItem");
 			final ResultSet resultSet = statement.executeQuery();
 
+			final HashSet<String> columnNames = getColumnNames(resultSet);
+
 			while (resultSet.next()) {
-				OutlineItemWithIDs outlineItem = new OutlineItemWithIDs();
+				final OutlineItemWithIDs outlineItem = new OutlineItemWithIDs();
 
-				outlineItem.setID(resultSet.getInt(1));
+				outlineItem.setID(resultSet.getInt("ID"));
 
-				outlineItem.setTitle(resultSet.getString(2));
-				outlineItem.setText(resultSet.getString(3));
-				
 				if (isEncrypted) {
-					outlineItem.setTitle(CryptoUtils.decryptString(decryptionCipher, outlineItem.getTitle()));
-					outlineItem.setText(CryptoUtils.decryptString(decryptionCipher, outlineItem.getText()));
+					{
+						byte[] salt = null;
+						byte[] iv = null;
+
+						if (columnNames.contains("TitleSalt") && columnNames.contains("TitleIV")) {
+							final String saltString = resultSet.getString("TitleSalt");
+							final String ivString = resultSet.getString("TitleIV");
+
+							salt = Base64Coder.decode(saltString);
+							iv = Base64Coder.decode(ivString);
+						}
+
+						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(),
+								vaultDocumentVersion, salt, iv);
+
+						outlineItem.setTitle(CryptoUtils.decryptString(decryptionCipher,
+								resultSet.getString("Title")));
+					}
+
+					{
+						byte[] salt = null;
+						byte[] iv = null;
+
+						if (columnNames.contains("TextSalt") && columnNames.contains("TextIV")) {
+							final String saltString = resultSet.getString("TextSalt");
+							final String ivString = resultSet.getString("TextIV");
+
+							salt = Base64Coder.decode(saltString);
+							iv = Base64Coder.decode(ivString);
+						}
+
+						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(),
+								vaultDocumentVersion, salt, iv);
+
+						outlineItem.setText(CryptoUtils.decryptString(decryptionCipher,
+								resultSet.getString("Text")));
+					}
+				} else {
+					outlineItem.setTitle(resultSet.getString("Title"));
+					outlineItem.setText(resultSet.getString("Text"));
 				}
 				
-				outlineItem.setParentID(resultSet.getInt(4));
-				outlineItem.setSortOrder(resultSet.getInt(5));
+				outlineItem.setParentID(resultSet.getInt("ParentID"));
+				outlineItem.setSortOrder(resultSet.getInt("SortOrder"));
 				
-				final RGB rgb = new RGB(resultSet.getInt(6), resultSet.getInt(7), resultSet.getInt(8));
+				final RGB rgb = new RGB(resultSet.getInt("Red"), resultSet.getInt("Green"), resultSet.getInt("Blue"));
 				outlineItem.setRGB(rgb);
 				
-				outlineItem.setPhotoPath(resultSet.getString(9));
-				outlineItem.setAllowScaling(resultSet.getInt(10) == 1);
+				outlineItem.setPhotoPath(resultSet.getString("PhotoPath"));
+				outlineItem.setAllowScaling(resultSet.getInt("AllowScaling") == 1);
 				
-				if (dbVersion1_2OrLater) {
+				if (columnNames.contains("FontList")) {
 					String fontListText = null;
 					
 					try {
-						fontListText = resultSet.getString(11);
+						fontListText = resultSet.getString("FontList");
 						
 						FontList fontList = FontList.deserialize(fontListText);
 						outlineItem.setFontList(fontList);
@@ -543,10 +608,10 @@ public class VaultDocument {
 	 * @param db
 	 * @throws Exception
 	 */
-	private VaultDocumentVersion verifyVaultDocumentVersion(Connection db) throws Exception {
+	private static VaultDocumentVersion verifyVaultDocumentVersion(Connection db) throws Exception {
 		final VaultDocumentVersion codeVaultDocumentVersion = VaultDocumentVersion.getLatestVaultDocumentVersion();
 		
-		final String dbVaultDocumentVersionString = getVaultDocumentInfo(db, "DocumentVersion");
+		final String dbVaultDocumentVersionString = getVaultDocumentInfo(db, DOCUMENT_VERSION);
 		final VaultDocumentVersion dbVaultDocumentVersion = new VaultDocumentVersion(dbVaultDocumentVersionString);
 		
 		if (dbVaultDocumentVersion.compareTo(codeVaultDocumentVersion) > 0) {
@@ -556,7 +621,7 @@ public class VaultDocument {
 		return dbVaultDocumentVersion;
 	}
 	
-	private static String getVaultDocumentInfo(Connection db, String name) throws SQLException {
+	public static String getVaultDocumentInfo(Connection db, String name) throws SQLException {
 		final LoggingStopWatch stopwatch = new LoggingStopWatch("VaultDocument.getVaultDocumentInfo");
 
 		String value = null;
@@ -580,13 +645,45 @@ public class VaultDocument {
 
 		return value.equals("1");
 	}
-	
+
+	private boolean warnAboutDocVersionUpgrade() {
+		final boolean upgrade = getVaultDocumentOriginalVersion() != null &&
+				getVaultDocumentOriginalVersion().compareTo(VaultDocumentVersion.getLatestVaultDocumentVersion()) < 0;
+
+		boolean okToWrite = true;
+
+		if (upgrade)
+		{
+			final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+
+			final String message = String.format("The current document is version %s. It will be saved as version %s.\r\n\r\nAfter saving, you will need to ensure that all Vault 3 apps that will open this document have been updated.\r\n\r\nContinue saving document?",
+					getVaultDocumentOriginalVersion(), getVaultDocumentVersion());
+
+			final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(),
+					StringLiterals.ProgramName, icon, message, MessageDialog.INFORMATION,
+					new String[] { "&Yes", "&No" }, 1);
+
+			final int userSelection = messageDialog.open();
+
+			okToWrite = userSelection == 0;
+		}
+
+		return okToWrite;
+	}
+
 	/**
-	 * Save the current Vault document as an SQLite database. Document version is "1.1" in this case.
+	 * Save the current Vault document as an SQLite database. Document version is always the latest version.
 	 * @param filePath path of document
 	 * @throws Throwable 
 	 */
 	public void saveAsSQLiteFile(String filePath) throws Throwable {
+		if (!warnAboutDocVersionUpgrade()) {
+			throw new VaultException("User chose to not upgrade document version.");
+		}
+
+		// Don't want to keep warning the user every time a save is done.
+		setVaultDocumentOriginalVersion(getVaultDocumentVersion());
+
 		final String tempSaveFilePath = filePath + ".$$$";
 
 		final File tempSaveFile = new File(tempSaveFilePath);
@@ -595,15 +692,11 @@ public class VaultDocument {
 			FileUtils.deleteFile(tempSaveFilePath);
 		}
 
-		Cipher encryptionCipher = null;
-		
-		if (getPassword() != null) {
-			encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword());
-		}
-		
 		final String dbURL = String.format("jdbc:sqlite:%s", tempSaveFile);
 
 		Globals.getLogger().info(String.format("About to open database: \"%s\"", tempSaveFile));
+
+        final boolean isEncrypted = getPassword() != null;
 
 		try (final Connection db = DriverManager.getConnection(dbURL)) {
 			final Statement statement = db.createStatement();
@@ -624,23 +717,39 @@ public class VaultDocument {
 
 			statement.execute(String.format("INSERT INTO VaultDocumentInfo(Name, Value) VALUES('DocumentVersion', '%s')", maxVersion));
 			statement.execute(String.format("INSERT INTO VaultDocumentInfo(Name, Value) VALUES('Encrypted', '%d')", password == null ? 0 : 1));
-		    
-		    if (encryptionCipher != null) {
-				final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO VaultDocumentInfo(Name, Value) VALUES(?, ?)");
-				insertStatement.setString(1, "Ciphertext");
-				
-				String plainText = getRandomPlainText();
-				String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
-				
-				insertStatement.setString(2, cipherText);
 
+			if (isEncrypted) {
+				// Save cipherText - later, when user tries to open a document, the password can be verified by attempting
+				// to decrypt the ciphertext.
+
+				final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO VaultDocumentInfo(Name, Value) VALUES(?, ?)");
+
+				final byte[] salt = CryptoUtils.createSalt();
+				final byte[] iv = CryptoUtils.createIV();
+
+				final Cipher encryptionCipher =
+						CryptoUtils.createEncryptionCipher(getPassword(), getVaultDocumentVersion(), salt, iv);
+
+				final String cipherText = CryptoUtils.encryptString(encryptionCipher, getRandomPlainText());
+
+				insertStatement.setString(1, StringLiterals.CipherText);
+				insertStatement.setString(2, cipherText);
 				insertStatement.execute();
+
+				insertStatement.setString(1, StringLiterals.Salt);
+				insertStatement.setString(2, new String(Base64Coder.encode(salt)));
+				insertStatement.execute();
+
+				insertStatement.setString(1, StringLiterals.IV);
+				insertStatement.setString(2, new String(Base64Coder.encode(iv)));
+				insertStatement.execute();
+
 				insertStatement.close();
-		    }
+			}
 
 		    createTable = 
 		    	"CREATE TABLE OutlineItem(" +
-		    	"ID INTEGER PRIMARY KEY, ParentID INTEGER, Title TEXT, Text TEXT, FontList TEXT," +
+		    	"ID INTEGER PRIMARY KEY, ParentID INTEGER, Title TEXT, TitleSalt TEXT, TitleIV Text, Text TEXT, TextSalt TEXT, TextIV TEXT, FontList TEXT," +
 		    	"Red INTEGER DEFAULT 0, Green INTEGER DEFAULT 0, Blue INTEGER DEFAULT 0," +
 		    	"PhotoPath TEXT, AllowScaling INTEGER DEFAULT 1, SortOrder INTEGER" +
 		    	")";
@@ -649,19 +758,51 @@ public class VaultDocument {
 
 		    OutlineItem rootOutlineItem = Globals.getVaultDocument().getContent();
 		    
-		    String title = StringLiterals.EmptyString, text = StringLiterals.EmptyString;
-		    
-			if (encryptionCipher != null) {
-				title = CryptoUtils.encryptString(encryptionCipher, title);
-				text = CryptoUtils.encryptString(encryptionCipher, text);
+		    String title = StringLiterals.EmptyString,
+					titleSalt = StringLiterals.EmptyString,
+					titleIV = StringLiterals.EmptyString,
+					text = StringLiterals.EmptyString,
+					textSalt = StringLiterals.EmptyString,
+					textIV = StringLiterals.EmptyString;
+
+			if (isEncrypted) {
+				{
+					final byte[] salt = CryptoUtils.createSalt();
+					titleSalt = new String(Base64Coder.encode(salt));
+
+					final byte[] iv = CryptoUtils.createIV();
+					titleIV = new String(Base64Coder.encode(iv));
+
+					final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
+							getVaultDocumentVersion(), salt, iv);
+
+					title = CryptoUtils.encryptString(encryptionCipher, title);
+				}
+
+				{
+					final byte[] salt = CryptoUtils.createSalt();
+					textSalt = new String(Base64Coder.encode(salt));
+
+					final byte[] iv = CryptoUtils.createIV();
+					textIV = new String(Base64Coder.encode(iv));
+
+					final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
+							getVaultDocumentVersion(), salt, iv);
+
+					text = CryptoUtils.encryptString(encryptionCipher, text);
+				}
 			}
 		    
 		    // Insert root OutlineItem.
-			PreparedStatement insertStatement = db.prepareStatement("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder) VALUES(?, ?, ?, ?)");
+			final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO OutlineItem(Title, TitleSalt, TitleIV, Text, TextSalt, TextIV, ParentID, SortOrder) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 			insertStatement.setString(1, title);
-			insertStatement.setString(2, text);
-			insertStatement.setInt(3, 0);
-			insertStatement.setInt(4, 0);
+			insertStatement.setString(2, titleSalt);
+			insertStatement.setString(3, titleIV);
+			insertStatement.setString(4, text);
+			insertStatement.setString(5, textSalt);
+			insertStatement.setString(6, textIV);
+			insertStatement.setInt(7, 0);
+			insertStatement.setInt(8, 0);
 
 			insertStatement.execute();
 			insertStatement.close();
@@ -675,7 +816,7 @@ public class VaultDocument {
 		    int sortOrder = 0;
 
 	    	for (OutlineItem childOutlineItem : rootOutlineItem.getChildren()) {
-		    	addToSQLiteDatabase(childOutlineItem, rootItemID, sortOrder++, db, encryptionCipher);
+		    	addToSQLiteDatabase(childOutlineItem, rootItemID, sortOrder++, db, isEncrypted);
 		    }
 		    
 		    final String createIndex = "CREATE INDEX ParentIDIndex ON OutlineItem(ParentID)";
@@ -699,7 +840,8 @@ public class VaultDocument {
 		final boolean renamed = tempSaveFile.renameTo(newFile);
 		
 		if (!renamed) {
-			String errorMessage = MessageFormat.format("Cannot rename {0} to {1}.", tempSaveFile.getPath(), newFile.getPath());
+			final String errorMessage = MessageFormat.format("Cannot rename {0} to {1}.",
+					tempSaveFile.getPath(), newFile.getPath());
 			throw new VaultException(errorMessage);
 		}
 		
@@ -714,23 +856,56 @@ public class VaultDocument {
 	}
 	
 	private void addToSQLiteDatabase(OutlineItem outlineItem, int parentID, int sortOrder, Connection db,
-									 Cipher encryptionCipher) throws SQLException, IllegalBlockSizeException,
-			BadPaddingException {
-		final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO OutlineItem(Title, Text, ParentID, SortOrder, FontList, Red, Green, Blue, PhotoPath, AllowScaling) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		
+									 boolean isEncrypted)
+			throws SQLException, IllegalBlockSizeException,
+			BadPaddingException, InvalidAlgorithmParameterException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
 		String title = outlineItem.getTitle();
 		String text = outlineItem.getText();
-		
-		if (encryptionCipher != null) {
-			title = CryptoUtils.encryptString(encryptionCipher, title);
-			text = CryptoUtils.encryptString(encryptionCipher, text);
+
+		String titleSalt = StringLiterals.EmptyString,
+				titleIV = StringLiterals.EmptyString,
+				textSalt = StringLiterals.EmptyString,
+				textIV = StringLiterals.EmptyString;
+
+		if (isEncrypted) {
+			{
+				final byte[] salt = CryptoUtils.createSalt();
+				titleSalt = new String(Base64Coder.encode(salt));
+
+				final byte[] iv = CryptoUtils.createIV();
+				titleIV = new String(Base64Coder.encode(iv));
+
+				final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
+						getVaultDocumentVersion(), salt, iv);
+
+				title = CryptoUtils.encryptString(encryptionCipher, title);
+			}
+
+			{
+				final byte[] salt = CryptoUtils.createSalt();
+				textSalt = new String(Base64Coder.encode(salt));
+
+				final byte[] iv = CryptoUtils.createIV();
+				textIV = new String(Base64Coder.encode(iv));
+
+				final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
+						getVaultDocumentVersion(), salt, iv);
+
+				text = CryptoUtils.encryptString(encryptionCipher, text);
+			}
 		}
-		
+
+		final PreparedStatement insertStatement = db.prepareStatement("INSERT INTO OutlineItem(Title, TitleSalt, TitleIV, Text, TextSalt, TextIV, ParentID, SortOrder, FontList, Red, Green, Blue, PhotoPath, AllowScaling) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
 		insertStatement.setString(1, title);
-		insertStatement.setString(2, text);
-		insertStatement.setInt(3, parentID);
-		insertStatement.setInt(4, sortOrder);
-		insertStatement.setString(5, outlineItem.getFontListString());
+		insertStatement.setString(2, titleSalt);
+		insertStatement.setString(3, titleIV);
+		insertStatement.setString(4, text);
+		insertStatement.setString(5, textSalt);
+		insertStatement.setString(6, textIV);
+		insertStatement.setInt(7, parentID);
+		insertStatement.setInt(8, sortOrder);
+		insertStatement.setString(9, outlineItem.getFontListString());
 
 		RGB rgb = new RGB(0, 0, 0);
 		
@@ -738,12 +913,12 @@ public class VaultDocument {
 			rgb = outlineItem.getRGB();
 		}
 		
-		insertStatement.setInt(6, rgb.red);
-		insertStatement.setInt(7, rgb.green);
-		insertStatement.setInt(8, rgb.blue);
+		insertStatement.setInt(10, rgb.red);
+		insertStatement.setInt(11, rgb.green);
+		insertStatement.setInt(12, rgb.blue);
 		
-		insertStatement.setString(9, outlineItem.getPhotoPath());
-		insertStatement.setInt(10, outlineItem.getAllowScaling() ? 1 : 0);
+		insertStatement.setString(13, outlineItem.getPhotoPath());
+		insertStatement.setInt(14, outlineItem.getAllowScaling() ? 1 : 0);
 		
 		insertStatement.execute();
 		insertStatement.close();
@@ -761,7 +936,7 @@ public class VaultDocument {
     	int newSortOrder = 0;
     	
     	for (OutlineItem childOutlineItem : outlineItem.getChildren()) {
-    		addToSQLiteDatabase(childOutlineItem, id, newSortOrder++, db, encryptionCipher);
+    		addToSQLiteDatabase(childOutlineItem, id, newSortOrder++, db, isEncrypted);
     	}
 	}
 

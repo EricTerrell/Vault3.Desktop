@@ -37,10 +37,10 @@ public class SyncDialog extends VaultDialog {
 	
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 		
-		String text = Globals.getVaultDocument().getIsModified() ? 
+		final String text = Globals.getVaultDocument().getIsModified() ?
 								"The current document was updated after you opened it. Open updated document and discard your changes?" 
 							: 
 								"The current document was updated after you opened it. Open updated document?";
@@ -58,7 +58,7 @@ public class SyncDialog extends VaultDialog {
 	protected void buttonPressed(int buttonId) {
 		switch(buttonId) {
 		case OPEN_ID: {
-			String filePath = Globals.getVaultDocument().getFilePath();
+			final String filePath = Globals.getVaultDocument().getFilePath();
 			
 			try {
 				VaultDocumentIO.fileOpen(getShell(), filePath);
@@ -66,7 +66,7 @@ public class SyncDialog extends VaultDialog {
 				Globals.getVaultTreeViewer().selectFirstItem();
 			}
 			catch (Throwable ex) {
-				boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, filePath);
+				final boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, filePath);
 
 				if (!processedException) {
 					String message = MessageFormat.format("Cannot open file {2}.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage(), filePath);
@@ -87,7 +87,7 @@ public class SyncDialog extends VaultDialog {
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, OPEN_ID, "&Open Updated Document", false);
-		Button cancelButton = createButton(parent, IDialogConstants.CANCEL_ID, "&Cancel", true);
+		final Button cancelButton = createButton(parent, IDialogConstants.CANCEL_ID, "&Cancel", true);
 
 		cancelButton.forceFocus();
 	}

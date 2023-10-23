@@ -36,16 +36,16 @@ public class DatabaseVersionTooHigh {
 		boolean displayedMessaging = false;
 		
 		if (ex instanceof VaultException) {
-			VaultException vaultException = (VaultException) ex;
+			final VaultException vaultException = (VaultException) ex;
 			
 			if (vaultException.getExceptionCode() == VaultException.ExceptionCode.DatabaseVersionTooHigh) {
-				String message = MessageFormat.format("You must upgrade to the latest version of Vault 3 in order to open {0}.", filePath);
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+				final String message = MessageFormat.format("You must upgrade to the latest version of Vault 3 in order to open {0}.", filePath);
+				final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 				messageDialog.open();
 
 				// Allow user to download the latest version of Vault 3.
 				try {
-					SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(Globals.getMainApplicationWindow().getShell());
+					final SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(Globals.getMainApplicationWindow().getShell());
 					softwareUpdatesDialog.open();
 				}
 				catch (Throwable ex2) {

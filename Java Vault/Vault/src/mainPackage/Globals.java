@@ -227,8 +227,24 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.CipherAlgorithm, "AES");
 		preferenceStore.setDefault(PreferenceKeys.KeyLength, 128);
 		preferenceStore.setDefault(PreferenceKeys.KeyAlgorithm1_1, "AES");
+		preferenceStore.setDefault(PreferenceKeys.KeyAlgorithm1_3, "PBKDF2WithHmacSHA256");
+		preferenceStore.setDefault(PreferenceKeys.KeyAlgorithm1_3_Short, "AES");
 		preferenceStore.setDefault(PreferenceKeys.CipherAlgorithm1_1, "AES");
+		preferenceStore.setDefault(PreferenceKeys.CipherAlgorithm1_3, "AES/CBC/PKCS5Padding");
+
 		preferenceStore.setDefault(PreferenceKeys.KeyLength1_1, 128);
+		preferenceStore.setDefault(PreferenceKeys.KeyLength1_3, 256);
+
+		// Use the largest value that users can tolerate. Desktop version will re-encrypt everything when any changes
+		// are saved. OWASP recommends 600,000 (!)
+		// https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2
+		preferenceStore.setDefault(PreferenceKeys.KeyIterations, 1_000);
+
+		preferenceStore.setDefault(PreferenceKeys.SaltLength, 16);
+
+		// IV length must equal AES block size
+		preferenceStore.setDefault(PreferenceKeys.IVLength, 16);
+
 		preferenceStore.setDefault(PreferenceKeys.SplitMovePixels, 10);
 		preferenceStore.setDefault(PreferenceKeys.URLRegex, "((www|http|https)(\\W+\\S+[^).,:;?\\]\\} \\r\\n$]+))|(file:///[\\S]+)"); // From Sean Harrop, "Matching urls in free text", regexlib.com
 		preferenceStore.setDefault(PreferenceKeys.LoadPhotosFromOriginalLocations, true);

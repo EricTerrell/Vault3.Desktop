@@ -1151,12 +1151,12 @@ public class MainApplicationWindow extends ApplicationWindow {
 		if (alreadyRunningMessageBoxNestingDepth == 0 && Globals.getPreferenceStore().getBoolean(PreferenceKeys.WarnAboutSingleInstance)) {
 			alreadyRunningMessageBoxNestingDepth++;
 			
-			Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-			
-			String message = MessageFormat.format("{0} is already running\r\n\r\nTo suppress this message, select the Options / Settings menu item and go to the Instances tab.", StringLiterals.ProgramName);
-			MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.INFORMATION, new String[] { "&OK" }, 0);
+			final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+
+			final String message = MessageFormat.format("{0} is already running\r\n\r\nTo suppress this message, select the Options / Settings menu item and go to the Instances tab.", StringLiterals.ProgramName);
+			final MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.INFORMATION, new String[] { "&OK" }, 0);
 			messageDialog.open();
-			
+
 			alreadyRunningMessageBoxNestingDepth--;
 		}
 		

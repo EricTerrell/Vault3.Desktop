@@ -54,6 +54,10 @@ These scripts will create the folders that you can distribute.
 4. The scripts create the deployment folders, and automatically compress them as .zip files.
 5. Distribute the deployment .zip files.
 
+# Encryption
+
+Password-protected Vault 3 documents are encrypted with the AES (Rijndael) algorithm in CBC mode, using 256-bit keys.
+
 # License
 
 [`GPL3`](https://www.gnu.org/licenses/gpl-3.0.en.html)

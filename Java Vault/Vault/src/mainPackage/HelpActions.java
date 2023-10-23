@@ -135,7 +135,7 @@ public class HelpActions {
 		}
 		
 		public SupportAction() {
-			super(MessageFormat.format("&Donate", StringLiterals.ProgramName));
+			super("&Donate");
 			setId(HelpUtils.helpIDFromClass(this));
 		}
 		

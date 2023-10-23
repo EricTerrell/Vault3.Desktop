@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java" afterDir="false" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="updates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,13 @@
   <component name="DefaultGradleProjectSettings">
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -54,12 +62,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/sqlite-jdbc/sqlite-jdbc-3.43.0.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eric Terrell/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts/ant_build_common_code.xml&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;copyright.profiles&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -71,10 +79,11 @@
       <recent name="C:\development\Vault3.Desktop\Java Vault\Vault\Help" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="jUnitTests" />
       <recent name="mainPackage" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.jUnitTests in Vault">
+  <component name="RunManager" selected="JUnit.tests in Vault">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -167,13 +176,30 @@
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.CryptoTests" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CryptoTests.fixedPasswordDoesNotProduceIdenticalCiphertext" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
+      <option name="METHOD_NAME" value="fixedPasswordDoesNotProduceIdenticalCiphertext" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -183,12 +209,12 @@
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.CryptoTests" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
       <option name="METHOD_NAME" value="roundTrip" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -196,17 +222,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchParametersSerializationDeserializationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CryptoTests.testPasswordSaltIV" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
-      <option name="MAIN_CLASS_NAME" value="jUnitTests.SearchParametersSerializationDeserializationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
+      <option name="METHOD_NAME" value="testPasswordSaltIV" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -219,30 +246,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jUnitTests in CommonCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="tests in CommonCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CommonCode" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="PACKAGE_NAME" value="tests" />
       <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="jUnitTests in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="tests in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="PACKAGE_NAME" value="tests" />
       <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -260,19 +287,20 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
+      <item itemvalue="JUnit.tests in CommonCode" />
       <item itemvalue="JUnit.CryptoTests" />
+      <item itemvalue="JUnit.CryptoTests.fixedPasswordDoesNotProduceIdenticalCiphertext" />
+      <item itemvalue="JUnit.CryptoTests.testPasswordSaltIV" />
       <item itemvalue="JUnit.CryptoTests.roundTrip" />
-      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
-      <item itemvalue="JUnit.jUnitTests in CommonCode" />
-      <item itemvalue="JUnit.jUnitTests in Vault" />
+      <item itemvalue="JUnit.tests in Vault" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.jUnitTests in Vault" />
-        <item itemvalue="JUnit.CryptoTests.roundTrip" />
+        <item itemvalue="JUnit.tests in Vault" />
+        <item itemvalue="JUnit.tests in CommonCode" />
         <item itemvalue="JUnit.CryptoTests" />
-        <item itemvalue="JUnit.jUnitTests in CommonCode" />
-        <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
+        <item itemvalue="JUnit.CryptoTests.fixedPasswordDoesNotProduceIdenticalCiphertext" />
+        <item itemvalue="JUnit.CryptoTests.testPasswordSaltIV" />
       </list>
     </recent_temporary>
   </component>
@@ -662,7 +690,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -676,12 +704,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.70&#10;&#10;Bug Fix: main window is no longer drawn, hidden, and moved when app is launched." />
-    <MESSAGE value="Cleanup" />
-    <MESSAGE value="Added missing &quot;.jar&quot; in .classpath" />
-    <MESSAGE value="Toolbar now has grey background again." />
-    <MESSAGE value="cleanup" />
-    <MESSAGE value="Bug Fix: On Linux (Mint) password prompt dialog was missing the title. Setting shell to null fixed it." />
     <MESSAGE value="Linux .classpath" />
     <MESSAGE value="Added logging. Investigating why app doesn't come up maximized after being maximized and closed and re-opened." />
     <MESSAGE value="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor." />
@@ -701,195 +723,241 @@
     <MESSAGE value="Version 0.79&#10;&#10;Added copyright notice to ant build scripts.&#10;No longer build aarch64 version (native libraries are not yet available)" />
     <MESSAGE value="Version 0.79&#10;&#10;Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX &quot;aarch64&quot; version." />
     <MESSAGE value="Fixed unit tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed unit tests." />
+    <MESSAGE value="Version 0.80&#10;Document Version 1.3&#10;&#10;Improved encryption: 256-bit keys, CBC mode, improved key creation." />
+    <MESSAGE value="Updated example.vl3 to version 1.3." />
+    <MESSAGE value="Bug Fix:&#10;&#10;File / New yielded a Vault 3 document of version &quot;1.0&quot;. In this case the ciphertext was not stored properly, and the password validation failed." />
+    <MESSAGE value="Bug Fix:&#10;&#10;Load a version 1.2 document. Now every time the document is saved, user gets a warning about upgrading the file." />
+    <MESSAGE value="Code inspection updates." />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
           <line>73</line>
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
           <line>145</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
           <line>117</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
           <line>126</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
           <line>77</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
           <line>89</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentImports.java</url>
           <line>71</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
-          <line>48</line>
+          <line>45</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
-          <line>110</line>
+          <line>111</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentImports.java</url>
-          <line>182</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
           <line>247</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentIO.java</url>
-          <line>43</line>
+          <line>45</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
           <line>155</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
           <line>147</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
           <line>152</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
           <line>241</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDevice.java</url>
           <line>136</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileSystemImport.java</url>
           <line>82</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
           <line>171</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java</url>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/tests/FontTests.java</url>
           <line>56</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/CommonCode/src/jUnitTests/FontTests.java</url>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/tests/FontTests.java</url>
           <line>54</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PDFExport.java</url>
           <line>197</line>
           <option name="timeStamp" value="104" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
           <line>75</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
           <line>69</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
           <line>102</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <condition expression="string.contains(&quot;hello&quot;)" language="JAVA" />
           <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
           <line>1693</line>
           <option name="timeStamp" value="125" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
           <line>1590</line>
           <option name="timeStamp" value="126" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
           <line>1584</line>
           <option name="timeStamp" value="127" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
           <line>1578</line>
           <option name="timeStamp" value="128" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
           <line>165</line>
           <option name="timeStamp" value="136" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
           <line>170</line>
           <option name="timeStamp" value="143" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
-          <line>529</line>
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
-          <line>391</line>
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
-          <line>430</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>47</line>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>44</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>41</line>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>38</line>
           <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/CryptoTests.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoUtils.java</url>
+          <line>181</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoUtils.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/CryptoTests.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NativeDefaultHandler.java</url>
+          <line>227</line>
+          <option name="timeStamp" value="181" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -908,6 +976,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Vault3_Desktop$Vault_3.ic" NAME="Vault 3 Coverage Results" MODIFIED="1697770729027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Vault3_Desktop$CodePointStringTests.ic" NAME="CodePointStringTests Coverage Results" MODIFIED="1647628088244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>jUnitTests.*</FILTER>
     </SUITE>

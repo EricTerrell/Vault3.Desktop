@@ -84,9 +84,10 @@ import java.text.MessageFormat;
  * 0.78				1.2				 Now use version Eclipse v4.29 dependencies. File references for ant scripts auto-generated. Made an abortive attempt to add an
  * 									 OSX "aarch64" version. Problem: sqlite4 component doesn't support aarch64.
  * 0.79				1.2				 Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX "aarch64" version.
+ * 0.80				1.3				 Cryptography updates: 256-bit keys, CBC mode, improved key generation.
  */
 public class Version {
-	private static final float versionNumber = 0.79f;
+	private static final float versionNumber = 0.80f;
 	private static final int copyrightYear = 2023;
 
 	public static float getVersionNumber() {

@@ -26,6 +26,7 @@ public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
 	public static final VaultDocumentVersion VERSION_1_0 = new VaultDocumentVersion(1, 0);
 	public static final VaultDocumentVersion VERSION_1_1 = new VaultDocumentVersion(1, 1);
 	public static final VaultDocumentVersion VERSION_1_2 = new VaultDocumentVersion(1, 2);
+	public static final VaultDocumentVersion VERSION_1_3 = new VaultDocumentVersion(1, 3);
 
 	public VaultDocumentVersion() {
 		majorVersion = 1;
@@ -50,18 +51,10 @@ public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
 		return majorVersion;
 	}
 
-	public void setMajorVersion(int majorVersion) {
-		this.majorVersion = majorVersion;
-	}
-	
 	private int minorVersion;
 
 	public int getMinorVersion() {
 		return minorVersion;
-	}
-
-	public void setMinorVersion(int minorVersion) {
-		this.minorVersion = minorVersion;
 	}
 
 	/**
@@ -70,7 +63,7 @@ public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
 	 * Latest Vault 3 document version
 	 */
 	public static VaultDocumentVersion getLatestVaultDocumentVersion() {
-		return VERSION_1_2;
+		return VERSION_1_3;
 	}
 	
 	@Override
@@ -80,7 +73,7 @@ public class VaultDocumentVersion implements Comparable<VaultDocumentVersion> {
 
 	@Override
 	public int compareTo(VaultDocumentVersion otherObject) {
-		int result = 0;
+		int result;
 
 		if (getMajorVersion() != otherObject.getMajorVersion()) {
 			result = getMajorVersion() - otherObject.getMajorVersion();

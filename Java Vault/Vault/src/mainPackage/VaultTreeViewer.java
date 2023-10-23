@@ -24,6 +24,7 @@ import java.util.*;
 import java.util.List;
 
 import commonCode.IPlatform;
+import commonCode.VaultDocumentVersion;
 import mainPackage.OutlineItem.AddDirection;
 
 import org.eclipse.jface.action.MenuManager;
@@ -892,6 +893,8 @@ public class VaultTreeViewer extends TreeViewer {
 	 */
 	public void fileNew() {
 		VaultDocument vaultDocument = new VaultDocument();
+		vaultDocument.setVaultDocumentVersion(VaultDocumentVersion.getLatestVaultDocumentVersion());
+
 		Globals.setVaultDocument(vaultDocument);
 		load(Globals.getVaultDocument().getContent());
 	}

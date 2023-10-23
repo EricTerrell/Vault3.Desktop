@@ -50,9 +50,15 @@ public class NativeDefaultHandler extends DefaultHandler {
 		
 		return result;
 	}
-	
+
 	private boolean isEncrypted = false;
-	
+
+	private byte[] salt;
+	private byte[] iv;
+
+	public byte[] getSalt() { return salt; }
+	public byte[] getIV() { return iv; }
+
 	public boolean getIsEncrypted() {
 		return isEncrypted;
 	}
@@ -82,7 +88,10 @@ public class NativeDefaultHandler extends DefaultHandler {
 	public final static String VERSIONATTRIBUTENAME       = "version";
 	public final static String ENCRYPTEDITEMS             = "EncryptedItems";
 	public final static String ENCRYPTEDITEM              = "EncryptedItem";
-	
+
+	public final static String SALTATTRIBUTE			  = "salt";
+	public final static String IVATTRIBUTE				  = "iv";
+
 	public final static String TRUEVALUE                  = "true";
 	public final static String FALSEVALUE                 = "false";
 
@@ -215,6 +224,19 @@ public class NativeDefaultHandler extends DefaultHandler {
 				break;
 			case ENCRYPTEDITEMS:
 				isEncrypted = true;
+
+				final String saltString = attributes.getValue(SALTATTRIBUTE);
+
+				if (saltString != null) {
+					salt = Base64Coder.decode(saltString);
+				}
+
+				final String ivString = attributes.getValue(IVATTRIBUTE);
+
+				if (ivString != null) {
+					iv = Base64Coder.decode(ivString);
+				}
+				
 				encryptedBytes = new ByteArrayOutputStream();
 				break;
 		}

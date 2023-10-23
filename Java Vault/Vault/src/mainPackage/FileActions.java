@@ -283,7 +283,8 @@ public class FileActions {
     public static class ImportFromVault3FileAction extends Action implements ISelectionChangedListener {
         @Override
         public String getDescription() {
-            return MessageFormat.format("Insert an XML file previously exported from {0} into the current {0} document", StringLiterals.ProgramName, StringLiterals.ProgramFileTypeWildcarded, StringLiterals.XMLFileTypeWildcarded);
+            return MessageFormat.format("Insert an XML file previously exported from {0} into the current {0} document",
+                    StringLiterals.ProgramName);
         }
 
         public ImportFromVault3FileAction() {

@@ -31,21 +31,18 @@ import javax.crypto.Cipher;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.eclipse.swt.widgets.Shell;
-
 import commonCode.VaultDocumentVersion;
 import commonCode.VaultException;
 
 public class VaultDocumentXML {
 	/**
 	 * Read the specified Vault 3 file. Prompt the user for the password and decrypt the file if necessary.
-	 * @param shell shell
 	 * @param filePath path of Vault 3 file
 	 * @param password the password entered by the user
 	 * @return an OutlineItem containing the entire Vault 3 file's contents
 	 * @throws Exception
 	 */
-	public static OutlineItem parseVault3File(Shell shell, String filePath, StringWrapper password) throws Exception {
+	public static OutlineItem parseVault3File(String filePath, StringWrapper password) throws Exception {
 		OutlineItem outlineItem = null;
 		
 		Globals.getLogger().info("Starting SAX parsing");
@@ -75,15 +72,19 @@ public class VaultDocumentXML {
 			}
 			
 			if (nativeDefaultHandler.getIsEncrypted()) {
-				final Cipher cipher = CryptoUtils.createDecryptionCipher(password.getValue(), vaultDocumentVersion);
-
 				byte[] plainText = null;
 				byte[] cipherText = nativeDefaultHandler.getCipherText();
-				
+
+				final byte[] salt = nativeDefaultHandler.getSalt();
+				final byte[] iv = nativeDefaultHandler.getIV();
+
 				boolean decrypted = false;
 				
-				if (password != null) {
+				if (password.getValue() != null) {
 					try {
+						final Cipher cipher = CryptoUtils.createDecryptionCipher(password.getValue(),
+								vaultDocumentVersion, salt, iv);
+
 						plainText = CryptoUtils.decrypt(cipher, cipherText);
 						decrypted = true;
 					}
@@ -94,7 +95,7 @@ public class VaultDocumentXML {
 				}
 
 				if (!decrypted) {
-					plainText = CryptoGUIUtils.promptUserForPasswordAndDecrypt(filePath, cipherText, password, vaultDocumentVersion);
+					plainText = CryptoGUIUtils.promptUserForPasswordAndDecrypt(filePath, cipherText, salt, iv, password, vaultDocumentVersion);
 				}
 				
 				final String unicodeCharset = "UTF-8";

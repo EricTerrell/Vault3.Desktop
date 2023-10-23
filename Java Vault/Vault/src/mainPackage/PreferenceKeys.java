@@ -71,9 +71,16 @@ public class PreferenceKeys {
 	public static final String SecureRandomAlgorithm            = "SecureRandomAlgorithm";
 	public static final String CipherAlgorithm                  = "CipherAlgorithm";
 	public static final String CipherAlgorithm1_1               = "CipherAlgorithm1_1";
+	public static final String CipherAlgorithm1_3               = "CipherAlgorithm1_3";
 	public static final String KeyLength                        = "KeyLength";
 	public static final String KeyLength1_1                     = "KeyLength1_1";
+	public static final String KeyLength1_3                     = "KeyLength1_3";
 	public static final String KeyAlgorithm1_1                  = "KeyAlgorithm1_1";
+	public static final String KeyAlgorithm1_3                  = "KeyAlgorithm1_3";
+	public static final String KeyAlgorithm1_3_Short			= "KeyAlgorithm1_3_Short";
+	public static final String KeyIterations                    = "KeyIterations";
+	public static final String SaltLength                       = "SaltLength";
+	public static final String IVLength							= "IVLength";
 	public static final String SplitMovePixels                  = "SplitMovePixels";
 	public static final String URLRegex                         = "URLRegex";
 	public static final String AcceptLicenseTerms               = "AcceptLicenseTerms";

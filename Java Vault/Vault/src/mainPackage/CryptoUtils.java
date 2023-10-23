@@ -31,12 +31,9 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
+import javax.crypto.*;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import commonCode.Base64Coder;
@@ -48,7 +45,7 @@ import commonCode.VaultDocumentVersion;
  */
 public class CryptoUtils {
 	private static final int minPasswordLength = 4;
-	
+
 	public static int getMinPasswordLength() {
 		return minPasswordLength;
 	}
@@ -62,15 +59,15 @@ public class CryptoUtils {
 	}
 	
 	private static SecretKey createSecretKeyVaultDocumentVersion_1_0(String password) throws NoSuchAlgorithmException {
-		byte[] passwordMessageDigest = getPasswordMessageDigestVaultDocument_1_0(password);
+		final byte[] passwordMessageDigest = getPasswordMessageDigestVaultDocument_1_0(password);
 
-        SecureRandom secureRandom = SecureRandom.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.SecureRandomAlgorithm));
+        final SecureRandom secureRandom = SecureRandom.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.SecureRandomAlgorithm));
         secureRandom.setSeed(passwordMessageDigest);
 		
-        KeyGenerator keyGenerator = KeyGenerator.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm));
+        final KeyGenerator keyGenerator = KeyGenerator.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm));
         keyGenerator.init(Globals.getPreferenceStore().getInt(PreferenceKeys.KeyLength), secureRandom);
         
-        SecretKey secretKey = keyGenerator.generateKey();
+        final SecretKey secretKey = keyGenerator.generateKey();
         
         Globals.getLogger().info(String.format("Cipher Algorithm: %s, Secret key length: %d bits", keyGenerator.getAlgorithm(), secretKey.getEncoded().length * 8));
         
@@ -107,25 +104,58 @@ public class CryptoUtils {
 		return new SecretKeySpec(passwordByteArray, keyAlgorithm);
 	}
 
-	/**
-	 * Encrypt the specified plainText using the specified password. Encryption is always done for the latest document version.
-	 * @param cipher encryption cipher
-	 * @param plainText plaintext
-	 * @return
-	 * @throws NoSuchAlgorithmException
-	 * @throws NoSuchPaddingException
-	 * @throws InvalidKeySpecException
-	 * @throws InvalidKeyException
-	 * @throws IllegalBlockSizeException
-	 * @throws BadPaddingException
-	 * @throws InvalidAlgorithmParameterException
-	 * @throws UnsupportedEncodingException 
-	 */
+	public static byte[] randomBytes(int nBytes) {
+		final byte[] result = new byte[nBytes];
+		new SecureRandom().nextBytes(result);
+
+		return result;
+	}
+
+	public static byte[] createSalt() {
+		return randomBytes(Globals.getPreferenceStore().getInt(PreferenceKeys.SaltLength));
+	}
+
+	public static byte[] createIV() {
+		return randomBytes(Globals.getPreferenceStore().getInt(PreferenceKeys.IVLength));
+	}
+
+	private static SecretKey createSecretKeyVaultDocumentVersion_1_3(String password, byte[] salt)
+			throws InvalidKeySpecException, NoSuchAlgorithmException {
+		final int keyIterations = Globals.getPreferenceStore().getInt(PreferenceKeys.KeyIterations);
+		final int keyLength = Globals.getPreferenceStore().getInt(PreferenceKeys.KeyLength1_3);
+
+		final PBEKeySpec pbeKeySpec = new PBEKeySpec(password.toCharArray(), salt, keyIterations, keyLength);
+
+		final String keyAlgorithm = Globals.getPreferenceStore().getString(PreferenceKeys.KeyAlgorithm1_3);
+
+		final SecretKey pbeKey = SecretKeyFactory
+				.getInstance(keyAlgorithm)
+				.generateSecret(pbeKeySpec);
+
+		final String keyAlgorithmShort = Globals.getPreferenceStore().getString(PreferenceKeys.KeyAlgorithm1_3_Short);
+
+		return new SecretKeySpec(pbeKey.getEncoded(), keyAlgorithmShort);
+	}
+
+		/**
+         * Encrypt the specified plainText using the specified password. Encryption is always done for the latest document version.
+         * @param cipher encryption cipher
+         * @param plainText plaintext
+         * @return
+         * @throws NoSuchAlgorithmException
+         * @throws NoSuchPaddingException
+         * @throws InvalidKeySpecException
+         * @throws InvalidKeyException
+         * @throws IllegalBlockSizeException
+         * @throws BadPaddingException
+         * @throws InvalidAlgorithmParameterException
+         * @throws UnsupportedEncodingException
+         */
 	public static byte[] encrypt(Cipher cipher, byte[] plainText) throws IllegalBlockSizeException,
 			BadPaddingException {
 		Globals.getLogger().info(String.format("encrypt: cipher algorithm: %s", cipher.getAlgorithm()));
 		
-		byte[] cipherText = cipher.doFinal(plainText);
+		final byte[] cipherText = cipher.doFinal(plainText);
 		
 		Globals.getLogger().info("finished encryption");
 		
@@ -135,39 +165,64 @@ public class CryptoUtils {
 	public static byte[] decrypt(Cipher cipher, byte[] cipherText) throws IllegalBlockSizeException, BadPaddingException {
 		Globals.getLogger().info(String.format("decrypt: cipher algorithm: %s", cipher.getAlgorithm()));
 
-		byte[] plainText = cipher.doFinal(cipherText);
+		final byte[] plainText = cipher.doFinal(cipherText);
 
 		Globals.getLogger().info("finished decryption");
 		
 		return plainText;
 	}
 
-	public static Cipher createEncryptionCipher(String password) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
-		final SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
-		
-		final Cipher cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
+	public static Cipher createEncryptionCipher(String password, VaultDocumentVersion vaultDocumentVersion,
+												byte[] salt, byte[] iv) throws
+			InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeySpecException,
+			InvalidAlgorithmParameterException {
 
-		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-		
+		Cipher cipher;
+
+		if (vaultDocumentVersion.compareTo(VaultDocumentVersion.VERSION_1_3) == 0) {
+			final SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_3(password, salt);
+
+			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_3));
+
+			cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(iv));
+		} else {
+			final SecretKey secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
+
+			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
+
+			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+		}
+
 		return cipher;
 	}
 	
-	public static Cipher createDecryptionCipher(String password, VaultDocumentVersion vaultDocumentVersion) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
+	public static Cipher createDecryptionCipher(String password, VaultDocumentVersion vaultDocumentVersion,
+												byte[] salt, byte[] iv) throws
+			InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeySpecException, InvalidAlgorithmParameterException {
 		SecretKey secretKey;
 		Cipher cipher;
 
-		if (vaultDocumentVersion.compareTo(VaultDocumentVersion.VERSION_1_0) == 0) {
+		if (vaultDocumentVersion.compareTo(VaultDocumentVersion.VERSION_1_3) == 0) {
+			secretKey = createSecretKeyVaultDocumentVersion_1_3(password, salt);
+
+			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_3));
+
+			cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iv));
+		}
+		else if (vaultDocumentVersion.compareTo(VaultDocumentVersion.VERSION_1_0) == 0) {
 			secretKey = createSecretKeyVaultDocumentVersion_1_0(password);
 
 			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm));
+
+			cipher.init(Cipher.DECRYPT_MODE, secretKey);
 		} else {
 			secretKey = createSecretKeyVaultDocumentVersion_1_1(password);
 
 			cipher = Cipher.getInstance(Globals.getPreferenceStore().getString(PreferenceKeys.CipherAlgorithm1_1));
+
+			cipher.init(Cipher.DECRYPT_MODE, secretKey);
 		}
 
-		cipher.init(Cipher.DECRYPT_MODE, secretKey);
-		
 		return cipher;
 	}
 	
@@ -177,19 +232,20 @@ public class CryptoUtils {
 			plainText = StringLiterals.EmptyString;
 		}
 		
-		byte[] plainTextBytes = plainText.getBytes(StandardCharsets.UTF_8);
+		final byte[] plainTextBytes = plainText.getBytes(StandardCharsets.UTF_8);
 		
-		byte[] cipherTextBytes = cipher.doFinal(plainTextBytes);
+		final byte[] cipherTextBytes = cipher.doFinal(plainTextBytes);
 		
-		char[] cipherTextArray = Base64Coder.encode(cipherTextBytes);
+		final char[] cipherTextArray = Base64Coder.encode(cipherTextBytes);
+
 		return new String(cipherTextArray);
 	}
 	
 	public static String decryptString(Cipher cipher, String cipherText) throws IllegalBlockSizeException, BadPaddingException {
-		byte[] cipherTextBytes = Base64Coder.decode(cipherText);
+		final byte[] cipherTextBytes = Base64Coder.decode(cipherText);
 		
-		byte[] plainTextBytes = cipher.doFinal(cipherTextBytes);
-		
+		final byte[] plainTextBytes = cipher.doFinal(cipherTextBytes);
+
 		return new String(plainTextBytes, StandardCharsets.UTF_8);
 	}
 }

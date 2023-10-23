@@ -21,6 +21,8 @@
 package mainPackage;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.text.MessageFormat;
 
 import org.eclipse.swt.SWT;
@@ -163,14 +165,25 @@ public class VaultDocumentIO {
 		VaultDocument vaultDocument = new VaultDocument();
 
 		if (VaultDocument.isDatabase(filePath)) {
-			outlineItem = vaultDocument.loadFromDatabase(shell, filePath, password);
+			final String dbURL = VaultDocument.getDBURL(filePath);
+
+			Globals.getLogger().info(String.format("About to open database: \"%s\"", dbURL));
+
+			try (final Connection db = DriverManager.getConnection(dbURL)) {
+				outlineItem = vaultDocument.loadFromDatabase(db, filePath, password);
+
+				VaultDocumentVersion originalVersion = vaultDocument.getOriginalDocumentVersion(db);
+				vaultDocument.setVaultDocumentOriginalVersion(originalVersion);
+			}
 		}
 		else {
-			outlineItem = VaultDocumentXML.parseVault3File(shell, filePath, password);
+			outlineItem = VaultDocumentXML.parseVault3File(filePath, password);
 		}
 		
 		vaultDocument.setContent(outlineItem);
+
 		vaultDocument.setVaultDocumentVersion(VaultDocumentVersion.getLatestVaultDocumentVersion());
+
 		vaultDocument.setPassword(password.getValue());
 		vaultDocument.setIsModified(false);
 		vaultDocument.setDocumentMetadata(new DocumentMetadata(filePath));
