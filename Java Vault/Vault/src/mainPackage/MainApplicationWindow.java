@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -140,7 +140,6 @@ public class MainApplicationWindow extends ApplicationWindow {
 	private final FileActions.EditPictureFileAction editPictureFileAction = new FileActions.EditPictureFileAction();
 	private final FileActions.RotateLeftFileAction rotateLeftFileAction = new FileActions.RotateLeftFileAction();
 	private final FileActions.RotateRightFileAction rotateRightFileAction = new FileActions.RotateRightFileAction();
-	private final FileActions.EmailAction emailAction = new FileActions.EmailAction();
 
 	// Outline actions:
 	private final OutlineActions.AddAction addAction = new OutlineActions.AddAction();
@@ -435,9 +434,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		fileMenuManager.add(new Separator());
 		fileMenuManager.add(printAction);
 		fileMenuManager.add(new Separator());
-		fileMenuManager.add(emailAction);
-		fileMenuManager.add(new Separator());
-		
+
 		MenuManager importMenu = new MenuManager("&Import");
 		importMenu.add(importFromVault3XMLFileAction);
 		importMenu.add(importFromXMLFileAction);
@@ -473,7 +470,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		int maxMRUFiles = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxMRUFiles);
 		
-		if (mruFiles.size() > 0) {
+		if (!mruFiles.isEmpty()) {
 			int itemsAdded = 0;
 			
 			for (int i = 0; i < mruFiles.size() && itemsAdded < maxMRUFiles; i++) {
@@ -625,8 +622,6 @@ public class MainApplicationWindow extends ApplicationWindow {
 		toolBarManager.add(new Separator());
 		toolBarManager.add(printAction);
 		toolBarManager.add(new Separator());
-		toolBarManager.add(emailAction);
-		toolBarManager.add(new Separator());
 		toolBarManager.add(goToWebsitesAction);
 		toolBarManager.add(new Separator());
 		toolBarManager.add(addAction);
@@ -699,8 +694,19 @@ public class MainApplicationWindow extends ApplicationWindow {
 				boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, commandLineArgumentFilePath);
 
 				if (!processedException) {
-					String message = MessageFormat.format("Cannot open file {2}.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage(), commandLineArgumentFilePath);
-					MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+					final String message = MessageFormat.format("Cannot open file {2}.{0}{0}{1}",
+							PortabilityUtils.getNewLine(),  ex.getMessage(), commandLineArgumentFilePath);
+
+					final MessageDialog messageDialog =
+							new MessageDialog(
+									Globals.getMainApplicationWindow().getShell(),
+									StringLiterals.ProgramName,
+									Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+									message,
+									MessageDialog.ERROR,
+									new String[] { "&OK" },
+									0);
+
 					messageDialog.open();
 				}
 
@@ -823,7 +829,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 				searchAction, printAction, photoAndTextUI.getPhotoUI(), photoAndTextUI, textExportAction,
 				xmlExportAction, pdfExportAction, outlineSelectAllAction, copyPictureFileAction,
 				deletePictureFileAction, renamePictureFileAction, editPictureFileAction,
-				rotateLeftFileAction, rotateRightFileAction, emailAction,
+				rotateLeftFileAction, rotateRightFileAction,
 				moveHorizontalSplitAction, exportPhotosToDeviceAction, importFromVault3XMLFileAction
 		};
 		

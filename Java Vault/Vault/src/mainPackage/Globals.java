@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -252,12 +252,6 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.SingletonSocketPort, 54321);
 		preferenceStore.setDefault(PreferenceKeys.CachePasswords, true);
 		preferenceStore.setDefault(PreferenceKeys.AllowMultipleInstances, false);
-		preferenceStore.setDefault(PreferenceKeys.EmailFromAddress, StringLiterals.EmptyString);
-		preferenceStore.setDefault(PreferenceKeys.EmailServerAddress, StringLiterals.EmptyString);
-		preferenceStore.setDefault(PreferenceKeys.EmailUserName, StringLiterals.EmptyString);
-		preferenceStore.setDefault(PreferenceKeys.EmailPassword, StringLiterals.EmptyString);
-		preferenceStore.setDefault(PreferenceKeys.EmailAuthentication, false);
-		preferenceStore.setDefault(PreferenceKeys.EmailScaleImagesSelection, 0);
 		preferenceStore.setDefault(PreferenceKeys.HorizontalSplitterWeight0, 90);
 		preferenceStore.setDefault(PreferenceKeys.HorizontalSplitterWeight1, 10);
 		preferenceStore.setDefault(PreferenceKeys.ImportAllFileTypes, false);
@@ -277,8 +271,6 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.ForceUpperCasePasswords, true);
 		preferenceStore.setDefault(PreferenceKeys.Vault3ForAndroidURL, "http://www.ericbt.com/Vault3ForAndroid");
 		preferenceStore.setDefault(PreferenceKeys.CheckForModificationsMinutes, 0);
-		preferenceStore.setDefault(PreferenceKeys.EmailSMTPPort, 25);
-		preferenceStore.setDefault(PreferenceKeys.EmailSSL, false);
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundRed, 255);
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundGreen, 255);
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundBlue, 255);

@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -53,7 +53,7 @@ public class OutlineItemClipboard {
 	}
 	
 	public boolean isEmpty() {
-		return items.size() == 0;
+		return items.isEmpty();
 	}
 	
 	public void addListener(IClipboardListener listener) {

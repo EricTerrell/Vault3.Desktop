@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -214,7 +214,7 @@ public class SearchUI extends Composite {
 			}
 		});
 		
-		searchComboViewer.getCombo().addModifyListener(e -> searchButton.setEnabled(searchComboViewer.getCombo().getText().trim().length() > 0));
+		searchComboViewer.getCombo().addModifyListener(e -> searchButton.setEnabled(!searchComboViewer.getCombo().getText().trim().isEmpty()));
 
 		selectAllSearchText();
 		
@@ -318,7 +318,7 @@ public class SearchUI extends Composite {
 
 					searchResults = Search.DoSearch(searchParameters.getSearchText(), searchParameters.getSearchSelected(), searchParameters.getMatchCase(), searchParameters.getFullWord(), searchParameters.getMatchAll(), searchParameters.getSearchMode());
 
-					Globals.getVaultTextViewer().setSearchPatterns(searchResults.getPatterns(), searchResults.getResults().size() > 0);
+					Globals.getVaultTextViewer().setSearchPatterns(searchResults.getPatterns(), !searchResults.getResults().isEmpty());
 					String text = MessageFormat.format("Search Results ({0}) (&Z):", searchResults.getResults().size());
 					searchResultsLabel.setText(text);
 					

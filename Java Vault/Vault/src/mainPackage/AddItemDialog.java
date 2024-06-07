@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -102,7 +102,7 @@ public class AddItemDialog extends VaultDialog {
 	private String photoPath;
 	
 	public String getPhotoPath() {
-		return (photoPath != null && photoPath.trim().length() > 0) ? photoPath : null;
+		return (photoPath != null && !photoPath.trim().isEmpty()) ? photoPath : null;
 	}
 	
 	private boolean addBelow;
@@ -327,16 +327,16 @@ public class AddItemDialog extends VaultDialog {
 	}
 
 	private void enableDisableDetachButton() {
-		detachPhotoFileButton.setEnabled(photoFileText.getText().trim().length() > 0);
+		detachPhotoFileButton.setEnabled(!photoFileText.getText().trim().isEmpty());
 	}
 	
 	private void enableDisableAllowScalingCheckBox() {
-		allowScalingCheckBox.setEnabled(photoFileText.getText().trim().length() > 0);
+		allowScalingCheckBox.setEnabled(!photoFileText.getText().trim().isEmpty());
 	}
 	
 	private void enableDisableOKButton() {
 		String title = titleWidget.getText().trim();
-		boolean enabled = title.length() > 0;
+		boolean enabled = !title.isEmpty();
 	          
       	okButton.setEnabled(enabled);
 	          

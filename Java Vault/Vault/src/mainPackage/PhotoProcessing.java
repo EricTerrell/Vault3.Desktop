@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -40,7 +40,7 @@ public class PhotoProcessing {
 
 		boolean selectedItemHasPictureFile = false;
 		
-		if (selectedItems.size() == 1 && selectedItems.get(0).getPhotoPath() != null && selectedItems.get(0).getPhotoPath().trim().length() > 0) {
+		if (selectedItems.size() == 1 && selectedItems.get(0).getPhotoPath() != null && !selectedItems.get(0).getPhotoPath().trim().isEmpty()) {
 			String photoPath = selectedItems.get(0).getPhotoPath();
 			photoPath = PhotoUtils.getPhotoPath(photoPath);
 			
@@ -102,7 +102,7 @@ public class PhotoProcessing {
 	public static boolean canEditPictureFile() {
 		String photoEditorPath = Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath).trim();
 
-		return photoEditorPath.length() > 0 && selectedItemHasPictureFile();
+		return !photoEditorPath.isEmpty() && selectedItemHasPictureFile();
 	}
 
 	public static void editPictureFile() {
@@ -183,7 +183,7 @@ public class PhotoProcessing {
 	}
 	
 	public static boolean canSlideshow() {
-		return Globals.getVaultTreeViewer().getAllTopLevelItems().size() > 0;
+		return !Globals.getVaultTreeViewer().getAllTopLevelItems().isEmpty();
 	}
 	
 	public static void slideshow(Shell shell) {
@@ -201,7 +201,7 @@ public class PhotoProcessing {
 			Globals.setPreviousCursor();
 		}
 
-		if (allPhotos.size() > 0) {
+		if (!allPhotos.isEmpty()) {
 			SlideshowDialog slideshowDisplayDialog = new SlideshowDialog(shell, allPhotos, selectedPhotos);
 			slideshowDisplayDialog.open();
 		}

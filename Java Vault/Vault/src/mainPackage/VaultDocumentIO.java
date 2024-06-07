@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -157,7 +157,10 @@ public class VaultDocumentIO {
 	 * @throws Throwable
 	 */
 	public static void fileOpen(Shell shell, String filePath) throws Throwable {
-		StringWrapper password = new StringWrapper();
+		// Do a File / New in case load fails for any reason.
+		VaultDocumentUtils.fileNew();
+
+		final StringWrapper password = new StringWrapper();
 		password.setValue(Globals.getPasswordCache().get(filePath));
 		
 		OutlineItem outlineItem;

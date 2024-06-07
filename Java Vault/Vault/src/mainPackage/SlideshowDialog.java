@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -409,13 +409,13 @@ public class SlideshowDialog extends VaultDialog {
 		allItemsRadioButton.setSelection(Globals.getPreferenceStore().getBoolean(PreferenceKeys.SlideshowAllItems));
 		selectedItemsRadioButton.setSelection(!Globals.getPreferenceStore().getBoolean(PreferenceKeys.SlideshowAllItems));
 		
-		if (allPhotos.size() == 0) {
+		if (allPhotos.isEmpty()) {
 			allItemsRadioButton.setSelection(false);
 			allItemsRadioButton.setEnabled(false);
 			selectedItemsRadioButton.setSelection(true);
 		}
 		
-		if (selectedPhotos.size() == 0) {
+		if (selectedPhotos.isEmpty()) {
 			selectedItemsRadioButton.setSelection(false);
 			selectedItemsRadioButton.setEnabled(false);
 			allItemsRadioButton.setSelection(true);

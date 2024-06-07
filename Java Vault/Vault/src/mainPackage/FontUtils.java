@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -48,7 +48,7 @@ public class FontUtils {
 	public static FontData[] stringToFontList(String fontString) {
 		FontData[] fontData = null;
 		
-		if (fontString != null && fontString.length() > 0) {
+		if (fontString != null && !fontString.isEmpty()) {
 			String[] fontStringArray = fontString.split("\0");
 			
 			if (fontStringArray != null && fontStringArray.length > 0) {
@@ -81,7 +81,7 @@ public class FontUtils {
 	public static String stringToDescription(String fontString) {
 		String fontDescription = StringLiterals.EmptyString;
 		
-		if (fontString != null && fontString.length() > 0) {
+		if (fontString != null && !fontString.isEmpty()) {
 			FontData[] fontData = FontUtils.stringToFontList(fontString);
 		
 			String style = StringLiterals.EmptyString;
@@ -91,7 +91,7 @@ public class FontUtils {
 			}
 			
 			if ((fontData[0].getStyle() & SWT.ITALIC) != 0) {
-				if (style.length() == 0) {
+				if (style.isEmpty()) {
 					style = "italic";
 				}
 				else {

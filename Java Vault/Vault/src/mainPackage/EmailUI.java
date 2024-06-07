@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -20,75 +20,19 @@
 
 package mainPackage;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.graphics.Image;
+import java.net.URI;
+import java.awt.Desktop;
 
 public class EmailUI {
-	public static boolean canEmail() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
-		
-		return selectedItems.size() > 0;
-	}
-	
-	public static void email() {
-		if (canEmail()) {
-			String serverAddress = Globals.getPreferenceStore().getString(PreferenceKeys.EmailServerAddress).trim();
-			
-			if (serverAddress.length() > 0) {
-				List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
-
-				ArrayList<String> photoPaths = new ArrayList<>();
-				
-				StringBuilder body = new StringBuilder();
-				
-				String newLine = PortabilityUtils.getNewLine();
-				
-				for (OutlineItem outlineItem : selectedItems) {
-					body.append(VaultDocumentExports.getExportText(outlineItem, photoPaths));
-					body.append(newLine);
-				}
-				
-				String selectedText = selectedItems.size() == 1 ? Globals.getVaultTextViewer().getTextWidget().getSelectionText() : null;
-				
-				SendEmailDialog sendEmailDialog = new SendEmailDialog(Globals.getMainApplicationWindow().getShell(), body.toString(), selectedText, photoPaths);
-				
-				sendEmailDialog.open();
-			}
-			else {
-				String message = "Before sending email you must specify an Email Server Address in the Options / Settings Dialog's Email tab.";
-				
-				Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-				
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
-		}
-	}
-	
 	public static boolean canEmailFeedback() {
 		return true;
 	}
-	
+
 	public static void emailFeedback() {
-		if (canEmailFeedback()) {
-			String serverAddress = Globals.getPreferenceStore().getString(PreferenceKeys.EmailServerAddress).trim();
-			
-			if (serverAddress.length() > 0) {
-				SendEmailFeedbackDialog sendEmailFeedbackDialog = new SendEmailFeedbackDialog(Globals.getMainApplicationWindow().getShell());
-				
-				sendEmailFeedbackDialog.open();
-			}
-			else {
-				String message = "Before sending email you must specify an Email Server Address in the Options / Settings Dialog's Email tab.";
-				
-				Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-				
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
-				messageDialog.open();
-			}
+		try {
+			Desktop.getDesktop().mail(new URI("mailto:Vault3@EricBT.com?subject=Vault%203%20Feedback"));
+		} catch (Exception ex) {
+			Globals.getLogger().info(String.format("EmailUI.emailFeedback: Exception %s", ex));
 		}
 	}
 }

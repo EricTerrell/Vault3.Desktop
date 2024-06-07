@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -58,7 +58,7 @@ public class GoToWebsites {
 			}
 		}
 		
-		if (urls.size() > 0) {
+		if (!urls.isEmpty()) {
 			if (urls.size() == 1) {
 				GoToWebsites.launch(urls.get(0), Globals.getMainApplicationWindow().getShell());
 			}
@@ -85,7 +85,7 @@ public class GoToWebsites {
 			
 			String photoPath = PhotoUtils.getPhotoPath(filePath);
 			
-			if (photoPath != null && photoPath.length() > 0) {
+			if (photoPath != null && !photoPath.isEmpty()) {
 				result = fileProtocol + photoPath;
 			}
 			

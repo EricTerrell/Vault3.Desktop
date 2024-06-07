@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -122,7 +122,7 @@ public class VaultDocument {
 	}
 	
 	public boolean isEncrypted() {
-		return this.password != null && this.password.length() > 0;
+		return this.password != null && !this.password.isEmpty();
 	}
 
 	private VaultDocumentVersion vaultDocumentVersion = new VaultDocumentVersion();

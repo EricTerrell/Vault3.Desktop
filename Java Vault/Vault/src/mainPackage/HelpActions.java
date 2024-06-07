@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -151,7 +151,7 @@ public class HelpActions {
 		}
 
 		public SendFeedbackAction() {
-			super(MessageFormat.format("Send &Feedback about {0}...", StringLiterals.ProgramName));
+			super(MessageFormat.format("Send &Feedback about {0}...", StringLiterals.ProgramName), ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/email.png"))));
 			setId(HelpUtils.helpIDFromClass(this));
 		}
 		

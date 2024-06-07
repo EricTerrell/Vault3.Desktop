@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -37,7 +37,7 @@ public class PhotoUIActions {
 	private static boolean photoExists() {
 		String imagePath = PhotoUI.getCurrentImagePath();
 		
-		return imagePath != null && imagePath.trim().length() > 0;
+		return imagePath != null && !imagePath.trim().isEmpty();
 	}
 	
 	public static class CopyPictureToClipboardAction extends Action implements IPhotoListener {
@@ -58,8 +58,18 @@ public class PhotoUIActions {
 			catch (Throwable ex) {
 				ex.printStackTrace();
 				
-				String message = MessageFormat.format("Cannot copy photo to clipboard.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+				final String message = MessageFormat.format("Cannot copy photo to clipboard.{0}{0}{1}",
+						PortabilityUtils.getNewLine(),  ex.getMessage());
+				final MessageDialog messageDialog =
+						new MessageDialog(
+								Globals.getMainApplicationWindow().getShell(),
+								StringLiterals.ProgramName,
+								Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+								message,
+								MessageDialog.ERROR,
+								new String[] { "&OK" },
+								0);
+
 				messageDialog.open();
 			}
 		}

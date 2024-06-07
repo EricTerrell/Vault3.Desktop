@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -87,15 +87,6 @@ public class PreferenceKeys {
 	public static final String SingletonSocketPort              = "SingletonSocketPort";
 	public static final String CachePasswords                   = "CachePasswords";
 	public static final String AllowMultipleInstances           = "AllowMultipleInstances";
-	public static final String EmailServerAddress               = "EmailServerAddress";
-	public static final String EmailAuthentication              = "EmailAuthentication";
-	public static final String EmailUserName                    = "EmailUserName";
-	public static final String EmailPassword                    = "EmailPassword";
-	public static final String EmailFromAddress                 = "EmailFromAddress";
-	public static final String EmailToAddress                   = "EmailToAddress";
-	public static final String EmailScaleImagesSelection        = "EmailScaleImagesSelection";
-	public static final String EmailSMTPPort                    = "EmailSMTPPort";
-	public static final String EmailSSL                         = "EmailSSL";
 	public static final String HorizontalSplitterWeight0        = "HorizontalSplitterWeight0";
 	public static final String HorizontalSplitterWeight1        = "HorizontalSplitterWeight1";
 	public static final String ImportAllFileTypes               = "ImportAllFileTypes";

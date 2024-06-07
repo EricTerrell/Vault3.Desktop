@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -54,9 +54,7 @@ public class FileActions {
             final boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
 
             if (!cancelled) {
-                Globals.getVaultTreeViewer().fileNew();
-                Globals.getMainApplicationWindow().getSearchUI().reset();
-                Globals.getMainApplicationWindow().notifyDocumentLoadUnloadListeners();
+                VaultDocumentUtils.fileNew();
             }
         }
     }
@@ -202,8 +200,7 @@ public class FileActions {
 
         public void run() {
             final PasswordDialog passwordDialog =
-                    new PasswordDialog(Globals.getMainApplicationWindow().getShell(),
-                            Globals.getVaultDocument().getPassword());
+                    new PasswordDialog(Globals.getMainApplicationWindow().getShell());
 
             if (passwordDialog.open() == IDialogConstants.OK_ID) {
                 Globals.getVaultDocument().setPassword(passwordDialog.getPassword());
@@ -708,41 +705,6 @@ public class FileActions {
                 ex.printStackTrace();
 
                 final String message = MessageFormat.format("Cannot export.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
-                final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
-                messageDialog.open();
-            }
-        }
-
-        @Override
-        public void selectionChanged(SelectionChangedEvent event) {
-            setEnabled();
-        }
-    }
-
-    public static class EmailAction extends Action implements ISelectionChangedListener {
-        @Override
-        public String getDescription() {
-            return "Send selected items via email";
-        }
-
-        public EmailAction() {
-            super("Send E&mail...", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("artwork/email.png"))));
-            setEnabled(false);
-            setId(HelpUtils.helpIDFromClass(this));
-        }
-
-        public void setEnabled() {
-            setEnabled(EmailUI.canEmail());
-        }
-
-        public void run() {
-            try {
-                Globals.getVaultTextViewer().saveChanges();
-                EmailUI.email();
-            } catch (Throwable ex) {
-                ex.printStackTrace();
-
-                final String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
                 final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[]{"&OK"}, 0);
                 messageDialog.open();
             }

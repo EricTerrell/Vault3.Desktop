@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -18,18 +18,17 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/**
- * 
- */
 package mainPackage;
 
 import java.io.File;
 import java.sql.Connection;
+import java.text.MessageFormat;
 import javax.crypto.Cipher;
 
 import commonCode.Base64Coder;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import commonCode.VaultDocumentVersion;
+import org.eclipse.jface.dialogs.MessageDialog;
 
 /**
  * @author Eric Bergman-Terrell
@@ -75,12 +74,14 @@ public class CryptoGUIUtils {
 	public static void promptUserForPasswordAndDecrypt(Connection db, String filePath, StringWrapper password, VaultDocumentVersion vaultDocumentVersion) throws Exception {
 		boolean decrypted = false;
 
-		do 
+		final String documentName = new File(filePath).getName();
+
+		do
 		{
-			PasswordPromptDialog passwordPromptDialog = new PasswordPromptDialog(null, new File(filePath).getName());
+			final PasswordPromptDialog passwordPromptDialog =
+					new PasswordPromptDialog(null, documentName);
 
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
-
 				try {
 					final String cipherText = VaultDocument.getVaultDocumentInfo(db,StringLiterals.CipherText);
 					final String saltString = VaultDocument.getVaultDocumentInfo(db,StringLiterals.Salt);
@@ -93,8 +94,8 @@ public class CryptoGUIUtils {
 						iv = Base64Coder.decode(ivString);
 					}
 
-					final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(passwordPromptDialog.getPassword(),
-							vaultDocumentVersion, salt, iv);
+					final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(
+							passwordPromptDialog.getPassword(), vaultDocumentVersion, salt, iv);
 
 					CryptoUtils.decryptString(decryptionCipher, cipherText);
 					decrypted = true;
@@ -104,6 +105,23 @@ public class CryptoGUIUtils {
 				}
 				catch (Throwable ex) {
 					ex.printStackTrace();
+
+					if (!decrypted) {
+						final String message = MessageFormat.format("Incorrect password specified for {0}",
+								documentName);
+
+						final MessageDialog messageDialog =
+								new MessageDialog(
+										null,
+										StringLiterals.ProgramName,
+										Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+										message,
+										MessageDialog.ERROR,
+										new String[] { "&OK" },
+										0);
+
+						messageDialog.open();
+					}
 				}
 				
 				Globals.getLogger().info("Finished decrypting");

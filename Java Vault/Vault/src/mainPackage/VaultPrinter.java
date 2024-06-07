@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -137,7 +137,7 @@ public class VaultPrinter {
 			}
 		}
 		
-		if (breakUpPoints.size() > 0) {
+		if (!breakUpPoints.isEmpty()) {
 			CodePointString text = new CodePointString(textWithFont.text);
 			
 			for (int j = breakUpPoints.size() - 1; j >= 0; j--) {
@@ -192,13 +192,13 @@ public class VaultPrinter {
 					}
 
 					// If this is the last item, and it's blank, quit.
-					if (i == textToPrint.size() - 1 && textWithFont.text.toString().replace("\n", StringLiterals.EmptyString).trim().length() == 0) {
+					if (i == textToPrint.size() - 1 && textWithFont.text.toString().replace("\n", StringLiterals.EmptyString).trim().isEmpty()) {
 						break;
 					}
 					
 					Font previousFont = gc.getFont();
 
-					if (textWithFont.fontString != null && textWithFont.fontString.length() > 0) {
+					if (textWithFont.fontString != null && !textWithFont.fontString.isEmpty()) {
 						Font font = FontUtils.stringToFont(gc.getDevice(), textWithFont.fontString);
 						gc.setFont(font);
 					}
@@ -237,7 +237,7 @@ public class VaultPrinter {
 					}
 					
 					// Print out the last token if there is one.
-					if (buf.length() > 0 && buf.toString().trim().length() > 0) {
+					if (buf.length() > 0 && !buf.toString().trim().isEmpty()) {
 						printBuffer();
 					}
 					

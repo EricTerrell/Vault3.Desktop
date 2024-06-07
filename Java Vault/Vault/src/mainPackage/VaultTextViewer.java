@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -108,7 +108,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		
 		String defaultTextFont = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
 		
-		if (defaultTextFont.length() == 0) {
+		if (defaultTextFont.isEmpty()) {
 			defaultTextFont = FontUtils.fontListToString(getTextWidget().getFont().getFontData());
 			Globals.getPreferenceStore().setValue(PreferenceKeys.DefaultTextFont, defaultTextFont);
 		}
@@ -244,7 +244,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		}
 		
 		if (fontString == null) {
-			if (Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont).length() > 0)
+			if (!Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont).isEmpty())
 			{
 				fontString = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
 			}
@@ -464,7 +464,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 
 	public boolean canUndo() {
-		return isEnabledAndEditable() && undoBuffer.size() > 0;
+		return isEnabledAndEditable() && !undoBuffer.isEmpty();
 	}
 	
 	public void undo() {
@@ -488,7 +488,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		if (result) {
 			String text = getTextWidget().getSelectionText();
 			
-			result = text != null && text.length() > 0;
+			result = text != null && !text.isEmpty();
 		}
 		
 		return result;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
 
   This file is part of Vault 3.
 
@@ -46,12 +46,16 @@
             <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.29\eclipse-platform-4.29-win32-x86_64\eclipse\plugins\org.eclipse.jface_3.31.0.v20230821-1552.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.29\eclipse-platform-4.29-win32-x86_64\eclipse\plugins\org.eclipse.osgi_3.18.500.v20230801-1826.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:\Eclipse 4.29\eclipse-platform-4.29-win32-x86_64\eclipse\plugins\org.eclipse.text_3.13.100.v20230801-1334.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/javamail-1.4.4/mail.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/imgscalr-lib-4.2/imgscalr-lib-4.2.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\sqlite-jdbc\sqlite-jdbc-3.43.0.0.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:/Program Files/perf4j/perf4j-0.9.16.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="C:\Program Files\itext-5.2.1\itextpdf-5.2.1.jar"/>
         </jar>
+
+        <exec executable="cmd" dir="${dest.dir}">
+            <arg line="/c jlink --module-path 'D:\Eric\Software\java\java_modules\jdk-17.0.11\windows-x64\jmods' --add-modules java.base,java.xml,java.logging,java.sql,java.desktop,java.net.http,jdk.crypto.ec --output custom-runtime" />
+        </exec>
+
     	<copy todir="${dest.dir}" failonerror="true">
     		<fileset file="${sourcerootVault}/example.vl3" />
     		<fileset file="${sourcerootVault}/src/mainPackage/artwork/vault3.ico" />

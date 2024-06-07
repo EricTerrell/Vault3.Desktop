@@ -20,5 +20,10 @@
 
 package mainPackage;
 
-public interface IClipboardListener extends ICustomListener {
+public class VaultDocumentUtils {
+	public static void fileNew() {
+		Globals.getVaultTreeViewer().fileNew();
+		Globals.getMainApplicationWindow().getSearchUI().reset();
+		Globals.getMainApplicationWindow().notifyDocumentLoadUnloadListeners();
+	}
 }

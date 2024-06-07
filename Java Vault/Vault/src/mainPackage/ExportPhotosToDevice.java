@@ -1,6 +1,6 @@
 /*
 Vault 3
-(C) Copyright 2023, Eric Bergman-Terrell
+(C) Copyright 2024, Eric Bergman-Terrell
 
 This file is part of Vault 3.
 
@@ -133,7 +133,7 @@ public class ExportPhotosToDevice {
                         else {
                             String imagePath = selectedItem.getPhotoPath();
 
-                            if (imagePath != null && imagePath.length() > 0) {
+                            if (imagePath != null && !imagePath.isEmpty()) {
                                 imagePath = PhotoUtils.getPhotoPath(imagePath);
 
                                 final String _imagePath = imagePath;

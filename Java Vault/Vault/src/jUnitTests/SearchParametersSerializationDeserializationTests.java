@@ -21,11 +21,8 @@
 package jUnitTests;
 
 import commonCode.VaultDocumentVersion;
-import mainPackage.Globals;
-import mainPackage.MainApplicationWindow;
-import mainPackage.VaultDocument;
+import mainPackage.*;
 import org.junit.Assert;
-import mainPackage.SearchParameters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +50,17 @@ public class SearchParametersSerializationDeserializationTests {
 		for (int i = 0; i < 50; i++) {
 			searchParametersList.add(searchParameters);
 		}
-		
-		final String serializedText = SearchParameters.serialize(searchParametersList);
+
+		final byte[] salt = CryptoUtils.createSalt();
+		final byte[] iv = CryptoUtils.createIV();
+
+		final String serializedText = SearchParameters.serialize(searchParametersList, salt, iv);
 		
 		System.out.printf("Length: %d Text: %s%n", serializedText.length(), serializedText);
 
 		Assert.assertNotNull(serializedText);
 		
-		final List<SearchParameters> deserializedList = SearchParameters.deserialize(serializedText);
+		final List<SearchParameters> deserializedList = SearchParameters.deserialize(serializedText, salt, iv);
 		
 		Assert.assertEquals(searchParametersList.size(), deserializedList.size());
 	}

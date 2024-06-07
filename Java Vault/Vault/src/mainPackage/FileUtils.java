@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -240,7 +240,7 @@ public class FileUtils {
 	public static String getConfigRootPath() {
 		String configRootPath = System.getProperty(ConfigValueKeys.ConfigurationRootPath);
 		
-		if (configRootPath == null || configRootPath.length() == 0) {
+		if (configRootPath == null || configRootPath.isEmpty()) {
 			configRootPath = getRootPath();
 		}
 		else {

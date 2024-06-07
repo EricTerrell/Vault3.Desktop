@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -103,7 +103,7 @@ public class VaultDialog extends Dialog {
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		
-		Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+		final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 		newShell.setImage(icon);
 	}
 
@@ -111,7 +111,7 @@ public class VaultDialog extends Dialog {
 	public void create() {
 		super.create();
 
-		Point minimumSize = getShell().computeSize(SWT.DEFAULT, SWT.DEFAULT);
+		final Point minimumSize = getShell().computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		getShell().setMinimumSize(minimumSize);
 		
 		populateFields();

@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -69,11 +69,6 @@ public class SettingsDialog extends VaultDialog {
 		updateFontDisplay();
 		
 		substituteFolderLabel.setText(preferenceStore.getString(PreferenceKeys.SubstitutePhotoFolder));
-
-		fromEmailAddressText.setText(preferenceStore.getString(PreferenceKeys.EmailFromAddress));
-		emailUserNameText.setText(preferenceStore.getString(PreferenceKeys.EmailUserName));
-		emailPasswordText.setText(preferenceStore.getString(PreferenceKeys.EmailPassword));
-		emailServerAddressText.setText(preferenceStore.getString(PreferenceKeys.EmailServerAddress));
 	}
 
 	private char echoChar;
@@ -82,21 +77,18 @@ public class SettingsDialog extends VaultDialog {
 
 	private Button autoSaveCheckBox, saveWithBakFileTypeCheckBox, loadFileOnStartupButton, loadMostRecentlyUsedFileButton, 
 				   doNotAutomaticallyLoadFileButton, loadPhotosFromOriginalLocationsRadioButton, loadPhotosFromSubstituteFolderRadioButton, okButton,
-				   cachePasswords, allowMultipleInstances, authenticateEmail, advancedGraphics, slideShowFullScreen, checkForUpdatesCheckBox, warnAboutSingleInstance,
-				   checkForModificationCheckBox, sslCheckbox;
+				   cachePasswords, allowMultipleInstances, advancedGraphics, slideShowFullScreen, checkForUpdatesCheckBox, warnAboutSingleInstance,
+				   checkForModificationCheckBox;
 
 	private Label substituteFolderLabel, defaultTextFontLabel, statusLabel;
 	
-	private Text startupFilePathText, fromEmailAddressText, emailServerAddressText, smtpPortText, emailUserNameText, emailPasswordText, slideshowExclusionText, 
-	             photoEditingProgramText;
+	private Text startupFilePathText, slideshowExclusionText, photoEditingProgramText;
 	
 	private Canvas colorCanvas, textBackgroundColorCanvas;
 
 	private Color nonErrorBackground, errorBackground;
 	
 	private String previousSubstitutePhotoFolder = null, fontString;
-
-	private Button hidePasswordCharsCheckBox;
 
 	private RGB fontColor;
 	
@@ -126,12 +118,10 @@ public class SettingsDialog extends VaultDialog {
 	}
 
 	private void enableDisableOKButton() {
-		boolean unspecifiedStartupFileError = loadFileOnStartupButton.getSelection() && startupFilePathText.getText().trim().length() == 0; 
+		boolean unspecifiedStartupFileError = loadFileOnStartupButton.getSelection() && startupFilePathText.getText().trim().isEmpty();
 		
-		boolean unspecifiedSubstitutePhotoFolderError = (loadPhotosFromSubstituteFolderRadioButton.getSelection() && substituteFolderLabel.getText().trim().length() == 0);
+		boolean unspecifiedSubstitutePhotoFolderError = (loadPhotosFromSubstituteFolderRadioButton.getSelection() && substituteFolderLabel.getText().trim().isEmpty());
 
-		boolean authenticate = authenticateEmail.getSelection();
-		
 		okButton.setEnabled(!unspecifiedStartupFileError && !unspecifiedSubstitutePhotoFolderError);
 		
 	    if (unspecifiedStartupFileError) {
@@ -142,16 +132,6 @@ public class SettingsDialog extends VaultDialog {
 	    {
 	    	statusLabel.setText("Substitute Photo Folder Must Be Specified in Photos Tab.");
 	        statusLabel.setBackground(errorBackground);
-	    }
-	    else if (authenticate && emailUserNameText.getText().trim().length() == 0) {
-	    	statusLabel.setText("User Name must be specified in Email Tab.");
-	        statusLabel.setBackground(errorBackground);
-	        okButton.setEnabled(false);
-	    }
-	    else if (authenticate && emailPasswordText.getText().trim().length() == 0) {
-	    	statusLabel.setText("Password must be specified in Email Tab.");
-	        statusLabel.setBackground(errorBackground);
-	        okButton.setEnabled(false);
 	    }
 	    else {
 	    	statusLabel.setText(StringLiterals.EmptyString);
@@ -197,19 +177,7 @@ public class SettingsDialog extends VaultDialog {
 			preferenceStore.setValue(PreferenceKeys.WarnAboutSingleInstance, warnAboutSingleInstance.getSelection());
 		}
 		
-		preferenceStore.setValue(PreferenceKeys.EmailFromAddress, fromEmailAddressText.getText());
-		preferenceStore.setValue(PreferenceKeys.EmailServerAddress, emailServerAddressText.getText());
-		preferenceStore.setValue(PreferenceKeys.EmailSMTPPort, smtpPortText.getText());
-
-		preferenceStore.setValue(PreferenceKeys.EmailUserName, emailUserNameText.getText());
-		preferenceStore.setValue(PreferenceKeys.EmailPassword, emailPasswordText.getText());
-		preferenceStore.setValue(PreferenceKeys.EmailAuthentication, authenticateEmail.getSelection());
-		preferenceStore.setValue(PreferenceKeys.EmailSSL, sslCheckbox.getSelection());
-		
-		preferenceStore.setValue(PreferenceKeys.HidePasswordCharacters, hidePasswordCharsCheckBox.getSelection());
-		
 		preferenceStore.setValue(PreferenceKeys.PhotoEditingProgramPath, photoEditingProgramText.getText());
-		
 		preferenceStore.setValue(PreferenceKeys.CheckForUpdatesAutomatically, checkForUpdatesCheckBox.getSelection());
 		
 		super.okPressed();
@@ -247,9 +215,6 @@ public class SettingsDialog extends VaultDialog {
 		
 		TabItem substituteFolderTabItem = new TabItem(tabFolder, SWT.NONE);
 		substituteFolderTabItem.setText("Su&bstitute Folder");
-		
-		TabItem emailTabItem = new TabItem(tabFolder, SWT.NONE);
-		emailTabItem.setText("&Email");
 		
 		TabItem updatesTabItem = new TabItem(tabFolder, SWT.NONE);
 		updatesTabItem.setText("&Updates");
@@ -767,146 +732,6 @@ public class SettingsDialog extends VaultDialog {
 		
 		imageLabel.setToolTipText(StringLiterals.SearchTextToolTip);
 		
-		Composite emailComposite = new Composite(tabFolder, SWT.NONE);
-		emailComposite.setLayout(new GridLayout(2, false));
-		
-		Label fromEmailAddressLabel = new Label(emailComposite, SWT.NONE);
-		fromEmailAddressLabel.setText("&From Email Address (Your Email Address):");
-		
-		fromEmailAddressText = new Text(emailComposite, SWT.BORDER);
-		gridData = new GridData();
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.horizontalAlignment = SWT.FILL;
-		fromEmailAddressText.setLayoutData(gridData);
-		
-		fromEmailAddressText.addFocusListener(new TextFocusListener());
-		
-		sslCheckbox = new Button(emailComposite, SWT.CHECK);
-		sslCheckbox.setText("SS&L");
-		sslCheckbox.setSelection(preferenceStore.getBoolean(PreferenceKeys.EmailSSL));
-		gridData = new GridData();
-		gridData.horizontalSpan = 2;
-		sslCheckbox.setLayoutData(gridData);
-		
-		authenticateEmail = new Button(emailComposite, SWT.CHECK);
-		authenticateEmail.setText("A&uthenticate");
-		authenticateEmail.setSelection(preferenceStore.getBoolean(PreferenceKeys.EmailAuthentication));
-		gridData = new GridData();
-		gridData.horizontalSpan = 2;
-		authenticateEmail.setLayoutData(gridData);
-		
-		authenticateEmail.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				enableDisableEmailCredentials();
-				enableDisableOKButton();
-			}
-		});
-		
-		Label emailUserNameLabel = new Label(emailComposite, SWT.NONE);
-		emailUserNameLabel.setText("&User Name:");
-		
-		emailUserNameText = new Text(emailComposite, SWT.BORDER);
-		gridData = new GridData();
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.horizontalAlignment = SWT.FILL;
-		emailUserNameText.setLayoutData(gridData);
-		
-		emailUserNameText.addModifyListener(e -> enableDisableOKButton());
-		
-		emailUserNameText.addFocusListener(new TextFocusListener());
-		
-		Label emailPasswordLabel = new Label(emailComposite, SWT.NONE);
-		emailPasswordLabel.setText("&Password:");
-		
-		emailPasswordText = new Text(emailComposite, SWT.PASSWORD | SWT.BORDER);
-		gridData = new GridData();
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.horizontalAlignment = SWT.FILL;
-		emailPasswordText.setLayoutData(gridData);
-		emailPasswordText.addFocusListener(new TextFocusListener());
-		
-		emailPasswordText.addModifyListener(e -> enableDisableOKButton());
-		
-		echoChar = emailPasswordText.getEchoChar();
-		
-		hidePasswordCharsCheckBox = new Button(emailComposite, SWT.CHECK);
-		hidePasswordCharsCheckBox.setText("&Hide password characters");
-		gridData = new GridData();
-		gridData.horizontalSpan = 2;
-		hidePasswordCharsCheckBox.setLayoutData(gridData);
-		
-		hidePasswordCharsCheckBox.setSelection(preferenceStore.getBoolean(PreferenceKeys.HidePasswordCharacters));
-		
-		hidePasswordCharsCheckBox.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				showHidePasswordCharacters();
-			}
-		});
-		
-		showHidePasswordCharacters();
-
-		enableDisableEmailCredentials();
-		
-		Label emailServerAddressLabel = new Label(emailComposite, SWT.NONE);
-		emailServerAddressLabel.setText("&Email Server Address (e.g. smtp.example.com):");
-		
-		emailServerAddressText = new Text(emailComposite, SWT.BORDER);
-		
-		Label smtpPortLabel = new Label(emailComposite, SWT.NONE);
-		smtpPortLabel.setText("Po&rt:");
-
-		smtpPortText = new Text(emailComposite, SWT.BORDER);
-		smtpPortText.setText(preferenceStore.getString(PreferenceKeys.EmailSMTPPort));
-
-		// Restrict port to digits.
-		smtpPortText.addVerifyListener(verifyEvent -> {
-            switch (verifyEvent.keyCode) {
-            case SWT.BS:           // Backspace
-            case SWT.DEL:          // Delete
-            case SWT.HOME:         // Home
-            case SWT.END:          // End
-            case SWT.ARROW_LEFT:   // Left arrow
-            case SWT.ARROW_RIGHT:  // Right arrow
-                return;
-
-            case 0:				   // Paste
-                {
-                    if (verifyEvent.text != null) {
-                        for (int i = 0; i < verifyEvent.text.length(); i++) {
-                            if (!Character.isDigit(verifyEvent.text.charAt(i))) {
-                                verifyEvent.doit = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    return;
-                }
-            }
-
-            if (!Character.isDigit(verifyEvent.character)) {
-                verifyEvent.doit = false;  // disallow the action
-            }
-        });
-		
-		gridData = new GridData();
-		gridData.grabExcessHorizontalSpace = true;
-		gridData.horizontalAlignment = SWT.FILL;
-		emailServerAddressText.setLayoutData(gridData);
-		emailServerAddressText.addFocusListener(new TextFocusListener());
-		
-		smtpPortText.setLayoutData(gridData);
-
 		Composite updatesComposite = new Composite(tabFolder, SWT.NONE);
 		updatesComposite.setLayout(new GridLayout(1, false));
 		
@@ -922,7 +747,6 @@ public class SettingsDialog extends VaultDialog {
 		defaultTextFontTabItem.setControl(defaultTextFontComposite);
 		photosTabItem.setControl(photosComposite);
 		substituteFolderTabItem.setControl(substituteFolderComposite);
-		emailTabItem.setControl(emailComposite);
 		updatesTabItem.setControl(updatesComposite);
 		
 		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_SettingsDialog"));
@@ -936,22 +760,6 @@ public class SettingsDialog extends VaultDialog {
 		warnAboutSingleInstance.setEnabled(!allowMultipleInstances.getSelection());
 	}
 	
-	private void enableDisableEmailCredentials() {
-		boolean enabled = authenticateEmail.getSelection();
-		
-		emailUserNameText.setEnabled(enabled);
-		emailPasswordText.setEnabled(enabled);
-	}
-	
-	private void showHidePasswordCharacters() {
-		if (hidePasswordCharsCheckBox.getSelection()) {
-			emailPasswordText.setEchoChar(echoChar);
-		}
-		else {
-			emailPasswordText.setEchoChar('\0');
-		}
-	}
-
 	private void updateFontDisplay() {
 		String defaultTextFontLabelText = MessageFormat.format("Default Text Font: {0}", FontUtils.stringToDescription(fontString));
 		defaultTextFontLabel.setText(defaultTextFontLabelText);

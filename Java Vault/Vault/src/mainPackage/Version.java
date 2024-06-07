@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -85,10 +85,16 @@ import java.text.MessageFormat;
  * 									 OSX "aarch64" version. Problem: sqlite4 component doesn't support aarch64.
  * 0.79				1.2				 Replaced sqlite4java.jar with sqlite-jdbc-3.43.0.0.jar. Added an OSX "aarch64" version.
  * 0.80				1.3				 Cryptography updates: 256-bit keys, CBC mode, improved key generation.
+ * 0.81				1.3				 Now use a custom Java runtime environment rather than requiring the user to install
+ * 									 Java. Removed "Send Email" feature. Re-wrote "Send Feedback" feature. Now include
+ * 									 platform parameter when retrieving current version from the website. No longer
+ * 									 allow user to see previously-specified password in the Password dialog box.
+ * 									 Pre-emptively do a File / New before attempting to load a new file so that if the
+ * 									 load fails, an new file is displayed.
  */
 public class Version {
-	private static final float versionNumber = 0.80f;
-	private static final int copyrightYear = 2023;
+	private static final float versionNumber = 0.81f;
+	private static final int copyrightYear = 2024;
 
 	public static float getVersionNumber() {
 		return versionNumber;

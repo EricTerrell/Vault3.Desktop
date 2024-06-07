@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -41,7 +41,7 @@ public class VaultDocumentExports {
 	private static void addPhotoPath(OutlineItem outlineItem, List<String> photoPaths) {
 		String photoPath = outlineItem.getPhotoPath();
 		
-		if (photoPath != null && photoPath.length() > 0) {
+		if (photoPath != null && !photoPath.isEmpty()) {
 			photoPath = PhotoUtils.getPhotoPath(outlineItem.getPhotoPath());
 
 			photoPaths.add(photoPath);
@@ -71,7 +71,7 @@ public class VaultDocumentExports {
 	public static boolean canTextFileExport() {
 		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 
 	public static void textFileExport(Shell shell) throws IOException {
@@ -120,7 +120,7 @@ public class VaultDocumentExports {
 	public static boolean canExportPhotosToDevice() {
 		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 
 	public static void exportPhotosToDevice(Shell shell, Point deviceDimensions, String destinationFolder, int maxPhotos, int maxPhotosPerFolder, boolean shuffle, boolean deleteDestinationFolderContents) {
@@ -136,7 +136,7 @@ public class VaultDocumentExports {
 	public static boolean canXmlFileExport() {
 		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 	
 	public static void xmlFileExport(Shell shell) throws Throwable {
@@ -146,7 +146,7 @@ public class VaultDocumentExports {
 	public static boolean canPDFFileExport() {
 		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 	
 	public static void pdfFileExport(Shell shell) {

@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -43,7 +43,7 @@ public class Printing {
 		VaultPrinter.TextWithFont itemText = new VaultPrinter.TextWithFont(outlineItem.getText(), outlineItem.getFontString(), outlineItem.getPhotoPath());
 		textToPrint.add(itemText);
 		
-		if (textToPrint.size() > 0) {
+		if (!textToPrint.isEmpty()) {
 			VaultPrinter.TextWithFont newLines = new VaultPrinter.TextWithFont("\n\n", defaultFont, null);
 			textToPrint.add(newLines);
 		}
@@ -59,7 +59,7 @@ public class Printing {
 	public static boolean canPrint() {
 		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 	
 	public static void print(Shell shell) {

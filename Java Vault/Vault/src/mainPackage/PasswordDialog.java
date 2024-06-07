@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -44,7 +44,8 @@ import org.eclipse.swt.widgets.Text;
 public class PasswordDialog extends VaultDialog {
 	@Override
 	protected void populateFields() {
-		String text = MessageFormat.format("&Require a password to access {0}", Globals.getVaultDocument().getFileName());
+		final String text = MessageFormat.format("&Require a password to access {0}",
+				Globals.getVaultDocument().getFileName());
 		requirePasswordCheckBox.setText(text);
 
 		passwordText.setText(password);
@@ -229,6 +230,7 @@ public class PasswordDialog extends VaultDialog {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				enableDisablePasswordControls();
+				updateStatusLabel();
 			}
 		});
 		
@@ -268,39 +270,49 @@ public class PasswordDialog extends VaultDialog {
 		password2Text.setEnabled(enabled);
 		
 		hidePasswordCharsCheckBox.setEnabled(enabled);
+		forceUpperCasePasswords.setEnabled(enabled);
 	}
 	
 	private void updateStatusLabel() {
-		Button okButton = getButton(IDialogConstants.OK_ID);
-		
-		String[] passwords = new String[] { passwordText.getText(), password2Text.getText() };
-		
-		boolean incorrectLength = false;
-		
-		for (String password : passwords) {
-			if (password.length() < CryptoUtils.getMinPasswordLength()) {
-				incorrectLength = true;
-				break;
+		final Button okButton = getButton(IDialogConstants.OK_ID);
+
+		if (!requirePasswordCheckBox.getSelection()) {
+			// Password is not required
+
+			statusLabel.setText(StringLiterals.EmptyString);
+			statusLabel.setBackground(nonErrorBackground);
+			okButton.setEnabled(true);
+		} else {
+			// Password is required
+
+			String[] passwords = new String[]{passwordText.getText(), password2Text.getText()};
+
+			boolean incorrectLength = false;
+
+			for (String password : passwords) {
+				if (password.length() < CryptoUtils.getMinPasswordLength()) {
+					incorrectLength = true;
+					break;
+				}
 			}
-		}
-		
-		if (incorrectLength) {
-			String message = MessageFormat.format("Password must contain at least {0} characters.", CryptoUtils.getMinPasswordLength());
-			statusLabel.setText(message);
-			statusLabel.setBackground(errorBackground);
-			okButton.setEnabled(false);
-		}
-		else {
-			if (!passwords[0].equals(passwords[1])) {
-				String message = "Passwords must match.";
+
+			if (incorrectLength) {
+				final String message = MessageFormat.format("Password must contain at least {0} characters.",
+						CryptoUtils.getMinPasswordLength());
 				statusLabel.setText(message);
 				statusLabel.setBackground(errorBackground);
 				okButton.setEnabled(false);
-			}
-			else {
-	      	  statusLabel.setText(StringLiterals.EmptyString);
-	      	  statusLabel.setBackground(nonErrorBackground);
-	      	  okButton.setEnabled(true);
+			} else {
+				if (!passwords[0].equals(passwords[1])) {
+					final String message = "Passwords must match.";
+					statusLabel.setText(message);
+					statusLabel.setBackground(errorBackground);
+					okButton.setEnabled(false);
+				} else {
+					statusLabel.setText(StringLiterals.EmptyString);
+					statusLabel.setBackground(nonErrorBackground);
+					okButton.setEnabled(true);
+				}
 			}
 		}
 	}
@@ -328,9 +340,9 @@ public class PasswordDialog extends VaultDialog {
 		newShell.setText("Password");
 	}
 
-	public PasswordDialog(Shell parentShell, String password) {
+	public PasswordDialog(Shell parentShell) {
 		super(parentShell);
 
-		this.password = password == null ? StringLiterals.EmptyString : password;
+		this.password = StringLiterals.EmptyString;
 	}
 }

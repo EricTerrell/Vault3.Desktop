@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -92,7 +92,7 @@ public class MRUFileList {
 			String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
 			String filePath = Globals.getPreferenceStore().getString(name);
 
-			if (filePath != null && filePath.length() > 0) {
+			if (filePath != null && !filePath.isEmpty()) {
 				MRUFile mruFile = new MRUFile(filePath, null);
 				mruFiles.add(mruFile);
 			}

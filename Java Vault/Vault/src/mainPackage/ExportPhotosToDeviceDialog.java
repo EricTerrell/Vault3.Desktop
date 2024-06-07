@@ -1,6 +1,6 @@
 /*
 Vault 3
-(C) Copyright 2023, Eric Bergman-Terrell
+(C) Copyright 2024, Eric Bergman-Terrell
 
 This file is part of Vault 3.
 
@@ -107,7 +107,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 	private void enableDisableOKButton() {
 		String errorMessage = null;
 		
-		if (destinationFolderLabel.getText().length() == 0) {
+		if (destinationFolderLabel.getText().isEmpty()) {
 			errorMessage = "Please specify destination folder";
 		}
 		else if (!validInteger(widthText.getText())) {

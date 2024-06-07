@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -164,7 +164,7 @@ public class AboutDialog extends VaultDialog {
 		});
 		
 		Link iTextLink = new Link(composite, SWT.NONE);
-		iTextLink.setText(MessageFormat.format("{0} uses <a>iText</a> to manipulate its documents.", StringLiterals.ProgramName));
+		iTextLink.setText(MessageFormat.format("{0} uses <a>iText</a> to create PDF files.", StringLiterals.ProgramName));
 		
 		iTextLink.addSelectionListener(new SelectionListener() {
 			@Override
@@ -245,8 +245,8 @@ public class AboutDialog extends VaultDialog {
 				catch (Throwable ex) {
 					ex.printStackTrace();
 
-					String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-					MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+					final String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
+					final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 					messageDialog.open();
 				}
 			}

@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -135,7 +135,7 @@ public class PDFExport {
 			if (!tocOnly) {
 				final Font textFont = getTextFont(outlineItem);
 				
-				if (outlineItem.getText().trim().length() > 0) {
+				if (!outlineItem.getText().trim().isEmpty()) {
 					Paragraph textParagraph = new Paragraph(outlineItem.getText(), textFont);
 					document.add(textParagraph);
 					document.add(Chunk.NEWLINE);

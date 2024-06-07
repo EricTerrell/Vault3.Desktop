@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -50,7 +50,7 @@ public class CodePointString {
 		
 		codePoints = new ArrayList<>(initialLength);
 		
-		if (text != null && text.length() > 0) {
+		if (text != null && !text.isEmpty()) {
 			final int codePointCount = text.codePointCount(0, text.length());
 			
 			for (int i = 0; i < codePointCount; i++) {

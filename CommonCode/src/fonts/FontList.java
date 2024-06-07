@@ -157,7 +157,7 @@ public class FontList implements Serializable {
 	public static FontList deserialize(String serializedText) {
 		FontList fontList = null;
 
-		if (serializedText != null && serializedText.length() > 0) {
+		if (serializedText != null && !serializedText.isEmpty()) {
 			try
 			{
 				byte[] serializedBytes = Base64Coder.decode(serializedText);

@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -214,10 +214,10 @@ public class FindAndReplaceDialog extends VaultDialog {
 		findWhatText.setLayoutData(gridData);
 		
 		findWhatText.addModifyListener(e -> {
-            findButton.setEnabled(findWhatText.getText().length() > 0);
+            findButton.setEnabled(!findWhatText.getText().isEmpty());
 
             if (replaceButton != null) {
-                boolean enabled = findWhatText.getText().length() > 0;
+                boolean enabled = !findWhatText.getText().isEmpty();
                 replaceButton.setEnabled(enabled);
             }
         });

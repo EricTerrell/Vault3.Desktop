@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -272,7 +272,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public void selectFirstItem() {
 		getControl().forceFocus();
 		
-		if (Globals.getVaultDocument().getContent().getChildren().size() >= 1) {
+		if (!Globals.getVaultDocument().getContent().getChildren().isEmpty()) {
 			renderFirstItem(Globals.getVaultDocument().getContent().getChildren().get(0));
 		}
 	}
@@ -452,7 +452,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public boolean canMoveSelectedItems() {
 		List<OutlineItem> selectedItems = getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 
 	private void moveSelectedItems(OutlineItem targetNode, boolean targetNodeIsExpanded, boolean addAtTop) {
@@ -545,7 +545,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	private static boolean itemsAreConsecutiveSiblings(List<OutlineItem> nodes) {
-		boolean itemsAreConsecutiveSiblings = nodes.size() > 0;
+		boolean itemsAreConsecutiveSiblings = !nodes.isEmpty();
 		
 		if (itemsAreConsecutiveSiblings) {
 			OutlineItem firstNode = nodes.get(0);
@@ -572,7 +572,7 @@ public class VaultTreeViewer extends TreeViewer {
 		
 		boolean canIndent = false;
 		
-		if (selectedItems.size() > 0) {
+		if (!selectedItems.isEmpty()) {
 			OutlineItem firstNode = selectedItems.get(0);
 			
 			int index = firstNode.getParent().getChildren().indexOf(firstNode);
@@ -597,7 +597,7 @@ public class VaultTreeViewer extends TreeViewer {
 		
 		List<OutlineItem> selectedItems = getSelectedItems();
 
-		if (selectedItems.size() > 0) {
+		if (!selectedItems.isEmpty()) {
 			OutlineItem firstNode = selectedItems.get(0);
 			
 			canUnindent = firstNode.getParent() != null && firstNode.getParent().getParent() != null && itemsAreConsecutiveSiblings(selectedItems);
@@ -618,7 +618,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public boolean canRemoveSelectedItems() {
 		List<OutlineItem> selectedItems = getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 	
 	public void removeSelectedItems(boolean promptUserToConfirm) {
@@ -701,7 +701,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public void addItem(Shell shell) {
-		boolean showAboveAndBelowRadioButtons = getTree().getItemCount() > 0 && getSelectedItems().size() > 0;
+		boolean showAboveAndBelowRadioButtons = getTree().getItemCount() > 0 && !getSelectedItems().isEmpty();
 		
 		AddItemDialog addItemDialog = new AddItemDialog(shell, showAboveAndBelowRadioButtons, AddItemDialog.Mode.Add, null);
 		
@@ -719,7 +719,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public boolean canCutSelectedItems() {
 		List<OutlineItem> selectedItems = getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 	
 	public void cutSelectedItems() {
@@ -732,7 +732,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public boolean canCopySelectedItems() {
 		List<OutlineItem> selectedItems = getSelectedItems();
 		
-		return selectedItems.size() > 0;
+		return !selectedItems.isEmpty();
 	}
 	
 	public void copySelectedItems() {
@@ -924,7 +924,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public boolean canSearch() {
-		return getAllTopLevelItems().size() > 0;
+		return !getAllTopLevelItems().isEmpty();
 	}
 
 	@Override

@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="updates">
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,15 +58,21 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.Vault 3.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchParametersSerializationDeserializationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.jUnitTests in Vault.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests in Vault.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eric Terrell/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts/ant_build_common_code.xml&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Temp/dependencies.txt&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;copyright.profiles&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -79,17 +84,11 @@
       <recent name="C:\development\Vault3.Desktop\Java Vault\Vault\Help" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="jUnitTests" />
       <recent name="mainPackage" />
+      <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.tests in Vault">
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Vault 3">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -158,6 +157,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Vault 3" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="MAIN_CLASS_NAME" value="mainPackage.MainApplicationWindow" />
@@ -172,68 +177,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CryptoTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CryptoTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tests.*" />
+          <option name="PATTERN" value="jUnitTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.CryptoTests" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CryptoTests.fixedPasswordDoesNotProduceIdenticalCiphertext" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SearchParametersSerializationDeserializationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Vault" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tests.*" />
+          <option name="PATTERN" value="jUnitTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
-      <option name="METHOD_NAME" value="fixedPasswordDoesNotProduceIdenticalCiphertext" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CryptoTests.roundTrip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Vault" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
-      <option name="METHOD_NAME" value="roundTrip" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CryptoTests.testPasswordSaltIV" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Vault" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.CryptoTests" />
-      <option name="METHOD_NAME" value="testPasswordSaltIV" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="MAIN_CLASS_NAME" value="jUnitTests.SearchParametersSerializationDeserializationTests" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -241,6 +211,21 @@
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jUnitTests in Vault" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Vault" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jUnitTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="jUnitTests" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -287,20 +272,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
+      <item itemvalue="JUnit.CryptoTests (1)" />
+      <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
+      <item itemvalue="JUnit.jUnitTests in Vault" />
       <item itemvalue="JUnit.tests in CommonCode" />
-      <item itemvalue="JUnit.CryptoTests" />
-      <item itemvalue="JUnit.CryptoTests.fixedPasswordDoesNotProduceIdenticalCiphertext" />
-      <item itemvalue="JUnit.CryptoTests.testPasswordSaltIV" />
-      <item itemvalue="JUnit.CryptoTests.roundTrip" />
       <item itemvalue="JUnit.tests in Vault" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.jUnitTests in Vault" />
+        <item itemvalue="JUnit.SearchParametersSerializationDeserializationTests" />
+        <item itemvalue="JUnit.CryptoTests (1)" />
         <item itemvalue="JUnit.tests in Vault" />
         <item itemvalue="JUnit.tests in CommonCode" />
-        <item itemvalue="JUnit.CryptoTests" />
-        <item itemvalue="JUnit.CryptoTests.fixedPasswordDoesNotProduceIdenticalCiphertext" />
-        <item itemvalue="JUnit.CryptoTests.testPasswordSaltIV" />
       </list>
     </recent_temporary>
   </component>
@@ -690,7 +674,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -704,13 +688,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Linux .classpath" />
-    <MESSAGE value="Added logging. Investigating why app doesn't come up maximized after being maximized and closed and re-opened." />
-    <MESSAGE value="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor." />
-    <MESSAGE value="No longer build source code .zip file as source code is in GitHub." />
-    <MESSAGE value="README.md" />
-    <MESSAGE value="Version 0.72&#10;&#10;Added image rotation." />
-    <MESSAGE value="Added artwork for rotation menu items" />
     <MESSAGE value="Code inspection cleanup" />
     <MESSAGE value="Version 0.73 Preparing for improved crypto." />
     <MESSAGE value="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved." />
@@ -729,7 +706,14 @@
     <MESSAGE value="Bug Fix:&#10;&#10;Load a version 1.2 document. Now every time the document is saved, user gets a warning about upgrading the file." />
     <MESSAGE value="Code inspection updates." />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature" />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Created Windows setup" />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  Fixed CryptoTests.java&#10;  &#10;Updated ant build to build custom java runtime" />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime" />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content." />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered." />
+    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -820,7 +804,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>171</line>
+          <line>172</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -876,12 +860,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>165</line>
+          <line>166</line>
           <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
-          <line>170</line>
+          <line>168</line>
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -910,18 +894,8 @@
           <option name="timeStamp" value="155" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/SearchParametersSerializationDeserializationTests.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/CryptoTests.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
-          <line>39</line>
+          <line>38</line>
           <option name="timeStamp" value="172" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -951,13 +925,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
-          <line>48</line>
+          <line>47</line>
           <option name="timeStamp" value="180" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NativeDefaultHandler.java</url>
           <line>227</line>
           <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>189</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>198</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordDialog.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordDialog.java</url>
+          <line>298</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>1051</line>
+          <option name="timeStamp" value="209" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

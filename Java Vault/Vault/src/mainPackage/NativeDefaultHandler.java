@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -292,7 +292,7 @@ public class NativeDefaultHandler extends DefaultHandler {
 		
 		String currentText = new String(ch, start, length);
 		
-		if (currentText.length() > 0) {
+		if (!currentText.isEmpty()) {
 			elementText.append(currentText);
 		}
 	}

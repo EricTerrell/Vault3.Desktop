@@ -20,8 +20,10 @@
 
 package jUnitTests;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -44,11 +46,14 @@ public class CryptoTests {
 	final static String PASSWORD = "PASSWORD";
 
 	@Test
-	public void roundTrip() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+	public void roundTrip() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException {
 		final String plainText = "Robert Eric Terrell is my name.";
 
-		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD);
-		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion());
+		final byte[] salt = CryptoUtils.createSalt();
+		final byte[] iv = CryptoUtils.createIV();
+
+		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion(), salt, iv);
+		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion(), salt, iv);
 		
 		for (int i = 0; i < 1_000_000; i++) {
 			final String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
@@ -61,11 +66,14 @@ public class CryptoTests {
 	}
 	
 	@Test
-	public void emptyStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+	public void emptyStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException {
 		final String plainText = StringLiterals.EmptyString;
 
-		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD);
-		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion());
+		final byte[] salt = CryptoUtils.createSalt();
+		final byte[] iv = CryptoUtils.createIV();
+
+		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion(), salt, iv);
+		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion(), salt, iv);
 
 		final String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 
@@ -76,11 +84,16 @@ public class CryptoTests {
 	}
 
 	@Test
-	public void nullStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+	public void nullStringRoundTrip() throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeySpecException {
 		final String plainText = null;
 
-		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD);
-		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD, VaultDocumentVersion.getLatestVaultDocumentVersion());
+		final byte[] salt = CryptoUtils.createSalt();
+		final byte[] iv = CryptoUtils.createIV();
+
+		final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(PASSWORD,
+				VaultDocumentVersion.getLatestVaultDocumentVersion(), salt, iv);
+		final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(PASSWORD,
+				VaultDocumentVersion.getLatestVaultDocumentVersion(), salt, iv);
 
 		final String cipherText = CryptoUtils.encryptString(encryptionCipher, plainText);
 

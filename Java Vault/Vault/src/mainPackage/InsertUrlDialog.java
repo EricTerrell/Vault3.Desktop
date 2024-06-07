@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -60,7 +60,7 @@ public class InsertUrlDialog extends VaultDialog {
 	}
 
 	private void enableDisableOKButton() {
-		final boolean enabled = protocolCombo.getSelectionIndex() >= 0 && urlText.getText().trim().length() > 0;
+		final boolean enabled = protocolCombo.getSelectionIndex() >= 0 && !urlText.getText().trim().isEmpty();
 		
 	    if (!enabled) {
 	    	statusLabel.setText("Please enter URL.");

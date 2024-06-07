@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2023, Eric Bergman-Terrell
+  (C) Copyright 2024, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -20,10 +20,11 @@
 
 package mainPackage;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.text.MessageFormat;
 import java.util.Date;
 
@@ -185,26 +186,23 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 		}
 	}
 	
-	private static float getLatestVersion() throws IOException {
-		float latestVersion = 0.00f;
-		
-		final URL versionURL = new URL("https://www.EricBT.com/versions/vault3.txt");
+	private static float getLatestVersion() throws IOException, InterruptedException {
+		float latestVersion;
 
-		final StringBuilder text = new StringBuilder();
-		
-		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(versionURL.openStream()))) {
-			String inputLine;
-	
-			while ((inputLine = bufferedReader.readLine()) != null) {
-				// Process each line.
-				text.append(inputLine);
-				text.append(PortabilityUtils.getNewLine());
-			}
-			
-			latestVersion = Float.valueOf(text.toString().trim());
-			
-			Globals.getPreferenceStore().setValue(PreferenceKeys.LastUpdateCheckDate, new Date().getTime());
-		}
+		final HttpClient httpClient = HttpClient.newHttpClient();
+
+		final HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(String.format("https://www.EricBT.com/versions/vault3.txt?platform=%s",
+						Globals.getPlatform())))
+				.build();
+
+		final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+		Globals.getLogger().info(String.format("version response: %s", response.body()));
+
+		latestVersion = Float.parseFloat(response.body().trim());
+
+		Globals.getPreferenceStore().setValue(PreferenceKeys.LastUpdateCheckDate, new Date().getTime());
 
 		return latestVersion;
 	}
