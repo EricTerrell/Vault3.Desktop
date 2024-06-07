@@ -10,7 +10,7 @@ Vault 3 stores your notes and photographs as an outline. Vault 3 organizes your 
 
 # Copyright
 
-Vault 3 &#169; Copyright 2023, [`Eric Bergman-Terrell`](https://www.ericbt.com)
+Vault 3 &#169; Copyright 2024, [`Eric Bergman-Terrell`](https://www.ericbt.com)
 
 # Links
 
@@ -20,7 +20,8 @@ Vault 3 &#169; Copyright 2023, [`Eric Bergman-Terrell`](https://www.ericbt.com)
 
 # Android Version
 
-A version of [`Vault 3 for Android`](https://play.google.com/store/apps/details?id=com.ericbt.Vault3Paid) is also available. All versions of Vault 3 (Android, Windows, Linux, OSX) use the same file format. Any .vl3 file can be read and updated by any version.
+A version of [`Vault 3 for Android`](https://play.google.com/store/apps/details?id=com.ericbt.Vault3Paid) is also available. All versions of Vault 3 (Android, Windows, and Linux) use 
+the same file format. Any .vl3 file can be read and updated by any version.
 
 # How to Build
 
@@ -32,7 +33,6 @@ Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www
 2. Make sure you have a Java Development Kit (JDK) with a version of **17 or later**. You can download a JDK [`here`](https://www.oracle.com/java/technologies/downloads/).
 3. Download the latest version of the [`Eclipse libraries`](https://download.eclipse.org/eclipse/downloads/).
 4. Download additional libraries:
-    1. [`JavaMail`](https://www.oracle.com/java/technologies/javamail-api.html)
     1. [`sqlite-jdbc`](https://github.com/xerial/sqlite-jdbc)
     1. [`itextpdf`](https://github.com/itext/itextpdf/releases)
     1. [`perf4j`](https://mvnrepository.com/artifact/org.perf4j/perf4j)
