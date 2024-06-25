@@ -71,8 +71,6 @@ public class SettingsDialog extends VaultDialog {
 		substituteFolderLabel.setText(preferenceStore.getString(PreferenceKeys.SubstitutePhotoFolder));
 	}
 
-	private char echoChar;
-	
 	private int autoSaveIntervalMinutes, checkForModificationsIntervalMinutes;
 
 	private Button autoSaveCheckBox, saveWithBakFileTypeCheckBox, loadFileOnStartupButton, loadMostRecentlyUsedFileButton, 
@@ -117,10 +115,20 @@ public class SettingsDialog extends VaultDialog {
 		return result;
 	}
 
+	@Override
+	public void create() {
+		super.create();
+
+		// enableDisableOKButton is called before all fields have been loaded, since it's used as the argument to
+		// addModifyListener in createDialogArea. Consequently, we need to call it a final time after the dialog has
+		// been fully created. Otherwise, there will be a spurious warning message.
+		enableDisableOKButton();
+	}
+
 	private void enableDisableOKButton() {
-		boolean unspecifiedStartupFileError = loadFileOnStartupButton.getSelection() && startupFilePathText.getText().trim().isEmpty();
+		final boolean unspecifiedStartupFileError = loadFileOnStartupButton.getSelection() && startupFilePathText.getText().trim().isEmpty();
 		
-		boolean unspecifiedSubstitutePhotoFolderError = (loadPhotosFromSubstituteFolderRadioButton.getSelection() && substituteFolderLabel.getText().trim().isEmpty());
+		final boolean unspecifiedSubstitutePhotoFolderError = (loadPhotosFromSubstituteFolderRadioButton.getSelection() && substituteFolderLabel.getText().trim().isEmpty());
 
 		okButton.setEnabled(!unspecifiedStartupFileError && !unspecifiedSubstitutePhotoFolderError);
 		
@@ -130,7 +138,7 @@ public class SettingsDialog extends VaultDialog {
 	    }
 	    else if (unspecifiedSubstitutePhotoFolderError)
 	    {
-	    	statusLabel.setText("Substitute Photo Folder Must Be Specified in Photos Tab.");
+	    	statusLabel.setText("Substitute Photo Folder Must Be Specified in Substitute Folder Tab.");
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {

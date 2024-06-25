@@ -23,8 +23,6 @@
     <target name="build_everything">
     	<ant antfile="ant_build_linux_gtk_64.xml"/>
     	<ant antfile="ant_build_win64.xml"/>
-        <ant antfile="ant_build_cocoa_aarch64.xml"/>
-        <ant antfile="ant_build_cocoa_x86_64.xml"/>
         <ant antfile="ant_build_common_code.xml"/>
     </target>
 
@@ -34,10 +32,5 @@
 
     <target name="build_linux">
         <ant antfile="ant_build_linux_gtk_64.xml"/>
-    </target>
-
-    <target name="build_osx">
-        <ant antfile="ant_build_cocoa_x86_64.xml"/>
-        <ant antfile="ant_build_cocoa_aarch64.xml"/>
     </target>
 </project>

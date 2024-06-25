@@ -9,8 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.82&#10;&#10;Do not build OSX versions.">
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -674,7 +674,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -688,8 +688,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Code inspection cleanup" />
-    <MESSAGE value="Version 0.73 Preparing for improved crypto." />
     <MESSAGE value="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved." />
     <MESSAGE value="Minor cleanup" />
     <MESSAGE value="Attempt to fix Mac OSX build." />
@@ -713,7 +711,9 @@
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content." />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered." />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails." />
+    <MESSAGE value="Version 0.82&#10;&#10;Bug Fix: In previous versions, an incorrect warning message could be displayed in the Settings dialog." />
+    <MESSAGE value="Version 0.82&#10;&#10;Do not build OSX versions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.82&#10;&#10;Do not build OSX versions." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -939,11 +939,6 @@
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>198</line>
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PasswordDialog.java</url>
           <line>46</line>
           <option name="timeStamp" value="197" />
@@ -954,9 +949,44 @@
           <option name="timeStamp" value="207" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
-          <line>1051</line>
-          <option name="timeStamp" value="209" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>140</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDialog.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="217" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="218" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>195</line>
+          <option name="timeStamp" value="219" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="222" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

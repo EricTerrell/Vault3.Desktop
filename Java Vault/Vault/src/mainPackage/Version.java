@@ -91,9 +91,11 @@ import java.text.MessageFormat;
  * 									 allow user to see previously-specified password in the Password dialog box.
  * 									 Pre-emptively do a File / New before attempting to load a new file so that if the
  * 									 load fails, an new file is displayed.
+ * 0.82				1.3				 Bug Fix: In previous versions, an incorrect warning message could be displayed in the
+ * 									 Settings dialog.
  */
 public class Version {
-	private static final float versionNumber = 0.81f;
+	private static final float versionNumber = 0.82f;
 	private static final int copyrightYear = 2024;
 
 	public static float getVersionNumber() {
