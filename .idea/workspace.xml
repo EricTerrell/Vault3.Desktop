@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.82&#10;&#10;Do not build OSX versions.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -674,7 +675,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
