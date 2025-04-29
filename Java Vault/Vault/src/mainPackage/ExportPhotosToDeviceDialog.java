@@ -1,6 +1,6 @@
 /*
 Vault 3
-(C) Copyright 2024, Eric Bergman-Terrell
+(C) Copyright 2025, Eric Bergman-Terrell
 
 This file is part of Vault 3.
 
@@ -78,11 +78,8 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
+	    statusLabel = createStatusLabel(parent);
 	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
-
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
@@ -125,12 +122,12 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		
 		if (errorMessage != null) {
 			statusLabel.setBackground(errorBackground);
-			statusLabel.setText(errorMessage);
+			setStatusLabelText(statusLabel, errorMessage);
 			okButton.setEnabled(false);
 		}
 		else {
 			statusLabel.setBackground(nonErrorBackground);
-			statusLabel.setText(StringLiterals.EmptyString);
+			setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 			okButton.setEnabled(true);
 		}
 	}

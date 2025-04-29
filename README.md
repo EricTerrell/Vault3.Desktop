@@ -10,7 +10,7 @@ Vault 3 stores your notes and photographs as an outline. Vault 3 organizes your 
 
 # Copyright
 
-Vault 3 &#169; Copyright 2024, [`Eric Bergman-Terrell`](https://www.ericbt.com)
+Vault 3 &#169; Copyright 2025, [`Eric Bergman-Terrell`](https://www.ericbt.com)
 
 # Links
 

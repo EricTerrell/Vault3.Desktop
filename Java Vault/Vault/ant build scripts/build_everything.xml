@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
 
   This file is part of Vault 3.
 
@@ -19,13 +19,11 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <project default="build_everything" name="Build Everything">
-    <!--ANT 1.7 is required                                        -->
     <target name="build_everything">
+        <ant antfile="ant_build_common_code.xml"/>
+
     	<ant antfile="ant_build_linux_gtk_64.xml"/>
     	<ant antfile="ant_build_win64.xml"/>
-        <ant antfile="ant_build_common_code.xml"/>
-        <ant antfile="ant_build_cocoa_x86_64.xml"/>
-        <ant antfile="ant_build_cocoa_aarch64.xml"/>
     </target>
 
     <target name="build_windows">
@@ -34,13 +32,5 @@
 
     <target name="build_linux">
         <ant antfile="ant_build_linux_gtk_64.xml"/>
-    </target>
-
-    <target name="build_osx_intel">
-        <ant antfile="ant_build_cocoa_x86_64.xml"/>
-    </target>
-
-    <target name="build_osx_arm">
-        <ant antfile="ant_build_cocoa_aarch64.xml"/>
     </target>
 </project>

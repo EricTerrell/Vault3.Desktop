@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -130,10 +130,7 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
-	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
+	    statusLabel = createStatusLabel(parent);
 
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
@@ -155,12 +152,12 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 		}
 		
 		if (error) {
-			statusLabel.setText(errorMessage);
+			setStatusLabelText(statusLabel, errorMessage);
 			okButton.setEnabled(false);
 			statusLabel.setBackground(errorBackground);
 		}
 		else {
-			statusLabel.setText(StringLiterals.EmptyString);
+			setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 			okButton.setEnabled(true);
 			statusLabel.setBackground(nonErrorBackground);
 		}

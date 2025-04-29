@@ -1,6 +1,6 @@
 <#
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
 
   This file is part of Vault 3.
 
@@ -20,7 +20,7 @@
 
 # Generate file references for ant build scripts
 
-cd 'C:\Eclipse 4.29'
+cd 'C:\Eclipse 4.35'
 
 $platforms = ("linux-gtk-x86_64", "linux-x86_64"), ("macosx-cocoa-aarch64", "cocoa-macosx-aarch64"), ("macosx-cocoa-x86_64", "cocoa-macosx-x86_64"), ("win32-x86_64", "win32-win32-x86_64");
 

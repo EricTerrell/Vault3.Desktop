@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -209,19 +209,32 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 	
 	public static void displayUpdatesDialogIfUpdatesAreAvailable(Shell parentShell) {
 		try {
+			Globals.getLogger().info("SoftwareUpdatesDialog.displayUpdatesDialogIfUpdatesAreAvailable");
+
 			final PreferenceStore preferenceStore = Globals.getPreferenceStore();
 			
 			if (preferenceStore.getBoolean(PreferenceKeys.CheckForUpdatesAutomatically)) {
 				final long lastCheckInstant = preferenceStore.getLong(PreferenceKeys.LastUpdateCheckDate);
 				final long now = new Date().getTime();
-				
+
+				Globals.getLogger().info(String.format("lastCheckInstant = %d\nnow = %d", lastCheckInstant, now));
+
 				final long sevenDaysInMilliseconds = 1000 * 60 * 60 * 24 * 7;
 	
 				if ((now - lastCheckInstant) >= sevenDaysInMilliseconds) {
 					if (getLatestVersion() > Version.getVersionNumber()) {
-						final SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(parentShell, true);
-						
-						softwareUpdatesDialog.open();
+						try {
+							Globals.getLogger().info("launch SoftwareUpdatesDialog");
+
+							final SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(parentShell, true);
+
+							softwareUpdatesDialog.open();
+						}
+						catch (Exception ex) {
+							Globals.getLogger().info(String.format("Error: %s", ex.getMessage()));
+
+							ex.printStackTrace();
+						}
 					}
 				}
 			}

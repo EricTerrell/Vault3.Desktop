@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 
 /**
@@ -199,7 +200,7 @@ public class GraphicsUtils {
 		
 		try {
 			if (StringUtils.isURL(imagePath)) {
-				URL imageURL = new URL(imagePath);
+				final URL imageURL = new URI(imagePath).toURL();
 				
 				originalImage = ImageIO.read(imageURL);
 			}
@@ -271,7 +272,7 @@ public class GraphicsUtils {
 			InputStream inputStream = null;
 			
 			try {
-				URL url = new URL(imagePathOrURL.trim());
+				URL url = new URI(imagePathOrURL.trim()).toURL();
 				
 				inputStream = url.openStream();
 			

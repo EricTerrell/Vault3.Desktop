@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -102,11 +102,8 @@ public class SettingsDialog extends VaultDialog {
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
+	    statusLabel = createStatusLabel(parent);
 	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
-
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
@@ -133,16 +130,16 @@ public class SettingsDialog extends VaultDialog {
 		okButton.setEnabled(!unspecifiedStartupFileError && !unspecifiedSubstitutePhotoFolderError);
 		
 	    if (unspecifiedStartupFileError) {
-	    	statusLabel.setText("Startup File Must Be Specified in Startup File Tab.");
+	    	setStatusLabelText(statusLabel, "Startup File Must Be Specified in Startup File Tab.");
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else if (unspecifiedSubstitutePhotoFolderError)
 	    {
-	    	statusLabel.setText("Substitute Photo Folder Must Be Specified in Substitute Folder Tab.");
+	    	setStatusLabelText(statusLabel, "Substitute Photo Folder Must Be Specified in Substitute Folder Tab.");
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {
-	    	statusLabel.setText(StringLiterals.EmptyString);
+	    	setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 	}

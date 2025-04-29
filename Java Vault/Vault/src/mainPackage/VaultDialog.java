@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -28,9 +28,14 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
 public class VaultDialog extends Dialog {
+	private final static String PADDING = "    ";
+
 	private DialogSettings dialogSettings;
 
 	protected DialogSettings getDialogSettings() {
@@ -115,5 +120,17 @@ public class VaultDialog extends Dialog {
 		getShell().setMinimumSize(minimumSize);
 		
 		populateFields();
+	}
+
+	public Label createStatusLabel(Composite parent) {
+		final Label statusLabel = new Label(parent, SWT.NONE);
+
+		statusLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+
+		return statusLabel;
+	}
+
+	public void setStatusLabelText(Label statusLabel, String text) {
+		statusLabel.setText(String.format("%s%s%s", PADDING, text, PADDING));
 	}
 }

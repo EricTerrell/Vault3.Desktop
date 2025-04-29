@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -93,10 +93,11 @@ import java.text.MessageFormat;
  * 									 load fails, an new file is displayed.
  * 0.82				1.3				 Bug Fix: In previous versions, an incorrect warning message could be displayed in the
  * 									 Settings dialog.
+ * 0.83				1.3				 Now using Eclipse 4.35 libraries.
  */
 public class Version {
-	private static final float versionNumber = 0.82f;
-	private static final int copyrightYear = 2024;
+	private static final float versionNumber = 0.83f;
+	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {
 		return versionNumber;

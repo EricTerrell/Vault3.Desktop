@@ -1,0 +1,1 @@
+ant -buildfile .\build_everything.xml

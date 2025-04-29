@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -63,9 +63,7 @@ public class PasswordPromptDialog extends VaultDialog {
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 
-		statusLabel = new Label(parent, SWT.NONE);
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
+		statusLabel = createStatusLabel(parent);
 
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
@@ -115,13 +113,13 @@ public class PasswordPromptDialog extends VaultDialog {
 		boolean incorrectLength = passwordText.getText().length() < CryptoUtils.getMinPasswordLength();
 		
 		if (incorrectLength) {
-			String message = MessageFormat.format("Password must contain at least {0} characters.", CryptoUtils.getMinPasswordLength());
-			statusLabel.setText(message);
+			final String message = MessageFormat.format("Password must contain at least {0} characters.", CryptoUtils.getMinPasswordLength());
+			setStatusLabelText(statusLabel, message);
 			statusLabel.setBackground(errorBackground);
 			okButton.setEnabled(false);
 		}
 		else {
-      	  statusLabel.setText(StringLiterals.EmptyString);
+      	  setStatusLabelText(statusLabel, StringLiterals.EmptyString);
       	  statusLabel.setBackground(nonErrorBackground);
       	  okButton.setEnabled(true);
 		}

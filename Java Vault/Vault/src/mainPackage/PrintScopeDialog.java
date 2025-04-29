@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -77,11 +77,8 @@ public class PrintScopeDialog extends VaultDialog {
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
+	    statusLabel = createStatusLabel(parent);
 	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
-
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 
@@ -189,13 +186,13 @@ public class PrintScopeDialog extends VaultDialog {
 				startPage = endPage = Integer.parseInt(pageNumberStrings[0]);
 				
 				if (startPage > 0) {
-					statusLabel.setText(StringLiterals.EmptyString);
+					setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 					statusLabel.setBackground(nonErrorBackground);
 				}
 				else {
 					startPage = endPage = -1;
 					
-					statusLabel.setText(invalidPageRange);
+					setStatusLabelText(statusLabel, invalidPageRange);
 					statusLabel.setBackground(errorBackground);
 				}
 			}
@@ -204,24 +201,24 @@ public class PrintScopeDialog extends VaultDialog {
 				endPage = Integer.parseInt(pageNumberStrings[1]);
 
 				if (startPage > 0 && endPage >= startPage) {
-					statusLabel.setText(StringLiterals.EmptyString);
+					setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 					statusLabel.setBackground(nonErrorBackground);
 				}
 				else {
 					startPage = endPage = -1;
 					
-					statusLabel.setText(invalidPageRange);
+					setStatusLabelText(statusLabel, invalidPageRange);
 					statusLabel.setBackground(errorBackground);
 				}
 			}
 			else {
-				statusLabel.setText(invalidPageRange);
+				setStatusLabelText(statusLabel, invalidPageRange);
 				statusLabel.setBackground(errorBackground);
 			}
 		} catch (NumberFormatException ex) {
 			startPage = endPage = -1;
 			
-			statusLabel.setText(invalidPageRange);
+			setStatusLabelText(statusLabel, invalidPageRange);
 			statusLabel.setBackground(errorBackground);
 		}
 		
@@ -234,11 +231,11 @@ public class PrintScopeDialog extends VaultDialog {
       	okButton.setEnabled(enabled);
 	          
 	    if (!enabled) {
-	    	statusLabel.setText("Title must be non-blank.");
+	    	setStatusLabelText(statusLabel, "Title must be non-blank.");
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {
-	    	statusLabel.setText(StringLiterals.EmptyString);
+	    	setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 	}

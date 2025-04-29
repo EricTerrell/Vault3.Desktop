@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -106,11 +106,8 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
+	    statusLabel = createStatusLabel(parent);
 	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
-
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 		
@@ -145,11 +142,11 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 		okButton.setEnabled(selection.getFirstElement() != null && !illegalMove);
 		
         if (illegalMove) {
-      	  statusLabel.setText("Cannot move items to selected location.");
+      	  setStatusLabelText(statusLabel, "Cannot move items to selected location.");
       	  statusLabel.setBackground(errorBackground);
         }
         else {
-      	  statusLabel.setText(StringLiterals.EmptyString);
+      	  setStatusLabelText(statusLabel, StringLiterals.EmptyString);
       	  statusLabel.setBackground(nonErrorBackground);
         }
 	}

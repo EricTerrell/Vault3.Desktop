@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -63,11 +63,11 @@ public class InsertUrlDialog extends VaultDialog {
 		final boolean enabled = protocolCombo.getSelectionIndex() >= 0 && !urlText.getText().trim().isEmpty();
 		
 	    if (!enabled) {
-	    	statusLabel.setText("Please enter URL.");
+	    	setStatusLabelText(statusLabel, "Please enter URL.");
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {
-	    	statusLabel.setText(StringLiterals.EmptyString);
+	    	setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 		
@@ -78,11 +78,8 @@ public class InsertUrlDialog extends VaultDialog {
 	protected Control createContents(Composite parent) {
 		final Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
+	    statusLabel = createStatusLabel(parent);
 	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
-
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
 

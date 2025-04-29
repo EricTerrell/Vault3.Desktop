@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2024, Eric Bergman-Terrell
+  (C) Copyright 2025, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -140,10 +140,7 @@ public class AddItemDialog extends VaultDialog {
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		
-	    statusLabel = new Label(parent, SWT.BORDER);
-	
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
-		statusLabel.setLayoutData(gridData);
+	    statusLabel = createStatusLabel(parent);
 
 		nonErrorBackground = statusLabel.getBackground();
 		errorBackground = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
@@ -341,11 +338,11 @@ public class AddItemDialog extends VaultDialog {
       	okButton.setEnabled(enabled);
 	          
 	    if (!enabled) {
-	    	statusLabel.setText("Title must be non-blank.");
+	    	setStatusLabelText(statusLabel, "Title must be non-blank.");
 	        statusLabel.setBackground(errorBackground);
 	    }
 	    else {
-	    	statusLabel.setText(StringLiterals.EmptyString);
+	    	setStatusLabelText(statusLabel, StringLiterals.EmptyString);
 	    	statusLabel.setBackground(nonErrorBackground);
 	    }
 	}
