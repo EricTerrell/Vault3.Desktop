@@ -1,6 +1,6 @@
 # Vault 3 (Desktop)
 
-Vault 3 stores your notes and photographs as an outline. Vault 3 organizes your information into categories and sub-categories that you specify. Vault 3's outline is easily and rapidly searchable. Vault 3 uses strong encryption to ensure the privacy of your personal data. Vault 3 can even run slideshows of your photographs.
+Vault 3 stores your notes and photographs as an outline. Vault 3 organizes your information into categories and sub-categories that you specify. Vault 3's outline is easily and rapidly searchable. Vault 3 uses strong encryption to ensure the privacy of your personal data. Vault 3 can even run slideshows of your photographs. Vault 3 runs on Windows and Linux.
 
 # Screenshots
 
