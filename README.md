@@ -27,12 +27,13 @@ the same file format. Any .vl3 file can be read and updated by any version.
 
 ## Development Build
 
-Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www.eclipse.org/) project. It is currently using version 4.29 of the libraries.
+Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www.eclipse.org/) project. It is currently using version 4.35 of the libraries.
 
 1. These instructions assume you're using [`Intellij IDEA`](https://www.jetbrains.com/idea/). The procedure for other development tools will be similar to the following.
 2. Make sure you have a Java Development Kit (JDK) with a version of **17 or later**. You can download a JDK [`here`](https://www.oracle.com/java/technologies/downloads/).
 3. Download the latest version of the [`Eclipse libraries`](https://download.eclipse.org/eclipse/downloads/).
-4. Download additional libraries:
+4. Since the Eclipse libraries are signed, when you build the app in the IDE, you are likely to experience a fatal error when the jar you build isn't signed the same way the Eclipse jars are. I solved this problem by 1) copying the jars to a new folder, and 2) stripping out the signing data. I used a Linux shell and ran this command: `find . -name '*.jar' -exec zip -d '{}' 'META-INF/*.SF' ';'`. You can find more details [here](https://stackoverflow.com/questions/7757083/how-do-i-unsign-a-jar). Note: the deployment build can cope with the original, signed jar files.
+5. Download additional libraries:
     1. [`sqlite-jdbc`](https://github.com/xerial/sqlite-jdbc)
     1. [`itextpdf`](https://github.com/itext/itextpdf/releases)
     1. [`perf4j`](https://mvnrepository.com/artifact/org.perf4j/perf4j)
@@ -49,8 +50,8 @@ If you intend to distribute Vault 3 to other users, use the scripts in the "Vaul
 These scripts will create the folders that you can distribute.
 
 1. Download the libraries mentioned in the Development Build section, above.
-2. Update the ant build scripts to point to the downloaded libraries
-3. Run the appropriate ant build scripts
+2. Update the ant build scripts to point to the downloaded libraries.
+3. Run the appropriate ant build scripts.
 4. The scripts create the deployment folders, and automatically compress them as .zip files.
 5. Distribute the deployment .zip files.
 
