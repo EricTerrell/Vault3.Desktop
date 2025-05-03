@@ -94,9 +94,11 @@ import java.text.MessageFormat;
  * 0.82				1.3				 Bug Fix: In previous versions, an incorrect warning message could be displayed in the
  * 									 Settings dialog.
  * 0.83				1.3				 Now using Eclipse 4.35 libraries.
+ * 0.84				1.3				 Bug Fix: In previous versions, only default font background color was used, not
+ * 									 foreground color. Made default font optional.
  */
 public class Version {
-	private static final float versionNumber = 0.83f;
+	private static final float versionNumber = 0.84f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

@@ -172,7 +172,7 @@ public class SettingsDialog extends VaultDialog {
 		preferenceStore.setValue(PreferenceKeys.TextBackgroundGreen, textBackgroundColor.green);
 		preferenceStore.setValue(PreferenceKeys.TextBackgroundBlue, textBackgroundColor.blue);
 		
-		Globals.getVaultTextViewer().setBackgroundColor();
+		Globals.getVaultTextViewer().refresh();
 		
 		preferenceStore.setValue(PreferenceKeys.CachePasswords, cachePasswords.getSelection());
 		
@@ -190,41 +190,44 @@ public class SettingsDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout());
 
-		TabFolder tabFolder = new TabFolder(composite, SWT.NONE);
+		final TabFolder tabFolder = new TabFolder(composite, SWT.NONE);
 		GridData gridData = new GridData(GridData.FILL_BOTH);
 		tabFolder.setLayoutData(gridData);
 		
-		TabItem startupFileTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem startupFileTabItem = new TabItem(tabFolder, SWT.NONE);
 		startupFileTabItem.setText("&Startup File");
 
-		TabItem savingTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem savingTabItem = new TabItem(tabFolder, SWT.NONE);
 		savingTabItem.setText("Sa&ving");
 		
-		TabItem syncTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem syncTabItem = new TabItem(tabFolder, SWT.NONE);
 		syncTabItem.setText("S&ync");
 		
-		TabItem passwordsTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem passwordsTabItem = new TabItem(tabFolder, SWT.NONE);
 		passwordsTabItem.setText("P&asswords");
 
-		TabItem instancesTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem instancesTabItem = new TabItem(tabFolder, SWT.NONE);
 		instancesTabItem.setText("&Instances");
-		
-		TabItem defaultTextFontTabItem = new TabItem(tabFolder, SWT.NONE);
+
+		final TabItem textBackgroundTabItem = new TabItem(tabFolder, SWT.NONE);
+		textBackgroundTabItem.setText("Text Backgroun&d");
+
+		final TabItem defaultTextFontTabItem = new TabItem(tabFolder, SWT.NONE);
 		defaultTextFontTabItem.setText("Default Te&xt Font");
-		
-		TabItem photosTabItem = new TabItem(tabFolder, SWT.NONE);
+
+		final TabItem photosTabItem = new TabItem(tabFolder, SWT.NONE);
 		photosTabItem.setText("&Photos && Slideshows");
 		
-		TabItem substituteFolderTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem substituteFolderTabItem = new TabItem(tabFolder, SWT.NONE);
 		substituteFolderTabItem.setText("Su&bstitute Folder");
 		
-		TabItem updatesTabItem = new TabItem(tabFolder, SWT.NONE);
+		final TabItem updatesTabItem = new TabItem(tabFolder, SWT.NONE);
 		updatesTabItem.setText("&Updates");
 
-		Composite startupComposite = new Composite(tabFolder, SWT.NONE);
+		final Composite startupComposite = new Composite(tabFolder, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(1, false);
 		startupComposite.setLayout(gridLayout);
 		
@@ -253,7 +256,7 @@ public class SettingsDialog extends VaultDialog {
 		
 		new Label(startupComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-		Button specifyFileButton = new Button(startupComposite, SWT.NONE);
+		final Button specifyFileButton = new Button(startupComposite, SWT.NONE);
 		specifyFileButton.setText("Specify Startup &File...");
 		
 		specifyFileButton.addSelectionListener(new SelectionListener() {
@@ -263,8 +266,8 @@ public class SettingsDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
-				String vault3File = MessageFormat.format("{0} File", StringLiterals.ProgramName);
+				final FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
+				final String vault3File = MessageFormat.format("{0} File", StringLiterals.ProgramName);
 				fileDialog.setFilterNames(new String[] { vault3File, "All Files" });
 				fileDialog.setFilterExtensions(new String[] { StringLiterals.ProgramFileTypeWildcardedCaseInsensitive, StringLiterals.Wildcard });
 				fileDialog.setText("Specify File");
@@ -272,7 +275,7 @@ public class SettingsDialog extends VaultDialog {
 				boolean finished = false;
 				
 				do {
-					String filePath = fileDialog.open();
+					final String filePath = fileDialog.open();
 					
 					if (filePath != null && new File(filePath).exists()) {
 						loadFileOnStartupButton.setSelection(true);
@@ -369,7 +372,7 @@ public class SettingsDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				String text = MessageFormat.format(minutesFormat, saveIntervalScale.getSelection());
+				final String text = MessageFormat.format(minutesFormat, saveIntervalScale.getSelection());
 				autoSaveIntervalLabel.setText(text);
 				autoSaveIntervalMinutes = saveIntervalScale.getSelection();
 			}
@@ -427,8 +430,7 @@ public class SettingsDialog extends VaultDialog {
 				checkForModificationsIntervalMinutes = checkForModificationsIntervalScale.getSelection();
 			}
 		});
-		
-		
+
 		final Composite passwordsComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		passwordsComposite.setLayout(gridLayout);
@@ -441,7 +443,7 @@ public class SettingsDialog extends VaultDialog {
 		gridLayout = new GridLayout(1, false);
 		instancesComposite.setLayout(gridLayout);
 		
-		Composite twoItemsComposite = new Composite(instancesComposite, SWT.NONE);
+		final Composite twoItemsComposite = new Composite(instancesComposite, SWT.NONE);
 		gridLayout = new GridLayout(2, false);
 		gridLayout.marginWidth = 0;
 		twoItemsComposite.setLayout(gridLayout);
@@ -474,7 +476,45 @@ public class SettingsDialog extends VaultDialog {
 		
 		enableDisableWarnAboutSingleInstance();
 
-		Composite defaultTextFontComposite = new Composite(tabFolder, SWT.NONE);
+		final Composite textBackgroundComposite = new Composite(tabFolder, SWT.NONE);
+
+		gridLayout = new GridLayout(2, false);
+		textBackgroundComposite.setLayout(gridLayout);
+
+		final Label textBackgroundColorLabel = new Label(textBackgroundComposite, SWT.NONE);
+		textBackgroundColorLabel.setText("Text Background Color:");
+
+		textBackgroundColorCanvas = new Canvas(textBackgroundComposite, SWT.BORDER);
+		textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+
+		gridData = new GridData();
+		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(textBackgroundColorLabel.getText()).y;
+		textBackgroundColorCanvas.setLayoutData(gridData);
+
+		final Button specifyBackgroundColorButton = new Button(textBackgroundComposite, SWT.NONE);
+		specifyBackgroundColorButton.setText("Specify &Text Background Color...");
+
+		specifyBackgroundColorButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+			}
+
+			@Override
+			public void widgetSelected(SelectionEvent arg0) {
+				final ColorDialog colorDialog = new ColorDialog(getShell());
+				colorDialog.setText("Text Background Color");
+				colorDialog.setRGB(textBackgroundColor);
+
+				final RGB newColor = colorDialog.open();
+
+				if (newColor != null) {
+					textBackgroundColor = newColor;
+					textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+				}
+			}
+		});
+
+		final Composite defaultTextFontComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(2, false);
 		defaultTextFontComposite.setLayout(gridLayout);
 		
@@ -483,7 +523,7 @@ public class SettingsDialog extends VaultDialog {
 		gridData.horizontalSpan = 2;
 		defaultTextFontLabel.setLayoutData(gridData);
 
-		Label defaultTextFontColorLabel = new Label(defaultTextFontComposite, SWT.NONE);
+		final Label defaultTextFontColorLabel = new Label(defaultTextFontComposite, SWT.NONE);
 		defaultTextFontColorLabel.setText("Color:");
 
 		colorCanvas = new Canvas(defaultTextFontComposite, SWT.BORDER);
@@ -498,7 +538,7 @@ public class SettingsDialog extends VaultDialog {
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
 
-		Button specifyFontButton = new Button(defaultTextFontComposite, SWT.NONE);
+		final Button specifyFontButton = new Button(defaultTextFontComposite, SWT.NONE);
 		specifyFontButton.setText("Specify &Font...");
 		
 		specifyFontButton.addSelectionListener(new SelectionListener() {
@@ -508,7 +548,7 @@ public class SettingsDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				FontDialog fontDialog = new FontDialog(getShell());
+				final FontDialog fontDialog = new FontDialog(getShell());
 
 				FontData[] fontList = FontUtils.stringToFontList(preferenceStore.getString(PreferenceKeys.DefaultTextFont));
 				
@@ -516,14 +556,14 @@ public class SettingsDialog extends VaultDialog {
 					fontDialog.setFontList(fontList);
 				}
 				
-				int red   = preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed);
-				int green = preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen);
-				int blue  = preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue);
+				final int red   = preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed);
+				final int green = preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen);
+				final int blue  = preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue);
 				fontDialog.setRGB(new RGB(red, green, blue));
 				
 				fontDialog.setText("Specify Font");
 				
-				FontData fontData = fontDialog.open();
+				final FontData fontData = fontDialog.open();
 				
 				if (fontData != null) {
 					fontList = fontDialog.getFontList();
@@ -541,39 +581,6 @@ public class SettingsDialog extends VaultDialog {
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
 
-		Label textBackgroundColorLabel = new Label(defaultTextFontComposite, SWT.NONE);
-		textBackgroundColorLabel.setText("Text Background Color:");
-
-		textBackgroundColorCanvas = new Canvas(defaultTextFontComposite, SWT.BORDER);
-		textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
-
-		gridData = new GridData();
-		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(textBackgroundColorLabel.getText()).y;
-		textBackgroundColorCanvas.setLayoutData(gridData);
-
-		Button specifyBackgroundColorButton = new Button(defaultTextFontComposite, SWT.NONE);
-		specifyBackgroundColorButton.setText("Specify &Text Background Color...");
-		
-		specifyBackgroundColorButton.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				ColorDialog colorDialog = new ColorDialog(getShell());
-				colorDialog.setText("Text Background Color");
-				colorDialog.setRGB(textBackgroundColor);
-				
-				RGB newColor = colorDialog.open();
-				
-				if (newColor != null) {
-					textBackgroundColor = newColor;
-					textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
-				}
-			}
-		});
-		
 		Composite substituteFolderComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		substituteFolderComposite.setLayout(gridLayout);
@@ -618,7 +625,7 @@ public class SettingsDialog extends VaultDialog {
 		// Spacer.
 		new Label(substituteFolderComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
-		Button specifyFolderButton = new Button(substituteFolderComposite, SWT.NONE);
+		final Button specifyFolderButton = new Button(substituteFolderComposite, SWT.NONE);
 		specifyFolderButton.setText("Specify &Folder...");
 		gridData = new GridData();
 		gridData.horizontalAlignment = SWT.LEFT;
@@ -631,7 +638,7 @@ public class SettingsDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				DirectoryDialog directoryDialog = new DirectoryDialog(getShell());
+				final DirectoryDialog directoryDialog = new DirectoryDialog(getShell());
 				directoryDialog.setText("Specify Substitute Photos Folder");
 				directoryDialog.setMessage("Folder:");
 				directoryDialog.setFilterPath(previousSubstitutePhotoFolder);
@@ -650,11 +657,11 @@ public class SettingsDialog extends VaultDialog {
 			}
 		});
 
-		Composite photosComposite = new Composite(tabFolder, SWT.NONE);
+		final Composite photosComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		photosComposite.setLayout(gridLayout);
 		
-		Composite advancedGraphicsComposite = new Composite(photosComposite, SWT.NONE);
+		final Composite advancedGraphicsComposite = new Composite(photosComposite, SWT.NONE);
 		advancedGraphicsComposite.setLayout(new GridLayout(2, false));
 		
 		advancedGraphics = new Button(advancedGraphicsComposite, SWT.CHECK);
@@ -668,21 +675,21 @@ public class SettingsDialog extends VaultDialog {
 		
 		imageLabel.setToolTipText("Disable advanced graphics if photos are rendered slowly with low quality.");
 
-		Composite slideShowFullScreenComposite = new Composite(photosComposite, SWT.NONE);
+		final Composite slideShowFullScreenComposite = new Composite(photosComposite, SWT.NONE);
 		slideShowFullScreenComposite.setLayout(new GridLayout(2, false));
 		
 		slideShowFullScreen = new Button(advancedGraphicsComposite, SWT.CHECK);
 		slideShowFullScreen.setText("&Run Slideshows in Full Screen Mode");
 		slideShowFullScreen.setSelection(preferenceStore.getBoolean(PreferenceKeys.SlideshowFullScreen));
 				
-		Composite exclusionsComposite = new Composite(photosComposite, SWT.NONE);
+		final Composite exclusionsComposite = new Composite(photosComposite, SWT.NONE);
 		exclusionsComposite.setLayout(new GridLayout(3, false));
 		
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.grabExcessHorizontalSpace = true;
 		exclusionsComposite.setLayoutData(gridData);
 		
-		Label exclusionsLabel = new Label(exclusionsComposite, SWT.NONE);
+		final Label exclusionsLabel = new Label(exclusionsComposite, SWT.NONE);
 		exclusionsLabel.setText("In Slideshows and Photo Exports, Excl&ude Items Containing:");
 		
 		slideshowExclusionText = new Text(exclusionsComposite, SWT.BORDER); 
@@ -710,7 +717,7 @@ public class SettingsDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
+				final FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
 				fileDialog.setFilterNames(new String[] { "Executable Files", "All Files" });
 				fileDialog.setFilterExtensions(new String[] { StringLiterals.ExecutableFileType, StringLiterals.Wildcard });
 				fileDialog.setText("Specify Photo Editing Program");
@@ -718,7 +725,7 @@ public class SettingsDialog extends VaultDialog {
 				boolean finished = false;
 				
 				do {
-					String filePath = fileDialog.open();
+					final String filePath = fileDialog.open();
 					
 					if (filePath != null && new File(filePath).exists()) {
 						photoEditingProgramText.setText(filePath);
@@ -737,7 +744,7 @@ public class SettingsDialog extends VaultDialog {
 		
 		imageLabel.setToolTipText(StringLiterals.SearchTextToolTip);
 		
-		Composite updatesComposite = new Composite(tabFolder, SWT.NONE);
+		final Composite updatesComposite = new Composite(tabFolder, SWT.NONE);
 		updatesComposite.setLayout(new GridLayout(1, false));
 		
 		checkForUpdatesCheckBox = new Button(updatesComposite, SWT.CHECK);
@@ -749,6 +756,7 @@ public class SettingsDialog extends VaultDialog {
 		syncTabItem.setControl(syncComposite);
 		passwordsTabItem.setControl(passwordsComposite);
 		instancesTabItem.setControl(instancesComposite);
+		textBackgroundTabItem.setControl(textBackgroundComposite);
 		defaultTextFontTabItem.setControl(defaultTextFontComposite);
 		photosTabItem.setControl(photosComposite);
 		substituteFolderTabItem.setControl(substituteFolderComposite);

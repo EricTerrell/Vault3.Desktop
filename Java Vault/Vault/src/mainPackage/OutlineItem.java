@@ -61,6 +61,10 @@ public class OutlineItem {
 		this.text = text;
 	}
 
+	public boolean hasFont() {
+		return rgb != null && fontList != null;
+	}
+
 	private FontList fontList;
 	
 	public FontList getFontList() {

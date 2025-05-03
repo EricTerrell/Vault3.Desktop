@@ -215,24 +215,30 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 			}
 		});
 
-		setBackgroundColor();
+		setForegroundAndBackgroundColors();
 	}
 
-	public void setBackgroundColor() {
+	public void setForegroundAndBackgroundColors() {
 		final PreferenceStore preferenceStore = Globals.getPreferenceStore();
-		
+
+		final RGB textForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
+				preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
+				preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
+
 		final RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
-				  						  preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
-				  						  preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
-		
+				preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
+				preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
+
 		final StyledText textWidget = getTextWidget();
 		
 		final Point selection = textWidget.getSelection();
 		
 		textWidget.setFocus();
 		textWidget.setSelection(0, 0);
-		
+
+		textWidget.setForeground(Globals.getColorRegistry().get(textForegroundColor));
 		textWidget.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+
 		textWidget.setSelection(selection);
 	}
 	
@@ -293,17 +299,27 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		if (forceColorChangeToBeVisible) {
 			getTextWidget().setText(StringLiterals.EmptyString);
 		}
-		
-		if (rgb != null) {
+
+		boolean hasFont = getOutlineItem() != null && getOutlineItem().hasFont();
+
+		if (rgb != null && hasFont) {
 			final Color color = Globals.getColorRegistry().get(rgb);
 			getTextWidget().setForeground(color);
 		}
 		else {
-			final int red   = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontRed);
-			final int green = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontGreen);
-			final int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontBlue);
-			
-			getTextWidget().setForeground(Globals.getColorRegistry().get(red, green, blue));
+			final PreferenceStore preferenceStore = Globals.getPreferenceStore();
+
+			final RGB textForegroundColor = new RGB(
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
+
+			final RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
+					preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
+					preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
+
+			getTextWidget().setForeground(Globals.getColorRegistry().get(textForegroundColor));
+			getTextWidget().setBackground(Globals.getColorRegistry().get(textBackgroundColor));
 		}
 		
 		if (forceColorChangeToBeVisible) {
@@ -660,6 +676,14 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
     	Globals.getMainApplicationWindow().getPhotoAndTextUI().setBackground(getTextWidget().getBackground());
     	
 		getTextWidget().setVisible(getTextWidget().getEnabled());
+	}
+
+	public void refresh() {
+		setForegroundAndBackgroundColors();
+
+		setOutlineItem(outlineItem);
+
+		Globals.getMainApplicationWindow().getPhotoAndTextUI().setBackground(getTextWidget().getBackground());
 	}
 
 	public boolean canInsertTextFile() {

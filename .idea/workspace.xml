@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Updated README.md" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.84" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +56,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Vault 3.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Vault 3.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CryptoTests (1).executor&quot;: &quot;Run&quot;,
     &quot;JUnit.SearchParametersSerializationDeserializationTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.jUnitTests in Vault.executor&quot;: &quot;Run&quot;,
@@ -103,7 +103,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Vault 3">
+  <component name="RunManager" selected="PowerShell.build_everything.ps1">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -220,15 +220,15 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="ant_build_linux_gtk_64.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/ant_build_linux_gtk_64.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="build_everything.ps1 (1)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
       <envs />
       <method v="2" />
     </configuration>
     <configuration name="build_everything.ps1 (2)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_everything.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
       <envs />
       <method v="2" />
     </configuration>
@@ -245,17 +245,17 @@
       <item itemvalue="Application.Vault 3" />
       <item itemvalue="JUnit.jUnitTests in Vault" />
       <item itemvalue="PowerShell.ant_build_linux_gtk_64.ps1 (1)" />
-      <item itemvalue="PowerShell.ant_build_linux_gtk_64.ps1" />
       <item itemvalue="PowerShell.build_everything.ps1 (1)" />
       <item itemvalue="PowerShell.build_everything.ps1 (2)" />
+      <item itemvalue="PowerShell.build_everything.ps1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.jUnitTests in Vault" />
-        <item itemvalue="PowerShell.build_everything.ps1 (2)" />
-        <item itemvalue="PowerShell.ant_build_linux_gtk_64.ps1 (1)" />
-        <item itemvalue="PowerShell.ant_build_linux_gtk_64.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -645,7 +645,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -659,10 +659,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated example.vl3 to version 1.3." />
-    <MESSAGE value="Bug Fix:&#10;&#10;File / New yielded a Vault 3 document of version &quot;1.0&quot;. In this case the ciphertext was not stored properly, and the password validation failed." />
-    <MESSAGE value="Bug Fix:&#10;&#10;Load a version 1.2 document. Now every time the document is saved, user gets a warning about upgrading the file." />
-    <MESSAGE value="Code inspection updates." />
     <MESSAGE value="updates" />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature" />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Created Windows setup" />
@@ -684,7 +680,11 @@
     <MESSAGE value="Version 0.83&#10;&#10;Updated Ant build scripts to point to cached modules on my new machine." />
     <MESSAGE value="With the 4.35 Eclipse jars, which are signed, caused problems building the app from the IDE (to test and debug).&#10;&#10;The Ant scripts stripped out the signing data.&#10;&#10;Solution was to copy all the jars to an &quot;unsigned&quot; folder, and then strip out the signing data:&#10;&#10;find . -name '*.jar' -exec zip -d '{}' 'META-INF/*.SF' ';'&#10;&#10;(https://stackoverflow.com/questions/7757083/how-do-i-unsign-a-jar)" />
     <MESSAGE value="Updated README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
+    <MESSAGE value="Version 0.84&#10;&#10;Text Background Color is now in a distinct tab in the Settings dialog.&#10;&#10;The outline item's color is only used if it also has a font. By default, when an outline item is stored, a color of black is saved. But the color is only relevant if a font was specified. Specifying a font is the only way to specify the color of an outline item.&#10;&#10;Now update an item's background and foreground when a new item is rendered." />
+    <MESSAGE value="Version 0.84&#10;&#10;Updated copyright notices." />
+    <MESSAGE value="Version 0.84&#10;&#10;If an outline item with a specified font was selected, changing the background color didn't take effect until it was re-rendered." />
+    <MESSAGE value="Version 0.84" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.84" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -940,24 +940,59 @@
           <option name="timeStamp" value="239" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java</url>
-          <line>1021</line>
-          <option name="timeStamp" value="246" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java</url>
-          <line>1023</line>
-          <option name="timeStamp" value="247" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/MainApplicationWindow.java</url>
-          <line>1025</line>
-          <option name="timeStamp" value="248" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
           <line>75</line>
           <option name="timeStamp" value="249" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>320</line>
+          <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>238</line>
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>648</line>
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>305</line>
+          <option name="timeStamp" value="259" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>919</line>
+          <option name="timeStamp" value="260" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>909</line>
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>304</line>
+          <option name="timeStamp" value="263" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>221</line>
+          <option name="timeStamp" value="264" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="265" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
