@@ -30,12 +30,12 @@ public class VaultDocumentVersionTests {
 	@Test
 	public void testConstructor() {
 		VaultDocumentVersion vaultDocumentVersion = new VaultDocumentVersion();
-		Assert.assertEquals("1.3", vaultDocumentVersion.toString(), "1.0");
+		Assert.assertEquals("1.3", "1.0", vaultDocumentVersion.toString());
 		Assert.assertEquals(1, vaultDocumentVersion.getMajorVersion());
 		Assert.assertEquals(0, vaultDocumentVersion.getMinorVersion());
 		
 		vaultDocumentVersion = new VaultDocumentVersion(1, 3);
-		Assert.assertEquals("1.3", vaultDocumentVersion.toString(), "1.3");
+		Assert.assertEquals("1.3", "1.3", vaultDocumentVersion.toString());
 		Assert.assertEquals(1, vaultDocumentVersion.getMajorVersion());
 		Assert.assertEquals(3, vaultDocumentVersion.getMinorVersion());
 		

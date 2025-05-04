@@ -23,6 +23,7 @@ package mainPackage;
 import java.io.File;
 import java.text.MessageFormat;
 
+import commonCode.IPlatform;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.swt.SWT;
@@ -559,10 +560,13 @@ public class SettingsDialog extends VaultDialog {
 				final int red   = preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed);
 				final int green = preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen);
 				final int blue  = preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue);
-				fontDialog.setRGB(new RGB(red, green, blue));
-				
+
+				final RGB defaultColor = new RGB(red, green, blue);
+
+				fontDialog.setRGB(defaultColor);
 				fontDialog.setText("Specify Font");
-				
+				fontDialog.setEffectsVisible(true);
+
 				final FontData fontData = fontDialog.open();
 				
 				if (fontData != null) {
@@ -570,6 +574,16 @@ public class SettingsDialog extends VaultDialog {
 					
 					fontString = FontUtils.fontListToString(fontList);
 					fontColor = fontDialog.getRGB();
+
+					// Can't specify font color in Linux even if setEffectsVisible(true) is called, so use the
+					// ColorDialog to specify font color.
+					if (fontColor == null || Globals.getPlatform() != IPlatform.PlatformEnum.Windows) {
+						final ColorDialog colorDialog = new ColorDialog(getShell());
+						colorDialog.setText("Default Font Color");
+						colorDialog.setRGB(defaultColor);
+
+						fontColor = colorDialog.open();
+					}
 					
 					updateFontDisplay();
 				}
@@ -774,7 +788,7 @@ public class SettingsDialog extends VaultDialog {
 	}
 	
 	private void updateFontDisplay() {
-		String defaultTextFontLabelText = MessageFormat.format("Default Text Font: {0}", FontUtils.stringToDescription(fontString));
+		final String defaultTextFontLabelText = MessageFormat.format("Default Text Font: {0}", FontUtils.stringToDescription(fontString));
 		defaultTextFontLabel.setText(defaultTextFontLabelText);
 		
 		colorCanvas.setBackground(Globals.getColorRegistry().get(fontColor));

@@ -58,8 +58,8 @@ public class FontTests {
 		Assert.assertNotNull(roundTripFontList);
 
 		IFont retrievedFont = roundTripFontList.getFont();
-		Assert.assertEquals(font1.getName(), font1.getName());
-		Assert.assertEquals(font1.getPlatform(), font1.getPlatform());
+		Assert.assertEquals(font1.getName(), retrievedFont.getName());
+		Assert.assertEquals(font1.getPlatform(), retrievedFont.getPlatform());
 		Assert.assertEquals(font1.getData(), ((SWTFont) retrievedFont).getData());
 		
 		Assert.assertEquals(2, roundTripFontList.size());
