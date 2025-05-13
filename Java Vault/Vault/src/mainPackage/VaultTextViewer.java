@@ -75,8 +75,9 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	private boolean usingNonDefaultFont = false;
 
 	private static class UndoInfo {
-		private int start, length;
-		private String replacedText;
+		private final int start;
+        private final int length;
+		private final String replacedText;
 
 		public UndoInfo(int start, int length, String replacedText) {
 			this.start = start;
@@ -85,7 +86,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		}
 	}
 
-	private Stack<UndoInfo> undoBuffer = new Stack<>();
+	private final Stack<UndoInfo> undoBuffer = new Stack<>();
 	private Pattern[] searchPatterns;
 
 	public void setSearchPatterns(Pattern[] searchPatterns, boolean searchHitsFound) {
@@ -105,7 +106,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		
 		// Limit text to 64 MB. Large amounts of text in a topic will create significant performance issues.
 		getTextWidget().setTextLimit(1024 * 1024 * 64);
-		
+
 		String defaultTextFont = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
 		
 		if (defaultTextFont.isEmpty()) {
@@ -121,7 +122,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
             }
         });
 
-		MainApplicationWindow mainApplicationWindow = Globals.getMainApplicationWindow();
+		final MainApplicationWindow mainApplicationWindow = Globals.getMainApplicationWindow();
 
 		final MenuManager menuManager = new MenuManager();
 		menuManager.add(mainApplicationWindow.getAction(TextActions.UndoAction.class));
@@ -161,17 +162,17 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 					menusArmed = true;
 				}
 
-				DisplayUrlAction displayUrlAction = (DisplayUrlAction) Globals.getMainApplicationWindow().getAction(TextActions.DisplayUrlAction.class);
+				final DisplayUrlAction displayUrlAction = (DisplayUrlAction) Globals.getMainApplicationWindow().getAction(TextActions.DisplayUrlAction.class);
 				displayUrlAction.setEnabled(canDisplayUrl());
-				
-				PasteAction pasteAction = (PasteAction) Globals.getMainApplicationWindow().getAction(TextActions.PasteAction.class);
+
+				final PasteAction pasteAction = (PasteAction) Globals.getMainApplicationWindow().getAction(TextActions.PasteAction.class);
 				pasteAction.setEnabled();
 				
 				// Move the cursor over a bit to avoid selecting the first menu item on Ubuntu.
-				Point cursorLocation = menuEvent.display.getCursorLocation();
+				final Point cursorLocation = menuEvent.display.getCursorLocation();
 				
 				Display.getCurrent().setCursorLocation(cursorLocation.x + 1, cursorLocation.y + 1);
-				
+
 				final Point mappedPoint = Display.getCurrent().map(null, getTextWidget(), cursorLocation);
 				
 				// Try to move the cursor to the current mouse position.

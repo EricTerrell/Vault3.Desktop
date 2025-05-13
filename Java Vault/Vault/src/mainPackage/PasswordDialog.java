@@ -79,7 +79,7 @@ public class PasswordDialog extends VaultDialog {
 	
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 
 		statusLabel = createStatusLabel(parent);
 
@@ -107,7 +107,7 @@ public class PasswordDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(2, false));
 		
 		requirePasswordCheckBox = new Button(composite, SWT.CHECK);
@@ -283,7 +283,7 @@ public class PasswordDialog extends VaultDialog {
 		} else {
 			// Password is required
 
-			String[] passwords = new String[]{passwordText.getText(), password2Text.getText()};
+			final String[] passwords = new String[]{passwordText.getText(), password2Text.getText()};
 
 			boolean incorrectLength = false;
 

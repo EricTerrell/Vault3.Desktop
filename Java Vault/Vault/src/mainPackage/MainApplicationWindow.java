@@ -275,7 +275,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	}
 
 	private void addActions() {
-		Action[] actionsArray = new Action[]
+		final Action[] actionsArray = new Action[]
 		{ 
 			addAction, aboutAction, copyPictureFileAction, deletePictureFileAction, renamePictureFileAction,
 			editPictureFileAction, rotateLeftFileAction, rotateRightFileAction, importPicturesAction,
@@ -301,7 +301,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 			checkForModifications(false);
 	
 			// See if auto save was canceled after the timer was started.
-			int autoSaveMinutes = Globals.getPreferenceStore().getInt(PreferenceKeys.AutoSaveMinutes);
+			final int autoSaveMinutes = Globals.getPreferenceStore().getInt(PreferenceKeys.AutoSaveMinutes);
 	
 			if (autoSaveMinutes > 0) {
 				if (Globals.getVaultDocument().getIsModified()) {
@@ -340,7 +340,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		if (!isCheckForModificationsWaiting()) {
 			setCheckForModificationsWaiting(true);
 			
-			String filePath = Globals.getVaultDocument().getFilePath();
+			final String filePath = Globals.getVaultDocument().getFilePath();
 	
 			if (new File(filePath).exists()) {
 				DocumentMetadata currentMetadata = new DocumentMetadata(filePath);
@@ -367,7 +367,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	}
 	
 	public void startCheckForModificationsTimer() {
-		int checkForModificationsMinutes = Globals.getPreferenceStore().getInt(PreferenceKeys.CheckForModificationsMinutes);
+		final int checkForModificationsMinutes = Globals.getPreferenceStore().getInt(PreferenceKeys.CheckForModificationsMinutes);
 		
 		Globals.getLogger().info(String.format("startCheckForModificationsTimer: checkForModificationsMinutes = %s", checkForModificationsMinutes));
 		
@@ -435,14 +435,14 @@ public class MainApplicationWindow extends ApplicationWindow {
 		fileMenuManager.add(printAction);
 		fileMenuManager.add(new Separator());
 
-		MenuManager importMenu = new MenuManager("&Import");
+		final MenuManager importMenu = new MenuManager("&Import");
 		importMenu.add(importFromVault3XMLFileAction);
 		importMenu.add(importFromXMLFileAction);
 		importMenu.add(importFromFileSystemAction);
 		
 		fileMenuManager.add(importMenu);
 		
-		MenuManager exportMenu = new MenuManager("&Export");
+		final MenuManager exportMenu = new MenuManager("&Export");
 		exportMenu.add(pdfExportAction);
 		exportMenu.add(textExportAction);
 		exportMenu.add(xmlExportAction);
@@ -501,7 +501,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		menuManager.add(fileMenuManager);
 		
-		MenuManager outlineMenuManager = new MenuManager("&Outline");
+		final MenuManager outlineMenuManager = new MenuManager("&Outline");
 		outlineMenuManager.add(addAction);
 		outlineMenuManager.add(editOutlineAction);
 		outlineMenuManager.add(importPicturesAction);
@@ -556,14 +556,14 @@ public class MainApplicationWindow extends ApplicationWindow {
 		editMenuManager.add(setFontAction);
 		menuManager.add(editMenuManager);
 		
-		MenuManager photoMenuManager = new MenuManager("&Photo");
+		final MenuManager photoMenuManager = new MenuManager("&Photo");
 		photoMenuManager.add(copyPictureToClipboardAction);
 		photoMenuManager.add(new Separator());
 		photoMenuManager.add(copyPictureFileActionPhotoMenu);
 		photoMenuManager.add(copyPictureFilePathAction);
 		menuManager.add(photoMenuManager);
 		
-		MenuManager viewMenuManager = new MenuManager("&View");
+		final MenuManager viewMenuManager = new MenuManager("&View");
 		viewMenuManager.add(slideShowAction);
 		viewMenuManager.add(new Separator());
 		viewMenuManager.add(switchBetweenOutlineAndTextAction);
@@ -576,7 +576,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		viewMenuManager.add(moveHorizontalSplitAction);
 		menuManager.add(viewMenuManager);
 		
-		MenuManager searchMenuManager = new MenuManager("Sea&rch");
+		final MenuManager searchMenuManager = new MenuManager("Sea&rch");
 		searchMenuManager.add(searchAction);
 		searchMenuManager.add(new Separator());
 		searchMenuManager.add(nextSearchHitAction);
@@ -588,11 +588,11 @@ public class MainApplicationWindow extends ApplicationWindow {
 		searchMenuManager.add(clearSearchAction);
 		menuManager.add(searchMenuManager);
 		
-		MenuManager optionsMenuManager = new MenuManager("Opt&ions");
+		final MenuManager optionsMenuManager = new MenuManager("Opt&ions");
 		optionsMenuManager.add(settingsAction);
 		menuManager.add(optionsMenuManager);
 		
-		MenuManager helpMenuManager = new MenuManager("&Help");
+		final MenuManager helpMenuManager = new MenuManager("&Help");
 		helpMenuManager.add(helpTopicsAction);
 		helpMenuManager.add(new Separator());
 		helpMenuManager.add(gettingStartedAction);
@@ -714,9 +714,9 @@ public class MainApplicationWindow extends ApplicationWindow {
 			}
 		}
 		else if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.LoadFileOnStartup)) {
-			String startupFilePath = Globals.getPreferenceStore().getString(PreferenceKeys.StarupFilePath);
+			final String startupFilePath = Globals.getPreferenceStore().getString(PreferenceKeys.StarupFilePath);
 
-			File file = new File(startupFilePath);
+			final File file = new File(startupFilePath);
 
 			if (file.exists()) {
 				try {
@@ -737,18 +737,18 @@ public class MainApplicationWindow extends ApplicationWindow {
 				}
 			}
 			else {
-				String message = MessageFormat.format("Cannot open file {0}.", startupFilePath);
+				final String message = MessageFormat.format("Cannot open file {0}.", startupFilePath);
 
-				Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+				final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 
-				MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+				final MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 				messageDialog.open();
 			}
 		}
 		else if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.LoadMostRecentlyUsedFile)) {
-			String startupFilePath = Globals.getPreferenceStore().getString(PreferenceKeys.MostRecentlyUsedFilePath);
+			final String startupFilePath = Globals.getPreferenceStore().getString(PreferenceKeys.MostRecentlyUsedFilePath);
 
-			File file = new File(startupFilePath);
+			final File file = new File(startupFilePath);
 
 			if (file.exists()) {
 				try {
@@ -766,7 +766,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	protected Control createContents(Composite parent) {
 		getCoolBarManager().getControl().setBackground(parent.getBackground());
 
-		Composite composite = new Composite(parent, SWT.NONE);
+		final Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new FillLayout());
 
 		sashForm = new SashForm(composite, SWT.HORIZONTAL);
@@ -784,12 +784,12 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		navigateAndSearchTabFolder = new TabFolder(sashForm, SWT.NONE);
 		
-		TabItem navigateTabItem = new TabItem(navigateAndSearchTabFolder, SWT.NONE);
+		final TabItem navigateTabItem = new TabItem(navigateAndSearchTabFolder, SWT.NONE);
 		navigateTabItem.setText("&Navigate");
 		
 		searchUI = new SearchUI(navigateAndSearchTabFolder);
 
-		TabItem searchTabItem = new TabItem(navigateAndSearchTabFolder, SWT.NONE);
+		final TabItem searchTabItem = new TabItem(navigateAndSearchTabFolder, SWT.NONE);
 		searchTabItem.setText("&Search");
 		searchTabItem.setControl(searchUI);
 		
@@ -808,13 +808,18 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		photoAndTextUI = new PhotoAndTextUI(sashForm);
 		
-		ITextListener[] textListeners = new ITextListener[] { insertDateAction, insertTimeAction, insertDateAndTimeAction, undoAction, selectAllTextAction, findAction, replaceAction, insertUrlAction };
+		final ITextListener[] textListeners = new ITextListener[] {
+				insertDateAction, insertTimeAction, insertDateAndTimeAction, undoAction, selectAllTextAction,
+				findAction, replaceAction, insertUrlAction
+		};
 		
 		for (ITextListener textListener : textListeners) {
 			Globals.getVaultTextViewer().addTextListener(textListener);
 		}
 
-		ISelectionChangedListener[] textSelectionChangedListeners = new ISelectionChangedListener[] { cutTextAction, copyTextAction, selectAllTextAction };
+		final ISelectionChangedListener[] textSelectionChangedListeners = new ISelectionChangedListener[] {
+				cutTextAction, copyTextAction, selectAllTextAction
+		};
 		
 		for (ISelectionChangedListener textSelectionChangedListener : textSelectionChangedListeners) {
 			Globals.getVaultTextViewer().addSelectionChangedListener(textSelectionChangedListener);
@@ -837,14 +842,15 @@ public class MainApplicationWindow extends ApplicationWindow {
 			vaultTreeViewer.addSelectionChangedListener(selectionChangedListener);
 		}
 		
-		ITreeViewerListener[] treeViewerListeners = new ITreeViewerListener[] { expandAction, expandAllAction, collapseAction, collapseAllAction };
+		final ITreeViewerListener[] treeViewerListeners = new ITreeViewerListener[] {
+				expandAction, expandAllAction, collapseAction, collapseAllAction
+		};
 		
 		for (ITreeViewerListener treeViewerListener : treeViewerListeners) {
 			vaultTreeViewer.addTreeListener(treeViewerListener);
 		}
 		
-		IDocumentLoadUnloadListener[] documentLoadListeners = new IDocumentLoadUnloadListener[] 
-		{ 
+		final IDocumentLoadUnloadListener[] documentLoadListeners = new IDocumentLoadUnloadListener[] {
 				expandAction, expandAllAction, collapseAction, collapseAllAction, slideShowAction, searchAction, outlineSelectAllAction 
 		};
 		
@@ -852,8 +858,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 			addDocumentLoadListener(documentLoadListener);
 		}
 
-		IPhotoListener[] photoListeners = new IPhotoListener[]
-		{
+		final IPhotoListener[] photoListeners = new IPhotoListener[] {
 				copyPictureToClipboardAction, 
 				copyPictureFileActionPhotoMenu,
 				copyPictureFilePathAction
@@ -917,8 +922,8 @@ public class MainApplicationWindow extends ApplicationWindow {
 
 	private void processLicenseTerms() {
 		if (!Globals.getPreferenceStore().getBoolean(PreferenceKeys.AcceptLicenseTerms)) {
-			LicenseTermsDialog licenseTermsDialog = new LicenseTermsDialog(getShell());
-			int result = licenseTermsDialog.open();
+			final LicenseTermsDialog licenseTermsDialog = new LicenseTermsDialog(getShell());
+			final int result = licenseTermsDialog.open();
 			
 			if (!Globals.getPreferenceStore().getBoolean(PreferenceKeys.AcceptLicenseTerms) || result != IDialogConstants.OK_ID) {
 				close();
@@ -933,7 +938,7 @@ public class MainApplicationWindow extends ApplicationWindow {
             ToolItem item = toolBar.getItem(new Point(e.x, e.y));
 
             if (item != null && item.getData() instanceof ActionContributionItem) {
-                ActionContributionItem actionContributionItem = (ActionContributionItem) item.getData();
+                final ActionContributionItem actionContributionItem = (ActionContributionItem) item.getData();
 
                 getStatusLineManager().setMessage(actionContributionItem.getAction().getDescription());
             }
@@ -1058,7 +1063,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 		// The shell may not exist yet, so defer this call until after the shell is created.
 
 		Display.getCurrent().asyncExec(() -> {
-            Shell shell1 = getShell();
+            final Shell shell1 = getShell();
 
             if (shell1 != null) {
                 getShell().setText(text);
@@ -1080,11 +1085,18 @@ public class MainApplicationWindow extends ApplicationWindow {
 		boolean cancelled = false;
 		
 		if (vaultDocument.getIsModified()) {
-			String prompt = MessageFormat.format("Save changes to {0}?", vaultDocument.getFileName());
+			final String prompt = MessageFormat.format("Save changes to {0}?", vaultDocument.getFileName());
 			
-			MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), prompt, MessageDialog.QUESTION, new String[] { "&Yes", "&No", "&Cancel" }, 0);
+			final MessageDialog messageDialog = new MessageDialog(
+					getShell(),
+					StringLiterals.ProgramName,
+					Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+					prompt,
+					MessageDialog.QUESTION,
+					new String[] { "&Yes", "&No", "&Cancel" },
+					0);
 			
-			int choice = messageDialog.open();
+			final int choice = messageDialog.open();
 			
 			cancelled = choice == 2;
 			
@@ -1099,10 +1111,15 @@ public class MainApplicationWindow extends ApplicationWindow {
 							vaultDocument.save();
 						}
 						catch (Throwable ex) {
-							Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+							final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 							
-							String message = MessageFormat.format("Cannot save {0}.{1}{1}{2}", vaultDocument.getFilePath(), PortabilityUtils.getNewLine(), ex.getMessage());
-							MessageDialog messageDialog2 = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&Close" }, 0);
+							final String message = MessageFormat.format(
+									"Cannot save {0}.{1}{1}{2}",
+									vaultDocument.getFilePath(),
+									PortabilityUtils.getNewLine(),
+									ex.getMessage());
+
+							final MessageDialog messageDialog2 = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&Close" }, 0);
 							messageDialog2.open();
 						}
 					}
@@ -1122,7 +1139,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	public boolean close() {
 		boolean result = true;
 
-		int[] weights = sashForm.getWeights();
+		final int[] weights = sashForm.getWeights();
 		Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
 		Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
 
@@ -1145,7 +1162,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	public void displayAlreadyRunningMessage() {
 		Globals.getLogger().info("Making main window visible");
 		
-		Shell shell = getShell();
+		final Shell shell = getShell();
 		
 		if (shell.getMinimized()) {
 			shell.setMinimized(false);

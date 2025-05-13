@@ -106,9 +106,9 @@ public class SearchParameters implements Serializable {
 			objectOutputStream.flush();
 			
 			byteArrayOutputStream.flush();
-			
+
 			byte[] serializedBytes = byteArrayOutputStream.toByteArray();
-			
+
 			if (Globals.getVaultDocument().isEncrypted()) {
 				final Cipher cipher = CryptoUtils.createEncryptionCipher(Globals.getVaultDocument().getPassword(),
 						Globals.getVaultDocument().getVaultDocumentVersion(), salt, iv);
@@ -139,8 +139,11 @@ public class SearchParameters implements Serializable {
 			byte[] serializedBytes = Base64Coder.decode(serializedText);
 			
 			if (Globals.getVaultDocument().isEncrypted()) {
-				final Cipher cipher = CryptoUtils.createDecryptionCipher(Globals.getVaultDocument().getPassword(),
-						Globals.getVaultDocument().getVaultDocumentVersion(), salt, iv);
+				final Cipher cipher = CryptoUtils.createDecryptionCipher(
+						Globals.getVaultDocument().getPassword(),
+						Globals.getVaultDocument().getVaultDocumentVersion(),
+						salt,
+						iv);
 
 				serializedBytes = CryptoUtils.decrypt(cipher, serializedBytes);
 			}

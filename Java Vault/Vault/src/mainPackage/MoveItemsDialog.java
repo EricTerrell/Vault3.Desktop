@@ -82,7 +82,7 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 		boolean result = false;
 		
 		if (vaultTreeViewer.getTree().getSelectionCount() == 1) {
-			TreeItem[] selectedItems = vaultTreeViewer.getTree().getSelection();
+			final TreeItem[] selectedItems = vaultTreeViewer.getTree().getSelection();
 
 			result = vaultTreeViewer.getTree().getItems()[0] == selectedItems[0];
 		}
@@ -92,7 +92,7 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 	
 	@Override
 	public boolean close() {
-    	boolean result = super.close();
+    	final boolean result = super.close();
 
 		vaultTreeViewer.removeSelectionChangedListener(this);
 		vaultTreeViewer.removeTreeListener(this);
@@ -104,7 +104,7 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 		
 	    statusLabel = createStatusLabel(parent);
 	
@@ -116,10 +116,10 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
-		IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+		final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 		selectedNodeUUID = ((OutlineItem) selection.getFirstElement()).getUuid();
 
-		TreeItem[] treeItems = vaultTreeViewer.getTree().getSelection();
+		final TreeItem[] treeItems = vaultTreeViewer.getTree().getSelection();
 		
 		selectedNodeIsExpanded = treeItems[0].getExpanded();
 		
@@ -137,7 +137,7 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 		aboveRadioButton.setEnabled(firstItemIsSelected());
 		belowRadioButton.setEnabled(firstItemIsSelected());
 		
-		Button okButton = getButton(IDialogConstants.OK_ID);
+		final Button okButton = getButton(IDialogConstants.OK_ID);
 		
 		okButton.setEnabled(selection.getFirstElement() != null && !illegalMove);
 		
@@ -153,23 +153,23 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 
 		composite.setLayout(new GridLayout());
 		
-		Composite labelComposite = new Composite(composite, SWT.NONE);
+		final Composite labelComposite = new Composite(composite, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(2, false);
 		labelComposite.setLayout(gridLayout);
 
-		Label label = new Label(labelComposite, SWT.NONE);
+		final Label label = new Label(labelComposite, SWT.NONE);
 		label.setText("&Select New Location:");
 
-		Image image = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_LIGHTBULB);
+		final Image image = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_LIGHTBULB);
 		
-		Label imageLabel = new Label(labelComposite, SWT.NONE);
+		final Label imageLabel = new Label(labelComposite, SWT.NONE);
 		imageLabel.setImage(image);
-		
-		String tooltipText = "Press Enter to expand/contract, or use right and left arrow keys.";
+
+		final String tooltipText = "Press Enter to expand/contract, or use right and left arrow keys.";
 		imageLabel.setToolTipText(tooltipText);
 		
 		vaultTreeViewer = new VaultTreeViewer(composite, SWT.SINGLE, true);

@@ -55,7 +55,7 @@ public class PhotoProcessing {
 	}
 	
 	public static String selectedItemPhotoPath() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 
 		return selectedItems.get(0).getPhotoPath();
 	}
@@ -66,10 +66,10 @@ public class PhotoProcessing {
 	
 	public static void copyPictureFile(Shell shell) throws IOException {
 		if (canCopyPictureFile()) {
-			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
+			final String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
 			
 			if (selectedItemPhotoPath != null) {
-				File selectedItemPhotoFile = new File(selectedItemPhotoPath);
+				final File selectedItemPhotoFile = new File(selectedItemPhotoPath);
 				
 				FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 				fileDialog.setFilterExtensions(GraphicsUtils.getFilterExtensions());
@@ -79,8 +79,8 @@ public class PhotoProcessing {
 				fileDialog.setFileName(selectedItemPhotoFile.getName());
 				
 				fileDialog.setText("Copy Picture File");
-				
-				String destFilePath = fileDialog.open();
+
+				final String destFilePath = fileDialog.open();
 				
 				if (destFilePath != null) {
 					FileUtils.copyFile(selectedItemPhotoPath, destFilePath);
@@ -89,9 +89,9 @@ public class PhotoProcessing {
 				}
 			}
 			else {
-				String message = "Cannot copy picture file - file does not exist.";
-				
-				Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+				final String message = "Cannot copy picture file - file does not exist.";
+
+				final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 				
 				MessageDialog messageDialog = new MessageDialog(shell, StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 				messageDialog.open();
@@ -100,16 +100,18 @@ public class PhotoProcessing {
 	}
 
 	public static boolean canEditPictureFile() {
-		String photoEditorPath = Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath).trim();
+		final String photoEditorPath = Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath).trim();
 
 		return !photoEditorPath.isEmpty() && selectedItemHasPictureFile();
 	}
 
 	public static void editPictureFile() {
 		if (canEditPictureFile()) {
-			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
+			final String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
 
-			ProcessBuilder processBuilder = new ProcessBuilder(Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath), selectedItemPhotoPath);
+			final ProcessBuilder processBuilder = new ProcessBuilder(
+					Globals.getPreferenceStore().getString(PreferenceKeys.PhotoEditingProgramPath),
+					selectedItemPhotoPath);
 
 			try {
 				processBuilder.start();
@@ -125,7 +127,7 @@ public class PhotoProcessing {
 
 	public static void rotatePictureFile(float degrees) {
 		if (canRotatePictureFile()) {
-			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
+			final String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
 
 			try {
 				GraphicsUtils.rotate(selectedItemPhotoPath, degrees);
@@ -141,9 +143,9 @@ public class PhotoProcessing {
 	
 	public static void renamePictureFile(Shell shell) {
 		if (canRenamePictureFile()) {
-			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
+			final String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
 
-			File selectedItemPhotoFile = new File(selectedItemPhotoPath);
+			final File selectedItemPhotoFile = new File(selectedItemPhotoPath);
 			
 			FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 			fileDialog.setFilterExtensions(GraphicsUtils.getFilterExtensions());
@@ -153,8 +155,8 @@ public class PhotoProcessing {
 			fileDialog.setFileName(selectedItemPhotoFile.getName());
 			
 			fileDialog.setText("Rename Picture File");
-			
-			String destFilePath = fileDialog.open();
+
+			final String destFilePath = fileDialog.open();
 			
 			if (destFilePath != null) {
 				FileUtils.renameFile(selectedItemPhotoPath, destFilePath);
@@ -173,7 +175,7 @@ public class PhotoProcessing {
 	
 	public static void deletePictureFile(Shell shell) {
 		if (canDeletePictureFile()) {
-			String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
+			final String selectedItemPhotoPath = PhotoUtils.getPhotoPath(selectedItemPhotoPath());
 			
 			FileUtils.deleteFile(selectedItemPhotoPath);
 
@@ -190,8 +192,11 @@ public class PhotoProcessing {
 		Globals.setBusyCursor();
 
 		List<OutlineItem> selectedPhotos, allPhotos;
-		
-		Pattern[] exclusionPatterns = Search.getSearchPatterns(Globals.getPreferenceStore().getString(PreferenceKeys.SlideshowExclusions), false, true);
+
+		final Pattern[] exclusionPatterns = Search.getSearchPatterns(
+				Globals.getPreferenceStore().getString(PreferenceKeys.SlideshowExclusions),
+				false,
+				true);
 		
 		try {
 			allPhotos = Globals.getVaultDocument().getContent().getPhotos(Globals.getVaultDocument().getContent(), exclusionPatterns);
@@ -206,9 +211,9 @@ public class PhotoProcessing {
 			slideshowDisplayDialog.open();
 		}
 		else {
-			Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+			final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 
-			MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, "No photos to display.", MessageDialog.ERROR, new String[] { "&Close" }, 0);
+			final MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, "No photos to display.", MessageDialog.ERROR, new String[] { "&Close" }, 0);
 			messageDialog.open();
 		}
 	}

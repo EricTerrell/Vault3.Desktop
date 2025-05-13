@@ -29,7 +29,7 @@ public class SearchResultsContentProvider implements IStructuredContentProvider 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object[] getElements(Object obj) {
-		List<OutlineItem> treeNodes = (List<OutlineItem>) obj;
+		final List<OutlineItem> treeNodes = (List<OutlineItem>) obj;
 		return treeNodes.toArray();
 	}
 

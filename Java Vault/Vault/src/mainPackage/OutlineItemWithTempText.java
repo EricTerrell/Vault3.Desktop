@@ -21,13 +21,13 @@
 package mainPackage;
 
 public class OutlineItemWithTempText {
-	private OutlineItem outlineItem;
+	private final OutlineItem outlineItem;
 	
 	public OutlineItem getOutlineItem() {
 		return outlineItem;
 	}
 	
-	private StringBuilder tempText;
+	private final StringBuilder tempText;
 	
 	public StringBuilder getTempText() {
 		return tempText;

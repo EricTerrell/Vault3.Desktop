@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.*;
 public class AboutDialog extends VaultDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 		
 		new Label(composite, SWT.NONE).setText(MessageFormat.format("{0} Version {1}", StringLiterals.ProgramName, Version.getVersionNumberText()));
@@ -57,8 +57,8 @@ public class AboutDialog extends VaultDialog {
 		
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-		Composite eclipseComposite = new Composite(composite, SWT.NONE);
-		RowLayout rowLayout = new RowLayout();
+		final Composite eclipseComposite = new Composite(composite, SWT.NONE);
+		final RowLayout rowLayout = new RowLayout();
 		rowLayout.marginBottom = rowLayout.marginTop = rowLayout.marginLeft = rowLayout.marginRight = 0;
 		eclipseComposite.setLayout(rowLayout);
 
@@ -107,7 +107,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		Link silkLink = new Link(composite, SWT.NONE);
+		final Link silkLink = new Link(composite, SWT.NONE);
 		silkLink.setText(MessageFormat.format("{0} uses artwork from the <a>Silk</a> icon set.", StringLiterals.ProgramName));
 		
 		silkLink.addSelectionListener(new SelectionListener() {
@@ -121,7 +121,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		Link heureuseLink = new Link(composite, SWT.NONE);
+		final Link heureuseLink = new Link(composite, SWT.NONE);
 		heureuseLink.setText(MessageFormat.format("{0} uses Christian d''Heureuse''s <a>Base64Coder</a> class for Base64 encoding and decoding.", StringLiterals.ProgramName));
 		
 		heureuseLink.addSelectionListener(new SelectionListener() {
@@ -135,7 +135,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		Link sqliteLink = new Link(composite, SWT.NONE);
+		final Link sqliteLink = new Link(composite, SWT.NONE);
 		sqliteLink.setText(MessageFormat.format("{0} stores its documents as <a>SQLite</a> databases.", StringLiterals.ProgramName));
 		
 		sqliteLink.addSelectionListener(new SelectionListener() {
@@ -149,7 +149,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		Link sqlite4JavaLink = new Link(composite, SWT.NONE);
+		final Link sqlite4JavaLink = new Link(composite, SWT.NONE);
 		sqlite4JavaLink.setText(MessageFormat.format("{0} uses <a>sqlite4java</a> to manipulate its documents.", StringLiterals.ProgramName));
 		
 		sqlite4JavaLink.addSelectionListener(new SelectionListener() {
@@ -163,7 +163,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 		
-		Link iTextLink = new Link(composite, SWT.NONE);
+		final Link iTextLink = new Link(composite, SWT.NONE);
 		iTextLink.setText(MessageFormat.format("{0} uses <a>iText</a> to create PDF files.", StringLiterals.ProgramName));
 		
 		iTextLink.addSelectionListener(new SelectionListener() {
@@ -177,7 +177,7 @@ public class AboutDialog extends VaultDialog {
 			}
 		});
 
-		Link imagescalrLink = new Link(composite, SWT.NONE);
+		final Link imagescalrLink = new Link(composite, SWT.NONE);
 		imagescalrLink.setText(MessageFormat.format("{0} uses <a>imgscalr</a> to export Photos.", StringLiterals.ProgramName));
 		
 		imagescalrLink.addSelectionListener(new SelectionListener() {
@@ -197,7 +197,7 @@ public class AboutDialog extends VaultDialog {
 
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-		Button donateButton = new Button(composite, SWT.PUSH);
+		final Button donateButton = new Button(composite, SWT.PUSH);
 		donateButton.setText("&Donate");
 		
 		donateButton.addSelectionListener(new SelectionListener() {
@@ -230,7 +230,7 @@ public class AboutDialog extends VaultDialog {
 
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
-		Button feedbackButton = new Button(composite, SWT.PUSH);
+		final Button feedbackButton = new Button(composite, SWT.PUSH);
 		feedbackButton.setText(MessageFormat.format("Send &Feedback about {0}", StringLiterals.ProgramName));
 		feedbackButton.addSelectionListener(new SelectionListener() {
 			@Override
@@ -254,7 +254,7 @@ public class AboutDialog extends VaultDialog {
 
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
-		Button checkForUpdatesButton = new Button(composite, SWT.PUSH);
+		final Button checkForUpdatesButton = new Button(composite, SWT.PUSH);
 		checkForUpdatesButton.setText("Check for &Updates");
 		checkForUpdatesButton.addSelectionListener(new SelectionListener() {
 			@Override
@@ -275,7 +275,7 @@ public class AboutDialog extends VaultDialog {
 
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 		
-		Button vault3ForAndroidButton = new Button(composite, SWT.PUSH);
+		final Button vault3ForAndroidButton = new Button(composite, SWT.PUSH);
 		vault3ForAndroidButton.setText("&Vault 3 for Android");
 		vault3ForAndroidButton.addSelectionListener(new SelectionListener() {
 			@Override
@@ -291,7 +291,7 @@ public class AboutDialog extends VaultDialog {
 		if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.DebuggingMode)) {
 			new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-			Button gcButton = new Button(composite, SWT.PUSH);
+			final Button gcButton = new Button(composite, SWT.PUSH);
 			gcButton.setText("Force Garbage Collection");
 			
 			gcButton.addSelectionListener(new SelectionListener() {
@@ -327,7 +327,7 @@ public class AboutDialog extends VaultDialog {
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		Button closeButton = createButton(parent, IDialogConstants.CLOSE_ID, IDialogConstants.CLOSE_LABEL, true);
+		final Button closeButton = createButton(parent, IDialogConstants.CLOSE_ID, IDialogConstants.CLOSE_LABEL, true);
 		closeButton.forceFocus();
 	}
 

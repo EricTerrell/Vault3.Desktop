@@ -149,10 +149,10 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(4, false));
 
-		Composite destinationFolderComposite = new Composite(composite, SWT.NONE);
+		final Composite destinationFolderComposite = new Composite(composite, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(3, false);
 		gridLayout.marginWidth = 0;
 		destinationFolderComposite.setLayout(gridLayout);
@@ -163,7 +163,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		gridData.horizontalAlignment = SWT.FILL;
 		destinationFolderComposite.setLayoutData(gridData);
 		
-		Button destinationFolderBrowseButton = new Button(destinationFolderComposite, SWT.PUSH);
+		final Button destinationFolderBrowseButton = new Button(destinationFolderComposite, SWT.PUSH);
 		destinationFolderBrowseButton.setText("&Destination Folder...");
 
 		// Spacer
@@ -188,7 +188,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 				directoryDialog.setMessage("Folder:");
 				directoryDialog.setFilterPath(previousDestinationFolder);
 				
-				String destinationFolder = directoryDialog.open();
+				final String destinationFolder = directoryDialog.open();
 				
 				if (destinationFolder != null) {
 					destinationFolderLabel.setText(destinationFolder);
@@ -199,7 +199,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 			}
 		});
 		
-		Composite deleteFolderContentsComposite = new Composite(composite, SWT.NONE);
+		final Composite deleteFolderContentsComposite = new Composite(composite, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		gridLayout.marginWidth = 0;
 		deleteFolderContentsComposite.setLayout(gridLayout);
@@ -213,7 +213,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		
 		deleteFolderContentsCheckBox.setSelection(Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosDeleteFolderContents));
 		
-		Label widthLabel = new Label(composite, SWT.NONE);
+		final Label widthLabel = new Label(composite, SWT.NONE);
 		widthLabel.setText("&Width:");
 		
 		widthText = new Text(composite, SWT.BORDER);
@@ -226,7 +226,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		
 		widthText.addModifyListener(e -> enableDisableOKButton());
 		
-		Label heightLabel = new Label(composite, SWT.NONE);
+		final Label heightLabel = new Label(composite, SWT.NONE);
 		heightLabel.setText("&Height:");
 		
 		heightText = new Text(composite, SWT.BORDER);
@@ -274,7 +274,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 			}
 		});
 		
-		Label photosPerFolderLabel = new Label(composite, SWT.NONE);
+		final Label photosPerFolderLabel = new Label(composite, SWT.NONE);
 		photosPerFolderLabel.setText("&Photos per Folder:");
 		
 		photosPerFolderText = new Text(composite, SWT.BORDER);
@@ -287,7 +287,7 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		
 		photosPerFolderText.addModifyListener(e -> enableDisableOKButton());
 		
-		Composite shuffleComposite = new Composite(composite, SWT.NONE);
+		final Composite shuffleComposite = new Composite(composite, SWT.NONE);
 		gridLayout = new GridLayout(2, false);
 		gridLayout.marginWidth = 0;
 		shuffleComposite.setLayout(gridLayout);

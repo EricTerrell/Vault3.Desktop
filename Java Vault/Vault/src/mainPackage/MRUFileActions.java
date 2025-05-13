@@ -31,7 +31,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
  */
 public class MRUFileActions {
 	public static class MRUFileAction extends Action {
-		private String filePath;
+		private final String filePath;
 
 		public String getFilePath() {
 			return filePath;
@@ -50,7 +50,7 @@ public class MRUFileActions {
 		public void run() {
 			if (!Globals.getVaultDocument().getFilePath().equals(filePath)) {
 				try {
-					boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
+					final boolean cancelled = Globals.getMainApplicationWindow().saveCurrentDocument();
 					
 					if (!cancelled) {
 						VaultDocumentIO.fileOpen(Globals.getMainApplicationWindow().getShell(), filePath);

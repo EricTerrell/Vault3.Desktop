@@ -70,9 +70,9 @@ public class AddItemDialog extends VaultDialog {
 
 	public enum Mode { Add, Edit }
 	
-	private Mode mode;
+	private final Mode mode;
 	
-	private OutlineItem outlineItem;
+	private final OutlineItem outlineItem;
 	
 	private String title;
 	
@@ -138,7 +138,7 @@ public class AddItemDialog extends VaultDialog {
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 		
 	    statusLabel = createStatusLabel(parent);
 
@@ -152,10 +152,10 @@ public class AddItemDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 
-		Composite titleAndTextComposite = new Composite(composite, SWT.NONE);
+		final Composite titleAndTextComposite = new Composite(composite, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(2, false);
 		gridLayout.marginWidth = 0;
 		titleAndTextComposite.setLayout(gridLayout);
@@ -166,7 +166,7 @@ public class AddItemDialog extends VaultDialog {
 		gridData.verticalAlignment = SWT.FILL;
 		titleAndTextComposite.setLayoutData(gridData);
 		
-		Label titleLabel = new Label(titleAndTextComposite, SWT.NONE);
+		final Label titleLabel = new Label(titleAndTextComposite, SWT.NONE);
 		titleLabel.setText("&Title:");
 
 		titleWidget = new Text(titleAndTextComposite, SWT.BORDER);
@@ -185,7 +185,7 @@ public class AddItemDialog extends VaultDialog {
 
 	    titleWidget.addModifyListener(event -> enableDisableOKButton());
 
-	    Label textLabel = new Label(titleAndTextComposite, SWT.NONE);
+	    final Label textLabel = new Label(titleAndTextComposite, SWT.NONE);
 		textLabel.setText("Te&xt:");
 		gridData = new GridData();
 		gridData.verticalAlignment = SWT.TOP;
@@ -203,7 +203,7 @@ public class AddItemDialog extends VaultDialog {
 		gridData.verticalAlignment = SWT.FILL;
 		textWidget.setLayoutData(gridData);
 		
-		Group photoFileGroup = new Group(composite, SWT.NONE);
+		final Group photoFileGroup = new Group(composite, SWT.NONE);
 		photoFileGroup.setLayout(new GridLayout(2, false));
 		photoFileGroup.setText("&Photo File Path or URL:");
 		gridData = new GridData(SWT.FILL);
@@ -225,7 +225,7 @@ public class AddItemDialog extends VaultDialog {
 		gridData.verticalAlignment = SWT.CENTER;
 		photoFileText.setLayoutData(gridData);
 		
-		Button browseButton = new Button(photoFileGroup, SWT.PUSH);
+		final Button browseButton = new Button(photoFileGroup, SWT.PUSH);
 		browseButton.setText("B&rowse...");
 		
 		browseButton.addSelectionListener(new SelectionListener() {
@@ -244,7 +244,7 @@ public class AddItemDialog extends VaultDialog {
 				boolean finished = false;
 				
 				do {
-					String filePath = fileDialog.open();
+					final String filePath = fileDialog.open();
 					
 					if (filePath != null && new File(filePath).exists()) {
 						photoPath = filePath;
@@ -304,7 +304,7 @@ public class AddItemDialog extends VaultDialog {
 		enableDisableAllowScalingCheckBox();
 		
 		if (showAboveAndBelowRadioButtons) {
-			Group group = new Group(composite, SWT.NONE);
+			final Group group = new Group(composite, SWT.NONE);
 			group.setText("Add new item:");
 			group.setLayout(new RowLayout(SWT.VERTICAL));
 
@@ -332,7 +332,7 @@ public class AddItemDialog extends VaultDialog {
 	}
 	
 	private void enableDisableOKButton() {
-		String title = titleWidget.getText().trim();
+		final String title = titleWidget.getText().trim();
 		boolean enabled = !title.isEmpty();
 	          
       	okButton.setEnabled(enabled);

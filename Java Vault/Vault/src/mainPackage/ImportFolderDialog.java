@@ -49,17 +49,17 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 	protected void populateFields() {
 		fileTypesViewer.setComparator(new ViewerComparator());
 		
-		Enumeration<String> keysEnum = uniqueFileTypes.keys();
+		final Enumeration<String> keysEnum = uniqueFileTypes.keys();
 		
-		IDialogSettings fileTypeSettings = getDialogSettings().getSection(fileTypesSection);
+		final IDialogSettings fileTypeSettings = getDialogSettings().getSection(fileTypesSection);
 
 		while (keysEnum.hasMoreElements()) {
-			String fileType = keysEnum.nextElement();
+			final String fileType = keysEnum.nextElement();
 			
 			fileTypesViewer.add(fileType);
 			
 			if (fileTypeSettings != null) {
-				boolean fileTypeSelected = fileTypeSettings.getBoolean(fileType);
+				final boolean fileTypeSelected = fileTypeSettings.getBoolean(fileType);
 				
 				if (fileTypeSelected) {
 					fileTypesViewer.setChecked(fileType, true);
@@ -80,7 +80,7 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 	
 	private CheckboxTableViewer fileTypesViewer;
 	
-	private Dictionary<String, Boolean> uniqueFileTypes;
+	private final Dictionary<String, Boolean> uniqueFileTypes;
 
 	@Override
 	protected boolean isResizable() {
@@ -128,7 +128,7 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 		
 	    statusLabel = createStatusLabel(parent);
 
@@ -172,7 +172,7 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 	
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, false));
 
 		importAllCheckBox = new Button(composite, SWT.CHECK);
@@ -192,7 +192,7 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 		// Spacer
 		new Label(composite, SWT.NONE);
 		
-		Label fileTypesLabel = new Label(composite, SWT.NONE);
+		final Label fileTypesLabel = new Label(composite, SWT.NONE);
 		fileTypesLabel.setText("&Select File Types to Import:");
 
 		fileTypesViewer = CheckboxTableViewer.newCheckList(composite, SWT.V_SCROLL);
@@ -213,7 +213,7 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				TableItem[] tableItems = fileTypesViewer.getTable().getItems();
+				final TableItem[] tableItems = fileTypesViewer.getTable().getItems();
 				
 				for (TableItem tableItem : tableItems) {
 					tableItem.setChecked(false);

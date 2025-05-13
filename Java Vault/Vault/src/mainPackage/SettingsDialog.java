@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Text;
 
 public class SettingsDialog extends VaultDialog {
-	private PreferenceStore preferenceStore;
+	private final PreferenceStore preferenceStore;
 	
 	@Override
 	protected void configureShell(Shell newShell) {
@@ -101,7 +101,7 @@ public class SettingsDialog extends VaultDialog {
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 		
 	    statusLabel = createStatusLabel(parent);
 	

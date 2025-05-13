@@ -50,7 +50,7 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 	
 	private Image originalImage, resizedImage;
 
-	private Canvas canvas;
+	private final Canvas canvas;
 
 	private PhotoUIActions.CopyPictureToClipboardAction copyPictureToClipboardAction = new PhotoUIActions.CopyPictureToClipboardAction();
 	private PhotoUIActions.CopyPictureFileAction copyPictureFileAction = new PhotoUIActions.CopyPictureFileAction();
@@ -144,7 +144,7 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 		gridLayout.marginHeight = gridLayout.marginWidth = 0;
 		this.setLayout(gridLayout);
 
-		Composite composite = new Composite(this, SWT.NONE);
+		final Composite composite = new Composite(this, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		gridLayout.marginWidth = gridLayout.marginHeight = 0;
 		
@@ -214,7 +214,7 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 				}
 
 				// Move the cursor over a bit to avoid selecting the first menu item on Ubuntu.
-				Point cursorLocation = e.display.getCursorLocation();
+				final Point cursorLocation = e.display.getCursorLocation();
 				
 				Display.getCurrent().setCursorLocation(cursorLocation.x + 1, cursorLocation.y + 1);
 			}
@@ -229,7 +229,7 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
     		setImages(null);
     	}
     	else {
-        	OutlineItem outlineItem = (OutlineItem) selection.getFirstElement();
+			final OutlineItem outlineItem = (OutlineItem) selection.getFirstElement();
         	allowScaling = outlineItem.getAllowScaling();
         	
         	setImages(outlineItem.getPhotoPath());
@@ -238,12 +238,11 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 	
 	public void copyPictureFile() throws IOException {
 		if (currentImagePath != null) {
-			
 			Globals.getLogger().info(String.format("copyPictureFile: %s", currentImagePath));
-			
-			File selectedItemPhotoFile = new File(currentImagePath);
-			
-			FileDialog fileDialog = new FileDialog(getShell(), SWT.SAVE);
+
+			final File selectedItemPhotoFile = new File(currentImagePath);
+
+			final FileDialog fileDialog = new FileDialog(getShell(), SWT.SAVE);
 			fileDialog.setFilterExtensions(GraphicsUtils.getFilterExtensions());
 			fileDialog.setFilterNames(GraphicsUtils.getFilterNames());
 			fileDialog.setFilterPath(copyPictureFilePreviousFolder);
@@ -251,8 +250,8 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 			fileDialog.setFileName(selectedItemPhotoFile.getName());
 			
 			fileDialog.setText("Copy Picture File");
-			
-			String destFilePath = fileDialog.open();
+
+			final String destFilePath = fileDialog.open();
 			
 			if (destFilePath != null) {
 				FileUtils.copyFile(currentImagePath, destFilePath);
@@ -268,8 +267,8 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 		
 		try {
 			clipboard = new Clipboard(Display.getCurrent());
-			
-			ImageTransfer imageTransfer = ImageTransfer.getInstance();
+
+			final ImageTransfer imageTransfer = ImageTransfer.getInstance();
 			
 			image = new Image(Display.getCurrent(), currentImagePath); 
 			

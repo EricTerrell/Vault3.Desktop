@@ -76,7 +76,7 @@ public class VaultDocument {
 		return filePath;
 	}
 	
-	private String defaultFilePath;
+	private final String defaultFilePath;
 	
 	public boolean hasDefaultFilePath() {
 		return filePathsEqual(filePath, defaultFilePath);
@@ -186,7 +186,7 @@ public class VaultDocument {
 		final RGB rgb = outlineItem.getRGB();
 		
 		if (rgb != null) {
-			String rgbString = String.format("%d,%d,%d", rgb.red, rgb.green, rgb.blue);
+			final String rgbString = String.format("%d,%d,%d", rgb.red, rgb.green, rgb.blue);
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.RGBATTRIBUTENAME, rgbString);
 		}
 		
@@ -225,8 +225,8 @@ public class VaultDocument {
 	 */
 	private void savePlaintextXmlToStream(OutputStream outputStream) throws XMLStreamException, IOException {
 		Globals.getLogger().info("start");
-		
-		XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+
+		final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
         XMLStreamWriter xmlStreamWriter = null;
 
         OutputStreamWriter outputStreamWriter = null;
@@ -241,8 +241,8 @@ public class VaultDocument {
 	        xmlStreamWriter.writeStartElement(NativeDefaultHandler.VAULTELEMENTNAME);
 	        xmlStreamWriter.writeAttribute(NativeDefaultHandler.VERSIONATTRIBUTENAME, VaultDocumentVersion.getLatestVaultDocumentVersion().toString());
 	        xmlStreamWriter.writeAttribute(NativeDefaultHandler.BASE64ENCODEDATTRIBUTENAME, NativeDefaultHandler.TRUEVALUE);
-	        
-	        List<OutlineItem> children = Globals.getVaultTreeViewer().getSelectedItems();
+
+			final List<OutlineItem> children = Globals.getVaultTreeViewer().getSelectedItems();
 	        
 	        for (OutlineItem child : children) {
 	            saveOutlineItem(child, xmlStreamWriter);

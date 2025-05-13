@@ -33,8 +33,8 @@ import fonts.SWTFont;
 
 public class FontListInitializer {
 	public static void initialize() {
-		Map<String, IFont> availableFonts = enumerateAvailableFonts();
-		PlatformEnum platform = Globals.getPlatform();
+		final Map<String, IFont> availableFonts = enumerateAvailableFonts();
+		final PlatformEnum platform = Globals.getPlatform();
 		
 		Globals.getLogger().info("FontListInitializer:");
 		Globals.getLogger().info(String.format("Platform: %s", platform.toString()));
@@ -44,12 +44,12 @@ public class FontListInitializer {
 	}
 	
 	private static Map<String, IFont> enumerateAvailableFonts() {
-		Map<String, IFont> map = new HashMap<>();
+		final Map<String, IFont> map = new HashMap<>();
 
-		boolean[] scalableValues = new boolean[] { true, false };
+		final boolean[] scalableValues = new boolean[] { true, false };
 
 		for (boolean scalable : scalableValues) {
-	        FontData[] fontList = Globals.getMainApplicationWindow().getShell().getDisplay().getFontList(null, scalable);
+	        final FontData[] fontList = Globals.getMainApplicationWindow().getShell().getDisplay().getFontList(null, scalable);
 	        
 	        for (FontData fontData : fontList) {
 	        	SWTFont swtFont = new SWTFont(fontData.getName(), Globals.getPlatform(), fontData.toString());

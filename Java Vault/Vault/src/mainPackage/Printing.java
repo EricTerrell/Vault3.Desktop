@@ -33,23 +33,23 @@ import commonCode.IPlatform.PlatformEnum;
 
 public class Printing {
 	private static List<VaultPrinter.TextWithFont> getPrintText(OutlineItem outlineItem) {
-		List<VaultPrinter.TextWithFont> textToPrint = new ArrayList<>();
-		
-		String defaultFont = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
-		
-		VaultPrinter.TextWithFont titleText = new VaultPrinter.TextWithFont(String.format("%s\n\n", outlineItem.getTitle()), defaultFont, null);
+		final List<VaultPrinter.TextWithFont> textToPrint = new ArrayList<>();
+
+		final String defaultFont = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
+
+		final VaultPrinter.TextWithFont titleText = new VaultPrinter.TextWithFont(String.format("%s\n\n", outlineItem.getTitle()), defaultFont, null);
 		textToPrint.add(titleText);
-		
-		VaultPrinter.TextWithFont itemText = new VaultPrinter.TextWithFont(outlineItem.getText(), outlineItem.getFontString(), outlineItem.getPhotoPath());
+
+		final VaultPrinter.TextWithFont itemText = new VaultPrinter.TextWithFont(outlineItem.getText(), outlineItem.getFontString(), outlineItem.getPhotoPath());
 		textToPrint.add(itemText);
 		
 		if (!textToPrint.isEmpty()) {
-			VaultPrinter.TextWithFont newLines = new VaultPrinter.TextWithFont("\n\n", defaultFont, null);
+			final VaultPrinter.TextWithFont newLines = new VaultPrinter.TextWithFont("\n\n", defaultFont, null);
 			textToPrint.add(newLines);
 		}
 		
 		for (OutlineItem childItem : outlineItem.getChildren()) {
-			List<VaultPrinter.TextWithFont> childList = getPrintText(childItem);
+			final List<VaultPrinter.TextWithFont> childList = getPrintText(childItem);
 			textToPrint.addAll(childList);
 		}
 		
@@ -57,7 +57,7 @@ public class Printing {
 	}
 	
 	public static boolean canPrint() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
@@ -73,16 +73,16 @@ public class Printing {
 			}
 			
 			if (!cancelled) {
-				PrintDialog printDialog = new PrintDialog(shell);
+				final PrintDialog printDialog = new PrintDialog(shell);
 				printDialog.setText("Print");
 				printDialog.setScope(PrinterData.SELECTION);
-				
-				PrinterData printerData = printDialog.open();
+
+				final PrinterData printerData = printDialog.open();
 				
 				if (printerData != null) {
-					Printer printer = new Printer(printerData);
-					
-					List<OutlineItem> selectedItems;
+					final Printer printer = new Printer(printerData);
+
+					final List<OutlineItem> selectedItems;
 					
 					if (printScopeDialog != null) {
 						// Use values specified by user when PrintScopeDialog was displayed.
@@ -99,14 +99,14 @@ public class Printing {
 					else {
 						selectedItems = Globals.getVaultTreeViewer().getAllItems();
 					}
-		
-					List<VaultPrinter.TextWithFont> textToPrint = new ArrayList<>();
+
+					final List<VaultPrinter.TextWithFont> textToPrint = new ArrayList<>();
 		
 					for (OutlineItem outlineItem : selectedItems) {
 						textToPrint.addAll(getPrintText(outlineItem));
 					}
-					
-					VaultPrinter vaultPrinter = new VaultPrinter(printer, textToPrint, Globals.getVaultDocument().getFileName());
+
+					final VaultPrinter vaultPrinter = new VaultPrinter(printer, textToPrint, Globals.getVaultDocument().getFileName());
 	
 					// If user specified a page range, use it.
 					if (printDialog.getScope() == PrinterData.PAGE_RANGE && printDialog.getStartPage() >= 1 && printDialog.getEndPage() >= printDialog.getStartPage()) {

@@ -53,7 +53,7 @@ public class SingletonApplication {
 		boolean programShouldContinue = false;
 		
 		try {
-			int port = Globals.getPreferenceStore().getInt(PreferenceKeys.SingletonSocketPort);
+			final int port = Globals.getPreferenceStore().getInt(PreferenceKeys.SingletonSocketPort);
 			Globals.getLogger().info(String.format("Listening to port %d", port));
 
 			server = new ServerSocket(port, 10, InetAddress.getLocalHost());
@@ -62,7 +62,7 @@ public class SingletonApplication {
 			
 			try {
 				try {
-					Thread socketListenerThread = new Thread(() -> {
+					final Thread socketListenerThread = new Thread(() -> {
                         boolean socketClosed = false;
 
                         while (!socketClosed) {
@@ -130,8 +130,8 @@ public class SingletonApplication {
 			// Could not get server port, so send the "SHOW" command and exit.
 
 			try {
-				Socket clientSocket = new Socket(InetAddress.getLocalHost(), port);
-				OutputStream out = clientSocket.getOutputStream();
+				final Socket clientSocket = new Socket(InetAddress.getLocalHost(), port);
+				final OutputStream out = clientSocket.getOutputStream();
 				out.write("SHOW\n".getBytes());
 				out.close();
 				clientSocket.close();

@@ -28,12 +28,12 @@ import java.util.HashMap;
  *
  */
 public class PasswordCache {
-	private static HashMap<String, String> cache = new HashMap<>();
+	private static final HashMap<String, String> cache = new HashMap<>();
 	
 	public void put(String filePath, String password) {
 		if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.CachePasswords)) {
 			try {
-				String canonicalFilePath = new File(filePath).getCanonicalPath();
+				final String canonicalFilePath = new File(filePath).getCanonicalPath();
 	
 				Globals.getLogger().info(String.format("canonicalFilePath: %s", canonicalFilePath));
 				
@@ -50,7 +50,7 @@ public class PasswordCache {
 		
 		if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.CachePasswords)) {
 			try {
-				String canonicalFilePath = new File(filePath).getCanonicalPath();
+				final String canonicalFilePath = new File(filePath).getCanonicalPath();
 				
 				Globals.getLogger().info(String.format("canonicalFilePath: %s", canonicalFilePath));
 	
@@ -66,7 +66,7 @@ public class PasswordCache {
 	
 	public void remove(String filePath) {
 		try {
-			String canonicalFilePath = new File(filePath).getCanonicalPath();
+			final String canonicalFilePath = new File(filePath).getCanonicalPath();
 			
 			Globals.getLogger().info(String.format("canonicalFilePath: %s", canonicalFilePath));
 

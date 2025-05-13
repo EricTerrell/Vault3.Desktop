@@ -68,7 +68,7 @@ public class VaultDialog extends Dialog {
 	
     @Override
 	public boolean close() {
-    	boolean result = super.close();
+		final boolean result = super.close();
     	
     	try {
 			dialogSettings.save(getSettingsFilePath());

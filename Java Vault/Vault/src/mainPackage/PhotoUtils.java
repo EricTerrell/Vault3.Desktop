@@ -36,13 +36,13 @@ public class PhotoUtils {
 			else
 			{
 				String substitutePhotoFolder = Globals.getPreferenceStore().getString(PreferenceKeys.SubstitutePhotoFolder);
-				String fileSeparator = System.getProperty("file.separator");
+				final String fileSeparator = System.getProperty("file.separator");
 				
 				while (substitutePhotoFolder.endsWith(fileSeparator)) {
 					substitutePhotoFolder = substitutePhotoFolder.substring(0, substitutePhotoFolder.length() - 1);
 				}
-				
-				String[] pathSegments = photoPath.split("\\\\|/");
+
+				final String[] pathSegments = photoPath.split("\\\\|/");
 				
 				for (int firstSegment = 0; firstSegment < pathSegments.length; firstSegment++) {
 					final StringBuilder currentPath = new StringBuilder(substitutePhotoFolder);
@@ -83,7 +83,7 @@ public class PhotoUtils {
 	 * @return true if the path points to a photo
 	 */
 	public static boolean isPhotoFile(File file) {
-		String fileType = FileUtils.getFileType(file);
+		final String fileType = FileUtils.getFileType(file);
 
 		return isPhotoFileType(fileType);
 	}
@@ -94,7 +94,7 @@ public class PhotoUtils {
 	 * @return true if the path points to a photo
 	 */
 	public static boolean isPhotoFile(String path) {
-		String fileType = FileUtils.getFileType(path);
+		final String fileType = FileUtils.getFileType(path);
 		
 		return isPhotoFileType(fileType);
 	}

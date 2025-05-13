@@ -46,7 +46,7 @@ public class CodePointString {
 	 * @param text
 	 */
 	public CodePointString(String text) {
-		int initialLength = text != null ? text.length() : 0;
+		final int initialLength = text != null ? text.length() : 0;
 		
 		codePoints = new ArrayList<>(initialLength);
 		
@@ -88,7 +88,7 @@ public class CodePointString {
 	 * @return CodePointString with the code point appended to the end
 	 */
 	public CodePointString append(int codePoint) {
-		CodePointString appendedString = new CodePointString(this);
+		final CodePointString appendedString = new CodePointString(this);
 		
 		appendedString.codePoints.add(codePoint);
 		
@@ -121,7 +121,7 @@ public class CodePointString {
 	 * @return array of code points
 	 */
 	private int[] toIntArray() {
-		int[] intArray = new int[codePoints.size()];
+		final int[] intArray = new int[codePoints.size()];
 		
 		for (int i = 0; i < intArray.length; i++) {
 			intArray[i] = codePoints.get(i);
@@ -168,7 +168,7 @@ public class CodePointString {
 	
 	@Override
 	public String toString() {
-		int[] intArray = toIntArray();
+		final int[] intArray = toIntArray();
 		
 		return new String(intArray, 0, intArray.length);
 	}

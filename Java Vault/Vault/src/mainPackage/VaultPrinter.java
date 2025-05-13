@@ -38,13 +38,13 @@ import org.eclipse.swt.printing.Printer;
 
 public class VaultPrinter {
 	public static class PageRange {
-		private int startPage;
+		private final int startPage;
 		
 		public int getStartPage() {
 			return startPage;
 		}
 
-		private int endPage;
+		private final int endPage;
 
 		public int getEndPage() {
 			return endPage;
@@ -56,9 +56,9 @@ public class VaultPrinter {
 		}
 	}
 	
-	private List<TextWithFont> textToPrint;
+	private final List<TextWithFont> textToPrint;
 
-	private Printer printer;
+	private final Printer printer;
 
 	private Rectangle bounds;
 
@@ -68,11 +68,12 @@ public class VaultPrinter {
 
 	private CodePointString buf;
 
-	private String fileName, printDateTime;
+	private final String fileName;
+    private String printDateTime;
 
 	private Font defaultFont;
 	
-	private Point margins;
+	private final Point margins;
 	
 	private PageRange pageRange;
 
@@ -87,7 +88,8 @@ public class VaultPrinter {
 	 */
 	public static class TextWithFont {
 		private CodePointString text;
-		private String fontString, photoPath;
+		private final String fontString;
+        private String photoPath;
 		
 		public TextWithFont(String text, String fontString, String photoPath) {
 			this.text = new CodePointString(text);
@@ -119,10 +121,10 @@ public class VaultPrinter {
 	private void breakUpTokensThatAreWiderThanThePage(TextWithFont textWithFont) {
 		CodePointString token = new CodePointString();
 
-		List<Integer> breakUpPoints = new ArrayList<>();
+		final List<Integer> breakUpPoints = new ArrayList<>();
 		
 		for (int j = 0; j < textWithFont.text.length(); j++) {
-			int ch = textWithFont.text.codePointAt(j);
+			final int ch = textWithFont.text.codePointAt(j);
 			
 			if (Character.isWhitespace(ch)) {
 				token = new CodePointString();
@@ -138,7 +140,7 @@ public class VaultPrinter {
 		}
 		
 		if (!breakUpPoints.isEmpty()) {
-			CodePointString text = new CodePointString(textWithFont.text);
+			final CodePointString text = new CodePointString(textWithFont.text);
 			
 			for (int j = breakUpPoints.size() - 1; j >= 0; j--) {
 				text.insertAt(breakUpPoints.get(j), ' ');
@@ -156,13 +158,16 @@ public class VaultPrinter {
 		// Start the print job.
 		pageNumber = 0;
 
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
-		
-		Date now = new Date();
+		final Calendar calendar = Calendar.getInstance();
+		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+
+		final Date now = new Date();
 		printDateTime = SimpleDateFormat.getDateTimeInstance().format(now);
-		
-		String printJobText = MessageFormat.format("{0} Print Job {1}", StringLiterals.ProgramName, dateFormat.format(calendar.getTime()));
+
+		final String printJobText = MessageFormat.format(
+				"{0} Print Job {1}",
+				StringLiterals.ProgramName,
+				dateFormat.format(calendar.getTime()));
 		
 		if (printer.startJob(printJobText)) {
 			// Determine print area, with margins
@@ -179,13 +184,13 @@ public class VaultPrinter {
 				defaultFont = FontUtils.getDefaultFont(gc);
 				
 				// Determine tab width--use three spaces for tabs.
-				int tabWidth = gc.stringExtent("   ").x;
+				final int tabWidth = gc.stringExtent("   ").x;
 				
 				// Print the text
 				startPage();
 
 				for (int i = 0; i < textToPrint.size(); i++) {
-					TextWithFont textWithFont = textToPrint.get(i);
+					final TextWithFont textWithFont = textToPrint.get(i);
 					
 					if (textWithFont.photoPath != null) {
 						textWithFont.text = textWithFont.text.append('\n');
@@ -195,8 +200,8 @@ public class VaultPrinter {
 					if (i == textToPrint.size() - 1 && textWithFont.text.toString().replace("\n", StringLiterals.EmptyString).trim().isEmpty()) {
 						break;
 					}
-					
-					Font previousFont = gc.getFont();
+
+					final Font previousFont = gc.getFont();
 
 					if (textWithFont.fontString != null && !textWithFont.fontString.isEmpty()) {
 						Font font = FontUtils.stringToFont(gc.getDevice(), textWithFont.fontString);
@@ -249,7 +254,7 @@ public class VaultPrinter {
 			}
 			finally {
 				if (gc != null) {
-					Font font = gc.getFont();
+					final Font font = gc.getFont();
 					
 					if (font != defaultFont) {
 						font.dispose();
@@ -294,7 +299,7 @@ public class VaultPrinter {
 	 */
 	private void printBuffer() {
 		// Get the width of the rendered buffer
-		int width = gc.stringExtent(buf.toString()).x;
+		final int width = gc.stringExtent(buf.toString()).x;
 		
 		// Determine if it fits
 		if (xPos + width > bounds.x + bounds.width) {
@@ -328,16 +333,16 @@ public class VaultPrinter {
 	
 	private Rectangle computePrintArea(Printer printer) {
 		// Get the printable area.
-		Rectangle rect = printer.getClientArea();
+		final Rectangle rect = printer.getClientArea();
 		
 		// Compute the trim
-		Rectangle trim = printer.computeTrim(0, 0, 0, 0);
+		final Rectangle trim = printer.computeTrim(0, 0, 0, 0);
 		
 		// Calculate the printable area.
-		int left = Math.max(trim.x + margins.x, rect.x);
-		int right = Math.min((rect.width + trim.x + trim.width) - margins.x, rect.width);
-		int top = Math.max(trim.y + margins.y, rect.y);
-		int bottom = Math.min((rect.height + trim.y + trim.height) - margins.y, rect.height); 
+		final int left = Math.max(trim.x + margins.x, rect.x);
+		final int right = Math.min((rect.width + trim.x + trim.width) - margins.x, rect.width);
+		final int top = Math.max(trim.y + margins.y, rect.y);
+		final int bottom = Math.min((rect.height + trim.y + trim.height) - margins.y, rect.height);
 
 		return new Rectangle(left, top, right - left, bottom - top);
 	}
@@ -369,11 +374,11 @@ public class VaultPrinter {
 			
 			try {
 				// Render photograph.
-				Rectangle rectangle = new Rectangle(xPos, yPos, bounds.width, bounds.height - yPos + margins.y);
+				final Rectangle rectangle = new Rectangle(xPos, yPos, bounds.width, bounds.height - yPos + margins.y);
 
 				originalImage = GraphicsUtils.loadImage(textWithFont.photoPath);
-				
-				Point scaleDimensions = new Point(0, 0);
+
+				final Point scaleDimensions = new Point(0, 0);
 				scaledImage = GraphicsUtils.resize(rectangle, originalImage, scaleDimensions);
 				
 				printerImage = new Image(printer, scaledImage.getImageData());
@@ -406,13 +411,13 @@ public class VaultPrinter {
 	}
 	
 	private void printPageHeader() {
-		Rectangle printArea = computePrintArea(printer);
+		final Rectangle printArea = computePrintArea(printer);
 
-		Font oldFont = gc.getFont();
+		final Font oldFont = gc.getFont();
 		gc.setFont(defaultFont);
-		
-		int x = printArea.x;
-		int y = printArea.y - margins.y + getLineHeight(gc);
+
+		final int x = printArea.x;
+		final int y = printArea.y - margins.y + getLineHeight(gc);
 
 		if (canPrintCurrentPage()) {
 			// Draw left portion of header.
@@ -426,15 +431,15 @@ public class VaultPrinter {
 	}
 	
 	private void printPageNumber() {
-		String text = MessageFormat.format("- {0} -", pageNumber);
-		
-		Rectangle printArea = computePrintArea(printer);
+		final String text = MessageFormat.format("- {0} -", pageNumber);
 
-		Font oldFont = gc.getFont();
+		final Rectangle printArea = computePrintArea(printer);
+
+		final Font oldFont = gc.getFont();
 		gc.setFont(defaultFont);
-		
-		int x = (printArea.width - gc.textExtent(text).x) / 2 + printArea.x;
-		int y = printArea.y + printArea.height + (margins.y - getLineHeight(gc)) / 2;
+
+		final int x = (printArea.width - gc.textExtent(text).x) / 2 + printArea.x;
+		final int y = printArea.y + printArea.height + (margins.y - getLineHeight(gc)) / 2;
 
 		if (canPrintCurrentPage()) {
 			gc.drawString(text, x, y);

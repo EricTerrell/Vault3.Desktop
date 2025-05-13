@@ -53,17 +53,17 @@ public class PasteAboveOrBelowDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 
-		Group group = new Group(composite, SWT.NONE);
+		final Group group = new Group(composite, SWT.NONE);
 		group.setText("Place Items:");
 		group.setLayout(new RowLayout(SWT.VERTICAL));
 		
 		aboveRadioButton = new Button(group, SWT.RADIO);
 		aboveRadioButton.setText("&Above first item");
 
-		Button belowRadioButton = new Button(group, SWT.RADIO);
+		final Button belowRadioButton = new Button(group, SWT.RADIO);
 		belowRadioButton.setText("&Below first item");
 		belowRadioButton.setSelection(true);
 		

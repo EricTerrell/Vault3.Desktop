@@ -57,7 +57,8 @@ public class FindAndReplaceDialog extends VaultDialog {
 		return true;
 	}
 
-	private boolean allowReplace, previousFindDone = false;
+	private final boolean allowReplace;
+    private boolean previousFindDone = false;
 	
 	private Button wholeWordButton;
 	private Button matchCaseButton;
@@ -74,8 +75,8 @@ public class FindAndReplaceDialog extends VaultDialog {
 		newShell.setText(allowReplace ? "Replace" : "Find");
 	}
 
-	private final int findNextButtonID = 1000;
-	private final int replaceButtonID = 1001;
+	private final int findNextButtonID   = 1000;
+	private final int replaceButtonID    = 1001;
 	private final int replaceAllButtonID = 1002;
 	
 	private Text findWhatText;
@@ -130,7 +131,7 @@ public class FindAndReplaceDialog extends VaultDialog {
 		
 		try {
 			if (previousFindDone) {
-				IRegion iRegion = findReplaceDocumentAdapter.replace(replaceWithText.getText(), false);
+				final IRegion iRegion = findReplaceDocumentAdapter.replace(replaceWithText.getText(), false);
 				previousFindDone = true;
 				
 				replaced = iRegion != null;
@@ -174,7 +175,7 @@ public class FindAndReplaceDialog extends VaultDialog {
 			replaceButton = createButton(parent, replaceButtonID, "&Replace", true);
 			replaceButton.setEnabled(false);
 
-			Button replaceAllButton = createButton(parent, replaceAllButtonID, "Replace &All", false);
+			final Button replaceAllButton = createButton(parent, replaceAllButtonID, "Replace &All", false);
 			replaceAllButton.setEnabled(true);
 		}
 		
@@ -194,17 +195,17 @@ public class FindAndReplaceDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, false));
 
-		Composite findComposite = new Composite(composite, SWT.NONE);
+		final Composite findComposite = new Composite(composite, SWT.NONE);
 		findComposite.setLayout(new GridLayout(2, false));
 		GridData gridData = new GridData();
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = SWT.FILL;
 		findComposite.setLayoutData(gridData);
 		
-		Label findWhatLabel = new Label(findComposite, SWT.NONE);
+		final Label findWhatLabel = new Label(findComposite, SWT.NONE);
 		findWhatLabel.setText("Fi&nd What:");
 		
 		findWhatText = new Text(findComposite, SWT.BORDER);
@@ -225,7 +226,7 @@ public class FindAndReplaceDialog extends VaultDialog {
 		findWhatText.addFocusListener(new TextFocusListener());
 		
 		if (allowReplace) {
-			Label replaceWithLabel = new Label(findComposite, SWT.NONE);
+			final Label replaceWithLabel = new Label(findComposite, SWT.NONE);
 			replaceWithLabel.setText("R&eplace With:");
 			
 			replaceWithText = new Text(findComposite, SWT.BORDER);
@@ -237,14 +238,14 @@ public class FindAndReplaceDialog extends VaultDialog {
 			replaceWithText.addFocusListener(new TextFocusListener());
 		}
 
-		Composite matchAndDirectionComposite = new Composite(composite, SWT.NONE);
+		final Composite matchAndDirectionComposite = new Composite(composite, SWT.NONE);
 		matchAndDirectionComposite.setLayout(new GridLayout(2, false));
 		gridData = new GridData();
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.horizontalAlignment = SWT.FILL;
 		matchAndDirectionComposite.setLayoutData(gridData);
 		
-		Composite checkBoxesComposite = new Composite(matchAndDirectionComposite, SWT.NONE);
+		final Composite checkBoxesComposite = new Composite(matchAndDirectionComposite, SWT.NONE);
 		checkBoxesComposite.setLayout(new FillLayout(SWT.VERTICAL));
 		
 		wholeWordButton = new Button(checkBoxesComposite, SWT.CHECK);
@@ -255,7 +256,7 @@ public class FindAndReplaceDialog extends VaultDialog {
 		matchCaseButton.setText("&Match Case");
 		matchCaseButton.setSelection(Globals.getPreferenceStore().getBoolean(PreferenceKeys.FindReplaceMatchCase));
 		
-		Group directionGroup = new Group(matchAndDirectionComposite, SWT.NONE);
+		final Group directionGroup = new Group(matchAndDirectionComposite, SWT.NONE);
 		directionGroup.setText("Direction");
 		directionGroup.setLayout(new RowLayout(SWT.VERTICAL));
 

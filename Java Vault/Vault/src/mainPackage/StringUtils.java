@@ -45,7 +45,7 @@ public class StringUtils {
 	}
 	
 	public static boolean isURL(String text) {
-		String trimmedText = text.trim().toLowerCase();
+		final String trimmedText = text.trim().toLowerCase();
 		
 		return trimmedText.startsWith("http://") || trimmedText.startsWith("https://");
 	}

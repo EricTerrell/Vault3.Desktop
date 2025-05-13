@@ -39,13 +39,13 @@ import org.eclipse.swt.widgets.MenuItem;
  */
 public class HelpUtils {
 	private static String getHomePageURL() {
-		String homePageFilePath = MessageFormat.format("{0}{1}Help{1}Help.html", FileUtils.getRootPath(), PortabilityUtils.getFileSeparator());
+		final String homePageFilePath = MessageFormat.format("{0}{1}Help{1}Help.html", FileUtils.getRootPath(), PortabilityUtils.getFileSeparator());
 
 		return String.format("file:///%s", new File(homePageFilePath).getAbsolutePath());
 	}
 
 	private static String getTopicURL(String helpTopicId) {
-		String topicFilePath = MessageFormat.format("{0}{1}Help{1}{2}.html", FileUtils.getRootPath(), PortabilityUtils.getFileSeparator(), helpTopicId);
+		final String topicFilePath = MessageFormat.format("{0}{1}Help{1}{2}.html", FileUtils.getRootPath(), PortabilityUtils.getFileSeparator(), helpTopicId);
 
 		return String.format("file:///%s", new File(topicFilePath).getAbsolutePath());
 	}
@@ -64,7 +64,7 @@ public class HelpUtils {
 	}
 	
 	public static void ProcessHelpRequest(HelpEvent event) {
-		MenuItem menuItem = (MenuItem) event.getSource();
+		final MenuItem menuItem = (MenuItem) event.getSource();
 		
 		ActionContributionItem actionContributionItem = (ActionContributionItem) menuItem.getData();
 		

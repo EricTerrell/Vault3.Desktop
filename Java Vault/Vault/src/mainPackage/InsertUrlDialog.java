@@ -151,7 +151,7 @@ public class InsertUrlDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
+				final FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
 				fileDialog.setFilterNames(new String[] { "All Files" });
 				fileDialog.setFilterExtensions(new String[] { StringLiterals.Wildcard });
 				fileDialog.setText("Specify File");
@@ -159,7 +159,7 @@ public class InsertUrlDialog extends VaultDialog {
 				boolean finished = false;
 				
 				do {
-					String filePath = fileDialog.open();
+					final String filePath = fileDialog.open();
 					
 					if (filePath != null && new File(filePath).exists()) {
 						urlText.setText(filePath);
@@ -188,7 +188,7 @@ public class InsertUrlDialog extends VaultDialog {
 		hintsComposite.setLayoutData(gridData);
 		
 		hintsComposite.setLayout(gridLayout);
-		Text hintsText = new Text(hintsComposite, SWT.WRAP | SWT.MULTI | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL);
+		final Text hintsText = new Text(hintsComposite, SWT.WRAP | SWT.MULTI | SWT.READ_ONLY | SWT.H_SCROLL | SWT.V_SCROLL);
 		hintsText.setText("Hints:\r\n\r\nInsert an http:// or https:// URL to browse to a website using the default web browser.\r\n\r\nInsert a file:/// URL to load a file into the default application for that file. For example, a file URL of \"file:///c:\\documents\\memo.doc\" will load the memo.doc file into Word.\r\n\r\nOnce you've inserted a URL, when you right-click the URL and select Browse URL, the web page or file will be displayed.\r\n\r\nYou can also browse URLs by selecting Edit / Browse URLs (Ctrl+U).");
 		
 		final GC gc = new GC(hintsText.getDisplay());

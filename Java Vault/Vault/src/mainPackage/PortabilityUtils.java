@@ -21,8 +21,8 @@
 package mainPackage;
 
 public class PortabilityUtils {
-	private static String newLine = System.getProperty("line.separator");
-	private static String fileSeparator = System.getProperty("file.separator");
+	private static final String newLine = System.getProperty("line.separator");
+	private static final String fileSeparator = System.getProperty("file.separator");
 	
 	public static String getNewLine() {
 		return newLine;

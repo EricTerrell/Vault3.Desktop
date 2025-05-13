@@ -120,13 +120,13 @@ public class GraphicsUtils {
 
 			Globals.getLogger().info("create scaled image");
 			
-			LoggingStopWatch stopwatchScale = new LoggingStopWatch("GraphicsUtils.resizeOrCopy: create scaled image");
+			final LoggingStopWatch stopwatchScale = new LoggingStopWatch("GraphicsUtils.resizeOrCopy: create scaled image");
 
 			scaled = new Image(Display.getDefault(), rect.width, rect.height);
 			
 			stopwatchScale.stop();
 			
-			GC gc = new GC(scaled);
+			final GC gc = new GC(scaled);
 			
 			try {
 				gc.setAntialias(SWT.ON);
@@ -193,7 +193,7 @@ public class GraphicsUtils {
 	 * @param deviceDimensions dimensions of device for which the image is being scaled
 	 */
 	public static void exportPhotoToDevice(String imagePath, String destinationPath, Point deviceDimensions) {
-		LoggingStopWatch stopwatch = new LoggingStopWatch("GraphicsUtils.exportPhotoToDevice");
+		final LoggingStopWatch stopwatch = new LoggingStopWatch("GraphicsUtils.exportPhotoToDevice");
 
 		BufferedImage originalImage = null;
 		BufferedImage scaledImage = null;
@@ -241,8 +241,8 @@ public class GraphicsUtils {
 	}
 
 	private static Scalr.Mode getMode(Point deviceDimensions, BufferedImage originalImage) {
-		double deviceAspectRatio = (double) deviceDimensions.x / (double) deviceDimensions.y;
-		double originalImageAspectRatio = (double) originalImage.getWidth() / (double) originalImage.getHeight();
+		final double deviceAspectRatio = (double) deviceDimensions.x / (double) deviceDimensions.y;
+		final double originalImageAspectRatio = (double) originalImage.getWidth() / (double) originalImage.getHeight();
 
 		return deviceAspectRatio > originalImageAspectRatio ? Scalr.Mode.FIT_TO_HEIGHT : Scalr.Mode.FIT_TO_WIDTH;
 	}

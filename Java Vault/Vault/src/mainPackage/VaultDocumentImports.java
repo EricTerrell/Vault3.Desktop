@@ -58,7 +58,7 @@ public class VaultDocumentImports {
 	 */
 	public static void legacyXMLFileImport(Shell shell) throws SAXException, IOException, ParserConfigurationException {
 		if (canFileImport()) {
-			FileDialog fileDialog = new FileDialog(shell, SWT.OPEN);
+			final FileDialog fileDialog = new FileDialog(shell, SWT.OPEN);
 			fileDialog.setFilterNames(new String[] { "Vault for Windows or The Photo Program Export File (*.xml)", "All Files (*.*)" });
 			fileDialog.setFilterExtensions(new String[] { StringLiterals.XMLFileTypeWildcardedCaseInsensitive, StringLiterals.Wildcard });
 			fileDialog.setFilterPath(previousImportFilterPath);
@@ -67,19 +67,19 @@ public class VaultDocumentImports {
 			boolean finished = false;
 			
 			do {
-				String filePath = fileDialog.open();
+				final String filePath = fileDialog.open();
 				
 				if (filePath != null && new File(filePath).exists()) {
 					try {
 						Globals.setBusyCursor();
 						
 						Globals.getLogger().info("Starting SAX parsing");
-						
-						SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-						
-						SAXParser saxParser = saxParserFactory.newSAXParser();
-					
-						ImportDefaultHandler importDefaultHandler = new ImportDefaultHandler();
+
+						final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+
+						final SAXParser saxParser = saxParserFactory.newSAXParser();
+
+						final ImportDefaultHandler importDefaultHandler = new ImportDefaultHandler();
 
 						// If the first argument to parse is a filename with embedded spaces, an exception will be thrown. The solution is to
 						// use a FileInputStream instead of a file path.
@@ -87,8 +87,8 @@ public class VaultDocumentImports {
 							saxParser.parse(inputStream, importDefaultHandler);
 							
 							Globals.getLogger().info("Finished SAX parsing");
-			
-							OutlineItem importedOutlineItem = importDefaultHandler.getOutlineItem();
+
+							final OutlineItem importedOutlineItem = importDefaultHandler.getOutlineItem();
 							importedOutlineItem.setTitle(filePath);
 							Globals.getVaultTreeViewer().addItem(importDefaultHandler.getOutlineItem(), OutlineItem.AddDirection.Below);
 							
@@ -115,15 +115,15 @@ public class VaultDocumentImports {
 	 */
 	public static void folderImport(Shell shell) throws IOException {
 		if (canFolderImport()) {
-			DirectoryDialog directoryDialog = new DirectoryDialog(shell);
+			final DirectoryDialog directoryDialog = new DirectoryDialog(shell);
 			directoryDialog.setText("Select Folder from which to Import");
 			directoryDialog.setMessage("Folder:");
 			directoryDialog.setFilterPath(previousFileSystemImportFolder);
-			
-			String importFolder = directoryDialog.open();
+
+			final String importFolder = directoryDialog.open();
 			
 			if (importFolder != null) {
-				Dictionary<String, Boolean> uniqueFileTypes;
+				final Dictionary<String, Boolean> uniqueFileTypes;
 				
 				try {
 					Globals.setBusyCursor();
@@ -132,15 +132,15 @@ public class VaultDocumentImports {
 				finally {
 					Globals.setPreviousCursor();
 				}
-				
-				ImportFolderDialog importFolderDialog = new ImportFolderDialog(shell, uniqueFileTypes);
+
+				final ImportFolderDialog importFolderDialog = new ImportFolderDialog(shell, uniqueFileTypes);
 	
 				if (importFolderDialog.open() == IDialogConstants.OK_ID) {
 					try
 					{
 						Globals.setBusyCursor();
-						
-						OutlineItem outlineItem = FileSystemImport.importFromFileSystem(importFolder, uniqueFileTypes);
+
+						final OutlineItem outlineItem = FileSystemImport.importFromFileSystem(importFolder, uniqueFileTypes);
 						
 						Globals.getVaultTreeViewer().addItem(outlineItem, AddDirection.Below);
 					}
@@ -203,14 +203,14 @@ public class VaultDocumentImports {
 	}
 
 	public static boolean canImportPictures() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
 		return selectedItems.size() <= 1;
 	}
 
 	public static void importPictures(Shell shell) {
 		if (canImportPictures()) {
-			FileDialog fileDialog = new FileDialog(shell, SWT.OPEN | SWT.MULTI);
+			final FileDialog fileDialog = new FileDialog(shell, SWT.OPEN | SWT.MULTI);
 			fileDialog.setText("Import Photos");
 			fileDialog.setFilterExtensions(GraphicsUtils.getFilterExtensions());
 			fileDialog.setFilterNames(GraphicsUtils.getFilterNames());
@@ -224,7 +224,7 @@ public class VaultDocumentImports {
 
 			do
 			{
-				String filePath = fileDialog.open();
+				final String filePath = fileDialog.open();
 				
 				if (filePath != null) {
 					previousPhotoFilterPath = fileDialog.getFilterPath();
@@ -236,12 +236,16 @@ public class VaultDocumentImports {
 
 					try {
 						for (String fileName : fileDialog.getFileNames()) {
-							String photoPath = String.format("%s%s%s", fileDialog.getFilterPath(), System.getProperty("file.separator"), fileName);
+							final String photoPath = String.format(
+									"%s%s%s",
+									fileDialog.getFilterPath(),
+									System.getProperty("file.separator"),
+									fileName);
 							
 							if (new File(photoPath).exists()) {
-								OutlineItem newItem = new OutlineItem();
-			
-								File photoFile = new File(photoPath);
+								final OutlineItem newItem = new OutlineItem();
+
+								final File photoFile = new File(photoPath);
 								
 								newItem.setTitle(photoFile.getName());
 								newItem.setPhotoPath(photoPath);

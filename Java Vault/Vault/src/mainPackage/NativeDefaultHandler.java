@@ -34,266 +34,279 @@ import commonCode.Base64Coder;
 import fonts.FontList;
 
 public class NativeDefaultHandler extends DefaultHandler {
-	private OutlineItemWithTempText outlineItem;
+    private OutlineItemWithTempText outlineItem;
 
-	private StringBuilder elementText;
+    private StringBuilder elementText;
 
-	private Stack<OutlineItemWithTempText> stack;
-	
-	private ByteArrayOutputStream encryptedBytes;
+    private Stack<OutlineItemWithTempText> stack;
 
-	public byte[] getCipherText() {
-		byte[] result = encryptedBytes.toByteArray();
+    private ByteArrayOutputStream encryptedBytes;
 
-		// Deallocate the memory in the buffer as soon as possible.
-		encryptedBytes = null;
-		
-		return result;
-	}
+    public byte[] getCipherText() {
+        byte[] result = encryptedBytes.toByteArray();
 
-	private boolean isEncrypted = false;
+        // Deallocate the memory in the buffer as soon as possible.
+        encryptedBytes = null;
 
-	private byte[] salt;
-	private byte[] iv;
+        return result;
+    }
 
-	public byte[] getSalt() { return salt; }
-	public byte[] getIV() { return iv; }
+    private boolean isEncrypted = false;
 
-	public boolean getIsEncrypted() {
-		return isEncrypted;
-	}
-	
-	private int majorVersion = 1, minorVersion = 0;
+    private byte[] salt;
+    private byte[] iv;
 
-	public int getMajorVersion() {
-		return majorVersion;
-	}
-	
-	public int getMinorVersion() {
-		return minorVersion;
-	}
-	
-	private boolean isBase64Encoded = false;
-	
-	public final static String TEXTELEMENTNAME            = "Text"; 
-	public final static String VAULTELEMENTNAME           = "Vault";
-	public final static String BASE64ENCODEDATTRIBUTENAME = "base64Encoded";
-	public final static String ITEMELEMENTNAME            = "Item";
-	public final static String TITLEELEMENTNAME           = "Title";
-	public final static String PHOTOELEMENTNAME           = "Photo";
-	public final static String ALLOWSCALINGATTRIBUTENAME  = "AllowScaling";
-	public final static String RGBATTRIBUTENAME           = "rgb";
-	public final static String FONTLISTATTRIBUTENAME      = "fontList";
-	public final static String PATHATTRIBUTENAME          = "path";
-	public final static String VERSIONATTRIBUTENAME       = "version";
-	public final static String ENCRYPTEDITEMS             = "EncryptedItems";
-	public final static String ENCRYPTEDITEM              = "EncryptedItem";
+    public byte[] getSalt() {
+        return salt;
+    }
 
-	public final static String SALTATTRIBUTE			  = "salt";
-	public final static String IVATTRIBUTE				  = "iv";
+    public byte[] getIV() {
+        return iv;
+    }
 
-	public final static String TRUEVALUE                  = "true";
-	public final static String FALSEVALUE                 = "false";
+    public boolean getIsEncrypted() {
+        return isEncrypted;
+    }
 
-	public NativeDefaultHandler() {
-	}
+    private int majorVersion = 1, minorVersion = 0;
 
-	public OutlineItem getOutlineItem() {
-		return outlineItem.getOutlineItem();
-	}
+    public int getMajorVersion() {
+        return majorVersion;
+    }
 
-	@Override
-	public void startDocument() throws SAXException {
-		super.startDocument();
+    public int getMinorVersion() {
+        return minorVersion;
+    }
 
-		stack = new Stack<>();
-		outlineItem = null;
-		elementText = null;
-	}
+    private boolean isBase64Encoded = false;
 
-	@Override
-	public void endDocument() throws SAXException {
-		super.endDocument();
-		
-		Assert.isTrue(stack.isEmpty());
-	}
+    public final static String TEXTELEMENTNAME = "Text";
+    public final static String VAULTELEMENTNAME = "Vault";
+    public final static String BASE64ENCODEDATTRIBUTENAME = "base64Encoded";
+    public final static String ITEMELEMENTNAME = "Item";
+    public final static String TITLEELEMENTNAME = "Title";
+    public final static String PHOTOELEMENTNAME = "Photo";
+    public final static String ALLOWSCALINGATTRIBUTENAME = "AllowScaling";
+    public final static String RGBATTRIBUTENAME = "rgb";
+    public final static String FONTLISTATTRIBUTENAME = "fontList";
+    public final static String PATHATTRIBUTENAME = "path";
+    public final static String VERSIONATTRIBUTENAME = "version";
+    public final static String ENCRYPTEDITEMS = "EncryptedItems";
+    public final static String ENCRYPTEDITEM = "EncryptedItem";
 
-	private String decodeIfNecessary(String text) throws UnsupportedEncodingException {
-		String decodedText;
-		
-		if (isBase64Encoded) {
-			decodedText = Base64Coder.i18nDecode(text);
-		}
-		else {
-			decodedText = text;
-		}
-		
-		return decodedText;
-	}
-	
-	@Override
-	public void startElement(String uri, String localName, String name,
-			Attributes attributes) throws SAXException {
-		super.startElement(uri, localName, name, attributes);
-		
-		elementText = new StringBuilder();
-		
-		if (name.equals(ITEMELEMENTNAME)) {
-			OutlineItemWithTempText parent = stack.peek();
-			
-			OutlineItemWithTempText child = new OutlineItemWithTempText();
-			child.getOutlineItem().setParent(parent.getOutlineItem());
-			
-			parent.getOutlineItem().addChild(child.getOutlineItem());
+    public final static String SALTATTRIBUTE = "salt";
+    public final static String IVATTRIBUTE = "iv";
 
-			stack.push(child);
-		}
-		switch (name) {
-			case TEXTELEMENTNAME:
-				String rgbString = attributes.getValue(RGBATTRIBUTENAME);
+    public final static String TRUEVALUE = "true";
+    public final static String FALSEVALUE = "false";
 
-				if (rgbString != null) {
-					String[] rgbArray = rgbString.split(",");
+    public NativeDefaultHandler() {
+    }
 
-					if (rgbArray.length == 3) {
-						int red = Integer.valueOf(rgbArray[0]);
-						int green = Integer.valueOf(rgbArray[1]);
-						int blue = Integer.valueOf(rgbArray[2]);
+    public OutlineItem getOutlineItem() {
+        return outlineItem.getOutlineItem();
+    }
 
-						OutlineItem currentItem = stack.peek().getOutlineItem();
-						currentItem.setRGB(new RGB(red, green, blue));
-					}
-				}
+    @Override
+    public void startDocument() throws SAXException {
+        super.startDocument();
 
-				try {
-					String fontString = decodeIfNecessary(attributes.getValue(FONTLISTATTRIBUTENAME));
+        stack = new Stack<>();
+        outlineItem = null;
+        elementText = null;
+    }
 
-					if (fontString != null) {
-						OutlineItem currentItem = stack.peek().getOutlineItem();
+    @Override
+    public void endDocument() throws SAXException {
+        super.endDocument();
 
-						try {
-							FontList fontList = FontList.deserialize(fontString);
-							currentItem.setFontList(fontList);
-						} catch (Throwable ex) {
-							Globals.getLogger().severe(String.format("NativeDefaultHandler.StartElement: cannot deserialize FontList from %s", fontString));
-						}
-					}
-				} catch (UnsupportedEncodingException ex) {
-					ex.printStackTrace();
-					throw new SAXException(ex);
-				}
-				break;
-			case PHOTOELEMENTNAME:
-				try {
-					String photoPath = decodeIfNecessary(attributes.getValue(PATHATTRIBUTENAME));
+        Assert.isTrue(stack.isEmpty());
+    }
 
-					if (photoPath != null) {
-						OutlineItem currentItem = stack.peek().getOutlineItem();
-						currentItem.setPhotoPath(photoPath);
-					}
-				} catch (UnsupportedEncodingException ex) {
-					ex.printStackTrace();
-					throw new SAXException(ex);
-				}
+    private String decodeIfNecessary(String text) throws UnsupportedEncodingException {
+        String decodedText;
 
-				String allowScaling = attributes.getValue(ALLOWSCALINGATTRIBUTENAME);
+        if (isBase64Encoded) {
+            decodedText = Base64Coder.i18nDecode(text);
+        } else {
+            decodedText = text;
+        }
 
-				if (allowScaling != null) {
-					OutlineItem currentItem = stack.peek().getOutlineItem();
-					currentItem.setAllowScaling(!allowScaling.equals(FALSEVALUE));
-				}
-				break;
-			case VAULTELEMENTNAME:
-				String versionString = attributes.getValue(VERSIONATTRIBUTENAME);
+        return decodedText;
+    }
 
-				if (versionString != null) {
-					String[] majorAndMinorVersions = versionString.split("\\.");
+    @Override
+    public void startElement(String uri, String localName, String name,
+                             Attributes attributes) throws SAXException {
+        super.startElement(uri, localName, name, attributes);
 
-					if (majorAndMinorVersions.length == 2) {
-						majorVersion = Integer.valueOf(majorAndMinorVersions[0]);
-						minorVersion = Integer.valueOf(majorAndMinorVersions[1]);
-					}
-				}
+        elementText = new StringBuilder();
 
-				String base64EncodingString = attributes.getValue(BASE64ENCODEDATTRIBUTENAME);
+        if (name.equals(ITEMELEMENTNAME)) {
+            OutlineItemWithTempText parent = stack.peek();
 
-				isBase64Encoded = base64EncodingString != null && base64EncodingString.equals(TRUEVALUE);
+            OutlineItemWithTempText child = new OutlineItemWithTempText();
+            child.getOutlineItem().setParent(parent.getOutlineItem());
 
-				outlineItem = new OutlineItemWithTempText();
-				stack.push(outlineItem);
-				break;
-			case ENCRYPTEDITEMS:
-				isEncrypted = true;
+            parent.getOutlineItem().addChild(child.getOutlineItem());
 
-				final String saltString = attributes.getValue(SALTATTRIBUTE);
+            stack.push(child);
+        }
+        switch (name) {
+            case TEXTELEMENTNAME: {
+                final String rgbString = attributes.getValue(RGBATTRIBUTENAME);
 
-				if (saltString != null) {
-					salt = Base64Coder.decode(saltString);
-				}
+                if (rgbString != null) {
+                    final String[] rgbArray = rgbString.split(",");
 
-				final String ivString = attributes.getValue(IVATTRIBUTE);
+                    if (rgbArray.length == 3) {
+                        final int red = Integer.valueOf(rgbArray[0]);
+                        final int green = Integer.valueOf(rgbArray[1]);
+                        final int blue = Integer.valueOf(rgbArray[2]);
 
-				if (ivString != null) {
-					iv = Base64Coder.decode(ivString);
-				}
-				
-				encryptedBytes = new ByteArrayOutputStream();
-				break;
-		}
-	}
+                        final OutlineItem currentItem = stack.peek().getOutlineItem();
+                        currentItem.setRGB(new RGB(red, green, blue));
+                    }
+                }
 
-	@Override
-	public void endElement(String uri, String localName, String name)
-			throws SAXException {
-		super.endElement(uri, localName, name);
+                try {
+                    final String fontString = decodeIfNecessary(attributes.getValue(FONTLISTATTRIBUTENAME));
 
-		switch (name) {
-			case ITEMELEMENTNAME:
-				OutlineItemWithTempText outlineItem = stack.pop();
+                    if (fontString != null) {
+                        final OutlineItem currentItem = stack.peek().getOutlineItem();
 
-				try {
-					outlineItem.getOutlineItem().setText(decodeIfNecessary(outlineItem.getTempText().toString()));
-				} catch (UnsupportedEncodingException ex) {
-					ex.printStackTrace();
-					throw new SAXException(ex);
-				}
-				break;
-			case TITLEELEMENTNAME:
-				try {
-					stack.peek().getOutlineItem().setTitle(decodeIfNecessary(elementText.toString()));
-				} catch (UnsupportedEncodingException ex) {
-					ex.printStackTrace();
-					throw new SAXException(ex);
-				}
-				break;
-			case TEXTELEMENTNAME:
-				stack.peek().getTempText().append(elementText);
-				break;
-			case VAULTELEMENTNAME:
-				stack.pop();
-				break;
-			case ENCRYPTEDITEM:
-				byte[] encryptedBuffer = Base64Coder.decode(elementText.toString());
+                        try {
+                            final FontList fontList = FontList.deserialize(fontString);
+                            currentItem.setFontList(fontList);
+                        } catch (Throwable ex) {
+                            Globals.getLogger().severe(String.format("NativeDefaultHandler.StartElement: cannot deserialize FontList from %s", fontString));
+                        }
+                    }
+                } catch (UnsupportedEncodingException ex) {
+                    ex.printStackTrace();
+                    throw new SAXException(ex);
+                }
+            }
+            break;
+            case PHOTOELEMENTNAME: {
+                try {
+                    final String photoPath = decodeIfNecessary(attributes.getValue(PATHATTRIBUTENAME));
 
-				try {
-					encryptedBytes.write(encryptedBuffer);
-				} catch (Exception ex) {
-					ex.printStackTrace();
-					throw new SAXException(ex);
-				}
-				break;
-		}
-	}
+                    if (photoPath != null) {
+                        final OutlineItem currentItem = stack.peek().getOutlineItem();
+                        currentItem.setPhotoPath(photoPath);
+                    }
+                } catch (UnsupportedEncodingException ex) {
+                    ex.printStackTrace();
+                    throw new SAXException(ex);
+                }
 
-	@Override
-	public void characters(char[] ch, int start, int length)
-			throws SAXException {
-		super.characters(ch, start, length);
-		
-		String currentText = new String(ch, start, length);
-		
-		if (!currentText.isEmpty()) {
-			elementText.append(currentText);
-		}
-	}
+                final String allowScaling = attributes.getValue(ALLOWSCALINGATTRIBUTENAME);
+
+                if (allowScaling != null) {
+                    final OutlineItem currentItem = stack.peek().getOutlineItem();
+                    currentItem.setAllowScaling(!allowScaling.equals(FALSEVALUE));
+                }
+            }
+            break;
+            case VAULTELEMENTNAME: {
+                final String versionString = attributes.getValue(VERSIONATTRIBUTENAME);
+
+                if (versionString != null) {
+                    final String[] majorAndMinorVersions = versionString.split("\\.");
+
+                    if (majorAndMinorVersions.length == 2) {
+                        majorVersion = Integer.valueOf(majorAndMinorVersions[0]);
+                        minorVersion = Integer.valueOf(majorAndMinorVersions[1]);
+                    }
+                }
+
+                final String base64EncodingString = attributes.getValue(BASE64ENCODEDATTRIBUTENAME);
+
+                isBase64Encoded = base64EncodingString != null && base64EncodingString.equals(TRUEVALUE);
+
+                outlineItem = new OutlineItemWithTempText();
+                stack.push(outlineItem);
+            }
+            break;
+            case ENCRYPTEDITEMS: {
+                isEncrypted = true;
+
+                final String saltString = attributes.getValue(SALTATTRIBUTE);
+
+                if (saltString != null) {
+                    salt = Base64Coder.decode(saltString);
+                }
+
+                final String ivString = attributes.getValue(IVATTRIBUTE);
+
+                if (ivString != null) {
+                    iv = Base64Coder.decode(ivString);
+                }
+
+                encryptedBytes = new ByteArrayOutputStream();
+            }
+            break;
+        }
+    }
+
+    @Override
+    public void endElement(String uri, String localName, String name)
+            throws SAXException {
+        super.endElement(uri, localName, name);
+
+        switch (name) {
+            case ITEMELEMENTNAME: {
+                final OutlineItemWithTempText outlineItem = stack.pop();
+
+                try {
+                    outlineItem.getOutlineItem().setText(decodeIfNecessary(outlineItem.getTempText().toString()));
+                } catch (UnsupportedEncodingException ex) {
+                    ex.printStackTrace();
+                    throw new SAXException(ex);
+                }
+            }
+            break;
+            case TITLEELEMENTNAME: {
+                try {
+                    stack.peek().getOutlineItem().setTitle(decodeIfNecessary(elementText.toString()));
+                } catch (UnsupportedEncodingException ex) {
+                    ex.printStackTrace();
+                    throw new SAXException(ex);
+                }
+            }
+            break;
+            case TEXTELEMENTNAME: {
+                stack.peek().getTempText().append(elementText);
+            }
+            break;
+            case VAULTELEMENTNAME: {
+                stack.pop();
+            }
+            break;
+            case ENCRYPTEDITEM: {
+                final byte[] encryptedBuffer = Base64Coder.decode(elementText.toString());
+
+                try {
+                    encryptedBytes.write(encryptedBuffer);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    throw new SAXException(ex);
+                }
+            }
+            break;
+        }
+    }
+
+    @Override
+    public void characters(char[] ch, int start, int length)
+            throws SAXException {
+        super.characters(ch, start, length);
+
+        final String currentText = new String(ch, start, length);
+
+        if (!currentText.isEmpty()) {
+            elementText.append(currentText);
+        }
+    }
 }

@@ -42,16 +42,16 @@ public class GoToWebsites {
 	public static final String encoding = "UTF-8";
 	
 	public static void run(Shell shell) {
-		Pattern pattern = Pattern.compile(Globals.getPreferenceStore().getString(PreferenceKeys.URLRegex));
+		final Pattern pattern = Pattern.compile(Globals.getPreferenceStore().getString(PreferenceKeys.URLRegex));
 
-		String itemText = Globals.getVaultTextViewer().getTextWidget().getText();
+		final String itemText = Globals.getVaultTextViewer().getTextWidget().getText();
 		
-		Matcher matcher = pattern.matcher(itemText);
+		final Matcher matcher = pattern.matcher(itemText);
 		
-		List<String> urls = new ArrayList<>();
+		final List<String> urls = new ArrayList<>();
 		
 		while (matcher.find()) {
-			String url = itemText.substring(matcher.start(), matcher.end());
+			final String url = itemText.substring(matcher.start(), matcher.end());
 			
 			if (!urls.contains(url)) {
 				urls.add(url);
@@ -81,9 +81,9 @@ public class GoToWebsites {
 		final String fileProtocol = "file:///";
 		
 		if (result.startsWith(fileProtocol)) {
-			String filePath = result.substring(fileProtocol.length());
+			final String filePath = result.substring(fileProtocol.length());
 			
-			String photoPath = PhotoUtils.getPhotoPath(filePath);
+			final String photoPath = PhotoUtils.getPhotoPath(filePath);
 			
 			if (photoPath != null && !photoPath.isEmpty()) {
 				result = fileProtocol + photoPath;
@@ -93,9 +93,9 @@ public class GoToWebsites {
 			result = result.substring(fileProtocol.length());
 			
 			if (!new File(result).exists()) {
-				Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+				final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 
-				String message = MessageFormat.format("File \"{0}\" does not exist.", result);
+				final String message = MessageFormat.format("File \"{0}\" does not exist.", result);
 				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.INFORMATION, new String[] { "&OK" }, 0);
 				messageDialog.open();
 

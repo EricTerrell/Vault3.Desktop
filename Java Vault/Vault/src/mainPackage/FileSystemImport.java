@@ -34,7 +34,7 @@ import java.util.UUID;
 
 public class FileSystemImport {
 	public static OutlineItem importFromFileSystem(String rootFolderPath, Dictionary<String, Boolean> uniqueFileTypes) throws IOException {
-		OutlineItem outlineItem = new OutlineItem();
+		final OutlineItem outlineItem = new OutlineItem();
 		outlineItem.setTitle(rootFolderPath);
 
 		Dictionary<UUID, Boolean> nonEmptyOutlineItems = new Hashtable<>();
@@ -48,14 +48,14 @@ public class FileSystemImport {
 
 	private static void removeEmptyOutlineItems(OutlineItem outlineItem, Dictionary<UUID, Boolean> nonEmptyOutlineItems) {
 		if (nonEmptyOutlineItems.get(outlineItem.getUuid()) == null) {
-			OutlineItem parent = outlineItem.getParent();
+			final OutlineItem parent = outlineItem.getParent();
 			
 			if (parent != null) {
 				parent.getChildren().remove(outlineItem);
 			}
 		}
 		else {
-			List<OutlineItem> children = outlineItem.getChildren();
+			final List<OutlineItem> children = outlineItem.getChildren();
 			
 			for (int i = children.size() - 1; i >= 0; i--) {
 				removeEmptyOutlineItems(children.get(i), nonEmptyOutlineItems);
@@ -64,7 +64,7 @@ public class FileSystemImport {
 	}
 	
 	private static class FileComparitor implements Comparator<File> {
-		private Collator collator = Collator.getInstance();
+		private final Collator collator = Collator.getInstance();
 
 		@Override
 		public int compare(File file1, File file2) {
@@ -80,7 +80,7 @@ public class FileSystemImport {
 	}
 
 	private static void importFromFileSystem(String rootFolderPath, Dictionary<String, Boolean> uniqueFileTypes, OutlineItem outlineItem, Dictionary<UUID, Boolean> nonEmptyOutlineItems) throws IOException {
-		File rootFolder = new File(rootFolderPath);
+		final File rootFolder = new File(rootFolderPath);
 		
 		if (rootFolder.isDirectory()) {
 			File[] list = rootFolder.listFiles();
@@ -98,7 +98,7 @@ public class FileSystemImport {
 							fileType = StringLiterals.EmptyString;
 						}
 
-						Boolean importFileType = uniqueFileTypes.get(fileType);
+						final Boolean importFileType = uniqueFileTypes.get(fileType);
 
 						if (importFileType != null && importFileType) {
 							OutlineItem childOutlineItem = new OutlineItem();
@@ -147,7 +147,7 @@ public class FileSystemImport {
 						}
 					}
 					else if (child.isDirectory()) {
-						OutlineItem childOutlineItem = new OutlineItem();
+						final OutlineItem childOutlineItem = new OutlineItem();
 						childOutlineItem.setParent(outlineItem);
 						childOutlineItem.setTitle(child.getName());
 						outlineItem.addChild(childOutlineItem);

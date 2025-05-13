@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Display;
  */
 public class PhotoUIActions {
 	private static boolean photoExists() {
-		String imagePath = PhotoUI.getCurrentImagePath();
+		final String imagePath = PhotoUI.getCurrentImagePath();
 		
 		return imagePath != null && !imagePath.trim().isEmpty();
 	}
@@ -97,9 +97,21 @@ public class PhotoUIActions {
 			}
 			catch (Throwable ex) {
 				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot copy photo file.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+
+				final String message = MessageFormat.format(
+						"Cannot copy photo file.{0}{0}{1}",
+						PortabilityUtils.getNewLine(),
+						ex.getMessage());
+
+				final MessageDialog messageDialog = new MessageDialog(
+						Globals.getMainApplicationWindow().getShell(),
+						StringLiterals.ProgramName,
+						Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+						message,
+						MessageDialog.ERROR,
+						new String[] { "&OK" },
+						0);
+
 				messageDialog.open();
 			}
 		}
@@ -126,14 +138,26 @@ public class PhotoUIActions {
 			
 			try {
 				clipboard = new Clipboard(Display.getCurrent());
-				TextTransfer textTransfer = TextTransfer.getInstance();
+				final TextTransfer textTransfer = TextTransfer.getInstance();
 				clipboard.setContents(new Object[] { PhotoUI.getCurrentImagePath() }, new Transfer[] { textTransfer });
 			}
 			catch (Throwable ex) {
 				ex.printStackTrace();
-				
-				String message = MessageFormat.format("Cannot copy photo file path.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
-				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
+
+				final String message = MessageFormat.format(
+						"Cannot copy photo file path.{0}{0}{1}",
+						PortabilityUtils.getNewLine(),
+						ex.getMessage());
+
+				final MessageDialog messageDialog = new MessageDialog(
+						Globals.getMainApplicationWindow().getShell(),
+						StringLiterals.ProgramName,
+						Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON),
+						message,
+						MessageDialog.ERROR,
+						new String[] { "&OK" },
+						0);
+
 				messageDialog.open();
 			}
 			finally {

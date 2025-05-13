@@ -3,13 +3,16 @@
   <component name="AnalysisUIOptions">
     <option name="SPLITTER_PROPORTION" value="0.44810542" />
     <option name="ANALYZE_INJECTED_CODE" value="false" />
+    <option name="SCOPE_TYPE" value="3" />
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="On Linux, user can now specify the default font color." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="&quot;final&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +133,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="PowerShell.build_everything.ps1 (2)">
+  <component name="RunManager" selected="PowerShell.build_everything.ps1">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -291,11 +294,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1 (2)" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
-        <item itemvalue="PowerShell.build_everything.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -685,7 +688,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -699,7 +702,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Created Windows setup" />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  Fixed CryptoTests.java&#10;  &#10;Updated ant build to build custom java runtime" />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime" />
     <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content." />
@@ -724,7 +726,8 @@
     <MESSAGE value="Version 0.84" />
     <MESSAGE value="Code inspection fixes" />
     <MESSAGE value="On Linux, user can now specify the default font color." />
-    <option name="LAST_COMMIT_MESSAGE" value="On Linux, user can now specify the default font color." />
+    <MESSAGE value="&quot;final&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;final&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -750,12 +753,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
-          <line>77</line>
+          <line>81</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
-          <line>89</line>
+          <line>93</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -785,17 +788,17 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
-          <line>155</line>
+          <line>156</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
-          <line>147</line>
+          <line>148</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
-          <line>152</line>
+          <line>153</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -805,7 +808,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDevice.java</url>
-          <line>136</line>
+          <line>135</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -941,12 +944,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NativeDefaultHandler.java</url>
-          <line>227</line>
+          <line>234</line>
           <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>189</line>
+          <line>198</line>
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -971,7 +974,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>228</line>
+          <line>237</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -991,7 +994,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
-          <line>648</line>
+          <line>649</line>
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1033,6 +1036,26 @@
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
           <line>579</line>
           <option name="timeStamp" value="279" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="280" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="281" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="282" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="283" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>

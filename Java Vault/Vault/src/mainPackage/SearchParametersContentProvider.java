@@ -29,7 +29,7 @@ public class SearchParametersContentProvider implements IStructuredContentProvid
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object[] getElements(Object obj) {
-		List<SearchParameters> searchParametersList = (List<SearchParameters>) obj;
+		final List<SearchParameters> searchParametersList = (List<SearchParameters>) obj;
 		return searchParametersList.toArray();
 	}
 

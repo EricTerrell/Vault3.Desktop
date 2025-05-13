@@ -47,7 +47,7 @@ public class MenuUtils {
 		
 		for (IContributionItem iContributionItem : menuManager.getItems()) {
 			if (iContributionItem instanceof MenuManager) {
-				MenuManager menuManager2 = (MenuManager) iContributionItem;
+				final MenuManager menuManager2 = (MenuManager) iContributionItem;
 				
 				menuManager2.getMenu().addMenuListener(new MenuListener() {
 					@Override
@@ -89,9 +89,9 @@ public class MenuUtils {
 		MenuItem menuItem = (MenuItem) armEvent.getSource();
 		
 		if (menuItem.getData() instanceof ActionContributionItem) {
-			ActionContributionItem contrib = (ActionContributionItem) menuItem.getData();
+			final ActionContributionItem contrib = (ActionContributionItem) menuItem.getData();
 			
-			IAction iAction = contrib.getAction();
+			final IAction iAction = contrib.getAction();
 			
 			if (iAction.getDescription() != null) {
 				Globals.getMainApplicationWindow().setStatusLineMessage(iAction.getDescription());

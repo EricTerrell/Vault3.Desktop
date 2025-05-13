@@ -35,7 +35,7 @@ import org.eclipse.swt.widgets.Display;
 import commonCode.IPlatform.PlatformEnum;
 
 public class Globals {
-	private static PlatformEnum platform;
+	private static final PlatformEnum platform;
 	
 	public static PlatformEnum getPlatform() {
 		return platform;
@@ -47,13 +47,13 @@ public class Globals {
 		return imageRegistry;
 	}
 	
-	private static ColorRegistry colorRegistry;
+	private static final ColorRegistry colorRegistry;
 	
 	public static ColorRegistry getColorRegistry() {
 		return colorRegistry;
 	}
 	
-	private static RGB whiteColor = new RGB(255, 255, 255);
+	private static final RGB whiteColor = new RGB(255, 255, 255);
 	
 	public static RGB getWhiteColor() {
 		return whiteColor;
@@ -105,7 +105,7 @@ public class Globals {
 	}
 
 	public static void setPreviousCursor() {
-		Cursor[] cursors = new Cursor[] { Globals.getMainApplicationWindow().getShell().getCursor(), Globals.getVaultTextViewer().getTextWidget().getShell().getCursor() };
+		final Cursor[] cursors = new Cursor[] { Globals.getMainApplicationWindow().getShell().getCursor(), Globals.getVaultTextViewer().getTextWidget().getShell().getCursor() };
 		
 		Globals.getMainApplicationWindow().getShell().setCursor(null);
 		Globals.getVaultTextViewer().getTextWidget().setCursor(null);
@@ -176,7 +176,7 @@ public class Globals {
 		mruFiles = new MRUFileList();
 		passwordCache = new PasswordCache();
 
-		String propertiesFilePath = String.format("%s%s%s.properties", FileUtils.getConfigRootPath(), PortabilityUtils.getFileSeparator(), StringLiterals.ProgramName);
+		final String propertiesFilePath = String.format("%s%s%s.properties", FileUtils.getConfigRootPath(), PortabilityUtils.getFileSeparator(), StringLiterals.ProgramName);
 		
 		getLogger().info(String.format("Properties file path: %s", propertiesFilePath));
 		

@@ -64,7 +64,6 @@ public class ExportPhotosToDevice {
 		if (children != null) {
 			for (String child : children) {
 				if (!progressMonitor.isCanceled() && child.contains(PhotoFolderPrefix)) {
-	
 					final File folderToDelete = new File(destinationFolder, child);
 					
 					Display.getDefault().asyncExec(() -> Globals.getMainApplicationWindow().setStatusLineMessage(MessageFormat.format("Deleting folder {0}", folderToDelete.getAbsolutePath())));

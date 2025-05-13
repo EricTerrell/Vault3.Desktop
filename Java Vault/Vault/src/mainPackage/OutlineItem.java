@@ -89,7 +89,7 @@ public class OutlineItem {
 		String fontString = null;
 		
 		if (fontList != null) {
-			SWTFont font = (SWTFont) fontList.getFont();
+			final SWTFont font = (SWTFont) fontList.getFont();
 			
 			if (font != null) {
 				fontString = font.getData();
@@ -121,9 +121,9 @@ public class OutlineItem {
 	
 	private OutlineItem parent;
 
-	private List<OutlineItem> children;
+	private final List<OutlineItem> children;
 
-	private UUID uuid;
+	private final UUID uuid;
 	
 	public UUID getUuid() {
 		return uuid;
@@ -240,8 +240,8 @@ public class OutlineItem {
 	
 	public static void remove(List<OutlineItem> nodesToRemove) {
 		// If there are multiple items in the nodesToRemove list, only fire for nodes with unique parents.
-		HashSet<OutlineItem> uniqueParentNodes = new HashSet<>();
-		List<OutlineItem> nodesToFire = nodesToRemove.stream().filter(nodeToRemove -> uniqueParentNodes.add(nodeToRemove.parent)).collect(Collectors.toList());
+		final HashSet<OutlineItem> uniqueParentNodes = new HashSet<>();
+		final List<OutlineItem> nodesToFire = nodesToRemove.stream().filter(nodeToRemove -> uniqueParentNodes.add(nodeToRemove.parent)).collect(Collectors.toList());
 
 		for (OutlineItem nodeToRemove : nodesToRemove) {
 			nodeToRemove.remove();
@@ -259,8 +259,8 @@ public class OutlineItem {
 
 		if (addAtTop) {
 			int index = 0;
-			
-			OutlineItem rootNode = targetNode.getRoot();
+
+			final OutlineItem rootNode = targetNode.getRoot();
 			
 			for (OutlineItem node : nodes) {
 				rootNode.addChild(node, index++);
@@ -300,7 +300,7 @@ public class OutlineItem {
 	}
 	
 	public static void swap(OutlineItem parent, int index1, int index2, boolean fireSwap) {
-		OutlineItem temp = parent.children.get(index1);
+		final OutlineItem temp = parent.children.get(index1);
 		parent.children.set(index1, parent.children.get(index2));
 		parent.children.set(index2, temp);
 
@@ -316,11 +316,11 @@ public class OutlineItem {
 	public static boolean sort(List<OutlineItem> items) {
 		boolean itemsSwapped = false;
 
-		OutlineItem parent = items.get(0).getParent();
-			
-		Collator collator = Collator.getInstance();
+		final OutlineItem parent = items.get(0).getParent();
 
-		Hashtable<UUID, OutlineItem> itemsToSort = new Hashtable<>();
+		final Collator collator = Collator.getInstance();
+
+		final Hashtable<UUID, OutlineItem> itemsToSort = new Hashtable<>();
 		
 		for (OutlineItem outlineItem : items) {
 			itemsToSort.put(outlineItem.getUuid(), outlineItem);
@@ -355,12 +355,12 @@ public class OutlineItem {
 		}
 
 		// Only need to fire the event for the first node, because all of the indented nodes have the same parent.
-		OutlineItem firstNode = nodesToIndent.get(0);
+		final OutlineItem firstNode = nodesToIndent.get(0);
 		firstNode.fireIndent(firstNode);
 	}
 	
 	private void unindent() {
-		OutlineItem newParent = parent.parent;
+		final OutlineItem newParent = parent.parent;
 		
 		int parentIndex = parent.parent.children.indexOf(parent);
 		
@@ -438,7 +438,7 @@ public class OutlineItem {
 
 	public boolean isAncestorOf(OutlineItem node) {
 		boolean isAncestor = false;
-		
+
 		OutlineItem currentNode = node;
 		
 		while (currentNode != null) {
@@ -473,7 +473,7 @@ public class OutlineItem {
 	}
 	
 	public List<OutlineItem> search(Pattern[] searchPatterns, boolean matchAll, Search.SearchMode searchMode) {
-		ArrayList<OutlineItem> searchResults = new ArrayList<>();
+		final ArrayList<OutlineItem> searchResults = new ArrayList<>();
 
 		boolean hit = false;
 		
@@ -507,7 +507,7 @@ public class OutlineItem {
 	}
 	
 	public List<OutlineItem> getPhotos(OutlineItem item, Pattern[] exclusionPatterns) {
-		List<OutlineItem> searchResults = new ArrayList<>();
+		final List<OutlineItem> searchResults = new ArrayList<>();
 
 		boolean exclude = item.photoExclusionHit(exclusionPatterns);
 
@@ -523,7 +523,7 @@ public class OutlineItem {
 	}
 	
 	public List<OutlineItem> getPhotos(List<OutlineItem> items, Pattern[] exclusionPatterns) {
-		List<OutlineItem> searchResults = new ArrayList<>();
+		final List<OutlineItem> searchResults = new ArrayList<>();
 
 		items.stream().filter(item -> !item.photoExclusionHit(exclusionPatterns)).forEach(item -> searchResults.addAll(getPhotos(item, exclusionPatterns)));
 		

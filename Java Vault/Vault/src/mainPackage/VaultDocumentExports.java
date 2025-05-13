@@ -49,10 +49,14 @@ public class VaultDocumentExports {
 	}
 	
 	public static StringBuilder getExportText(OutlineItem outlineItem, List<String> photoPaths) {
-		StringBuilder textToExport = new StringBuilder();
+		final StringBuilder textToExport = new StringBuilder();
 
-		String newLine = PortabilityUtils.getNewLine();
-		String text = MessageFormat.format("{0}{1}{1}{2}{1}{1}", outlineItem.getTitle(), newLine, outlineItem.getText()).replace("\n", newLine);
+		final String newLine = PortabilityUtils.getNewLine();
+		final String text = MessageFormat.format(
+				"{0}{1}{1}{2}{1}{1}",
+				outlineItem.getTitle(),
+				newLine,
+				outlineItem.getText()).replace("\n", newLine);
 		
 		if (photoPaths != null) {
 			addPhotoPath(outlineItem, photoPaths);
@@ -61,7 +65,7 @@ public class VaultDocumentExports {
 		textToExport.append(text);
 		
 		for (OutlineItem childItem : outlineItem.getChildren()) {
-			StringBuilder childText = getExportText(childItem, photoPaths);
+			final StringBuilder childText = getExportText(childItem, photoPaths);
 			textToExport.append(childText);
 		}
 		
@@ -69,7 +73,7 @@ public class VaultDocumentExports {
 	}
 
 	public static boolean canTextFileExport() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
@@ -77,25 +81,25 @@ public class VaultDocumentExports {
 	public static void textFileExport(Shell shell) throws IOException {
 		if (canTextFileExport()) {
 			Globals.getVaultTextViewer().saveChanges();
-			
-			FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
+
+			final FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 			fileDialog.setFilterNames(new String[] { "Text Files", "All Files" });
 			fileDialog.setFilterExtensions(new String[] { StringLiterals.TextFileTypeWildcardedCaseInsensitive, StringLiterals.Wildcard });
 			fileDialog.setFilterPath(textExportPreviousFolder);
 			
 			fileDialog.setText("Export");
-			
-			String filePath = fileDialog.open();
+
+			final String filePath = fileDialog.open();
 			
 			if (filePath != null) {
 				try {
 					Globals.setBusyCursor();
 					
 					textExportPreviousFolder = new File(filePath).getParent();
-					
-					List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
-					
-					StringBuilder textToExport = new StringBuilder();
+
+					final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+
+					final StringBuilder textToExport = new StringBuilder();
 					
 					for (OutlineItem outlineItem : selectedItems) {
 						textToExport.append(getExportText(outlineItem, null));
@@ -118,15 +122,18 @@ public class VaultDocumentExports {
 	}
 
 	public static boolean canExportPhotosToDevice() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
 
 	public static void exportPhotosToDevice(Shell shell, Point deviceDimensions, String destinationFolder, int maxPhotos, int maxPhotosPerFolder, boolean shuffle, boolean deleteDestinationFolderContents) {
-		Pattern[] exclusionPatterns = Search.getSearchPatterns(Globals.getPreferenceStore().getString(PreferenceKeys.SlideshowExclusions), false, true);
-		
-		List<OutlineItem> selectedPhotos = Globals.getVaultDocument().getContent().getPhotos(Globals.getVaultTreeViewer().getSelectedItems(), exclusionPatterns);
+		final Pattern[] exclusionPatterns = Search.getSearchPatterns(
+				Globals.getPreferenceStore().getString(PreferenceKeys.SlideshowExclusions),
+				false,
+				true);
+
+		final List<OutlineItem> selectedPhotos = Globals.getVaultDocument().getContent().getPhotos(Globals.getVaultTreeViewer().getSelectedItems(), exclusionPatterns);
 
 		if (canExportPhotosToDevice()) {
 			ExportPhotosToDevice.export(shell, deviceDimensions, destinationFolder, maxPhotos, maxPhotosPerFolder, shuffle, selectedPhotos, deleteDestinationFolderContents);
@@ -134,7 +141,7 @@ public class VaultDocumentExports {
 	}
 
 	public static boolean canXmlFileExport() {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}

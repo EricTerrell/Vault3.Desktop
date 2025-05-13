@@ -180,7 +180,16 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 				cannotRetrieveLatestVersion = true;
 
 				final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-				final MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, "Error checking for updates.", MessageDialog.ERROR, new String[] { "&OK" }, 0);
+
+				final MessageDialog messageDialog = new MessageDialog(
+						getShell(),
+						StringLiterals.ProgramName,
+						icon,
+						"Error checking for updates.",
+						MessageDialog.ERROR,
+						new String[] { "&OK" },
+						0);
+
 				messageDialog.open();
 			}
 		}

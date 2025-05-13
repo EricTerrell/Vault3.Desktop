@@ -32,7 +32,7 @@ import org.eclipse.swt.graphics.GC;
 
 public class FontUtils {
 	public static String fontListToString(FontData[] fontList) {
-		StringBuilder fontString = new StringBuilder();
+		final StringBuilder fontString = new StringBuilder();
 		
 		for (int i = 0; i < fontList.length; i++) {
 			fontString.append(fontList[i].toString());
@@ -49,7 +49,7 @@ public class FontUtils {
 		FontData[] fontData = null;
 		
 		if (fontString != null && !fontString.isEmpty()) {
-			String[] fontStringArray = fontString.split("\0");
+			final String[] fontStringArray = fontString.split("\0");
 			
 			if (fontStringArray != null && fontStringArray.length > 0) {
 				List<FontData> fontList = new ArrayList<>();
@@ -67,13 +67,13 @@ public class FontUtils {
 	}
 	
 	public static Font stringToFont(Device device, String fontString) {
-		FontData[] fontList = stringToFontList(fontString);
+		final FontData[] fontList = stringToFontList(fontString);
 
 		return new Font(device, fontList);
 	}
 	
 	public static Font getDefaultFont(GC gc) {
-		String defaultFontString = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
+		final String defaultFontString = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
 
 		return FontUtils.stringToFont(gc.getDevice(), defaultFontString);
 	}
@@ -82,7 +82,7 @@ public class FontUtils {
 		String fontDescription = StringLiterals.EmptyString;
 		
 		if (fontString != null && !fontString.isEmpty()) {
-			FontData[] fontData = FontUtils.stringToFontList(fontString);
+			final FontData[] fontData = FontUtils.stringToFontList(fontString);
 		
 			String style = StringLiterals.EmptyString;
 			

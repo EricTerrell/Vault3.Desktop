@@ -53,16 +53,16 @@ public class LicenseTermsDialog extends VaultDialog {
 	
 	@Override
 	public boolean close() {
-		boolean acceptedTerms = acceptTermsRadioButton.getSelection();
+		final boolean acceptedTerms = acceptTermsRadioButton.getSelection();
 		
     	Globals.getPreferenceStore().setValue(PreferenceKeys.AcceptLicenseTerms, acceptedTerms);
     	
     	boolean result = super.close();
 
     	if (!acceptedTerms) {
-			Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+			final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
 			
-			String message = MessageFormat.format("You have rejected the licensing terms for {0}.{1}{1}Please uninstall {0} and stop using it immediately.", StringLiterals.ProgramName, PortabilityUtils.getNewLine());
+			final String message = MessageFormat.format("You have rejected the licensing terms for {0}.{1}{1}Please uninstall {0} and stop using it immediately.", StringLiterals.ProgramName, PortabilityUtils.getNewLine());
 			
 			MessageDialog messageDialog = new MessageDialog(getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 			messageDialog.open();
@@ -73,22 +73,22 @@ public class LicenseTermsDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 		
-		Text editableText = new Text(composite, SWT.NONE);
-		Color backColor = editableText.getBackground();
-		Color foreColor = editableText.getForeground();
+		final Text editableText = new Text(composite, SWT.NONE);
+		final Color backColor = editableText.getBackground();
+		final Color foreColor = editableText.getForeground();
 		editableText.setVisible(false);
 
-		Label licenseLabel = new Label(composite, SWT.NONE);
+		final Label licenseLabel = new Label(composite, SWT.NONE);
 		licenseLabel.setText("License &Terms:");
 		
-		Text licenseText = new Text(composite, SWT.READ_ONLY | SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.BORDER);
+		final Text licenseText = new Text(composite, SWT.READ_ONLY | SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.BORDER);
 		licenseText.setBackground(backColor);
 		licenseText.setForeground(foreColor);
 		
-		GC gc = new GC(licenseText.getDisplay());
+		final GC gc = new GC(licenseText.getDisplay());
 		
 		final int minLines = 10;
 		final int height = minLines * gc.getFontMetrics().getHeight();
@@ -112,7 +112,7 @@ public class LicenseTermsDialog extends VaultDialog {
 			e.printStackTrace();
 		}
 		
-		Group decisionGroup = new Group(composite, SWT.NONE);
+		final Group decisionGroup = new Group(composite, SWT.NONE);
 		decisionGroup.setLayout(new GridLayout(1, true));
 		decisionGroup.setText("&Your Decision:");
 		

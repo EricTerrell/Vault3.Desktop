@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.*;
 import java.text.MessageFormat;
 
 public class DeletePhotoFileDialog extends VaultDialog {
-	private String photoFilePath;
+	private final String photoFilePath;
 	private Button alsoDeleteOutlineItemButton;
 	private boolean alsoDeleteOutlineItem;
 

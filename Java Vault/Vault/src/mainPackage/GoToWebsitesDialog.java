@@ -70,7 +70,7 @@ public class GoToWebsitesDialog extends VaultDialog {
 
 	private org.eclipse.swt.widgets.List list;
 
-	private List<String> urls;
+	private final List<String> urls;
 	
 	@Override
 	protected void buttonPressed(int buttonId) {
@@ -93,19 +93,19 @@ public class GoToWebsitesDialog extends VaultDialog {
 	
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 
-		Composite labelComposite = new Composite(composite, SWT.NONE);
+		final Composite labelComposite = new Composite(composite, SWT.NONE);
 		
 		labelComposite.setLayout(new GridLayout(2, true));
 		
 		Label label = new Label(labelComposite, SWT.NONE);
 		label.setText("&URL:");
 
-		Image image = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_LIGHTBULB);
+		final Image image = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_LIGHTBULB);
 		
-		Label imageLabel = new Label(labelComposite, SWT.NONE);
+		final Label imageLabel = new Label(labelComposite, SWT.NONE);
 		imageLabel.setImage(image);
 		
 		imageLabel.setToolTipText(StringLiterals.DisplayWebsiteToolTip);
@@ -135,7 +135,6 @@ public class GoToWebsitesDialog extends VaultDialog {
 		});
 
 		list.addKeyListener(new KeyListener() {
-
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.character == ' ') {
@@ -164,8 +163,8 @@ public class GoToWebsitesDialog extends VaultDialog {
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		int goToWebsiteButtonID = 1000;
-		Button goToWebsiteButton = createButton(parent, goToWebsiteButtonID, "&Browse URL", true);
+		final int goToWebsiteButtonID = 1000;
+		final Button goToWebsiteButton = createButton(parent, goToWebsiteButtonID, "&Browse URL", true);
 		
 		goToWebsiteButton.addSelectionListener(new SelectionListener() {
 			@Override
@@ -174,7 +173,7 @@ public class GoToWebsitesDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				String[] selectedItems = list.getSelection();
+				final String[] selectedItems = list.getSelection();
 
 				GoToWebsites.launch(selectedItems[0], getShell());
 				close();

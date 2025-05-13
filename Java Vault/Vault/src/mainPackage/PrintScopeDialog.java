@@ -75,7 +75,7 @@ public class PrintScopeDialog extends VaultDialog {
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 		
 	    statusLabel = createStatusLabel(parent);
 	
@@ -89,10 +89,10 @@ public class PrintScopeDialog extends VaultDialog {
 
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
 
-		Group pageRangeGroup = new Group(composite, SWT.NONE);
+		final Group pageRangeGroup = new Group(composite, SWT.NONE);
 		
 		GridLayout gridLayout = new GridLayout(2, false);
 		gridLayout.makeColumnsEqualWidth = false;
@@ -103,22 +103,22 @@ public class PrintScopeDialog extends VaultDialog {
 		GridData gridData = new GridData();
 		gridData.horizontalSpan = 2;
 
-		Button allRadioButton = new Button(pageRangeGroup, SWT.RADIO);
+		final Button allRadioButton = new Button(pageRangeGroup, SWT.RADIO);
 		allRadioButton.setText("&All");
 		allRadioButton.setLayoutData(gridData);
 
-		Button selectionRadioButton = new Button(pageRangeGroup, SWT.RADIO);
+		final Button selectionRadioButton = new Button(pageRangeGroup, SWT.RADIO);
 		selectionRadioButton.setText("S&election");
 		selectionRadioButton.setLayoutData(gridData);
 
-		Button pagesRadioButton = new Button(pageRangeGroup, SWT.RADIO);
+		final Button pagesRadioButton = new Button(pageRangeGroup, SWT.RADIO);
 		pagesRadioButton.setText("&Pages:");
 		
 		pageRangeText = new Text(pageRangeGroup, SWT.BORDER);
 		pageRangeText.setText("1");
 		pageRangeText.setEnabled(false);
 
-		Label pageRangeLabel = new Label(pageRangeGroup, SWT.NONE);
+		final Label pageRangeLabel = new Label(pageRangeGroup, SWT.NONE);
 		pageRangeLabel.setText("Enter a single page number or a single page range. For example, 5-12");
 		pageRangeLabel.setLayoutData(gridData);
 
@@ -174,10 +174,10 @@ public class PrintScopeDialog extends VaultDialog {
 	
 	private void validatePageRange() {
 		startPage = endPage = -1;
-		
-		String text = pageRangeText.getText();
-		
-		String[] pageNumberStrings = text.split("-");
+
+		final String text = pageRangeText.getText();
+
+		final String[] pageNumberStrings = text.split("-");
 
 		final String invalidPageRange = "Invalid page range";
 		

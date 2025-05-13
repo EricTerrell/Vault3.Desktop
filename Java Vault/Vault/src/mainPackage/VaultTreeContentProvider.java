@@ -27,42 +27,42 @@ import org.eclipse.jface.viewers.Viewer;
 public class VaultTreeContentProvider implements ITreeContentProvider, IDeltaListener {
 	@Override
 	public void add(DeltaEvent event) {
-		OutlineItem parentNode = ((OutlineItem) event.receiver()).getParent();
+		final OutlineItem parentNode = ((OutlineItem) event.receiver()).getParent();
 		Globals.getLogger().info("VaultTreeContentProvider.addChild");
 		treeViewer.refresh(parentNode, false);
 	}
 
 	@Override
 	public void swap(DeltaEvent event) {
-		OutlineItem node = ((OutlineItem) event.receiver()).getParent();
+		final OutlineItem node = ((OutlineItem) event.receiver()).getParent();
 		Globals.getLogger().info("VaultTreeContentProvider.swap");
 		treeViewer.refresh(node, false);
 	}
 	
 	@Override
 	public void titleChanged(DeltaEvent event) {
-		OutlineItem node = ((OutlineItem) event.receiver()).getParent();
+		final OutlineItem node = ((OutlineItem) event.receiver()).getParent();
 		Globals.getLogger().info("VaultTreeContentProvider.titleChanged");
 		treeViewer.refresh(node, true);
 	}
 	
 	@Override
 	public void indent(DeltaEvent event) {
-		OutlineItem node = ((OutlineItem) event.receiver()).getParent().getParent();
+		final OutlineItem node = ((OutlineItem) event.receiver()).getParent().getParent();
 		Globals.getLogger().info("VaultTreeContentProvider.indent");
 		treeViewer.refresh(node, false);
 	}
 
 	@Override
 	public void unindent(DeltaEvent event) {
-		OutlineItem node = ((OutlineItem) event.receiver());
+		final OutlineItem node = ((OutlineItem) event.receiver());
 		Globals.getLogger().info("VaultTreeContentProvider.unindent");
 		treeViewer.refresh(node.getParent().getParent(), false);
 	}
 
 	@Override
 	public void remove(DeltaEvent event) {
-		OutlineItem parentNode = ((OutlineItem) event.receiver()).getParent();
+		final OutlineItem parentNode = ((OutlineItem) event.receiver()).getParent();
 		Globals.getLogger().info("VaultTreeContentProvider.remove");
 		treeViewer.refresh(parentNode, false);
 	}
@@ -81,21 +81,21 @@ public class VaultTreeContentProvider implements ITreeContentProvider, IDeltaLis
 
 	@Override
 	public Object getParent(Object obj) {
-		OutlineItem outlineItem = (OutlineItem) obj;
+		final OutlineItem outlineItem = (OutlineItem) obj;
 		
 		return outlineItem.getParent();
 	}
 
 	@Override
 	public boolean hasChildren(Object obj) {
-		OutlineItem outlineItem = (OutlineItem) obj;
+		final OutlineItem outlineItem = (OutlineItem) obj;
 		
 		return outlineItem.hasChildren();
 	}
 
 	@Override
 	public Object[] getElements(Object obj) {
-		OutlineItem outlineItem = (OutlineItem) obj;
+		final OutlineItem outlineItem = (OutlineItem) obj;
 
 		return outlineItem.getChildren().toArray();
 	}

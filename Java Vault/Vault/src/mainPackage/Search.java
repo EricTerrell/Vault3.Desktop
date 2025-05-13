@@ -29,13 +29,13 @@ public class Search {
 	public enum SearchMode { titles, titlesAndText }
 	
 	public static class SearchResults {
-		private List<OutlineItem> results;
+		private final List<OutlineItem> results;
 		
 		public List<OutlineItem> getResults() {
 			return results;
 		}
 		
-		private Pattern[] patterns;
+		private final Pattern[] patterns;
 		
 		public Pattern[] getPatterns() {
 			return patterns;
@@ -61,16 +61,16 @@ public class Search {
 		if ((doubleQuotes % 2) == 1) {
 			searchText += '"';
 		}
-		
-		StringBuilder unquotedText = new StringBuilder();
 
-		StringBuilder quotedText = new StringBuilder();
-		ArrayList<String> quotedTextList = new ArrayList<>();
+		final StringBuilder unquotedText = new StringBuilder();
+
+		final StringBuilder quotedText = new StringBuilder();
+		final ArrayList<String> quotedTextList = new ArrayList<>();
 		
 		boolean insideQuotes = false;
 		
 		for (int i = 0; i < searchText.length(); i++) {
-			char ch = searchText.charAt(i);
+			final char ch = searchText.charAt(i);
 
 			if (ch == '"') {
 				if (insideQuotes) {
@@ -145,9 +145,9 @@ public class Search {
 	}
 	
 	public static SearchResults DoSearch(String searchText, boolean searchSelected, boolean matchCase, boolean fullWord, boolean matchAll, SearchMode searchMode) {
-		Pattern[] patterns = getSearchPatterns(searchText, matchCase, fullWord);
+		final Pattern[] patterns = getSearchPatterns(searchText, matchCase, fullWord);
 
-		List<OutlineItem> itemsToSearch = new ArrayList<>();
+		final List<OutlineItem> itemsToSearch = new ArrayList<>();
 		
 		if (searchSelected) {
 			itemsToSearch.addAll(Globals.getVaultTreeViewer().getSelectedItems());
@@ -155,11 +155,11 @@ public class Search {
 		else {
 			itemsToSearch.add(Globals.getVaultDocument().getContent());
 		}
-		
-		List<OutlineItem> allSearchHits = new ArrayList<>();
+
+		final List<OutlineItem> allSearchHits = new ArrayList<>();
 		
 		for (OutlineItem outlineItem : itemsToSearch) {
-			List<OutlineItem> searchHits = outlineItem.search(patterns, matchAll, searchMode);
+			final List<OutlineItem> searchHits = outlineItem.search(patterns, matchAll, searchMode);
 			allSearchHits.addAll(searchHits);
 		}
 

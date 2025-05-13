@@ -49,11 +49,11 @@ public class VaultDocumentXML {
 		
 		try {
 			Globals.setBusyCursor();
-			
-			SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-			SAXParser saxParser = saxParserFactory.newSAXParser();
-		
-			NativeDefaultHandler nativeDefaultHandler = new NativeDefaultHandler();
+
+			final SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+			final SAXParser saxParser = saxParserFactory.newSAXParser();
+
+			final NativeDefaultHandler nativeDefaultHandler = new NativeDefaultHandler();
 
 			// If the first argument to parse is a filename with embedded spaces, an exception will be thrown. The solution is to
 			// use a FileInputStream instead of a file path.
@@ -65,7 +65,7 @@ public class VaultDocumentXML {
 					filePath, nativeDefaultHandler.getMajorVersion(), nativeDefaultHandler.getMinorVersion()));
 			
 			final VaultDocumentVersion vaultDocumentVersion = new VaultDocumentVersion(nativeDefaultHandler.getMajorVersion(), nativeDefaultHandler.getMinorVersion());
-			VaultDocumentVersion codeVaultDocumentVersion = VaultDocumentVersion.getLatestVaultDocumentVersion();
+			final VaultDocumentVersion codeVaultDocumentVersion = VaultDocumentVersion.getLatestVaultDocumentVersion();
 			
 			if (vaultDocumentVersion.compareTo(codeVaultDocumentVersion) > 0) {
 				throw new VaultException("Database version is too high", VaultException.ExceptionCode.DatabaseVersionTooHigh);
@@ -99,13 +99,13 @@ public class VaultDocumentXML {
 				}
 				
 				final String unicodeCharset = "UTF-8";
-				
-				Charset charSet = Charset.forName(unicodeCharset);
-				CharsetDecoder charsetDecoder = charSet.newDecoder();
 
-				ByteBuffer input = ByteBuffer.wrap(plainText);
-				CharBuffer decodedBuffer = charsetDecoder.decode(input);
-				String clearTextString = decodedBuffer.toString();
+				final Charset charSet = Charset.forName(unicodeCharset);
+				final CharsetDecoder charsetDecoder = charSet.newDecoder();
+
+				final ByteBuffer input = ByteBuffer.wrap(plainText);
+				final CharBuffer decodedBuffer = charsetDecoder.decode(input);
+				final String clearTextString = decodedBuffer.toString();
 
 				Globals.getLogger().info("Starting parse pass 2");
 

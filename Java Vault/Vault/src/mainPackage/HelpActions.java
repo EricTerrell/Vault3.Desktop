@@ -166,7 +166,7 @@ public class HelpActions {
 			catch (Throwable ex) {
 				ex.printStackTrace();
 
-				String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
+				final String message = MessageFormat.format("Cannot email.{0}{0}{1}", PortabilityUtils.getNewLine(),  ex.getMessage());
 				MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON), message, MessageDialog.ERROR, new String[] { "&OK" }, 0);
 				messageDialog.open();
 			}

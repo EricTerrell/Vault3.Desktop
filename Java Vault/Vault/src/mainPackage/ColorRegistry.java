@@ -34,7 +34,7 @@ import org.eclipse.swt.widgets.Display;
  * class caches every unique Color used, so that system resources are not leaked.
  */
 public class ColorRegistry {
-	private Dictionary<String, Color> colors;
+	private final Dictionary<String, Color> colors;
 	
 	/**
 	 * @param rgb RGB color value
@@ -53,7 +53,7 @@ public class ColorRegistry {
 	 * @return a Color object that should not be disposed
 	 */
 	Color get(RGB rgb) {
-		String key = getKey(rgb);
+		final String key = getKey(rgb);
 		
 		Color color = colors.get(key);
 		

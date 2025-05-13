@@ -35,9 +35,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
 public class PhotoAndTextUI extends Composite implements ISelectionChangedListener {
-	private PhotoUI photoUI;
+	private final PhotoUI photoUI;
 
-	private SashForm sashForm;
+	private final SashForm sashForm;
 
 	public SashForm getSashForm() {
 		return sashForm;
@@ -47,11 +47,11 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 		return photoUI;
 	}
 
-	private int maxWeight;
+	private final int maxWeight;
 
 	private int[] weights = new int[2];
 	
-	private Composite textComposite;
+	private final Composite textComposite;
 	
 	public void setBackground(Color color) {
 		textComposite.setBackground(color);
@@ -65,8 +65,8 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 		super(parent, SWT.BORDER);
 
 		this.setLayout(new FillLayout());
-		
-		Composite composite = new Composite(this, SWT.NONE);
+
+		final Composite composite = new Composite(this, SWT.NONE);
 		GridLayout gridLayout = new GridLayout(1, false);
 		gridLayout.marginHeight = 0;
 		gridLayout.marginWidth = 0;
@@ -107,14 +107,14 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 				getWeights();
 			}
 		});
-		
+
 		textComposite = new Composite(sashForm, SWT.NONE);
 		FillLayout fillLayout = new FillLayout();
 		fillLayout.marginHeight = Globals.getPreferenceStore().getInt(PreferenceKeys.TextMarginHeight);
 		fillLayout.marginWidth = Globals.getPreferenceStore().getInt(PreferenceKeys.TextMarginWidth);
 		textComposite.setLayout(fillLayout);
-		
-		VaultTextViewer vaultTextViewer = new VaultTextViewer(textComposite, SWT.MULTI | SWT.V_SCROLL | SWT.HORIZONTAL | SWT.WRAP);
+
+		final VaultTextViewer vaultTextViewer = new VaultTextViewer(textComposite, SWT.MULTI | SWT.V_SCROLL | SWT.HORIZONTAL | SWT.WRAP);
 		vaultTextViewer.getControl().setVisible(false);
 
 		Globals.setVaultTextViewer(vaultTextViewer);
@@ -131,8 +131,8 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 		});
 		
 		sashForm.setWeights(0, 100);
-		
-		int[] currentWeights = sashForm.getWeights();
+
+		final int[] currentWeights = sashForm.getWeights();
 
 		System.arraycopy(currentWeights, 0, weights, 0, currentWeights.length);
 		
@@ -154,7 +154,7 @@ public class PhotoAndTextUI extends Composite implements ISelectionChangedListen
 
 	private void getWeights() {
 		if (!photoUI.photoIsInvisible()) {
-			int[] currentWeights = sashForm.getWeights();
+			final int[] currentWeights = sashForm.getWeights();
 
 			System.arraycopy(currentWeights, 0, weights, 0, currentWeights.length);
 			

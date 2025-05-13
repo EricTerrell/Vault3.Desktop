@@ -39,8 +39,8 @@ public class VaultDocumentIO {
 
 	public static String fileOpen(Shell shell, StringWrapper filePathStringWrapper) throws Throwable {
 		String filePath = null;
-		
-		FileDialog fileDialog = new FileDialog(shell, SWT.OPEN);
+
+		final FileDialog fileDialog = new FileDialog(shell, SWT.OPEN);
 		fileDialog.setText("Open");
 		String vault3files = MessageFormat.format("{0} Files", StringLiterals.ProgramName);
 		
@@ -58,8 +58,8 @@ public class VaultDocumentIO {
 				filePathStringWrapper.setValue(filePath);
 
 				fileOpen(shell, filePath);
-				
-				File file = new File(filePath);
+
+				final File file = new File(filePath);
 				
 				previousFileOpenFolder = file.getParent();
 				
@@ -79,7 +79,7 @@ public class VaultDocumentIO {
 		Globals.getVaultTextViewer().saveChanges();
 		
 		if (filePath == null || Globals.getVaultDocument().hasDefaultFilePath()) {
-			FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
+			final FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 			
 			if (export) {
 				fileDialog.setFilterNames(new String[] { "XML Files", "All Files" });
@@ -124,8 +124,8 @@ public class VaultDocumentIO {
 					Globals.getVaultDocument().saveAsSQLiteFile(filePath);
 					Globals.getVaultDocument().setDocumentMetadata(new DocumentMetadata(filePath));
 				}
-				
-				String folderPath = new File(filePath).getParent();
+
+				final String folderPath = new File(filePath).getParent();
 				
 				if (export) {
 					xmlExportPreviousFolder = folderPath; 
@@ -164,8 +164,8 @@ public class VaultDocumentIO {
 		password.setValue(Globals.getPasswordCache().get(filePath));
 		
 		OutlineItem outlineItem;
-		
-		VaultDocument vaultDocument = new VaultDocument();
+
+		final VaultDocument vaultDocument = new VaultDocument();
 
 		if (VaultDocument.isDatabase(filePath)) {
 			final String dbURL = VaultDocument.getDBURL(filePath);
@@ -175,7 +175,7 @@ public class VaultDocumentIO {
 			try (final Connection db = DriverManager.getConnection(dbURL)) {
 				outlineItem = vaultDocument.loadFromDatabase(db, filePath, password);
 
-				VaultDocumentVersion originalVersion = vaultDocument.getOriginalDocumentVersion(db);
+				final VaultDocumentVersion originalVersion = vaultDocument.getOriginalDocumentVersion(db);
 				vaultDocument.setVaultDocumentOriginalVersion(originalVersion);
 			}
 		}

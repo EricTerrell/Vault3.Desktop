@@ -27,119 +27,127 @@ import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
 public class ImportDefaultHandler extends DefaultHandler {
-	private OutlineItemWithTempText outlineItem;
-	private StringBuilder elementText;
-	private Stack<OutlineItemWithTempText> stack;
-	private boolean newline;
-	
-	private final static String TEXTELEMENTNAME = "TEXT"; 
-	private final static String VAULTELEMENTNAME = "VAULT";
-	private final static String THEPHOTOPROGRAMELEMENTNAME = "THEPHOTOPROGRAM";
-	private final static String ITEMELEMENTNAME = "ITEM";
-	private final static String TITLEELEMENTNAME = "TITLE";
-	private final static String PHOTOELEMENTNAME = "PHOTO";
+    private OutlineItemWithTempText outlineItem;
+    private StringBuilder elementText;
+    private Stack<OutlineItemWithTempText> stack;
+    private boolean newline;
 
-	public ImportDefaultHandler() {
-	}
+    private final static String TEXTELEMENTNAME = "TEXT";
+    private final static String VAULTELEMENTNAME = "VAULT";
+    private final static String THEPHOTOPROGRAMELEMENTNAME = "THEPHOTOPROGRAM";
+    private final static String ITEMELEMENTNAME = "ITEM";
+    private final static String TITLEELEMENTNAME = "TITLE";
+    private final static String PHOTOELEMENTNAME = "PHOTO";
 
-	public OutlineItem getOutlineItem() {
-		return outlineItem.getOutlineItem();
-	}
+    public ImportDefaultHandler() {
+    }
 
-	@Override
-	public void startDocument() throws SAXException {
-		super.startDocument();
+    public OutlineItem getOutlineItem() {
+        return outlineItem.getOutlineItem();
+    }
 
-		stack = new Stack<>();
-		outlineItem = null;
-		elementText = null;
-	}
+    @Override
+    public void startDocument() throws SAXException {
+        super.startDocument();
 
-	@Override
-	public void endDocument() throws SAXException {
-		super.endDocument();
-		
-		Assert.isTrue(stack.isEmpty());
-	}
+        stack = new Stack<>();
+        outlineItem = null;
+        elementText = null;
+    }
 
-	@Override
-	public void startElement(String uri, String localName, String name,
-			Attributes attributes) throws SAXException {
-		super.startElement(uri, localName, name, attributes);
-		
-		elementText = new StringBuilder();
+    @Override
+    public void endDocument() throws SAXException {
+        super.endDocument();
 
-		switch (name) {
-			case TEXTELEMENTNAME:
-				String type = attributes.getValue("type");
+        Assert.isTrue(stack.isEmpty());
+    }
 
-				newline = type.equals("newline");
-				break;
-			case ITEMELEMENTNAME:
-				OutlineItem parent = stack.peek().getOutlineItem();
+    @Override
+    public void startElement(String uri, String localName, String name,
+                             Attributes attributes) throws SAXException {
+        super.startElement(uri, localName, name, attributes);
 
-				OutlineItemWithTempText child = new OutlineItemWithTempText();
-				child.getOutlineItem().setParent(parent);
+        elementText = new StringBuilder();
 
-				parent.addChild(child.getOutlineItem());
+        switch (name) {
+            case TEXTELEMENTNAME: {
+                String type = attributes.getValue("type");
 
-				stack.push(child);
-				break;
-			case PHOTOELEMENTNAME:
-				String photoPath = attributes.getValue("path");
+                newline = type.equals("newline");
+            }
+            break;
+            case ITEMELEMENTNAME: {
+                final OutlineItem parent = stack.peek().getOutlineItem();
 
-				if (photoPath != null) {
-					OutlineItem currentItem = stack.peek().getOutlineItem();
-					currentItem.setPhotoPath(photoPath);
+                OutlineItemWithTempText child = new OutlineItemWithTempText();
+                child.getOutlineItem().setParent(parent);
 
-					// Globals.getLogger().info(String.format("photoPath: %s", photoPath));
-				}
-				break;
-			case VAULTELEMENTNAME:
-			case THEPHOTOPROGRAMELEMENTNAME:
-				outlineItem = new OutlineItemWithTempText();
-				stack.push(outlineItem);
-				break;
-		}
-	}
+                parent.addChild(child.getOutlineItem());
 
-	@Override
-	public void endElement(String uri, String localName, String name)
-			throws SAXException {
-		super.endElement(uri, localName, name);
+                stack.push(child);
+            }
+            break;
+            case PHOTOELEMENTNAME: {
+                final String photoPath = attributes.getValue("path");
 
-		switch (name) {
-			case ITEMELEMENTNAME:
-				OutlineItemWithTempText outlineItem = stack.pop();
+                if (photoPath != null) {
+                    OutlineItem currentItem = stack.peek().getOutlineItem();
+                    currentItem.setPhotoPath(photoPath);
 
-				outlineItem.getOutlineItem().setText(outlineItem.getTempText().toString());
-				break;
-			case TITLEELEMENTNAME:
-				stack.peek().getOutlineItem().setTitle(elementText.toString());
-				break;
-			case TEXTELEMENTNAME:
-				if (!newline) {
-					stack.peek().getTempText().append(elementText);
-				} else {
-					stack.peek().getTempText().append(PortabilityUtils.getNewLine());
-				}
-				break;
-			case VAULTELEMENTNAME:
-			case THEPHOTOPROGRAMELEMENTNAME:
-				stack.pop();
-				break;
-		}
-	}
+                    // Globals.getLogger().info(String.format("photoPath: %s", photoPath));
+                }
+            }
+            break;
+            case VAULTELEMENTNAME:
+            case THEPHOTOPROGRAMELEMENTNAME: {
+                outlineItem = new OutlineItemWithTempText();
+                stack.push(outlineItem);
+            }
+            break;
+        }
+    }
 
-	@Override
-	public void characters(char[] ch, int start, int length)
-			throws SAXException {
-		super.characters(ch, start, length);
-		
-		String currentText = new String(ch, start, length);
-		
-		if (!currentText.isEmpty()) {
-			elementText.append(currentText);
-		}
-	}
+    @Override
+    public void endElement(String uri, String localName, String name)
+            throws SAXException {
+        super.endElement(uri, localName, name);
+
+        switch (name) {
+            case ITEMELEMENTNAME: {
+                final OutlineItemWithTempText outlineItem = stack.pop();
+
+                outlineItem.getOutlineItem().setText(outlineItem.getTempText().toString());
+            }
+            break;
+            case TITLEELEMENTNAME: {
+                stack.peek().getOutlineItem().setTitle(elementText.toString());
+            }
+            break;
+            case TEXTELEMENTNAME: {
+                if (!newline) {
+                    stack.peek().getTempText().append(elementText);
+                } else {
+                    stack.peek().getTempText().append(PortabilityUtils.getNewLine());
+                }
+            }
+            break;
+            case VAULTELEMENTNAME:
+            case THEPHOTOPROGRAMELEMENTNAME: {
+                stack.pop();
+            }
+            break;
+        }
+    }
+
+    @Override
+    public void characters(char[] ch, int start, int length)
+            throws SAXException {
+        super.characters(ch, start, length);
+
+        final String currentText = new String(ch, start, length);
+
+        if (!currentText.isEmpty()) {
+            elementText.append(currentText);
+        }
+    }
 }

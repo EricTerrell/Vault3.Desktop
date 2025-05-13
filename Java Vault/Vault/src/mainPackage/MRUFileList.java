@@ -26,7 +26,7 @@ import java.util.List;
 
 public class MRUFileList {
 	public static class MRUFile {
-		private String filePath;
+		private final String filePath;
 		
 		public String getFilePath() {
 			return filePath;
@@ -41,7 +41,7 @@ public class MRUFileList {
 		}
 	}
 	
-	private List<MRUFile> mruFiles;
+	private final List<MRUFile> mruFiles;
 	
 	public List<MRUFile> getMRUFiles() {
 		return mruFiles;
@@ -52,12 +52,12 @@ public class MRUFileList {
 	}
 	
 	public void update(String filePath, String password) {
-		MRUFile mruFile = new MRUFile(filePath, password);
-		
-		String fileName = new File(filePath).getName();
+		final MRUFile mruFile = new MRUFile(filePath, password);
+
+		final String fileName = new File(filePath).getName();
 		
 		for (int i = mruFiles.size() - 1; i >= 0; i--) {
-			String currentFileName = new File(mruFiles.get(i).filePath).getName();
+			final String currentFileName = new File(mruFiles.get(i).filePath).getName();
 			
 			if (fileName.compareToIgnoreCase(currentFileName) == 0) {
 				mruFiles.remove(i);
@@ -72,10 +72,10 @@ public class MRUFileList {
 	}
 	
 	public void remove(String filePath) {
-		String fileName = new File(filePath).getName();
+		final String fileName = new File(filePath).getName();
 
 		for (int i = mruFiles.size() - 1; i >= 0; i--) {
-			String currentFileName = new File(mruFiles.get(i).filePath).getName();
+			final String currentFileName = new File(mruFiles.get(i).filePath).getName();
 			
 			if (fileName.compareToIgnoreCase(currentFileName) == 0) {
 				mruFiles.remove(i);
@@ -86,11 +86,11 @@ public class MRUFileList {
 	}
 	
 	public void load() {
-		int maxMRUFiles = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxMRUFiles);
+		final int maxMRUFiles = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxMRUFiles);
 
 		for (int i = 0; i < maxMRUFiles; i++) {
-			String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
-			String filePath = Globals.getPreferenceStore().getString(name);
+			final String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
+			final String filePath = Globals.getPreferenceStore().getString(name);
 
 			if (filePath != null && !filePath.isEmpty()) {
 				MRUFile mruFile = new MRUFile(filePath, null);
@@ -100,19 +100,19 @@ public class MRUFileList {
 	}
 	
 	private void save() {
-		int maxMRUFiles = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxMRUFiles);
+		final int maxMRUFiles = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxMRUFiles);
 		
 		while (Globals.getMRUFiles().getMRUFiles().size() > maxMRUFiles) {
 			Globals.getMRUFiles().getMRUFiles().remove(Globals.getMRUFiles().getMRUFiles().size() - 1);
 		}
 
 		for (int i = 0; i < maxMRUFiles; i++) {
-			String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
+			final String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
 			Globals.getPreferenceStore().setValue(name, StringLiterals.EmptyString);
 		}
 		
 		for (int i = 0; i < Globals.getMRUFiles().getMRUFiles().size(); i++) {
-			String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
+			final String name = String.format("%s%s", PreferenceKeys.MRUFile, i + 1);
 			Globals.getPreferenceStore().setValue(name, Globals.getMRUFiles().getMRUFiles().get(i).getFilePath());
 		}
 	}

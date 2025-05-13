@@ -62,8 +62,9 @@ public class SlideshowDialog extends VaultDialog {
 		return null;
 	}
 
-	private List<OutlineItem> allPhotos, selectedPhotos, photos, photosInOriginalOrder;
-	
+	private final List<OutlineItem> allPhotos, selectedPhotos, photosInOriginalOrder;
+	private List<OutlineItem> photos;
+
 	private int currentPhotoIndex = 0;
 	
 	private PhotoUI photoUI;
@@ -151,10 +152,10 @@ public class SlideshowDialog extends VaultDialog {
 	private void randomizePhotos() {
 		photos.clear();
 
-		ArrayList<OutlineItem> remainingPhotos = new ArrayList<>(photosInOriginalOrder.size());
+		final ArrayList<OutlineItem> remainingPhotos = new ArrayList<>(photosInOriginalOrder.size());
 		remainingPhotos.addAll(photosInOriginalOrder);
 
-		Random random = new Random(System.currentTimeMillis());
+		final Random random = new Random(System.currentTimeMillis());
 		
 		while (!remainingPhotos.isEmpty()) {
 			int index = random.nextInt(remainingPhotos.size());
@@ -190,8 +191,8 @@ public class SlideshowDialog extends VaultDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		final int columns = 11;
-		
-		Composite composite = (Composite) super.createDialogArea(parent);
+
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		GridLayout gridLayout = new GridLayout(columns, false);
 		gridLayout.marginWidth = 0;
 		gridLayout.verticalSpacing = 0;
@@ -199,8 +200,8 @@ public class SlideshowDialog extends VaultDialog {
 		gridLayout.marginBottom = 0;
 		gridLayout.marginTop = 0;
 		composite.setLayout(gridLayout);
-		
-		Button playButton = new Button(composite, SWT.PUSH);
+
+		final Button playButton = new Button(composite, SWT.PUSH);
 		playButton.setText("&Play");
 		
 		playButton.addSelectionListener(new SelectionListener() {
@@ -213,8 +214,8 @@ public class SlideshowDialog extends VaultDialog {
 				startTimer(true);
 			}
 		});
-		
-		Button stopButton = new Button(composite, SWT.PUSH);
+
+		final Button stopButton = new Button(composite, SWT.PUSH);
 		stopButton.setText("&Stop");
 		
 		stopButton.addSelectionListener(new SelectionListener() {
@@ -227,8 +228,8 @@ public class SlideshowDialog extends VaultDialog {
 				cancelTimer();
 			}
 		});
-		
-		Button firstButton = new Button(composite, SWT.PUSH);
+
+		final Button firstButton = new Button(composite, SWT.PUSH);
 		firstButton.setText("&First");
 		
 		firstButton.addSelectionListener(new SelectionListener() {
@@ -241,8 +242,8 @@ public class SlideshowDialog extends VaultDialog {
 				firstButtonAction();
 			}
 		});
-		
-		Button previousButton = new Button(composite, SWT.PUSH);
+
+		final Button previousButton = new Button(composite, SWT.PUSH);
 		previousButton.setText("Pre&vious");
 		
 		previousButton.addSelectionListener(new SelectionListener() {
@@ -255,8 +256,8 @@ public class SlideshowDialog extends VaultDialog {
 				previousButtonAction();
 			}
 		});
-		
-		Button nextButton = new Button(composite, SWT.PUSH);
+
+		final Button nextButton = new Button(composite, SWT.PUSH);
 		nextButton.setText("&Next");
 		
 		nextButton.addSelectionListener(new SelectionListener() {
@@ -269,8 +270,8 @@ public class SlideshowDialog extends VaultDialog {
 				nextButtonAction();
 			}
 		});
-		
-		Button lastButton = new Button(composite, SWT.PUSH);
+
+		final Button lastButton = new Button(composite, SWT.PUSH);
 		lastButton.setText("&Last");
 		
 		lastButton.addSelectionListener(new SelectionListener() {
@@ -283,8 +284,8 @@ public class SlideshowDialog extends VaultDialog {
 				lastButtonAction();
 			}
 		});
-		
-		Button closeButton = new Button(composite, SWT.PUSH);
+
+		final Button closeButton = new Button(composite, SWT.PUSH);
 		closeButton.setText("&Close");
 		
 		closeButton.addSelectionListener(new SelectionListener() {
@@ -297,8 +298,8 @@ public class SlideshowDialog extends VaultDialog {
 				close();
 			}
 		});
-		
-		Composite intervalComposite = new Composite(composite, SWT.NONE);
+
+		final Composite intervalComposite = new Composite(composite, SWT.NONE);
 		intervalComposite.setLayout(new GridLayout(2, false));
 
 		final Scale intervalScale = new Scale(intervalComposite, SWT.HORIZONTAL);
@@ -309,7 +310,7 @@ public class SlideshowDialog extends VaultDialog {
 		final String secondsFormat = "{0} Second(s)";
 		
 		final Label intervalValueLabel = new Label(intervalComposite, SWT.NONE);
-		String text = MessageFormat.format(secondsFormat, intervalScale.getSelection());
+		final String text = MessageFormat.format(secondsFormat, intervalScale.getSelection());
 		intervalValueLabel.setText(text);
 		
 		// Allocate room for 2 digits (plus some extra space to account for different width of digits).
@@ -375,10 +376,10 @@ public class SlideshowDialog extends VaultDialog {
 			}
 		});
 
-		Composite radioButtonComposite = new Composite(composite, SWT.NONE);
+		final Composite radioButtonComposite = new Composite(composite, SWT.NONE);
 		radioButtonComposite.setLayout(new GridLayout(2, false));
 
-		Button allItemsRadioButton = new Button(radioButtonComposite, SWT.RADIO);
+		final Button allItemsRadioButton = new Button(radioButtonComposite, SWT.RADIO);
 		allItemsRadioButton.setText("&All");
 		
 		allItemsRadioButton.addSelectionListener(new SelectionListener() {
@@ -392,7 +393,7 @@ public class SlideshowDialog extends VaultDialog {
 			}
 		});
 
-		Button selectedItemsRadioButton = new Button(radioButtonComposite, SWT.RADIO);
+		final Button selectedItemsRadioButton = new Button(radioButtonComposite, SWT.RADIO);
 		selectedItemsRadioButton.setText("&Selected");
 		
 		selectedItemsRadioButton.addSelectionListener(new SelectionListener() {

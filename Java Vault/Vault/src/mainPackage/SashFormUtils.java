@@ -28,8 +28,8 @@ import org.eclipse.swt.widgets.Control;
 public class SashFormUtils {
 	public static void processSashFormKeypressedEvent(SashForm sashForm, KeyEvent e, Control previousFocusedControl, boolean vertical) {
 		final int minMargin = 10;
-		
-		int[] weights = sashForm.getWeights();
+
+		final int[] weights = sashForm.getWeights();
 		int pixelsToMove = Globals.getPreferenceStore().getInt(PreferenceKeys.SplitMovePixels);
 		
 		if ((vertical && e.keyCode == SWT.ARROW_RIGHT) || (!vertical && e.keyCode == SWT.ARROW_DOWN)) {

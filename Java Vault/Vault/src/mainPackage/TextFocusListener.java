@@ -32,13 +32,13 @@ import org.eclipse.swt.widgets.Text;
 public class TextFocusListener implements FocusListener {
 	@Override
 	public void focusGained(FocusEvent e) {
-		Text text = (Text) e.widget;
+		final Text text = (Text) e.widget;
 		text.selectAll();
 	}
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		Text text = (Text) e.widget;
+		final Text text = (Text) e.widget;
 		text.setSelection(0, 0);
 	}
 }

@@ -50,8 +50,8 @@ public class OptionsActions {
 			
 			if (settingsDialog.open() == IDialogConstants.OK_ID) {
 				Globals.getVaultTextViewer().setFontAndColor();
-				
-				List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+
+				final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 
 				// Redraw the current photo in case the photo settings changed.
 				if (selectedItems.size() == 1) {

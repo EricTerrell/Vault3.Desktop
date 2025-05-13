@@ -24,11 +24,23 @@ public class PropertyChangeListener implements IPropertyChangeListener {
 			ex.printStackTrace();
 
 			Globals.getLogger().info(String.format("close() - cannot save user preferences: %s", ex.getMessage()));
-			
-			Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-				
-			String message = MessageFormat.format("Cannot save user preferences.{0}{0}{1}", PortabilityUtils.getNewLine(), ex.getMessage());
-			MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, message, MessageDialog.ERROR, new String[] { "&Close" }, 0);
+
+			final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+
+			final String message = MessageFormat.format(
+					"Cannot save user preferences.{0}{0}{1}",
+					PortabilityUtils.getNewLine(),
+					ex.getMessage());
+
+			final MessageDialog messageDialog = new MessageDialog(
+					Globals.getMainApplicationWindow().getShell(),
+					StringLiterals.ProgramName,
+					icon,
+					message,
+					MessageDialog.ERROR,
+					new String[] { "&Close" },
+					0);
+
 			messageDialog.open();
 		}
 	}

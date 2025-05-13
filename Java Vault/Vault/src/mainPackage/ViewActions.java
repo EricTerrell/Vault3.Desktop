@@ -36,7 +36,7 @@ import org.eclipse.swt.widgets.Display;
  *
  */
 public class ViewActions {
-	private final static int minSashWeight = 1;
+	private final static int minSashWeight =  1;
 	private final static int maxSashWeight = 99;
 	
 	public static class SwitchBetweenOutlineAndTextAction extends Action {

@@ -111,9 +111,9 @@ public class FileUtils {
 	 * @throws IOException
 	 */
 	public static String readFile(String filePath) throws IOException {
-		String encoding = getEncoding(filePath);
+		final String encoding = getEncoding(filePath);
 		
-		StringBuilder text = new StringBuilder();
+		final StringBuilder text = new StringBuilder();
 
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), encoding))) {
 			char[] buffer = new char[1024 * 16];
@@ -135,7 +135,7 @@ public class FileUtils {
 	 */
 	public static void copyFile(String srcPath, String destPath) throws IOException {
 		try (FileInputStream inputStream = new FileInputStream(srcPath); FileOutputStream outputStream = new FileOutputStream(destPath)) {
-	        byte[] buffer = new byte[1024];
+	        final byte[] buffer = new byte[1024];
 	        int length;
 	        
 	        while ((length = inputStream.read(buffer)) > 0) {
@@ -151,27 +151,27 @@ public class FileUtils {
 	 * @param filePath path of file to be deleted
 	 */
 	public static void deleteFile(String filePath) {
-		File file = new File(filePath);
+		final File file = new File(filePath);
 		
 		if (!file.exists()) {
-			String errorMessage = MessageFormat.format("Cannot delete file {0} - file does not exist.", filePath);
+			final String errorMessage = MessageFormat.format("Cannot delete file {0} - file does not exist.", filePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 		
 		if (file.isDirectory()) {
-			String errorMessage = MessageFormat.format("Cannot delete file {0} - path refers to a folder.", filePath);
+			final String errorMessage = MessageFormat.format("Cannot delete file {0} - path refers to a folder.", filePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 		
 		if (!file.canWrite()) {
-			String errorMessage = MessageFormat.format("Cannot delete file {0} - file is write-protected.", filePath);
+			final String errorMessage = MessageFormat.format("Cannot delete file {0} - file is write-protected.", filePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 		
 		boolean success = file.delete();
 		
 		if (!success) {
-			String errorMessage = MessageFormat.format("Cannot delete file {0} - deletion failed.", filePath);
+			final String errorMessage = MessageFormat.format("Cannot delete file {0} - deletion failed.", filePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 	}
@@ -182,23 +182,23 @@ public class FileUtils {
 	 * @param destFilePath new name of file
 	 */
 	public static void renameFile(String srcFilePath, String destFilePath) {
-		File srcFile = new File(srcFilePath);
-		File destFile = new File(destFilePath);
+		final File srcFile = new File(srcFilePath);
+		final File destFile = new File(destFilePath);
 		
 		if (!srcFile.exists()) {
-			String errorMessage = MessageFormat.format("Cannot rename file {0} - file does not exist.", srcFilePath);
+			final String errorMessage = MessageFormat.format("Cannot rename file {0} - file does not exist.", srcFilePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 		
 		if (srcFile.isDirectory()) {
-			String errorMessage = MessageFormat.format("Cannot rename file {0} - path refers to a folder.", srcFilePath);
+			final String errorMessage = MessageFormat.format("Cannot rename file {0} - path refers to a folder.", srcFilePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 		
 		boolean success = srcFile.renameTo(destFile);
 		
 		if (!success) {
-			String errorMessage = MessageFormat.format("Cannot rename file {0} to {1} - deletion failed.", srcFilePath, destFilePath);
+			final String errorMessage = MessageFormat.format("Cannot rename file {0} to {1} - deletion failed.", srcFilePath, destFilePath);
 			throw new IllegalArgumentException(errorMessage);
 		}
 	}
@@ -213,7 +213,7 @@ public class FileUtils {
 		try {
 			rootPath = URLDecoder.decode(FileUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath(), "UTF-8");
 			
-			String osName = System.getProperty("os.name");
+			final String osName = System.getProperty("os.name");
 			
 			if (osName.toUpperCase().contains("WINDOWS")) {
 				rootPath = rootPath.substring(1);
@@ -259,7 +259,7 @@ public class FileUtils {
 	}
 	
 	public static String getFileType(File file) {
-		String fileName = file.getName();
+		final String fileName = file.getName();
 		
 		return getFileType(fileName);
 	}
@@ -277,10 +277,10 @@ public class FileUtils {
 	}
 	
 	private static void getUniqueFileTypes(String rootFolderPath, Dictionary<String, Boolean> uniqueFileTypes) {
-		File rootFolder = new File(rootFolderPath);
+		final File rootFolder = new File(rootFolderPath);
 		
 		if (rootFolder.isDirectory()) {
-			File[] list = rootFolder.listFiles();
+			final File[] list = rootFolder.listFiles();
 			
 			if (list != null && list.length > 0) {
 				for (File child : list) {
@@ -302,7 +302,7 @@ public class FileUtils {
 	}
 	
 	public static Dictionary<String, Boolean> getUniqueFileTypes(String rootFolderPath) {
-		Dictionary<String, Boolean> uniqueFileTypes = new Hashtable<>();
+		final Dictionary<String, Boolean> uniqueFileTypes = new Hashtable<>();
 		
 		getUniqueFileTypes(rootFolderPath, uniqueFileTypes);
 		
@@ -317,7 +317,7 @@ public class FileUtils {
 		Globals.getLogger().info(String.format("deleteFolderContents: %s", folder.getAbsolutePath()));
 		
 		if (folder.isDirectory()) {
-			String[] children = folder.list();
+			final String[] children = folder.list();
 			
 			for (String child : children) {
 				deleteFolderContents(new File(folder, child));

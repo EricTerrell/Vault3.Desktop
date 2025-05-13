@@ -112,7 +112,7 @@ public class VaultTreeViewer extends TreeViewer {
 					}
 
 					// Move the cursor over a bit to avoid selecting the first menu item on Ubuntu.
-					Point cursorLocation = e.display.getCursorLocation();
+					final Point cursorLocation = e.display.getCursorLocation();
 					
 					Display.getCurrent().setCursorLocation(cursorLocation.x + 1, cursorLocation.y + 1);
 				}
@@ -198,7 +198,7 @@ public class VaultTreeViewer extends TreeViewer {
 	 * Toggle the expanded/collapsed state of the single selected item when the user presses Enter.
 	 */
 	private void toggle() {
-		TreeItem[] selectedItems = getTree().getSelection();
+		final TreeItem[] selectedItems = getTree().getSelection();
 		
 		if (selectedItems.length == 1) {
 			if (canExpand(selectedItems[0])) {
@@ -212,7 +212,7 @@ public class VaultTreeViewer extends TreeViewer {
 
 	// Expand when right arrow key pressed in Linux.
 	private void arrowKeyExpandCollapse(ExpandCollapseAction action) {
-		TreeItem[] selectedItems = getTree().getSelection();
+		final TreeItem[] selectedItems = getTree().getSelection();
 		
 		if (selectedItems.length == 1) {
 			if (action == ExpandCollapseAction.Expand && canExpand(selectedItems[0])) {
@@ -225,13 +225,13 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 	
 	public void applyUserPreferences() {
-		String fontString = Globals.getPreferenceStore().getString(PreferenceKeys.OutlineFontString);
-		FontData[] fontData = FontUtils.stringToFontList(fontString);
+		final String fontString = Globals.getPreferenceStore().getString(PreferenceKeys.OutlineFontString);
+		final FontData[] fontData = FontUtils.stringToFontList(fontString);
 
 		if (fontData != null) {
 			font = new Font(getTree().getDisplay(), fontData);
-			
-			Font previousFont = getTree().getFont();
+
+			final Font previousFont = getTree().getFont();
 			
 			getTree().setFont(font);
 			
@@ -241,10 +241,10 @@ public class VaultTreeViewer extends TreeViewer {
 			
 			usingNonDefaultFont = true;
 		}
-		
-		int red   = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontRed);
-		int green = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontGreen);
-		int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBlue);
+
+		final int red   = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontRed);
+		final int green = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontGreen);
+		final int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBlue);
 		
 		if (ColorUtils.rgbValueIsValid(red, green, blue)) {
 			getTree().setForeground(Globals.getColorRegistry().get(red, green, blue));
@@ -369,12 +369,12 @@ public class VaultTreeViewer extends TreeViewer {
 	 * @return all outline items
 	 */
 	public List<OutlineItem> getAllItems() {
-		List<TreeItem> allTopLevelItems = getAllTopLevelItems();
-		
-		List<OutlineItem> allItems = new ArrayList<>();
+		final List<TreeItem> allTopLevelItems = getAllTopLevelItems();
+
+		final List<OutlineItem> allItems = new ArrayList<>();
 		
 		for (TreeItem treeItem : allTopLevelItems) {
-			OutlineItem outlineItem = (OutlineItem) treeItem.getData();
+			final OutlineItem outlineItem = (OutlineItem) treeItem.getData();
 			allItems.add(outlineItem);
 		}
 		
@@ -391,7 +391,7 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void expandSelectedItems() {
 		if (canExpandSelectedItems()) {
-			TreeItem[] selectedItems = getTree().getSelection();
+			final TreeItem[] selectedItems = getTree().getSelection();
 	
 			for (TreeItem treeItem : selectedItems) {
 				treeItem.setExpanded(true);
@@ -419,7 +419,7 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void collapseSelectedItems() {
 		if (canCollapseSelectedItems()) {
-			TreeItem[] selectedItems = getTree().getSelection();
+			final TreeItem[] selectedItems = getTree().getSelection();
 	
 			for (TreeItem treeItem : selectedItems) {
 				treeItem.setExpanded(false);
@@ -450,7 +450,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public boolean canMoveSelectedItems() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
@@ -459,8 +459,8 @@ public class VaultTreeViewer extends TreeViewer {
 		if (canMoveSelectedItems()) {
 			try {
 				Globals.setBusyCursor();
-				
-				List<OutlineItem> selectedItems = getSelectedItems();
+
+				final List<OutlineItem> selectedItems = getSelectedItems();
 				OutlineItem.move(selectedItems, targetNode, targetNodeIsExpanded, addAtTop);
 				Globals.getVaultDocument().setIsModified(true);
 
@@ -473,26 +473,27 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 	
 	public void moveSelectedItems(Shell shell) {
-		MoveItemsDialog moveItemsDialog = new MoveItemsDialog(shell);
+		final MoveItemsDialog moveItemsDialog = new MoveItemsDialog(shell);
 
 		if (moveItemsDialog.open() == IDialogConstants.OK_ID) {
-			UUID selectedNodeUUID = moveItemsDialog.getSelectedNodeUUID();
-			OutlineItem rootNode = Globals.getVaultDocument().getContent();
-			OutlineItem selectedNode = rootNode.findNode(selectedNodeUUID);
+			final UUID selectedNodeUUID = moveItemsDialog.getSelectedNodeUUID();
+			final OutlineItem rootNode = Globals.getVaultDocument().getContent();
+			final OutlineItem selectedNode = rootNode.findNode(selectedNodeUUID);
 
-			Globals.getVaultTreeViewer().moveSelectedItems(selectedNode, moveItemsDialog.isSelectedNodeExpanded(), moveItemsDialog.getAddAtTop());
+			Globals.getVaultTreeViewer().moveSelectedItems(
+					selectedNode, moveItemsDialog.isSelectedNodeExpanded(), moveItemsDialog.getAddAtTop());
 		}
 	}
 	
 	public boolean canMoveUp() {
 		boolean result = false;
-		
-		List<OutlineItem> selectedItems = getSelectedItems();
+
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		if (selectedItems.size() == 1) {
-			OutlineItem selectedItem = selectedItems.get(0);
-			
-			int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
+			final OutlineItem selectedItem = selectedItems.get(0);
+
+			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
 			result = index > 0; 
 		}
@@ -502,9 +503,9 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void moveUp() {
 		if (canMoveUp()) {
-			List<OutlineItem> selectedItems = getSelectedItems();
-			OutlineItem selectedItem = selectedItems.get(0);
-			int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
+			final List<OutlineItem> selectedItems = getSelectedItems();
+			final OutlineItem selectedItem = selectedItems.get(0);
+			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
 			OutlineItem.swap(selectedItem.getParent(), index, index - 1);
 			
@@ -516,13 +517,13 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public boolean canMoveDown() {
 		boolean result = false;
-		
-		List<OutlineItem> selectedItems = getSelectedItems();
+
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		if (selectedItems.size() == 1) {
-			OutlineItem selectedItem = selectedItems.get(0);
-			
-			int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
+			final OutlineItem selectedItem = selectedItems.get(0);
+
+			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
 			result = index < selectedItem.getParent().getChildren().size() - 1; 
 		}
@@ -532,9 +533,9 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void moveDown() {
 		if (canMoveDown()) {
-			List<OutlineItem> selectedItems = getSelectedItems();
-			OutlineItem selectedItem = selectedItems.get(0);
-			int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
+			final List<OutlineItem> selectedItems = getSelectedItems();
+			final OutlineItem selectedItem = selectedItems.get(0);
+			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
 			OutlineItem.swap(selectedItem.getParent(), index, index + 1);
 			
@@ -548,14 +549,14 @@ public class VaultTreeViewer extends TreeViewer {
 		boolean itemsAreConsecutiveSiblings = !nodes.isEmpty();
 		
 		if (itemsAreConsecutiveSiblings) {
-			OutlineItem firstNode = nodes.get(0);
-			
-			int firstNodeIndex = firstNode.getParent().getChildren().indexOf(firstNode);
+			final OutlineItem firstNode = nodes.get(0);
+
+			final int firstNodeIndex = firstNode.getParent().getChildren().indexOf(firstNode);
 			
 			for (int i = 1; i < nodes.size(); i++) {
-				OutlineItem node = nodes.get(i);
-	
-				int nodeIndex = firstNode.getParent().getChildren().indexOf(node);
+				final OutlineItem node = nodes.get(i);
+
+				final int nodeIndex = firstNode.getParent().getChildren().indexOf(node);
 				
 				if (nodeIndex - i != firstNodeIndex) {
 					itemsAreConsecutiveSiblings = false;
@@ -568,14 +569,14 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 	
 	public boolean canIndentSelectedItems() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		boolean canIndent = false;
 		
 		if (!selectedItems.isEmpty()) {
-			OutlineItem firstNode = selectedItems.get(0);
-			
-			int index = firstNode.getParent().getChildren().indexOf(firstNode);
+			final OutlineItem firstNode = selectedItems.get(0);
+
+			final int index = firstNode.getParent().getChildren().indexOf(firstNode);
 			
 			canIndent = index > 0 && itemsAreConsecutiveSiblings(selectedItems);
 		}
@@ -585,7 +586,7 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void indentSelectedItems() {
 		if (canIndentSelectedItems()) {
-			List<OutlineItem> selectedItems = getSelectedItems();
+			final List<OutlineItem> selectedItems = getSelectedItems();
 			OutlineItem.indent(selectedItems);
 			Globals.getVaultDocument().setIsModified(true);
 			setSelection(new StructuredSelection(selectedItems), true);
@@ -594,11 +595,11 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public boolean canUnindentSelectedItems() {
 		boolean canUnindent = false;
-		
-		List<OutlineItem> selectedItems = getSelectedItems();
+
+		final List<OutlineItem> selectedItems = getSelectedItems();
 
 		if (!selectedItems.isEmpty()) {
-			OutlineItem firstNode = selectedItems.get(0);
+			final OutlineItem firstNode = selectedItems.get(0);
 			
 			canUnindent = firstNode.getParent() != null && firstNode.getParent().getParent() != null && itemsAreConsecutiveSiblings(selectedItems);
 		}
@@ -608,7 +609,7 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void unindentSelectedItems() {
 		if (canUnindentSelectedItems()) {
-			List<OutlineItem> selectedItems = getSelectedItems();
+			final List<OutlineItem> selectedItems = getSelectedItems();
 			OutlineItem.unindent(selectedItems);
 			Globals.getVaultDocument().setIsModified(true);
 			setSelection(new StructuredSelection(selectedItems), true);
@@ -616,23 +617,30 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public boolean canRemoveSelectedItems() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
 	
 	public void removeSelectedItems(boolean promptUserToConfirm) {
-		Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
-		
-		MessageDialog messageDialog = new MessageDialog(Globals.getMainApplicationWindow().getShell(), StringLiterals.ProgramName, icon, "Remove selected item(s)?", MessageDialog.QUESTION, new String[] { "&Yes", "&No", "&Cancel" }, 0);
+		final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
+
+		final MessageDialog messageDialog = new MessageDialog(
+				Globals.getMainApplicationWindow().getShell(),
+				StringLiterals.ProgramName,
+				icon,
+				"Remove selected item(s)?",
+				MessageDialog.QUESTION,
+				new String[] { "&Yes", "&No", "&Cancel" },
+				0);
 		
 		if (canRemoveSelectedItems() && (!promptUserToConfirm || messageDialog.open() == 0)) { 
 			try {
 				Globals.setBusyCursor();
-				
-				List<OutlineItem> selectedItems = getSelectedItems();
-				
-				OutlineItem nextOutlineItemToSelect = selectedItems.get(selectedItems.size() - 1).getNextOutlineItemToSelect();
+
+				final List<OutlineItem> selectedItems = getSelectedItems();
+
+				final OutlineItem nextOutlineItemToSelect = selectedItems.get(selectedItems.size() - 1).getNextOutlineItemToSelect();
 				
 				OutlineItem.remove(selectedItems);
 				Globals.getVaultDocument().setIsModified(true);
@@ -651,14 +659,14 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public boolean canAddItem() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return selectedItems.size() <= 1;
 	}
 	
 	public void addItem(OutlineItem newItem, OutlineItem.AddDirection addDirection) {
 		if (canAddItem()) {
-			IStructuredSelection selection = (IStructuredSelection) getSelection();
+			final IStructuredSelection selection = (IStructuredSelection) getSelection();
 			
 			OutlineItem node = null;
 			boolean nodeIsRoot = false;
@@ -673,12 +681,12 @@ public class VaultTreeViewer extends TreeViewer {
 			}
 
 			// Need to listen to events generated by this new node.
-			VaultTreeContentProvider vaultTreeContentProvider = getVaultTreeContentProvider();
+			final VaultTreeContentProvider vaultTreeContentProvider = getVaultTreeContentProvider();
 			vaultTreeContentProvider.addListenerTo(newItem);
 			
 			if (!nodeIsRoot) {
-				TreeItem[] selectedTreeItems = getTree().getSelection();
-				boolean nodeIsExpanded = TreeHelper.isExpanded(selectedTreeItems[0]);
+				final TreeItem[] selectedTreeItems = getTree().getSelection();
+				final boolean nodeIsExpanded = TreeHelper.isExpanded(selectedTreeItems[0]);
 				
 				if (nodeIsExpanded && addDirection == AddDirection.Below) {
 					node.addChild(newItem, 0);
@@ -694,19 +702,19 @@ public class VaultTreeViewer extends TreeViewer {
 			Globals.getVaultDocument().setIsModified(true);
 
 			// Select the newly-added node.
-			ArrayList<OutlineItem> selectedItems = new ArrayList<>();
+			final ArrayList<OutlineItem> selectedItems = new ArrayList<>();
 			selectedItems.add(newItem);
 			setSelection(new StructuredSelection(selectedItems), true);
 		}
 	}
 
 	public void addItem(Shell shell) {
-		boolean showAboveAndBelowRadioButtons = getTree().getItemCount() > 0 && !getSelectedItems().isEmpty();
-		
-		AddItemDialog addItemDialog = new AddItemDialog(shell, showAboveAndBelowRadioButtons, AddItemDialog.Mode.Add, null);
+		final boolean showAboveAndBelowRadioButtons = getTree().getItemCount() > 0 && !getSelectedItems().isEmpty();
+
+		final AddItemDialog addItemDialog = new AddItemDialog(shell, showAboveAndBelowRadioButtons, AddItemDialog.Mode.Add, null);
 		
 		if (addItemDialog.open() == IDialogConstants.OK_ID) {
-			OutlineItem newItem = new OutlineItem();
+			final OutlineItem newItem = new OutlineItem();
 			newItem.setTitle(addItemDialog.getTitle());
 			newItem.setText(addItemDialog.getText());
 			newItem.setPhotoPath(addItemDialog.getPhotoPath());
@@ -717,7 +725,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 	
 	public boolean canCutSelectedItems() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
@@ -730,20 +738,20 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 	
 	public boolean canCopySelectedItems() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return !selectedItems.isEmpty();
 	}
 	
 	public void copySelectedItems() {
 		if (canCopySelectedItems()) {
-			List<OutlineItem> selectedItems = getSelectedItems();
+			final List<OutlineItem> selectedItems = getSelectedItems();
 			Globals.getClipboard().replaceItems(selectedItems);
 		}
 	}
 	
 	public boolean canPasteItems() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return selectedItems.size() == 1 && !Globals.getClipboard().isEmpty();
 	}
@@ -752,17 +760,17 @@ public class VaultTreeViewer extends TreeViewer {
 		if (canPasteItems()) {
 			try {
 				Globals.setBusyCursor();
-				
-				IStructuredSelection selection = (IStructuredSelection) getSelection();
-				OutlineItem targetNode = (OutlineItem) selection.getFirstElement();
 
-				TreeItem[] selectedTreeItems = getTree().getSelection();
+				final IStructuredSelection selection = (IStructuredSelection) getSelection();
+				final OutlineItem targetNode = (OutlineItem) selection.getFirstElement();
+
+				final TreeItem[] selectedTreeItems = getTree().getSelection();
 				final boolean targetNodeIsExpanded = TreeHelper.isExpanded(selectedTreeItems[0]);
-				
-				List<OutlineItem> selectedItems = Globals.getClipboard().getItems();
+
+				final List<OutlineItem> selectedItems = Globals.getClipboard().getItems();
 				
 				// Need to listen to events generated by this new node.
-				VaultTreeContentProvider vaultTreeContentProvider = getVaultTreeContentProvider();
+				final VaultTreeContentProvider vaultTreeContentProvider = getVaultTreeContentProvider();
 
 				selectedItems.forEach(vaultTreeContentProvider::addListenerTo);
 				
@@ -778,8 +786,8 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 	
 	public void pasteItems(Shell shell) {
-		List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
-		OutlineItem selectedNode = selectedItems.get(0);
+		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
+		final OutlineItem selectedNode = selectedItems.get(0);
 		
 		boolean addAtTop = false;
 		boolean cancel = false;
@@ -798,7 +806,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public boolean canEditOutlineItem() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		return selectedItems.size() == 1;
 	}
@@ -809,11 +817,11 @@ public class VaultTreeViewer extends TreeViewer {
 	 */
 	public void editOutlineItem(Shell shell) {
 		if (canEditOutlineItem()) {
-			List<OutlineItem> selectedItems = getSelectedItems();
+			final List<OutlineItem> selectedItems = getSelectedItems();
 
-			OutlineItem selectedItem = selectedItems.get(0);
-			
-			AddItemDialog addItemDialog = new AddItemDialog(shell,false, AddItemDialog.Mode.Edit, selectedItem); 
+			final OutlineItem selectedItem = selectedItems.get(0);
+
+			final AddItemDialog addItemDialog = new AddItemDialog(shell,false, AddItemDialog.Mode.Edit, selectedItem);
 			
 			if (addItemDialog.open() == IDialogConstants.OK_ID) {
 				if (!addItemDialog.getTitle().equals(selectedItem.getTitle()) || 
@@ -845,7 +853,7 @@ public class VaultTreeViewer extends TreeViewer {
 	 * @return true if the items can be sorted
 	 */
 	public boolean canSort() {
-		List<OutlineItem> selectedItems = getSelectedItems();
+		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		boolean moreThanOneItem;
 		
@@ -868,8 +876,8 @@ public class VaultTreeViewer extends TreeViewer {
 				Globals.setBusyCursor();
 
 				boolean itemsMoved = false;
-				
-				List<OutlineItem> selectedItems = getSelectedItems();
+
+				final List<OutlineItem> selectedItems = getSelectedItems();
 				
 				if (selectedItems.size() == 1) {
 					itemsMoved = OutlineItem.sort(selectedItems.get(0).getChildren());
@@ -892,7 +900,7 @@ public class VaultTreeViewer extends TreeViewer {
 	 * Make the current document an empty document
 	 */
 	public void fileNew() {
-		VaultDocument vaultDocument = new VaultDocument();
+		final VaultDocument vaultDocument = new VaultDocument();
 		vaultDocument.setVaultDocumentVersion(VaultDocumentVersion.getLatestVaultDocumentVersion());
 
 		Globals.setVaultDocument(vaultDocument);
@@ -903,17 +911,17 @@ public class VaultTreeViewer extends TreeViewer {
 	 * Change the Outline's font
 	 */
 	public void setFont() {
-		FontDialog fontDialog = new FontDialog(getTree().getShell());
+		final FontDialog fontDialog = new FontDialog(getTree().getShell());
 		fontDialog.setText("Set Font");
 		
 		fontDialog.setRGB(getTree().getForeground().getRGB());
 
 		fontDialog.setFontList(getTree().getFont().getFontData());
-		
-		FontData fontData = fontDialog.open();
+
+		final FontData fontData = fontDialog.open();
 		
 		if (fontData != null) {
-			String fontString = FontUtils.fontListToString(fontDialog.getFontList());
+			final String fontString = FontUtils.fontListToString(fontDialog.getFontList());
 			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontString, fontString);
 			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontRed,   fontDialog.getRGB().red);
 			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontGreen, fontDialog.getRGB().green);
@@ -939,7 +947,7 @@ public class VaultTreeViewer extends TreeViewer {
 	}
 
 	public List<TreeItem> getAllTopLevelItems() {
-		ArrayList<TreeItem> allTopLevelItems = new ArrayList<>();
+		final ArrayList<TreeItem> allTopLevelItems = new ArrayList<>();
 
 		Collections.addAll(allTopLevelItems, getTree().getItems());
 				

@@ -55,13 +55,13 @@ public class PasswordPromptDialog extends VaultDialog {
 
 	private Color nonErrorBackground, errorBackground;
 
-	private String fileName;
+	private final String fileName;
 	
 	private Button hidePasswordCharsCheckBox, okButton, forceUpperCasePasswords;
 	
 	@Override
 	protected Control createContents(Composite parent) {
-		Control result = super.createContents(parent);
+		final Control result = super.createContents(parent);
 
 		statusLabel = createStatusLabel(parent);
 
@@ -108,7 +108,7 @@ public class PasswordPromptDialog extends VaultDialog {
 	}
 
 	private void updateStatusLabel() {
-		Button okButton = getButton(IDialogConstants.OK_ID);
+		final Button okButton = getButton(IDialogConstants.OK_ID);
 		
 		boolean incorrectLength = passwordText.getText().length() < CryptoUtils.getMinPasswordLength();
 		
@@ -131,7 +131,7 @@ public class PasswordPromptDialog extends VaultDialog {
 	
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite composite = (Composite) super.createDialogArea(parent);
+		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(2, false));
 		
 		promptLabel = new Label(composite, SWT.NONE);
@@ -146,7 +146,7 @@ public class PasswordPromptDialog extends VaultDialog {
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
 
-		Label passwordLabel = new Label(composite, SWT.NONE);
+		final Label passwordLabel = new Label(composite, SWT.NONE);
 		passwordLabel.setText("&Password:");
 		
 		passwordText = new Text(composite, SWT.PASSWORD | SWT.BORDER);
