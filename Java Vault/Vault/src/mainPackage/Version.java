@@ -90,15 +90,16 @@ import java.text.MessageFormat;
  * 									 platform parameter when retrieving current version from the website. No longer
  * 									 allow user to see previously-specified password in the Password dialog box.
  * 									 Pre-emptively do a File / New before attempting to load a new file so that if the
- * 									 load fails, an new file is displayed.
+ * 									 load fails, a new file is displayed.
  * 0.82				1.3				 Bug Fix: In previous versions, an incorrect warning message could be displayed in the
  * 									 Settings dialog.
  * 0.83				1.3				 Now using Eclipse 4.35 libraries.
  * 0.84				1.3				 Bug Fix: In previous versions, only default font background color was used, not
  * 									 foreground color. Made default font optional.
+ * 0.85				1.3				 Added Linux / 64-bit ARM version
  */
 public class Version {
-	private static final float versionNumber = 0.84f;
+	private static final float versionNumber = 0.85f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

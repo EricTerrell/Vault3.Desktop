@@ -49,4 +49,8 @@ public class StringUtils {
 		
 		return trimmedText.startsWith("http://") || trimmedText.startsWith("https://");
 	}
+
+	public static String removeAllWhitespace(String str) {
+		return str.replaceAll("\\s+", StringLiterals.EmptyString);
+	}
 }

@@ -201,8 +201,10 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 		final HttpClient httpClient = HttpClient.newHttpClient();
 
 		final HttpRequest request = HttpRequest.newBuilder()
-				.uri(URI.create(String.format("https://www.EricBT.com/versions/vault3.txt?platform=%s",
-						Globals.getPlatform())))
+				.uri(URI.create(String.format("https://www.EricBT.com/versions/vault3.txt?platform=%s&arch=%s",
+						StringUtils.removeAllWhitespace(System.getProperty("os.name").toLowerCase()),
+								StringUtils.removeAllWhitespace(System.getProperty("os.arch").toLowerCase())
+						)))
 				.build();
 
 		final HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());

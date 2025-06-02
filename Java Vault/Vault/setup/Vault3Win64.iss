@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Vault 3 for 64-bit Windows (x86)"
-#define MyAppVersion "0.84"
+#define MyAppVersion "0.85"
 #define MyAppPublisher "Eric Bergman-Terrell"
 #define MyAppURL "https://www.ericbt.com/vault3"
 
@@ -33,12 +33,12 @@ ArchitecturesInstallIn64BitMode=x64
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "C:\Temp\Vault3\Vault3Win64\custom-runtime\*"; DestDir: "{app}\custom-runtime"; Flags: ignoreversion recursesubdirs
-Source: "C:\Temp\Vault3\Vault3Win64\Help\*"; DestDir: "{app}\Help"; Flags: ignoreversion
-Source: "C:\Temp\Vault3\Vault3Win64\example.vl3"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Temp\Vault3\Vault3Win64\LicenseTerms.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Temp\Vault3\Vault3Win64\vault_win.jar"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Temp\Vault3\Vault3Win64\vault3.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\custom-runtime\*"; DestDir: "{app}\custom-runtime"; Flags: ignoreversion recursesubdirs
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\Help\*"; DestDir: "{app}\Help"; Flags: ignoreversion
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\example.vl3"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\LicenseTerms.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\vault_win.jar"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\vault3.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

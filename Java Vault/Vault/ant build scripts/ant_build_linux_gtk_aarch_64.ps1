@@ -1,0 +1,1 @@
+ant -buildfile .\ant_build_linux_gtk_aarch_64.xml

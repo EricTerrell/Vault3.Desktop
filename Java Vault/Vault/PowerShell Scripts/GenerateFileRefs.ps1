@@ -22,22 +22,22 @@
 
 cd 'C:\Eclipse 4.35'
 
-$platforms = ("linux-gtk-x86_64", "linux-x86_64"), ("macosx-cocoa-aarch64", "cocoa-macosx-aarch64"), ("macosx-cocoa-x86_64", "cocoa-macosx-x86_64"), ("win32-x86_64", "win32-win32-x86_64");
+$platforms = ("linux-gtk-aarch64", "linux-aarch64"), ("linux-gtk-x86_64", "linux-x86_64"), ("win32-x86_64", "win32-win32-x86_64");
 
-foreach ($platform in $platforms)
+foreach($platform in $platforms)
 {
-    Write-Output ""
-    Write-Output $platform[0]
-    Write-Output ""
+  Write-Output ""
+  Write-Output $platform[0]
+  Write-Output ""
 
-    $files = "org.eclipse.core.commands", "org.eclipse.core.runtime", "org.eclipse.equinox.common", "org.eclipse.jface.text", "org.eclipse.jface", "org.eclipse.osgi", "org.eclipse.text";
+  $files = "org.eclipse.core.commands", "org.eclipse.core.runtime", "org.eclipse.equinox.common", "org.eclipse.jface.text", "org.eclipse.jface", "org.eclipse.osgi", "org.eclipse.text";
 
-    Get-ChildItem -Verbose:$false -File -Path . -Recurse -Include "swt.jar" | Select FullName | findstr $platform[1]
+  Get-ChildItem -Verbose:$false -File -Path . -Recurse -Include "swt.jar" | Select FullName | findstr $platform[1]
 
-    foreach ($file in $files)
-    {
-        $file_pattern = $file + "_*.jar";
+  foreach($file in $files)
+  {
+    $file_pattern = $file + "_*.jar";
 
-        Get-ChildItem -Verbose:$false -File -Path . -Recurse -Include $file_pattern | Select FullName | findstr $platform[0] | findstr "eclipse-platform-"
-    }
+    Get-ChildItem -Verbose:$false -File -Path . -Recurse -Include $file_pattern | Select FullName | findstr $platform[0] | findstr "eclipse-platform-"
+  }
 }
