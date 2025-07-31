@@ -427,7 +427,9 @@ public class VaultPrinter {
 			gc.drawString(printDateTime, x + printArea.width - gc.textExtent(printDateTime).x, y);
 		}
 
-		gc.setFont(oldFont);
+		if (!oldFont.isDisposed()) {
+			gc.setFont(oldFont);
+		}
 	}
 	
 	private void printPageNumber() {

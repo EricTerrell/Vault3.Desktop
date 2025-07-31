@@ -320,6 +320,11 @@ public class AboutDialog extends VaultDialog {
 	}
 
 	@Override
+	protected boolean isResizable() {
+		return true;
+	}
+
+	@Override
 	protected void buttonPressed(int buttonId) {
 		setReturnCode(buttonId);
 		close();

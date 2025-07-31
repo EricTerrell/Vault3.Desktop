@@ -40,7 +40,7 @@ import org.eclipse.swt.widgets.Text;
 public class PrintScopeDialog extends VaultDialog {
 	@Override
 	protected boolean isResizable() {
-		return false;
+		return true;
 	}
 
 	private Label statusLabel;

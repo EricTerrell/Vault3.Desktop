@@ -3,14 +3,13 @@
   <component name="AnalysisUIOptions">
     <option name="SPLITTER_PROPORTION" value="0.44810542" />
     <option name="ANALYZE_INJECTED_CODE" value="false" />
-    <option name="SCOPE_TYPE" value="3" />
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.85 - added Linux 64-bit ARM version&#10;&#10;Bug Fix: Was using incorrect path to JDK modules for Linux 64-bit ARM." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.86:&#10;&#10;Bug Fix: In previous versions, printing would sometimes fail with no notification to the user." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -270,19 +269,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Vault 3" />
-      <item itemvalue="PowerShell.build_everything.ps1 (1)" />
       <item itemvalue="PowerShell.ant_build_linux_gtk_aarch_64.ps1" />
-      <item itemvalue="PowerShell.ant_build_linux_gtk_x86_64.ps1" />
       <item itemvalue="PowerShell.ant_build_linux_gtk_x86_64.ps1 (1)" />
+      <item itemvalue="PowerShell.ant_build_linux_gtk_x86_64.ps1" />
+      <item itemvalue="PowerShell.build_everything.ps1 (1)" />
       <item itemvalue="PowerShell.build_everything.ps1" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.ant_build_linux_gtk_x86_64.ps1 (1)" />
-        <item itemvalue="PowerShell.ant_build_linux_gtk_aarch_64.ps1" />
-        <item itemvalue="PowerShell.ant_build_linux_gtk_x86_64.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -672,7 +671,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -686,8 +685,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered." />
-    <MESSAGE value="Version 0.81&#10;&#10;Removed ability to email topics&#10;  Removed Email tab in Settings dialog&#10;  Removed corresponding on-line help content&#10;  Re-wrote Send Feedback feature&#10;  &#10;Updated ant build to build custom java runtime&#10;&#10;Included jdk.crypto.ec module to allow app to download https:// content.&#10;&#10;No longer let user see previously-entered passwords in the Password dialog.&#10;&#10;User now gets an error message when an incorrect password is entered.&#10;&#10;Current document is new cleared and named &quot;Untitled&quot; prior to loading a new document, in case the load fails." />
     <MESSAGE value="Version 0.82&#10;&#10;Bug Fix: In previous versions, an incorrect warning message could be displayed in the Settings dialog." />
     <MESSAGE value="Version 0.82&#10;&#10;Do not build OSX versions." />
     <MESSAGE value="Version 0.83&#10;&#10;Now using Eclipse 4.35 libraries" />
@@ -711,7 +708,9 @@
     <MESSAGE value="Version 0.85 - added Linux 64-bit ARM version" />
     <MESSAGE value="Version 0.85 - added Linux 64-bit ARM version&#10;&#10;Added CPU architecture to url requesting latest version" />
     <MESSAGE value="Version 0.85 - added Linux 64-bit ARM version&#10;&#10;Bug Fix: Was using incorrect path to JDK modules for Linux 64-bit ARM." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.85 - added Linux 64-bit ARM version&#10;&#10;Bug Fix: Was using incorrect path to JDK modules for Linux 64-bit ARM." />
+    <MESSAGE value="Made all dialogs resizable - reason: About dialog had non-visible buttons in Ubuntu." />
+    <MESSAGE value="Version 0.86:&#10;&#10;Bug Fix: In previous versions, printing would sometimes fail with no notification to the user." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.86:&#10;&#10;Bug Fix: In previous versions, printing would sometimes fail with no notification to the user." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -942,11 +941,6 @@
           <option name="timeStamp" value="230" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="231" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
           <line>202</line>
           <option name="timeStamp" value="232" />
@@ -962,11 +956,6 @@
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="249" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
           <line>185</line>
           <option name="timeStamp" value="255" />
@@ -975,16 +964,6 @@
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
           <line>649</line>
           <option name="timeStamp" value="257" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
-          <line>919</line>
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
-          <line>909</line>
-          <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
@@ -1017,29 +996,9 @@
           <option name="timeStamp" value="279" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="280" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="281" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="282" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="283" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>209</line>
-          <option name="timeStamp" value="284" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="287" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1051,6 +1010,7 @@
       <configuration name="Application">
         <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;artwork/file_print.png&quot;)" language="JAVA" />
         <watch expression="System.getProperty(&quot;ConfigPath&quot;)" language="JAVA" />
+        <watch expression="oldFont.isDisposed()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

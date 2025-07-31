@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="EclipseModuleManager">
-    <libelement value="jar://C:/Program Files/javamail-1.4.4/mail.jar!/" />
     <libelement value="jar://C:/Program Files/sqlite4java-282/sqlite4java.jar!/" />
     <libelement value="jar://C:/Program Files/itext-5.2.1/itextpdf-5.2.1.jar!/" />
     <libelement value="jar://C:/Program Files/perf4j/perf4j-0.9.16.jar!/" />

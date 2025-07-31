@@ -50,7 +50,7 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 	
 	@Override
 	protected boolean isResizable() {
-		return false;
+		return true;
 	}
 
 	@Override

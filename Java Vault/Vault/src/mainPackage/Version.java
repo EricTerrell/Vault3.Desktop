@@ -97,9 +97,11 @@ import java.text.MessageFormat;
  * 0.84				1.3				 Bug Fix: In previous versions, only default font background color was used, not
  * 									 foreground color. Made default font optional.
  * 0.85				1.3				 Added Linux / 64-bit ARM version
+ * 0.86				1.3				 Bug Fix: In previous versions, printing would sometimes fail with no notification
+ * 									 to the user.
  */
 public class Version {
-	private static final float versionNumber = 0.85f;
+	private static final float versionNumber = 0.86f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {
