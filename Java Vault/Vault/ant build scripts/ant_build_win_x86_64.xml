@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Vault 3
+  (C) Copyright 2025, Eric Bergman-Terrell
+
+  This file is part of Vault 3.
+
+  Vault 3 is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Vault 3 is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project default="create_run_jar" name="Create Runnable Jar for Project Vault">
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+    	<property name="deployroot" location="c:/temp/Vault3" />
+        <property name="sourcerootVault" location=".." />
+    	<property name="projectroot" location="../../.." />
+    	<property name="dest.dir" location="${deployroot}/Vault3Win_x86_64" />
+    	<property name="zipfile" location="${deployroot}/Vault3Win_x86_64.zip" />
+    	<delete file="${zipfile}" />
+    	<delete dir="${dest.dir}"/>
+    	<mkdir dir="${dest.dir}" />
+
+        <exec executable="cmd" dir="${dest.dir}">
+            <arg line="/c jlink --no-header-files --no-man-pages --module-path 'C:\Backup\Eric\Software\java\jdk-24.0.1\windows-x64\jmods' --add-modules java.base,java.xml,java.logging,java.sql,java.desktop,java.net.http,jdk.crypto.ec --output custom-runtime" />
+        </exec>
+
+        <copy file="${sourcerootVault}/target/vault3-1.jar" toFile="${dest.dir}/vault3.jar" failonerror="true" />
+
+    	<copy todir="${dest.dir}" failonerror="true">
+    		<fileset file="${sourcerootVault}/example.vl3" />
+    		<fileset file="${sourcerootVault}/src/mainPackage/resources/vault3.ico" />
+    		<fileset file="${sourcerootVault}/src/mainPackage/resources/LicenseTerms.txt" />
+    	</copy>
+    	<copy todir="${dest.dir}/Help" failonerror="true">
+    		<fileset dir="${sourcerootVault}/Help" />
+    	</copy>
+    	<zip destfile="${zipfile}">
+    		<fileset dir="${dest.dir}" />
+    	</zip>
+    </target>
+</project>

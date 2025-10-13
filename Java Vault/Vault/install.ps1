@@ -1,0 +1,2 @@
+mvn install:install-file `
+-Dfile="C:/Program Files/imgscalr-lib-4.2/imgscalr-lib-4.2.jar" -DgroupId="com.example" -DartifactId="imgscalr-lib-4.2" -Dversion="1.0.0" -Dpackaging="jar" -DgeneratePOM=true

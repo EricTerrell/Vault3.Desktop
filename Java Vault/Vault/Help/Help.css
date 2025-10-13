@@ -1,0 +1,137 @@
+body, ul
+{
+    font-family: Verdana;
+    font-size: 10pt;
+}
+
+h1
+{
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+table
+{
+	font-size: 10pt;
+}
+
+a
+{
+    font-size: 10pt;
+}
+
+.TopicTitle
+{
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.TopicText
+{
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+.ShortcutsTitle, .SeeAlsoTitle
+{
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+.ShortcutLabel
+{
+    font-size: 10pt;
+    font-weight: normal;
+    text-align: left;
+    width: 6em;
+}
+
+.Shortcuts, .SeeAlso
+{
+    margin-left: 1.5em;
+    margin-top: 0.1em;
+    margin-bottom: 1.0em;
+}
+
+.ShortcutText
+{
+    font-size: 10pt;
+    font-weight: normal;
+}
+
+.ShortcutGraphic
+{
+}
+
+.SeeAlsoLink
+{
+    display: block;
+}
+
+.PreviousNextTopics
+{
+    margin-top: 2em;
+}
+
+.NextTopic, .PreviousTopic
+{
+}
+
+.NextTopicLink
+{
+    margin-left: 0.5em;
+}
+
+.PreviousTopicLink
+{
+}
+
+.DialogFields
+{
+    margin-bottom: 1em;
+}
+
+.DialogFieldsHeader
+{
+    font-size: 11pt;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.DialogFieldLabel
+{
+    font-size: 10pt;
+    font-weight: bold;
+    margin-left: 2em;
+}
+
+.DialogFieldText
+{
+    margin-left: 4em;
+    font-size: 10pt;
+    font-weight: normal;
+    margin-bottom: 0.5em;
+}
+
+.DialogImage
+{
+    margin-left: 2em;
+    margin-bottom: 0.75em;
+}
+
+.ScreenShot
+{
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.ListWithSpacing
+{
+}
+
+.ListWithSpacing li
+{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Vault 3
+  (C) Copyright 2025, Eric Bergman-Terrell
+
+  This file is part of Vault 3.
+
+  Vault 3 is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Vault 3 is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project default="create_jar" name="Create CommonCode jar">
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_jar">
+    	<property name="deployroot" location="c:/temp/Vault3" />
+        <property name="sourcerootCommonCode" location="../../../CommonCode" />
+    	<property name="projectroot" location="../../.." />
+    	<property name="dest.dir" location="${deployroot}/CommonCode" />
+    	<delete dir="${dest.dir}"/>
+    	<mkdir dir="${dest.dir}" />
+        <jar destfile="${dest.dir}/CommonCode.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Main-Class" value="mainPackage.MainApplicationWindow"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${sourcerootCommonCode}/bin"/>
+        </jar>
+    </target>
+</project>

@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.44810542" />
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+    <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.89&#10;&#10;1) Now load (most) components from remote Maven repo.">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="PowerShell File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk1.8.0_221/src.zip!/java/lang/IllegalArgumentException.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="explicitlyDisabledProfiles" value="Linux-aarch_64" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="1Ob95eQ7ddWPhRhToPl51PJHspT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Vault 3 - java.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Vault 3.executor&quot;: &quot;Debug&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0&quot;: &quot;0&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1&quot;: &quot;1&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2&quot;: &quot;2&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3&quot;: &quot;3&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4&quot;: &quot;4&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5&quot;: &quot;5&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5&quot;: &quot;299&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0&quot;: &quot;0&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1&quot;: &quot;1&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2&quot;: &quot;2&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3&quot;: &quot;3&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4&quot;: &quot;4&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5&quot;: &quot;5&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4&quot;: &quot;300&quot;,
+    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5&quot;: &quot;299&quot;,
+    &quot;JAR Application.Run from Jar.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.All in CommonCode.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests.TestEncryptDecryptStringRoundTrip.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests.interopWithOtherPlatformsDecrypt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests.interopWithOtherPlatformsEncrypt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CryptoTests.testInteropWithOtherPlatformsDecrypt.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.CryptoTests.testInteropWithOtherPlatformsEncrypt.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.FontTests.addItemsAndSerializeAndDeserialize.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SearchParametersSerializationDeserializationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VaultDocumentVersionTests.testConstructor.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.jUnitTests in Vault.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.tests in CommonCode.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.tests in Vault.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.Vault 3 - Maven.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.vault3 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.vault3 [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.vault3 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.vault3 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.vault3 [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.vault3 [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.vault3 [verify].executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (2).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (3).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (4).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_64.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1 (2).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1 (3).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_aarch_64.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_win_x86_64.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_win_x86_64.ps1 (2).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_win_x86_64.ps1 (3).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_win_x86_64.ps1 (4).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_win_x86_64.ps1 (5).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.ant_build_win_x86_64.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_common_code.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_common_code.ps1 (2).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_common_code.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1 (2).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1 (3).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1 (4).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1 (5).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_linux.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_linux.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_windows.ps1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_windows.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erict/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.18831168&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\artwork" />
+      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\resources" />
+      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src" />
+      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\com\ericbt" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="mainPackage" />
+      <recent name="jUnitTests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Maven.Vault 3 - Maven">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
+      <option name="TESTING_TYPE" value="0" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_NAME_REGEX" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="RETENTION_ENABLED" value="No" />
+      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
+      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run from Jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/Java Vault/Vault/target/vault3-1.jar" />
+      <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED -verbose -DConfigPath=&quot;C:\Users\erict\AppData\Roaming\Vault 3&quot; -DLogFilePath=&quot;C:\Temp\Vault 3.log.txt&quot;" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="24" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Vault" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Vault" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Vault 3 - Maven" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="delegateBuildToMaven" value="false" />
+            <option name="environmentProperties">
+              <map />
+            </option>
+            <option name="jreName" value="#USE_PROJECT_JDK" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="passParentEnv" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="-DConfigPath=&quot;C:\Users\erict\AppData\Roaming\Vault 3&quot; --enable-native-access=ALL-UNNAMED -DLogFilePath=&quot;C:\Temp\Vault 3.log.txt&quot;" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="exec:java" />
+                <option value="-Dexec.mainClass=mainPackage.MainApplicationWindow" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map>
+                <entry key="Windows-x86_64" value="true" />
+              </map>
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Java Vault/Vault" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="vault3 [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map>
+                <entry key="Linux-aarch_64" value="false" />
+              </map>
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Java Vault/Vault" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="vault3 [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map>
+                <entry key="Linux-aarch_64" value="false" />
+              </map>
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Java Vault/Vault" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="vault3 [package]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map>
+                <entry key="Linux-aarch_64" value="false" />
+              </map>
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/Java Vault/Vault" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="build_everything.ps1 (1)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_everything.ps1 (2)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JAR Application.Run from Jar" />
+      <item itemvalue="Maven.Vault 3 - Maven" />
+      <item itemvalue="Maven.vault3 [clean]" />
+      <item itemvalue="Maven.vault3 [install]" />
+      <item itemvalue="Maven.vault3 [package]" />
+      <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+      <item itemvalue="PowerShell.build_everything.ps1 (2)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Maven.vault3 [package]" />
+        <item itemvalue="Maven.vault3 [install]" />
+        <item itemvalue="Maven.vault3 [clean]" />
+        <item itemvalue="PowerShell.build_everything.ps1 (2)" />
+        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\erict\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\.idea" />
+          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\.idea" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
+          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="" />
+      <created>1429109483091</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1429109483091</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Version 0.70&#10;&#10;Bug Fix: main window is no longer drawn, hidden, and moved when app is launched.">
+      <created>1614479343272</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1614479343272</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Added missing &quot;.jar&quot; in .classpath">
+      <created>1614479480735</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1614479480735</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Added missing &quot;.jar&quot; in .classpath">
+      <created>1614479506388</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1614479506388</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Added missing &quot;.jar&quot; in .classpath">
+      <created>1614480919386</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1614480919386</updated>
+    </task>
+    <task id="LOCAL-00064" summary="cleanup">
+      <created>1614485324119</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1614485324119</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Toolbar now has grey background again.">
+      <created>1614496298679</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1614496298679</updated>
+    </task>
+    <task id="LOCAL-00066" summary="cleanup">
+      <created>1614527093114</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1614527093115</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Bug Fix: On Linux (Mint) password prompt dialog was missing the title. Setting shell to null fixed it.">
+      <created>1614533113786</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1614533113787</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Bug Fix: On Linux (Mint) password prompt dialog was missing the title. Setting shell to null fixed it.">
+      <created>1614534902753</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1614534902753</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Linux .classpath">
+      <created>1614536601502</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1614536601502</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Added logging. Investigating why app doesn't come up maximized after being maximized and closed and re-opened.">
+      <created>1614794233253</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1614794233253</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Now saves/restores maximized window state.&#10;&#10;One limitation - with multiple monitors, works perfectly on primary monitor. On secondary monitor, works correctly for non-maximized window. For maximized window, restores maximized to primary monitor.">
+      <created>1614796935066</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1614796935066</updated>
+    </task>
+    <task id="LOCAL-00072" summary="No longer build source code .zip file as source code is in GitHub.">
+      <created>1614797063285</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1614797063285</updated>
+    </task>
+    <task id="LOCAL-00073" summary="No longer build source code .zip file as source code is in GitHub.">
+      <created>1614800614347</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1614800614347</updated>
+    </task>
+    <task id="LOCAL-00074" summary="No longer build source code .zip file as source code is in GitHub.">
+      <created>1614809718219</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1614809718219</updated>
+    </task>
+    <task id="LOCAL-00075" summary="README.md">
+      <created>1614820308584</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1614820308584</updated>
+    </task>
+    <task id="LOCAL-00076" summary="README.md">
+      <created>1614842524934</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1614842524934</updated>
+    </task>
+    <task id="LOCAL-00077" summary="README.md">
+      <created>1614843363680</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1614843363680</updated>
+    </task>
+    <task id="LOCAL-00078" summary="README.md">
+      <created>1614844436512</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1614844436512</updated>
+    </task>
+    <task id="LOCAL-00079" summary="README.md">
+      <created>1614844768194</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1614844768194</updated>
+    </task>
+    <task id="LOCAL-00080" summary="README.md">
+      <created>1614876005825</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1614876005825</updated>
+    </task>
+    <task id="LOCAL-00081" summary="README.md">
+      <created>1614877959124</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1614877959124</updated>
+    </task>
+    <task id="LOCAL-00082" summary="README.md">
+      <created>1614892951163</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1614892951163</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Code inspection cleanup">
+      <created>1615221444685</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1615221444685</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Code inspection cleanup">
+      <created>1615221558366</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1615221558366</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633467838556</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1633467838556</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633473090397</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1633473090397</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633473962626</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1633473962626</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633478566271</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1633478566271</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Version 0.72&#10;&#10;Added image rotation.">
+      <created>1633479300202</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1633479300202</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Added artwork for rotation menu items">
+      <created>1633539061643</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1633539061643</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Added artwork for rotation menu items">
+      <created>1633543769098</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1633543769098</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Added artwork for rotation menu items">
+      <created>1633549348053</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1633549348053</updated>
+    </task>
+    <task id="LOCAL-00093">
+      <created>1633551633735</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1633551633736</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Code inspection cleanup">
+      <created>1633965586502</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1633965586502</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Code inspection cleanup">
+      <created>1633966165621</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1633966165621</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Version 0.73 Preparing for improved crypto.">
+      <created>1647624331467</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1647624331467</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Version 0.73 Preparing for improved crypto.">
+      <created>1647629130288</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1647629130288</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved.">
+      <created>1648151243854</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1648151243854</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Version 0.74 &#10;&#10;Bug Fix: vertical slider position was not properly restored after being moved.">
+      <created>1648151494100</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1648151494100</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Minor cleanup">
+      <created>1648569268786</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1648569268786</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Minor cleanup">
+      <created>1648572225177</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1648572225177</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Attempt to fix Mac OSX build.">
+      <created>1649598936632</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1649598936632</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1651337049541</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1651337049542</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1651337064339</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1651337064339</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1651337090867</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1651337090867</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Version 0.76&#10;&#10;Updated to Eclipse 4.23 libraries.">
+      <created>1679772608048</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1679772608049</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working.">
+      <created>1679773428470</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1679773428470</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Version 0.77&#10;&#10;Bug Fix: In previous versions, in Linux, after displaying one image (photo), image display stopped working.">
+      <created>1679773724153</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1679773724153</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Version 0.83&#10;&#10;Added logging for version check that is done on launch." />
+    <MESSAGE value="Version 0.83&#10;&#10;Updated Ant build scripts to point to cached modules on my new machine." />
+    <MESSAGE value="With the 4.35 Eclipse jars, which are signed, caused problems building the app from the IDE (to test and debug).&#10;&#10;The Ant scripts stripped out the signing data.&#10;&#10;Solution was to copy all the jars to an &quot;unsigned&quot; folder, and then strip out the signing data:&#10;&#10;find . -name '*.jar' -exec zip -d '{}' 'META-INF/*.SF' ';'&#10;&#10;(https://stackoverflow.com/questions/7757083/how-do-i-unsign-a-jar)" />
+    <MESSAGE value="Updated README.md" />
+    <MESSAGE value="Version 0.84&#10;&#10;Text Background Color is now in a distinct tab in the Settings dialog.&#10;&#10;The outline item's color is only used if it also has a font. By default, when an outline item is stored, a color of black is saved. But the color is only relevant if a font was specified. Specifying a font is the only way to specify the color of an outline item.&#10;&#10;Now update an item's background and foreground when a new item is rendered." />
+    <MESSAGE value="Version 0.84&#10;&#10;Updated copyright notices." />
+    <MESSAGE value="Version 0.84&#10;&#10;If an outline item with a specified font was selected, changing the background color didn't take effect until it was re-rendered." />
+    <MESSAGE value="Version 0.84" />
+    <MESSAGE value="Code inspection fixes" />
+    <MESSAGE value="On Linux, user can now specify the default font color." />
+    <MESSAGE value="&quot;final&quot;" />
+    <MESSAGE value="Version 0.85 - added Linux 64-bit ARM version" />
+    <MESSAGE value="Version 0.85 - added Linux 64-bit ARM version&#10;&#10;Added CPU architecture to url requesting latest version" />
+    <MESSAGE value="Version 0.85 - added Linux 64-bit ARM version&#10;&#10;Bug Fix: Was using incorrect path to JDK modules for Linux 64-bit ARM." />
+    <MESSAGE value="Made all dialogs resizable - reason: About dialog had non-visible buttons in Ubuntu." />
+    <MESSAGE value="Version 0.86:&#10;&#10;Bug Fix: In previous versions, printing would sometimes fail with no notification to the user." />
+    <MESSAGE value="Added tests to verify that encryption and decryption are compatible with other platforms." />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven&#10;2)" />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven" />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits." />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings." />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line" />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line&#10;5) Re-write sort logic using built-in sort method." />
+    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line&#10;5) Re-write sort logic using built-in sort method.&#10;6) Optionally log to file." />
+    <MESSAGE value="Version 0.89&#10;&#10;1) Now load (most) components from remote Maven repo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.89&#10;&#10;1) Now load (most) components from remote Maven repo." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>68</line>
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>112</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentExports.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentImports.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
+          <line>248</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentIO.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SlideshowDialog.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
+          <line>242</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/ExportPhotosToDevice.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileSystemImport.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/tests/FontTests.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/tests/FontTests.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/PDFExport.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CodePointString.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileUtils.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <condition expression="string.contains(&quot;hello&quot;)" language="JAVA" />
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1693</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1590</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1584</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../Eclipse 4.18/swt-4.18-win32-win32-x86_64/swt.jar!/org/eclipse/swt/graphics/GC.class</url>
+          <line>1578</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/SearchParametersSerializationDeserializationTests.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/tests/CryptoTests.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoUtils.java</url>
+          <line>181</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoUtils.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocumentXML.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/NativeDefaultHandler.java</url>
+          <line>234</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>198</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/GraphicsUtils.java</url>
+          <line>274</line>
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="238" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDocument.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTextViewer.java</url>
+          <line>649</line>
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/CommonCode/src/tests/FontTests.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="266" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>571</line>
+          <option name="timeStamp" value="276" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>584</line>
+          <option name="timeStamp" value="277" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>587</line>
+          <option name="timeStamp" value="278" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>579</line>
+          <option name="timeStamp" value="279" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="296" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="297" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/jUnitTests/CryptoTests.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="298" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.jface/3.38.0/org.eclipse.jface-3.38.0.jar!/org/eclipse/jface/resource/URLImageDescriptor.class</url>
+          <line>98</line>
+          <option name="timeStamp" value="333" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.jface/3.38.0/org.eclipse.jface-3.38.0.jar!/org/eclipse/jface/resource/URLImageDescriptor.class</url>
+          <line>78</line>
+          <option name="timeStamp" value="334" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.swt.win32.win32.x86_64/3.131.0/org.eclipse.swt.win32.win32.x86_64-3.131.0-sources.jar!/org/eclipse/swt/internal/Library.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="347" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.swt.win32.win32.x86_64/3.131.0/org.eclipse.swt.win32.win32.x86_64-3.131.0-sources.jar!/org/eclipse/swt/internal/Library.java</url>
+          <line>205</line>
+          <option name="timeStamp" value="348" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/LicenseTermsDialog.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="355" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/FileActions.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="363" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeViewer.java</url>
+          <line>667</line>
+          <option name="timeStamp" value="366" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultTreeViewer.java</url>
+          <line>701</line>
+          <option name="timeStamp" value="368" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItem.java</url>
+          <line>329</line>
+          <option name="timeStamp" value="370" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItem.java</url>
+          <line>354</line>
+          <option name="timeStamp" value="371" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="StringLiterals.ProgramName" language="JAVA" />
+        <watch expression="Globals.getVaultDocument()" language="JAVA" />
+        <watch expression="CIPHERTEXT" language="JAVA" />
+      </configuration>
+      <configuration name="Application">
+        <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;artwork/file_print.png&quot;)" language="JAVA" />
+        <watch expression="System.getProperty(&quot;ConfigPath&quot;)" language="JAVA" />
+        <watch expression="oldFont.isDisposed()" language="JAVA" />
+      </configuration>
+      <configuration name="MavenRunConfiguration">
+        <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;/resources/file_new.png&quot;)" language="JAVA" />
+        <watch expression="getClass()" language="JAVA" />
+        <watch expression="String.format(&quot;%s.txt&quot;, getClass().getSimpleName())" language="JAVA" />
+        <watch expression="String.format(&quot;%s%s%s&quot;, FileUtils.getConfigRootPath(), PortabilityUtils.getFileSeparator(), getSettingsFileName())" language="JAVA" />
+      </configuration>
+      <configuration name="JarApplication">
+        <watch expression="getSettingsFilePath()" language="JAVA" />
+        <watch expression="logFilePath" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Vault3_Desktop$CryptoTests_interopWithOtherPlatformsEncrypt.ic" NAME="CryptoTests.interopWithOtherPlatformsEncrypt Coverage Results" MODIFIED="1756067457492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>jUnitTests.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Vault3_Desktop$CodePointStringTests.ic" NAME="CodePointStringTests Coverage Results" MODIFIED="1647628088244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>jUnitTests.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Vault3_Desktop$Vault_3.ic" NAME="Vault 3 Coverage Results" MODIFIED="1697770729027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

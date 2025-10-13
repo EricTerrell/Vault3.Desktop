@@ -1,0 +1,29 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Help.css" />
+	<title>Vault 3 On-Line Help: How to Install Vault 3 on Mac OS X</title>
+</head>
+<body>
+	<h1>How to Install Vault 3 on Mac OS X</h1>
+	<ol>
+		<li><a href="http://www.ericbt.com/Vault3/Download">Download</a> the 32 or 64-bit version of Vault 3 for Mac OS X.</li>
+		<li>Unzip the downloaded file to /Applications/Vault 3/Vault3Cocoa_x86_32 (32-bit) or /Applications/Vault 3/Vault3Cocoa_x86_64 (64-bit)</li> 
+		<li>Create an <a href="http://stackoverflow.com/questions/281372/executing-shell-scripts-from-the-os-x-dock">Automator workflow</a> to launch Vault 3. Specify the appropriate command:<br /><br />
+            <table border="1">
+                <tr>
+                    <td>32-bit</td>
+                    <td>java -d32 -XstartOnFirstThread -jar "/Applications/Vault 3/Vault3Cocoa_x86_32/vault_mac.jar" &</td>
+                </tr>
+                <tr>
+                    <td>64-bit</td>
+                    <td>java -XstartOnFirstThread -jar "/Applications/Vault 3/Vault3Cocoa_x86_64/vault_mac.jar" &</td>
+                </tr>
+            </table>
+    	</li>
+	</ol>
+	<div class="PreviousNextTopics">
+		<span class="PreviousTopic"><a href="install_ubuntu.html" class="PreviousTopicLink">Previous Topic</a></span>
+		<span class="NextTopic"><a href="import_vault_files.html" class="NextTopicLink">Next Topic</a></span>
+	</div>
+</body>
+</html>
