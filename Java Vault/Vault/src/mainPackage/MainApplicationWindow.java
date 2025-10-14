@@ -272,6 +272,8 @@ public class MainApplicationWindow extends ApplicationWindow {
                 System.exit(0);
             }
         });
+
+        processLicenseTerms();
 	}
 
 	private void addActions() {
@@ -903,8 +905,6 @@ public class MainApplicationWindow extends ApplicationWindow {
 		
 		enableToolBarStatusBarUpdates();
 		
-		processLicenseTerms();
-
 		SoftwareUpdatesDialog.displayUpdatesDialogIfUpdatesAreAvailable(getShell());
 		
 		getShell().addListener(SWT.Deiconify, event -> {
@@ -926,7 +926,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 			final int result = licenseTermsDialog.open();
 			
 			if (!Globals.getPreferenceStore().getBoolean(PreferenceKeys.AcceptLicenseTerms) || result != IDialogConstants.OK_ID) {
-				close();
+                System.exit(0);
 			}
 		}
 	}
@@ -1139,9 +1139,9 @@ public class MainApplicationWindow extends ApplicationWindow {
 	public boolean close() {
 		boolean result = true;
 
-		final int[] weights = sashForm.getWeights();
-		Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
-		Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
+            final int[] weights = sashForm.getWeights();
+            Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
+            Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
 
 		boolean cancelled = saveCurrentDocument();
 		
