@@ -1134,27 +1134,27 @@ public class MainApplicationWindow extends ApplicationWindow {
 
 		return cancelled;
 	}
-	
-	@Override
-	public boolean close() {
-		boolean result = true;
 
-            final int[] weights = sashForm.getWeights();
-            Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
-            Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
+    @Override
+    public boolean close() {
+        boolean result = true;
 
-		boolean cancelled = saveCurrentDocument();
-		
-		if (!cancelled) {
-			if (singletonApplication != null) {
-				singletonApplication.releaseSocket();
-			}
-			
-			result = super.close();
-		}
+        final int[] weights = sashForm.getWeights();
+        Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthLeft, weights[0]);
+        Globals.getPreferenceStore().setValue(PreferenceKeys.SashWidthRight, weights[1]);
 
-		return result;
-	}
+        boolean cancelled = saveCurrentDocument();
+
+        if (!cancelled) {
+            if (singletonApplication != null) {
+                singletonApplication.releaseSocket();
+            }
+
+            result = super.close();
+        }
+
+        return result;
+    }
 	
 	/**
 	 * Ensure that main window is visible and display a "this program is already running" message.

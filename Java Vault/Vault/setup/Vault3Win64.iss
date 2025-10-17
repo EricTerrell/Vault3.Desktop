@@ -35,6 +35,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [Files]
 Source: "C:\Temp\Vault3\Vault3Win_x86_64\custom-runtime\*"; DestDir: "{app}\custom-runtime"; Flags: ignoreversion recursesubdirs
 Source: "C:\Temp\Vault3\Vault3Win_x86_64\Help\*"; DestDir: "{app}\Help"; Flags: ignoreversion
+Source: "C:\Temp\Vault3\Vault3Win_x86_64\Help\artwork\*"; DestDir: "{app}\Help\artwork"; Flags: ignoreversion
 Source: "C:\Temp\Vault3\Vault3Win_x86_64\example.vl3"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Temp\Vault3\Vault3Win_x86_64\LicenseTerms.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Temp\Vault3\Vault3Win_x86_64\vault3.jar"; DestDir: "{app}"; Flags: ignoreversion
