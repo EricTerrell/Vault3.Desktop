@@ -95,18 +95,8 @@ public class AboutDialog extends VaultDialog {
 		});
 		
 		eclipseLink = new Link(eclipseComposite, SWT.NONE);
-		eclipseLink.setText("<a>JFace</a> libraries.");
-		eclipseLink.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+		eclipseLink.setText("JFace libraries.");
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://wiki.eclipse.org/index.php/JFace");
-			}
-		});
-		
 		final Link silkLink = new Link(composite, SWT.NONE);
 		silkLink.setText(MessageFormat.format("{0} uses artwork from the <a>Silk</a> icon set.", StringLiterals.ProgramName));
 		
@@ -117,21 +107,7 @@ public class AboutDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://www.famfamfam.com/lab/icons/silk/");
-			}
-		});
-		
-		final Link heureuseLink = new Link(composite, SWT.NONE);
-		heureuseLink.setText(MessageFormat.format("{0} uses Christian d''Heureuse''s <a>Base64Coder</a> class for Base64 encoding and decoding.", StringLiterals.ProgramName));
-		
-		heureuseLink.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://www.source-code.biz");
+				Program.launch("https://github.com/legacy-icons/famfamfam-silk");
 			}
 		});
 		
@@ -178,19 +154,8 @@ public class AboutDialog extends VaultDialog {
 		});
 
 		final Link imagescalrLink = new Link(composite, SWT.NONE);
-		imagescalrLink.setText(MessageFormat.format("{0} uses <a>imgscalr</a> to export Photos.", StringLiterals.ProgramName));
-		
-		imagescalrLink.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
+		imagescalrLink.setText(MessageFormat.format("{0} uses imgscalr-lib to export Photos.", StringLiterals.ProgramName));
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				Program.launch("https://github.com/thebuzzmedia/imgscalr");
-			}
-		});
-		
 		new Label(composite, SWT.NONE).setText(StringLiterals.EmptyString);
 
 		new Label(composite, SWT.NONE).setText(String.format("Using Java version %s", System.getProperty("java.version")));

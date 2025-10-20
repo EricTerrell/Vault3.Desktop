@@ -45,12 +45,12 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import commonCode.Base64Utils;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 import org.perf4j.LoggingStopWatch;
 
-import commonCode.Base64Coder;
 import commonCode.DocumentMetadata;
 import commonCode.VaultDocumentVersion;
 import commonCode.VaultException;
@@ -178,7 +178,7 @@ public class VaultDocument {
 		xmlStreamWriter.writeStartElement(NativeDefaultHandler.ITEMELEMENTNAME);
 		
 		xmlStreamWriter.writeStartElement(NativeDefaultHandler.TITLEELEMENTNAME);
-		xmlStreamWriter.writeCharacters(Base64Coder.i18nEncode(outlineItem.getTitle()));
+		xmlStreamWriter.writeCharacters(Base64Utils.i18nEncode(outlineItem.getTitle()));
 		xmlStreamWriter.writeEndElement();
 		
 		xmlStreamWriter.writeStartElement(NativeDefaultHandler.TEXTELEMENTNAME);
@@ -190,16 +190,16 @@ public class VaultDocument {
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.RGBATTRIBUTENAME, rgbString);
 		}
 		
-		final String fontListString = Base64Coder.i18nEncode(outlineItem.getFontListString());
+		final String fontListString = Base64Utils.i18nEncode(outlineItem.getFontListString());
 		
 		if (fontListString != null) {
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.FONTLISTATTRIBUTENAME, fontListString);
 		}
 		
-		xmlStreamWriter.writeCharacters(Base64Coder.i18nEncode(outlineItem.getText()));
+		xmlStreamWriter.writeCharacters(Base64Utils.i18nEncode(outlineItem.getText()));
 		xmlStreamWriter.writeEndElement();
 		
-		final String photoPath = Base64Coder.i18nEncode(outlineItem.getPhotoPath());
+		final String photoPath = Base64Utils.i18nEncode(outlineItem.getPhotoPath());
 		
 		if (photoPath != null) {
 			xmlStreamWriter.writeStartElement(NativeDefaultHandler.PHOTOELEMENTNAME);
@@ -295,10 +295,10 @@ public class VaultDocument {
 	        
 	        xmlStreamWriter.writeStartElement(NativeDefaultHandler.ENCRYPTEDITEMS);
 
-			final String saltString = new String(Base64Coder.encode(salt));
+			final String saltString = Base64Utils.encodeToString(salt);
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.SALTATTRIBUTE, saltString);
 
-			final String ivString = new String(Base64Coder.encode(iv));
+			final String ivString = Base64Utils.encodeToString(iv);
 			xmlStreamWriter.writeAttribute(NativeDefaultHandler.IVATTRIBUTE, ivString);
 
 	        int index = 0;
@@ -312,9 +312,8 @@ public class VaultDocument {
 
 				System.arraycopy(cipherText, index, segment, 0, segment.length);
 	        	
-	        	final char[] base64EncodedChars = Base64Coder.encode(segment);
-	        	final String base64EncodedString = new String(base64EncodedChars);
-	        	
+	        	final String base64EncodedString = Base64Utils.encodeToString(segment);
+
 	        	xmlStreamWriter.writeCharacters(base64EncodedString);
 	        	
 	        	xmlStreamWriter.writeEndElement();
@@ -341,7 +340,7 @@ public class VaultDocument {
 		final byte[] randomBytes = new byte[100];
 		secureRandom.nextBytes(randomBytes);
 
-		return new String(Base64Coder.encode(randomBytes));
+		return Base64Utils.encodeToString(randomBytes);
 	}
 	
 	/**
@@ -453,8 +452,8 @@ public class VaultDocument {
 						byte[] salt = null, iv = null;
 
 						if (saltString != null && ivString != null) {
-							salt = Base64Coder.decode(saltString);
-							iv = Base64Coder.decode(ivString);
+							salt = Base64Utils.decode(saltString);
+							iv = Base64Utils.decode(ivString);
 						}
 
 						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(),
@@ -497,8 +496,8 @@ public class VaultDocument {
 							final String saltString = resultSet.getString("TitleSalt");
 							final String ivString = resultSet.getString("TitleIV");
 
-							salt = Base64Coder.decode(saltString);
-							iv = Base64Coder.decode(ivString);
+							salt = Base64Utils.decode(saltString);
+							iv = Base64Utils.decode(ivString);
 						}
 
 						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(),
@@ -516,8 +515,8 @@ public class VaultDocument {
 							final String saltString = resultSet.getString("TextSalt");
 							final String ivString = resultSet.getString("TextIV");
 
-							salt = Base64Coder.decode(saltString);
-							iv = Base64Coder.decode(ivString);
+							salt = Base64Utils.decode(saltString);
+							iv = Base64Utils.decode(ivString);
 						}
 
 						final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(password.getValue(),
@@ -737,11 +736,11 @@ public class VaultDocument {
 				insertStatement.execute();
 
 				insertStatement.setString(1, StringLiterals.Salt);
-				insertStatement.setString(2, new String(Base64Coder.encode(salt)));
+				insertStatement.setString(2, Base64Utils.encodeToString(salt));
 				insertStatement.execute();
 
 				insertStatement.setString(1, StringLiterals.IV);
-				insertStatement.setString(2, new String(Base64Coder.encode(iv)));
+				insertStatement.setString(2, Base64Utils.encodeToString(iv));
 				insertStatement.execute();
 
 				insertStatement.close();
@@ -768,10 +767,10 @@ public class VaultDocument {
 			if (isEncrypted) {
 				{
 					final byte[] salt = CryptoUtils.createSalt();
-					titleSalt = new String(Base64Coder.encode(salt));
+					titleSalt = Base64Utils.encodeToString(salt);
 
 					final byte[] iv = CryptoUtils.createIV();
-					titleIV = new String(Base64Coder.encode(iv));
+					titleIV = Base64Utils.encodeToString(iv);
 
 					final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
 							getVaultDocumentVersion(), salt, iv);
@@ -781,10 +780,10 @@ public class VaultDocument {
 
 				{
 					final byte[] salt = CryptoUtils.createSalt();
-					textSalt = new String(Base64Coder.encode(salt));
+					textSalt = Base64Utils.encodeToString(salt);
 
 					final byte[] iv = CryptoUtils.createIV();
-					textIV = new String(Base64Coder.encode(iv));
+					textIV = Base64Utils.encodeToString(iv);
 
 					final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
 							getVaultDocumentVersion(), salt, iv);
@@ -870,10 +869,10 @@ public class VaultDocument {
 		if (isEncrypted) {
 			{
 				final byte[] salt = CryptoUtils.createSalt();
-				titleSalt = new String(Base64Coder.encode(salt));
+				titleSalt = Base64Utils.encodeToString(salt);
 
 				final byte[] iv = CryptoUtils.createIV();
-				titleIV = new String(Base64Coder.encode(iv));
+				titleIV = Base64Utils.encodeToString(iv);
 
 				final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
 						getVaultDocumentVersion(), salt, iv);
@@ -883,10 +882,10 @@ public class VaultDocument {
 
 			{
 				final byte[] salt = CryptoUtils.createSalt();
-				textSalt = new String(Base64Coder.encode(salt));
+				textSalt = Base64Utils.encodeToString(salt);
 
 				final byte[] iv = CryptoUtils.createIV();
-				textIV = new String(Base64Coder.encode(iv));
+				textIV = Base64Utils.encodeToString(iv);
 
 				final Cipher encryptionCipher = CryptoUtils.createEncryptionCipher(getPassword(),
 						getVaultDocumentVersion(), salt, iv);

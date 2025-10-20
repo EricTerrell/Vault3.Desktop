@@ -304,5 +304,8 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundGreen, 255);
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundBlue, 255);
 		preferenceStore.setDefault(PreferenceKeys.AlsoDeleteOutlineItem, true);
+
+        final int numberOfCores = Runtime.getRuntime().availableProcessors();
+        preferenceStore.setDefault(PreferenceKeys.CPUCoresForPhotoExports, numberOfCores);
 	}
 }

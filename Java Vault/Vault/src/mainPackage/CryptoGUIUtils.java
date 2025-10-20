@@ -25,7 +25,7 @@ import java.sql.Connection;
 import java.text.MessageFormat;
 import javax.crypto.Cipher;
 
-import commonCode.Base64Coder;
+import commonCode.Base64Utils;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import commonCode.VaultDocumentVersion;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -90,8 +90,8 @@ public class CryptoGUIUtils {
 					byte[] salt = null, iv = null;
 
 					if (saltString != null && ivString != null) {
-						salt = Base64Coder.decode(saltString);
-						iv = Base64Coder.decode(ivString);
+						salt = Base64Utils.decode(saltString);
+						iv = Base64Utils.decode(ivString);
 					}
 
 					final Cipher decryptionCipher = CryptoUtils.createDecryptionCipher(

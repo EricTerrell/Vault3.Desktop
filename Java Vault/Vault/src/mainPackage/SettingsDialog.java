@@ -65,14 +65,14 @@ public class SettingsDialog extends VaultDialog {
 	protected void populateFields() {
 		slideshowExclusionText.setText(preferenceStore.getString(PreferenceKeys.SlideshowExclusions));
 		photoEditingProgramText.setText(preferenceStore.getString(PreferenceKeys.PhotoEditingProgramPath));
-		startupFilePathText.setText(preferenceStore.getString(PreferenceKeys.StarupFilePath));
+		startupFilePathText.setText(preferenceStore.getString(PreferenceKeys.StartupFilePath));
 
 		updateFontDisplay();
 		
 		substituteFolderLabel.setText(preferenceStore.getString(PreferenceKeys.SubstitutePhotoFolder));
 	}
 
-	private int autoSaveIntervalMinutes, checkForModificationsIntervalMinutes;
+	private int autoSaveIntervalMinutes, checkForModificationsIntervalMinutes, cpuCoresForPhotoExports;
 
 	private Button autoSaveCheckBox, saveWithBakFileTypeCheckBox, loadFileOnStartupButton, loadMostRecentlyUsedFileButton, 
 				   doNotAutomaticallyLoadFileButton, loadPhotosFromOriginalLocationsRadioButton, loadPhotosFromSubstituteFolderRadioButton, okButton,
@@ -150,7 +150,7 @@ public class SettingsDialog extends VaultDialog {
 		preferenceStore.setValue(PreferenceKeys.LoadFileOnStartup,          loadFileOnStartupButton.getSelection()); 
 		preferenceStore.setValue(PreferenceKeys.LoadMostRecentlyUsedFile,   loadMostRecentlyUsedFileButton.getSelection()); 
 		preferenceStore.setValue(PreferenceKeys.DoNotAutomaticallyLoadFile, doNotAutomaticallyLoadFileButton.getSelection()); 
-		preferenceStore.setValue(PreferenceKeys.StarupFilePath,             startupFilePathText.getText());
+		preferenceStore.setValue(PreferenceKeys.StartupFilePath,             startupFilePathText.getText());
 		
 		preferenceStore.setValue(PreferenceKeys.AutoSaveMinutes, autoSaveCheckBox.getSelection() ? autoSaveIntervalMinutes : 0);
 		preferenceStore.setValue(PreferenceKeys.SaveOldFileWithBakType, saveWithBakFileTypeCheckBox.getSelection());
@@ -184,6 +184,8 @@ public class SettingsDialog extends VaultDialog {
 		}
 		
 		preferenceStore.setValue(PreferenceKeys.PhotoEditingProgramPath, photoEditingProgramText.getText());
+        preferenceStore.setValue(PreferenceKeys.CPUCoresForPhotoExports, cpuCoresForPhotoExports);
+
 		preferenceStore.setValue(PreferenceKeys.CheckForUpdatesAutomatically, checkForUpdatesCheckBox.getSelection());
 		
 		super.okPressed();
@@ -757,8 +759,64 @@ public class SettingsDialog extends VaultDialog {
 		imageLabel.setImage(image);
 		
 		imageLabel.setToolTipText(StringLiterals.SearchTextToolTip);
-		
-		final Composite updatesComposite = new Composite(tabFolder, SWT.NONE);
+
+        // Spacer.
+        new Label(photosComposite, SWT.NONE).setText(StringLiterals.EmptyString);
+
+        final Composite cpuCoresComposite = new Composite(photosComposite, SWT.NONE);
+        gridLayout = new GridLayout(4, false);
+        cpuCoresComposite.setLayout(gridLayout);
+
+        new Label(cpuCoresComposite, SWT.NONE).setText("&CPU Cores for Photo Exports:");
+
+        final int cpuCores = Runtime.getRuntime().availableProcessors();
+
+        final Scale cpuCoresScale = new Scale(cpuCoresComposite, SWT.HORIZONTAL);
+        cpuCoresScale.setMinimum(1);
+        cpuCoresScale.setMaximum(cpuCores * 4);
+
+        cpuCoresScale.setIncrement(1);
+        cpuCoresScale.setPageIncrement(4);
+
+        cpuCoresForPhotoExports = preferenceStore.getInt(PreferenceKeys.CPUCoresForPhotoExports);
+        cpuCoresScale.setSelection(cpuCoresForPhotoExports);
+
+        final Label cpuCoresLabel = new Label(cpuCoresComposite, SWT.NONE);
+
+        final String cpuCoresFormat = "{0}";
+        final String cpuCoresText = MessageFormat.format(cpuCoresFormat, cpuCoresScale.getSelection());
+        cpuCoresLabel.setText(cpuCoresText);
+
+        cpuCoresForPhotoExports = cpuCoresScale.getSelection();
+
+        final Image cpuCoresImage = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_LIGHTBULB);
+
+        final Label cpuCoresTooltipLabel = new Label(cpuCoresComposite, SWT.NONE);
+        cpuCoresTooltipLabel.setImage(cpuCoresImage);
+
+        final String cpuCoresTooltipText = String.format("This computer has %d cores", cpuCores);
+        cpuCoresTooltipLabel.setToolTipText(cpuCoresTooltipText);
+
+        // Allocate room for 5 digits (plus some extra space to account for different width of digits).
+        gridData = new GridData(GridData.FILL_HORIZONTAL);
+        gridData.minimumWidth = GraphicsUtils.getTextExtent(cpuCoresText).x + GraphicsUtils.getTextExtent("0").x * 5;
+        gridData.horizontalAlignment = SWT.LEFT;
+        cpuCoresLabel.setLayoutData(gridData);
+
+        cpuCoresScale.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetDefaultSelected(SelectionEvent e) {
+            }
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                final String text = MessageFormat.format(cpuCoresFormat, cpuCoresScale.getSelection());
+                cpuCoresLabel.setText(text);
+                cpuCoresForPhotoExports = cpuCoresScale.getSelection();
+            }
+        });
+
+        final Composite updatesComposite = new Composite(tabFolder, SWT.NONE);
 		updatesComposite.setLayout(new GridLayout(1, false));
 		
 		checkForUpdatesCheckBox = new Button(updatesComposite, SWT.CHECK);

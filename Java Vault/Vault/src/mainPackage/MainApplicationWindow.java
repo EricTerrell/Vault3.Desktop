@@ -716,7 +716,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 			}
 		}
 		else if (Globals.getPreferenceStore().getBoolean(PreferenceKeys.LoadFileOnStartup)) {
-			final String startupFilePath = Globals.getPreferenceStore().getString(PreferenceKeys.StarupFilePath);
+			final String startupFilePath = Globals.getPreferenceStore().getString(PreferenceKeys.StartupFilePath);
 
 			final File file = new File(startupFilePath);
 

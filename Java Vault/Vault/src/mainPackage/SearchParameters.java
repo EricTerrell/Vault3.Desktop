@@ -28,9 +28,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import commonCode.Base64Coder;
-
 import javax.crypto.Cipher;
+
+import commonCode.Base64Utils;
 
 public class SearchParameters implements Serializable {
 	private static final long serialVersionUID = -3767549351231644670L;
@@ -116,12 +116,10 @@ public class SearchParameters implements Serializable {
 				serializedBytes = CryptoUtils.encrypt(cipher, serializedBytes);
 			}
 			
-			final char[] results = Base64Coder.encode(serializedBytes);
+			serializedText = Base64Utils.encodeToString(serializedBytes);
 			
 			byteArrayOutputStream.close();
 			objectOutputStream.close();
-			
-			serializedText = new String(results);
 		}
 		catch (Throwable ex) {
 			ex.printStackTrace();
@@ -136,7 +134,7 @@ public class SearchParameters implements Serializable {
 
 		try
 		{
-			byte[] serializedBytes = Base64Coder.decode(serializedText);
+			byte[] serializedBytes = Base64Utils.decode(serializedText);
 			
 			if (Globals.getVaultDocument().isEncrypted()) {
 				final Cipher cipher = CryptoUtils.createDecryptionCipher(
@@ -154,7 +152,7 @@ public class SearchParameters implements Serializable {
 			result = (List<SearchParameters>) objectInputStream.readObject();
 		}
 		catch (Throwable ex) {
-			ex.printStackTrace();
+			Globals.getLogger().info(String.format("SearchParameters.deserialize exception %s", ex.getMessage()));
 		}
 		
 		return result;

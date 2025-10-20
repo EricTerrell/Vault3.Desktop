@@ -103,8 +103,9 @@ public class ExportPhotosToDevice {
 		
 		final ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(shell);
 
-		int numberOfCores = Runtime.getRuntime().availableProcessors();
-		final ExecutorService executorService = Executors.newFixedThreadPool(numberOfCores);
+		final int numberOfCores = Globals.getPreferenceStore().getInt(PreferenceKeys.CPUCoresForPhotoExports);
+
+        final ExecutorService executorService = Executors.newFixedThreadPool(numberOfCores);
 		
 		Globals.getLogger().info(String.format("export: %d cores", numberOfCores));
 
@@ -208,6 +209,8 @@ public class ExportPhotosToDevice {
 				// user closes the app.
 				executorService.shutdownNow();
 			}
+
+            executorService.close();
 		}
 		
 		Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);

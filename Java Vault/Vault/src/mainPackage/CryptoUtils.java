@@ -36,7 +36,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import commonCode.Base64Coder;
+import commonCode.Base64Utils;
 import commonCode.VaultDocumentVersion;
 
 /**
@@ -235,14 +235,12 @@ public class CryptoUtils {
 		final byte[] plainTextBytes = plainText.getBytes(StandardCharsets.UTF_8);
 		
 		final byte[] cipherTextBytes = cipher.doFinal(plainTextBytes);
-		
-		final char[] cipherTextArray = Base64Coder.encode(cipherTextBytes);
 
-		return new String(cipherTextArray);
+        return Base64Utils.encodeToString(cipherTextBytes);
 	}
 	
 	public static String decryptString(Cipher cipher, String cipherText) throws IllegalBlockSizeException, BadPaddingException {
-		final byte[] cipherTextBytes = Base64Coder.decode(cipherText);
+		final byte[] cipherTextBytes = Base64Utils.decode(cipherText);
 		
 		final byte[] plainTextBytes = cipher.doFinal(cipherTextBytes);
 

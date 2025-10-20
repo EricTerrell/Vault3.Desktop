@@ -103,9 +103,10 @@ import java.text.MessageFormat;
  *                                   render properly (Outline/Move Up and Outline/Unindent).
  * 0.88             1.3              Now (finally) use Maven.
  * 0.89             1.3              Now load (most) components from Maven remote repository rather than local repo.
+ * 0.90             1.3              Allow user to choose the number of CPU cores to use to export photos to a device.
  */
 public class Version {
-	private static final float versionNumber = 0.89f;
+	private static final float versionNumber = 0.90f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

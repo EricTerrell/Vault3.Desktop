@@ -28,8 +28,9 @@ public class PreferenceKeys {
 	public static final String LoadFileOnStartup                = "LoadFileOnStartup";
 	public static final String LoadMostRecentlyUsedFile         = "LoadMostRecentlyUsedFile";
 	public static final String DoNotAutomaticallyLoadFile       = "DoNotAutomaticallyLoadFile";
-	public static final String StarupFilePath                   = "StartupFilePath";
+	public static final String StartupFilePath                  = "StartupFilePath";
 	public static final String AutoSaveMinutes                  = "AutoSaveMinutes";
+    public static final String CPUCoresForPhotoExports          = "CPUCoresForPhotoExports";
 	public static final String SaveOldFileWithBakType           = "SaveOldFileWithBakType";
 	public static final String DefaultTextFont                  = "DefaultTextFont";
 	public static final String DefaultTextFontRed               = "DefaultTextFontRed";

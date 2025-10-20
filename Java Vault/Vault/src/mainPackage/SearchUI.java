@@ -24,7 +24,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import commonCode.Base64Coder;
+import commonCode.Base64Utils;
 import mainPackage.Search.SearchMode;
 
 import org.eclipse.jface.viewers.ComboViewer;
@@ -307,8 +307,8 @@ public class SearchUI extends Composite {
                 final String serializedText = SearchParameters.serialize(searchParametersList, salt, iv);
 
                 Globals.getPreferenceStore().setValue(getSavedSearchesKey(), serializedText);
-                Globals.getPreferenceStore().setValue(getSavedSearchesSaltKey(), new String(Base64Coder.encode(salt)));
-                Globals.getPreferenceStore().setValue(getSavedSearchesIVKey(), new String(Base64Coder.encode(iv)));
+                Globals.getPreferenceStore().setValue(getSavedSearchesSaltKey(), Base64Utils.encodeToString(salt));
+                Globals.getPreferenceStore().setValue(getSavedSearchesIVKey(), Base64Utils.encodeToString(iv));
             }
 
             public void widgetSelected(SelectionEvent e) {
@@ -391,10 +391,10 @@ public class SearchUI extends Composite {
         final String saltString = Globals.getPreferenceStore().getString(getSavedSearchesSaltKey());
         final String ivString = Globals.getPreferenceStore().getString(getSavedSearchesIVKey());
 
-        final byte[] salt = Base64Coder.decode(saltString);
-        final byte[] iv = Base64Coder.decode(ivString);
+        final byte[] salt = Base64Utils.decode(saltString);
+        final byte[] iv = Base64Utils.decode(ivString);
 
-        List<SearchParameters> searchParametersList = SearchParameters.deserialize(serializedText, salt, iv);
+        final List<SearchParameters> searchParametersList = SearchParameters.deserialize(serializedText, salt, iv);
 
         final int maxSavedSearches = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxSavedSearches);
         searchComboViewer.getCombo().setVisibleItemCount(maxSavedSearches);

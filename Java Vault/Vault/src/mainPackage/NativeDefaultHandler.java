@@ -24,12 +24,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Stack;
 
+import commonCode.Base64Utils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.swt.graphics.RGB;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
-
-import commonCode.Base64Coder;
 
 import fonts.FontList;
 
@@ -127,7 +126,7 @@ public class NativeDefaultHandler extends DefaultHandler {
         String decodedText;
 
         if (isBase64Encoded) {
-            decodedText = Base64Coder.i18nDecode(text);
+            decodedText = Base64Utils.i18nDecode(text);
         } else {
             decodedText = text;
         }
@@ -235,13 +234,13 @@ public class NativeDefaultHandler extends DefaultHandler {
                 final String saltString = attributes.getValue(SALTATTRIBUTE);
 
                 if (saltString != null) {
-                    salt = Base64Coder.decode(saltString);
+                    salt = Base64Utils.decode(saltString);
                 }
 
                 final String ivString = attributes.getValue(IVATTRIBUTE);
 
                 if (ivString != null) {
-                    iv = Base64Coder.decode(ivString);
+                    iv = Base64Utils.decode(ivString);
                 }
 
                 encryptedBytes = new ByteArrayOutputStream();
@@ -285,7 +284,7 @@ public class NativeDefaultHandler extends DefaultHandler {
             }
             break;
             case ENCRYPTEDITEM: {
-                final byte[] encryptedBuffer = Base64Coder.decode(elementText.toString());
+                final byte[] encryptedBuffer = Base64Utils.decode(elementText.toString());
 
                 try {
                     encryptedBytes.write(encryptedBuffer);
