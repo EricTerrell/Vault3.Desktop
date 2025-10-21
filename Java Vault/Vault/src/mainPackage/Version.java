@@ -104,9 +104,12 @@ import java.text.MessageFormat;
  * 0.88             1.3              Now (finally) use Maven.
  * 0.89             1.3              Now load (most) components from Maven remote repository rather than local repo.
  * 0.90             1.3              Allow user to choose the number of CPU cores to use to export photos to a device.
+ * 0.91             1.3              1) Make all VaultDialog derived dialogs application modal. Wasn't this the case in
+ *                                      the past? When did it change?
+ *                                   2) Make https:// the default protocol in InsertUrlDialog.
  */
 public class Version {
-	private static final float versionNumber = 0.90f;
+	private static final float versionNumber = 0.91f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

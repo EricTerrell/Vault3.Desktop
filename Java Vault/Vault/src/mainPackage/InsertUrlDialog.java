@@ -125,8 +125,8 @@ public class InsertUrlDialog extends VaultDialog {
 		urlLabel.setText("&URL:");
 		
 		protocolCombo = new Combo(urlComposite, SWT.DROP_DOWN | SWT.READ_ONLY);
-		protocolCombo.add("http://");
 		protocolCombo.add("https://");
+        protocolCombo.add("http://");
 		protocolCombo.add("file:///");
 		
 		protocolCombo.select(0);

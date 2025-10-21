@@ -88,7 +88,7 @@ public class VaultDialog extends Dialog {
 	protected VaultDialog(Shell parentShell) {
 		super(parentShell);
 
-		int shellStyle = SWT.CLOSE | SWT.TITLE;
+		int shellStyle = SWT.CLOSE | SWT.TITLE | SWT.APPLICATION_MODAL;
 
 		if (isResizable()) {
 			shellStyle |= (SWT.RESIZE | SWT.MAX);
