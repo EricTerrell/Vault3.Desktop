@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.91&#10;&#10;1) All VaultDialog derived dialogs are now modal.&#10;2) In InsertUrlDialog, default to https:// protocol.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/AboutDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/AboutDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +179,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="PowerShell.build_everything.ps1">
+  <component name="RunManager" selected="PowerShell.build_everything.ps1 (1)">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -386,10 +386,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.ant_build_linux_gtk_x86_64.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (2)" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1" />
       </list>
     </recent_temporary>
@@ -776,7 +776,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="230" />
+    <option name="localTasksCounter" value="234" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1116,15 +1116,14 @@
           <option name="timeStamp" value="375" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="381" />
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="382" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>46</line>
-          <properties field="updatesAreAvailable" class="mainPackage.SoftwareUpdatesDialog" />
-          <option name="timeStamp" value="380" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/CryptoGUIUtils.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="383" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

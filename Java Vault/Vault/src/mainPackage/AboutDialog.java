@@ -229,7 +229,7 @@ public class AboutDialog extends VaultDialog {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				try {
-					SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(Globals.getMainApplicationWindow().getShell());
+					final SoftwareUpdatesDialog softwareUpdatesDialog = new SoftwareUpdatesDialog(getShell());
 					softwareUpdatesDialog.open();
 				}
 				catch (Throwable ex) {
