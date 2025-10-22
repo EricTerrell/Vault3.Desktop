@@ -26,9 +26,11 @@ import java.text.MessageFormat;
 import javax.crypto.Cipher;
 
 import commonCode.Base64Utils;
+import commonCode.IPlatform;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import commonCode.VaultDocumentVersion;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * @author Eric Bergman-Terrell
@@ -42,7 +44,8 @@ public class CryptoGUIUtils {
 		
 		do 
 		{
-			final PasswordPromptDialog passwordPromptDialog = new PasswordPromptDialog(null, new File(filePath).getName());
+            final PasswordPromptDialog passwordPromptDialog =
+                    new PasswordPromptDialog(getParentShell(), new File(filePath).getName());
 
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
 				Globals.getLogger().info("XML File is encrypted, Decrypting");
@@ -78,8 +81,7 @@ public class CryptoGUIUtils {
 
 		do
 		{
-			final PasswordPromptDialog passwordPromptDialog =
-					new PasswordPromptDialog(null, documentName);
+			final PasswordPromptDialog passwordPromptDialog = new PasswordPromptDialog(getParentShell(), documentName);
 
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
 				try {
@@ -131,4 +133,9 @@ public class CryptoGUIUtils {
 			}
 		} while (!decrypted);
 	}
+
+    private static Shell getParentShell() {
+        return Globals.getPlatform() == IPlatform.PlatformEnum.Windows ?
+                Globals.getMainApplicationWindow().getShell() : null;
+    }
 }
