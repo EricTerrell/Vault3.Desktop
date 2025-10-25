@@ -85,9 +85,12 @@ public class CryptoGUIUtils {
 
 			if (passwordPromptDialog.open() == IDialogConstants.OK_ID) {
 				try {
-					final String cipherText = VaultDocument.getVaultDocumentInfo(db,StringLiterals.CipherText);
-					final String saltString = VaultDocument.getVaultDocumentInfo(db,StringLiterals.Salt);
-					final String ivString = VaultDocument.getVaultDocumentInfo(db,StringLiterals.IV);
+					final String cipherText =
+                            VaultDocumentDatabasePersistence.getVaultDocumentInfo(db,StringLiterals.CipherText);
+					final String saltString =
+                            VaultDocumentDatabasePersistence.getVaultDocumentInfo(db,StringLiterals.Salt);
+					final String ivString =
+                            VaultDocumentDatabasePersistence.getVaultDocumentInfo(db,StringLiterals.IV);
 
 					byte[] salt = null, iv = null;
 

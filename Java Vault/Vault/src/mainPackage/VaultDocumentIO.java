@@ -21,16 +21,11 @@
 package mainPackage;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.text.MessageFormat;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
-
-import commonCode.DocumentMetadata;
-import commonCode.VaultDocumentVersion;
 
 public class VaultDocumentIO {
 	private static String xmlExportPreviousFolder = System.getProperty("user.home");
@@ -118,11 +113,10 @@ public class VaultDocumentIO {
 				}
 				
 				if (export) {
-					Globals.getVaultDocument().saveAsXMLFile(filePath);
+                    new VaultDocumentXMLPersistence().store(Globals.getVaultDocument(), filePath);
 				}
 				else {
-					Globals.getVaultDocument().saveAsSQLiteFile(filePath);
-					Globals.getVaultDocument().setDocumentMetadata(new DocumentMetadata(filePath));
+                    new VaultDocumentDatabasePersistence().store(Globals.getVaultDocument(), filePath);
 				}
 
 				final String folderPath = new File(filePath).getParent();
@@ -163,39 +157,18 @@ public class VaultDocumentIO {
 		final StringWrapper password = new StringWrapper();
 		password.setValue(Globals.getPasswordCache().get(filePath));
 		
-		OutlineItem outlineItem;
-
-		final VaultDocument vaultDocument = new VaultDocument();
+		VaultDocument vaultDocument;
 
 		if (VaultDocument.isDatabase(filePath)) {
-			final String dbURL = VaultDocument.getDBURL(filePath);
-
-			Globals.getLogger().info(String.format("About to open database: \"%s\"", dbURL));
-
-			try (final Connection db = DriverManager.getConnection(dbURL)) {
-				outlineItem = vaultDocument.loadFromDatabase(db, filePath, password);
-
-				final VaultDocumentVersion originalVersion = vaultDocument.getOriginalDocumentVersion(db);
-				vaultDocument.setVaultDocumentOriginalVersion(originalVersion);
-			}
+            vaultDocument = new VaultDocumentDatabasePersistence().load(filePath, password);
 		}
 		else {
-			outlineItem = VaultDocumentXML.parseVault3File(filePath, password);
+            vaultDocument = new VaultDocumentXMLPersistence().load(filePath, password);
 		}
-		
-		vaultDocument.setContent(outlineItem);
 
-		vaultDocument.setVaultDocumentVersion(VaultDocumentVersion.getLatestVaultDocumentVersion());
-
-		vaultDocument.setPassword(password.getValue());
-		vaultDocument.setIsModified(false);
-		vaultDocument.setDocumentMetadata(new DocumentMetadata(filePath));
-		
 		Globals.setVaultDocument(vaultDocument);
 		Globals.getVaultTreeViewer().load(Globals.getVaultDocument().getContent());
-		vaultDocument.setFilePath(filePath);
 		Globals.getPreferenceStore().setValue(PreferenceKeys.MostRecentlyUsedFilePath, filePath);
 		Globals.getMRUFiles().update(filePath, password.getValue());
 	}
-
 }

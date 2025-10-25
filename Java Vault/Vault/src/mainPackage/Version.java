@@ -107,9 +107,20 @@ import java.text.MessageFormat;
  * 0.91             1.3              1) Make all VaultDialog derived dialogs application modal. Wasn't this the case in
  *                                      the past? When did it change?
  *                                   2) Make https:// the default protocol in InsertUrlDialog.
+ * 0.92             1.3              1) Moved tests to folder that Maven expects.
+ *                                   2) Filter out test code in maven-shade-plugin.
+ *                                   3) Don't do a mvn clean before every run.
+ *                                   4) Moved sqlite and XML load and save code to separate classes.
+ *                                   5) New tests.
+ *                                   6) Added Mockito to tests. Removed Mockito warning.
+ *                                   7) Removed ant_build_common_code.xml
+ *                                   8) Can optionally include outline text in exported photos. Can specify size of this
+ *                                   text.
+ *                                   9) Bug Fix: In previous versions, some photos that should have been excluded in
+ *                                   slideshows and exports were not excluded.
  */
 public class Version {
-	private static final float versionNumber = 0.91f;
+	private static final float versionNumber = 0.92f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

@@ -194,7 +194,7 @@ public class PhotoProcessing {
 		List<OutlineItem> selectedPhotos, allPhotos;
 
 		final Pattern[] exclusionPatterns = Search.getSearchPatterns(
-				Globals.getPreferenceStore().getString(PreferenceKeys.SlideshowExclusions),
+				Globals.getPreferenceStore().getString(PreferenceKeys.PhotoExclusions),
 				false,
 				true);
 		

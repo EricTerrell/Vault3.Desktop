@@ -129,7 +129,7 @@ public class VaultDocumentExports {
 
 	public static void exportPhotosToDevice(Shell shell, Point deviceDimensions, String destinationFolder, int maxPhotos, int maxPhotosPerFolder, boolean shuffle, boolean deleteDestinationFolderContents) {
 		final Pattern[] exclusionPatterns = Search.getSearchPatterns(
-				Globals.getPreferenceStore().getString(PreferenceKeys.SlideshowExclusions),
+				Globals.getPreferenceStore().getString(PreferenceKeys.PhotoExclusions),
 				false,
 				true);
 

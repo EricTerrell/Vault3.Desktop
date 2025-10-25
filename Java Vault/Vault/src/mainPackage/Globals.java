@@ -234,7 +234,7 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.SlideshowInterval, 5);
 		preferenceStore.setDefault(PreferenceKeys.SlideshowAllItems, true);
 		preferenceStore.setDefault(PreferenceKeys.SlideshowContinuousLoop, true);
-		preferenceStore.setDefault(PreferenceKeys.SlideshowExclusions, StringLiterals.EmptyString);
+		preferenceStore.setDefault(PreferenceKeys.PhotoExclusions, StringLiterals.EmptyString);
 		preferenceStore.setDefault(PreferenceKeys.MainWindowX, -1);
 		preferenceStore.setDefault(PreferenceKeys.MainWindowY, -1);
 		preferenceStore.setDefault(PreferenceKeys.MainWindowWidth, -1);
@@ -307,5 +307,8 @@ public class Globals {
 
         final int numberOfCores = Runtime.getRuntime().availableProcessors();
         preferenceStore.setDefault(PreferenceKeys.CPUCoresForPhotoExports, numberOfCores);
+
+        preferenceStore.setDefault(PreferenceKeys.IncludeOutlineTextInExportedPhotos, false);
+        preferenceStore.setDefault(PreferenceKeys.IncludeOutlineTextSize, 12);
 	}
 }

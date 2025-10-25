@@ -18,8 +18,6 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package jUnitTests;
-
 import commonCode.VaultDocumentVersion;
 import mainPackage.*;
 import org.junit.Assert;
@@ -29,13 +27,11 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class SearchParametersSerializationDeserializationTests {
+public class SearchParametersSerializationDeserializationTests extends BaseTests {
 	private static final String searchText = "this is some wonderful and long search text";
 	
 	@Test
 	public void roundTrip() {
-		Globals.setMainApplicationWindow(new MainApplicationWindow());
-
 		final VaultDocument vaultDocument = new VaultDocument();
 		vaultDocument.setVaultDocumentVersion(VaultDocumentVersion.getLatestVaultDocumentVersion());
 		vaultDocument.setPassword("PASSWORD");

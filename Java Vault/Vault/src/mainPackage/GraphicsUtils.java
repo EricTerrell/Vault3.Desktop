@@ -32,6 +32,10 @@ import org.perf4j.LoggingStopWatch;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.font.LineBreakMeasurer;
+import java.awt.font.TextAttribute;
+import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -40,6 +44,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.text.AttributedCharacterIterator;
+import java.text.AttributedString;
+import java.text.BreakIterator;
 
 /**
  * Various graphics utility methods.
@@ -192,7 +199,8 @@ public class GraphicsUtils {
 	 * @param destinationPath file path where scaled image will be written
 	 * @param deviceDimensions dimensions of device for which the image is being scaled
 	 */
-	public static void exportPhotoToDevice(String imagePath, String destinationPath, Point deviceDimensions) {
+	public static void exportPhotoToDevice(String imagePath, String destinationPath, Point deviceDimensions,
+                                           String outlineText) {
 		final LoggingStopWatch stopwatch = new LoggingStopWatch("GraphicsUtils.exportPhotoToDevice");
 
 		BufferedImage originalImage = null;
@@ -215,7 +223,11 @@ public class GraphicsUtils {
 			scaledImage = Scalr.resize(originalImage, Method.ULTRA_QUALITY, mode, deviceDimensions.x, deviceDimensions.y, Scalr.OP_ANTIALIAS);
 
 			Globals.getLogger().info(String.format("scaled image %d %d", scaledImage.getWidth(), scaledImage.getHeight()));
-	
+
+            if (outlineText != null) {
+                renderText(scaledImage, outlineText);
+            }
+
 			originalImage.flush();
 			originalImage = null;
 			
@@ -240,7 +252,67 @@ public class GraphicsUtils {
 		stopwatch.stop();
 	}
 
-	private static Scalr.Mode getMode(Point deviceDimensions, BufferedImage originalImage) {
+    private static void renderText(BufferedImage image, String text) {
+        var g2d = image.createGraphics();
+
+        try {
+            // Enable anti-aliasing for smoother text
+            g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            final Font font = new Font("SansSerif", Font.BOLD,
+                    Globals.getPreferenceStore().getInt(PreferenceKeys.IncludeOutlineTextSize));
+            g2d.setFont(font);
+
+            drawWrappedText(g2d, text, 0, 0, 4, 4, image.getWidth(), font);
+        }
+        finally {
+            g2d.dispose();
+        }
+    }
+
+    private static void drawWrappedText(Graphics2D g, String text, int x, int y, int xMargin, int yMargin,
+                                        int maxWidth, Font font) {
+        final AttributedString attrStr = new AttributedString(text);
+        attrStr.addAttribute(TextAttribute.FONT, font);
+
+        final AttributedCharacterIterator charIt = attrStr.getIterator();
+
+        final FontRenderContext frc = g.getFontRenderContext();
+
+        final LineBreakMeasurer measurer = new LineBreakMeasurer(charIt, BreakIterator.getWordInstance(), frc);
+
+        float drawPosY = y;
+
+        measurer.setPosition(charIt.getBeginIndex());
+
+        while (measurer.getPosition() < charIt.getEndIndex()) {
+            final TextLayout layout = measurer.nextLayout(maxWidth - (2 * xMargin));
+
+            drawPosY += layout.getAscent();
+
+            // Draw background
+            g.setColor(Color.BLACK);
+
+            final var rect = layout.getPixelBounds(frc, x, drawPosY);
+
+            // Draw black rectangle (text background)
+            g.fillRect(
+                    (int) rect.getX(),
+                    (int) rect.getY(),
+                    (int) rect.getWidth() + (2 * xMargin),
+                    (int) rect.getHeight() + (2 * yMargin));
+
+            g.setColor(Color.WHITE);
+
+            // Draw text
+            layout.draw(g, x + xMargin, drawPosY + yMargin);
+
+            drawPosY += layout.getLeading() + (2 * yMargin);
+        }
+    }
+
+    private static Scalr.Mode getMode(Point deviceDimensions, BufferedImage originalImage) {
 		final double deviceAspectRatio = (double) deviceDimensions.x / (double) deviceDimensions.y;
 		final double originalImageAspectRatio = (double) originalImage.getWidth() / (double) originalImage.getHeight();
 

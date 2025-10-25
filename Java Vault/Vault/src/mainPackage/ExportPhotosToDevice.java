@@ -57,16 +57,20 @@ public class ExportPhotosToDevice {
 	 * @param progressMonitor allows the process to be cancelled
 	 */
 	private static void deleteFolderContents(String destinationFolder, IProgressMonitor progressMonitor) {
-		File destinationFolderObj = new File(destinationFolder);
+		final File destinationFolderObj = new File(destinationFolder);
 		
-		String[] children = destinationFolderObj.list();
+		final String[] children = destinationFolderObj.list();
 		
 		if (children != null) {
 			for (String child : children) {
 				if (!progressMonitor.isCanceled() && child.contains(PhotoFolderPrefix)) {
 					final File folderToDelete = new File(destinationFolder, child);
 					
-					Display.getDefault().asyncExec(() -> Globals.getMainApplicationWindow().setStatusLineMessage(MessageFormat.format("Deleting folder {0}", folderToDelete.getAbsolutePath())));
+					Display.getDefault().asyncExec(() ->
+                            Globals.getMainApplicationWindow().setStatusLineMessage(
+                                    MessageFormat.format(
+                                            "Deleting folder {0}",
+                                            folderToDelete.getAbsolutePath())));
 					
 					FileUtils.deleteFolderContents(folderToDelete);
 				}
@@ -85,7 +89,9 @@ public class ExportPhotosToDevice {
 	 * @param selectedPhotos list of selected photos
 	 * @param deleteFolderContents if true, delete folders from destination folder that Vault 3 previously wrote.
 	 */
-	public static void export(Shell shell, Point deviceDimensions, String destinationFolder, int maxPhotos, int maxPhotosPerFolder, boolean shuffle, List<OutlineItem> selectedPhotos, boolean deleteFolderContents) {
+	public static void export(Shell shell, Point deviceDimensions, String destinationFolder, int maxPhotos,
+                              int maxPhotosPerFolder, boolean shuffle, List<OutlineItem> selectedPhotos,
+                              boolean deleteFolderContents) {
 		if (shuffle) {
 			selectedPhotos = randomizePhotos(selectedPhotos);
 		}
@@ -114,7 +120,8 @@ public class ExportPhotosToDevice {
                 // If user chose to delete folders, estimate this as about 10% of the work of rendering photos.
                 final int deleteFoldersWork = arguments.deleteFolderContents ? arguments.selectedPhotos.size() / 10 : 0;
 
-                progressMonitor.beginTask("Exporting Photos to Device", arguments.selectedPhotos.size() + deleteFoldersWork);
+                progressMonitor.beginTask("Exporting Photos to Device",
+                        arguments.selectedPhotos.size() + deleteFoldersWork);
 
                 int fileNumber = 0, folderNumber = 0;
 
@@ -151,27 +158,58 @@ public class ExportPhotosToDevice {
                                 try {
                                     executorService.execute(() -> {
                                         if (!progressMonitor.isCanceled()) {
-                                            Globals.getLogger().info(String.format("export: fileNumber: %d", _fileNumber));
+                                            Globals.getLogger()
+                                                    .info(String.format("export: fileNumber: %d", _fileNumber));
 
-                                            String destinationSubFolder = String.format("%s%sVault3Photos.%03d", arguments.destinationFolder, PortabilityUtils.getFileSeparator(), _folderNumber);
-                                            File destFolder = new File(destinationSubFolder);
+                                            final String destinationSubFolder =
+                                                    String.format(
+                                                            "%s%sVault3Photos.%03d",
+                                                            arguments.destinationFolder,
+                                                            PortabilityUtils.getFileSeparator(),
+                                                            _folderNumber);
+                                            final File destFolder = new File(destinationSubFolder);
 
                                             if (!destFolder.exists()) {
-                                                Globals.getLogger().info(String.format("export: creating folder %s", destinationSubFolder));
+                                                Globals.getLogger().info(String.format("export: creating folder %s",
+                                                        destinationSubFolder));
                                                 destFolder.mkdirs();
                                             }
 
-                                            final String _destinationPath = String.format("%s%s%04d.jpg", destinationSubFolder, PortabilityUtils.getFileSeparator(), _fileNumber);
+                                            final String _destinationPath =
+                                                    String.format(
+                                                            "%s%s%04d.jpg",
+                                                            destinationSubFolder,
+                                                            PortabilityUtils.getFileSeparator(),
+                                                            _fileNumber);
 
-                                            Globals.getLogger().info(String.format("_imagePath: %s _destinationPath: %s (%d, %d)", _imagePath, _destinationPath,
-                                                                                    arguments.deviceDimensions.x, arguments.deviceDimensions.y));
+                                            Globals.getLogger().info(
+                                                    String.format(
+                                                            "_imagePath: %s _destinationPath: %s (%d, %d)",
+                                                            _imagePath,
+                                                            _destinationPath,
+                                                            arguments.deviceDimensions.x,
+                                                            arguments.deviceDimensions.y));
 
-                                            // Need to check the isCancelled property here too, otherwise it may take a long time for a cancellation
-                                            // to take effect.
+                                            // Need to check the isCancelled property here too, otherwise it may take
+                                            // a long time for a cancellation to take effect.
                                             if (!progressMonitor.isCanceled()) {
-                                                Display.getDefault().syncExec(() -> Globals.getMainApplicationWindow().setStatusLineMessage(MessageFormat.format("Scaling and copying {0}", _imagePath)));
+                                                Display.getDefault().syncExec(() ->
+                                                        Globals.getMainApplicationWindow().setStatusLineMessage(
+                                                                MessageFormat.format(
+                                                                        "Scaling and copying {0}", _imagePath)));
 
-                                                GraphicsUtils.exportPhotoToDevice(_imagePath, _destinationPath, arguments.deviceDimensions);
+                                                String outlineText = null;
+
+                                                if (Globals.getPreferenceStore().getBoolean(
+                                                        PreferenceKeys.IncludeOutlineTextInExportedPhotos)) {
+                                                    outlineText = getOutlineText(selectedItem);
+                                                }
+
+                                                GraphicsUtils.exportPhotoToDevice(
+                                                        _imagePath,
+                                                        _destinationPath,
+                                                        arguments.deviceDimensions,
+                                                        outlineText);
 
                                                 progressMonitor.worked(1);
                                             }
@@ -180,7 +218,8 @@ public class ExportPhotosToDevice {
                                 }
                                 catch (Throwable ex) {
                                     ex.printStackTrace();
-                                    Globals.getLogger().info(String.format("exportPhotosToDevice: exception %s", ex.getMessage()));
+                                    Globals.getLogger().info(
+                                            String.format("exportPhotosToDevice: exception %s", ex.getMessage()));
                                 }
                             }
                         }
@@ -205,8 +244,8 @@ public class ExportPhotosToDevice {
 		}
 		finally {
 			if (!executorService.isShutdown()) {
-				// If the executor service isn't shut down yet, we need to shut it down, otherwise the JVM will not exit when the 
-				// user closes the app.
+				// If the executor service isn't shut down yet, we need to shut it down, otherwise the JVM will not
+                // exit when the user closes the app.
 				executorService.shutdownNow();
 			}
 
@@ -216,21 +255,35 @@ public class ExportPhotosToDevice {
 		Globals.getMainApplicationWindow().setStatusLineMessage(StringLiterals.EmptyString);
 	}
 
+    private static String getOutlineText(OutlineItem item) {
+        var result = item.getTitle();
+
+        item = item.getParent();
+
+        while (item.getParent() != null) {
+            result = String.format("%s / %s", item.getTitle(), result);
+
+            item = item.getParent();
+        }
+
+        return result;
+    }
+
 	/**
 	 * Return a shuffled list of photos.
 	 * @param photos list of photos in original order
 	 * @return list of photos in random order
 	 */
 	private static List<OutlineItem> randomizePhotos(List<OutlineItem> photos) {
-		List<OutlineItem> remainingPhotos = new ArrayList<>(photos.size());
+		final List<OutlineItem> remainingPhotos = new ArrayList<>(photos.size());
 		remainingPhotos.addAll(photos);
 
-		List<OutlineItem> randomizedPhotos = new ArrayList<>(photos.size());
+		final List<OutlineItem> randomizedPhotos = new ArrayList<>(photos.size());
 
-		Random random = new Random(System.currentTimeMillis());
+		final Random random = new Random(System.currentTimeMillis());
 		
 		while (!remainingPhotos.isEmpty()) {
-			int index = random.nextInt(remainingPhotos.size());
+			final int index = random.nextInt(remainingPhotos.size());
 			
 			randomizedPhotos.add(remainingPhotos.get(index));
 			remainingPhotos.remove(index);

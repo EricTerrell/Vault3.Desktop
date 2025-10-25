@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CommonCode/CommonCode.iml" filepath="$PROJECT_DIR$/CommonCode/CommonCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java Vault/Vault/vault3.iml" filepath="$PROJECT_DIR$/Java Vault/Vault/vault3.iml" />
     </modules>
   </component>
 </project>

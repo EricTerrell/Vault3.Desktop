@@ -506,13 +506,25 @@ public class OutlineItem {
     private boolean photoExclusionHit(Pattern[] exclusionPatterns) {
         final boolean matchAll = false;
 
-        return searchHit(getTitle(), exclusionPatterns, matchAll) || searchHit(getText(), exclusionPatterns, matchAll);
+        var currentItem = this;
+        boolean hitFound = false;
+
+        // Need to check item and all ancestors for exclusion
+        while (currentItem.getParent() != null && !hitFound) {
+            hitFound =
+                    searchHit(currentItem.getTitle(), exclusionPatterns, matchAll) ||
+                    searchHit(currentItem.getText(), exclusionPatterns, matchAll);
+
+            currentItem = currentItem.getParent();
+        }
+
+        return hitFound;
     }
 
     public List<OutlineItem> getPhotos(OutlineItem item, Pattern[] exclusionPatterns) {
         final List<OutlineItem> searchResults = new ArrayList<>();
 
-        boolean exclude = item.photoExclusionHit(exclusionPatterns);
+        final boolean exclude = item.photoExclusionHit(exclusionPatterns);
 
         if (item.photoPath != null && !exclude && PhotoUtils.isPhotoFile(item.photoPath)) {
             searchResults.add(item);
@@ -528,7 +540,9 @@ public class OutlineItem {
     public List<OutlineItem> getPhotos(List<OutlineItem> items, Pattern[] exclusionPatterns) {
         final List<OutlineItem> searchResults = new ArrayList<>();
 
-        items.stream().filter(item -> !item.photoExclusionHit(exclusionPatterns)).forEach(item -> searchResults.addAll(getPhotos(item, exclusionPatterns)));
+        items.stream()
+                .filter(item -> !item.photoExclusionHit(exclusionPatterns))
+                .forEach(item -> searchResults.addAll(getPhotos(item, exclusionPatterns)));
 
         return searchResults;
     }

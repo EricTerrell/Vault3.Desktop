@@ -35,21 +35,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Canvas;
-import org.eclipse.swt.widgets.ColorDialog;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.DirectoryDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.FontDialog;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Scale;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.*;
 
 public class SettingsDialog extends VaultDialog {
 	private final PreferenceStore preferenceStore;
@@ -63,7 +49,7 @@ public class SettingsDialog extends VaultDialog {
 
 	@Override
 	protected void populateFields() {
-		slideshowExclusionText.setText(preferenceStore.getString(PreferenceKeys.SlideshowExclusions));
+		photoExclusionText.setText(preferenceStore.getString(PreferenceKeys.PhotoExclusions));
 		photoEditingProgramText.setText(preferenceStore.getString(PreferenceKeys.PhotoEditingProgramPath));
 		startupFilePathText.setText(preferenceStore.getString(PreferenceKeys.StartupFilePath));
 
@@ -74,14 +60,17 @@ public class SettingsDialog extends VaultDialog {
 
 	private int autoSaveIntervalMinutes, checkForModificationsIntervalMinutes, cpuCoresForPhotoExports;
 
-	private Button autoSaveCheckBox, saveWithBakFileTypeCheckBox, loadFileOnStartupButton, loadMostRecentlyUsedFileButton, 
-				   doNotAutomaticallyLoadFileButton, loadPhotosFromOriginalLocationsRadioButton, loadPhotosFromSubstituteFolderRadioButton, okButton,
-				   cachePasswords, allowMultipleInstances, advancedGraphics, slideShowFullScreen, checkForUpdatesCheckBox, warnAboutSingleInstance,
-				   checkForModificationCheckBox;
+	private Button autoSaveCheckBox, saveWithBakFileTypeCheckBox, loadFileOnStartupButton,
+            loadMostRecentlyUsedFileButton, doNotAutomaticallyLoadFileButton,
+            loadPhotosFromOriginalLocationsRadioButton, loadPhotosFromSubstituteFolderRadioButton, okButton,
+            cachePasswords, allowMultipleInstances, advancedGraphics, slideShowFullScreen, checkForUpdatesCheckBox,
+            warnAboutSingleInstance, checkForModificationCheckBox, includeTextInPhotoExports;
+
+    private Spinner includeTextSize;
 
 	private Label substituteFolderLabel, defaultTextFontLabel, statusLabel;
 	
-	private Text startupFilePathText, slideshowExclusionText, photoEditingProgramText;
+	private Text startupFilePathText, photoExclusionText, photoEditingProgramText;
 	
 	private Canvas colorCanvas, textBackgroundColorCanvas;
 
@@ -161,7 +150,7 @@ public class SettingsDialog extends VaultDialog {
 		preferenceStore.setValue(PreferenceKeys.SubstitutePhotoFolder, substituteFolderLabel.getText());
 		preferenceStore.setValue(PreferenceKeys.AdvancedGraphics, advancedGraphics.getSelection());
 		preferenceStore.setValue(PreferenceKeys.SlideshowFullScreen, slideShowFullScreen.getSelection());
-		preferenceStore.setValue(PreferenceKeys.SlideshowExclusions, slideshowExclusionText.getText());
+		preferenceStore.setValue(PreferenceKeys.PhotoExclusions, photoExclusionText.getText());
 		
 		preferenceStore.setValue(PreferenceKeys.DefaultTextFont, fontString);
 		
@@ -185,6 +174,9 @@ public class SettingsDialog extends VaultDialog {
 		
 		preferenceStore.setValue(PreferenceKeys.PhotoEditingProgramPath, photoEditingProgramText.getText());
         preferenceStore.setValue(PreferenceKeys.CPUCoresForPhotoExports, cpuCoresForPhotoExports);
+        preferenceStore.setValue(PreferenceKeys.IncludeOutlineTextInExportedPhotos,
+                includeTextInPhotoExports.getSelection());
+        preferenceStore.setValue(PreferenceKeys.IncludeOutlineTextSize, includeTextSize.getSelection());
 
 		preferenceStore.setValue(PreferenceKeys.CheckForUpdatesAutomatically, checkForUpdatesCheckBox.getSelection());
 		
@@ -708,11 +700,11 @@ public class SettingsDialog extends VaultDialog {
 		final Label exclusionsLabel = new Label(exclusionsComposite, SWT.NONE);
 		exclusionsLabel.setText("In Slideshows and Photo Exports, Excl&ude Items Containing:");
 		
-		slideshowExclusionText = new Text(exclusionsComposite, SWT.BORDER); 
+		photoExclusionText = new Text(exclusionsComposite, SWT.BORDER);
 		
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.grabExcessHorizontalSpace = true;
-		slideshowExclusionText.setLayoutData(gridData);
+		photoExclusionText.setLayoutData(gridData);
 		
 		// Spacer.
 		new Label(photosComposite, SWT.NONE).setText(StringLiterals.EmptyString);
@@ -815,6 +807,25 @@ public class SettingsDialog extends VaultDialog {
                 cpuCoresForPhotoExports = cpuCoresScale.getSelection();
             }
         });
+
+        final Composite includeTextComposite = new Composite(photosComposite, SWT.NONE);
+        gridLayout = new GridLayout(3, false);
+        gridLayout.horizontalSpacing = 15;
+        includeTextComposite.setLayout(gridLayout);
+
+        includeTextInPhotoExports = new Button(includeTextComposite, SWT.CHECK);
+        includeTextInPhotoExports.setText("I&nclude outline text in exported photos");
+
+        includeTextInPhotoExports.setSelection(
+                preferenceStore.getBoolean(PreferenceKeys.IncludeOutlineTextInExportedPhotos));
+
+        new Label(includeTextComposite, SWT.NONE).setText("&Text Size:");
+
+        includeTextSize = new Spinner(includeTextComposite, SWT.BORDER);
+        includeTextSize.setMinimum(8);
+        includeTextSize.setMaximum(72);
+        includeTextSize.setSelection(Globals.getPreferenceStore().getInt(PreferenceKeys.IncludeOutlineTextSize));
+        includeTextSize.setIncrement(1);
 
         final Composite updatesComposite = new Composite(tabFolder, SWT.NONE);
 		updatesComposite.setLayout(new GridLayout(1, false));

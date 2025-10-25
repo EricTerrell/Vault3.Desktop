@@ -18,8 +18,6 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package jUnitTests;
-
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -43,7 +41,7 @@ import org.junit.Test;
  *
  * Tests for the CryptoUtils class. 
  */
-public class CryptoTests {
+public class CryptoTests extends BaseTests {
 	private final static String PASSWORD = "PASSWORD1234";
 
     private final static byte[] NONRANDOM_SALT = new byte[] {

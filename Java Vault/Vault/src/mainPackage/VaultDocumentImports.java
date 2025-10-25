@@ -180,8 +180,12 @@ public class VaultDocumentImports {
 					final StringWrapper password = new StringWrapper();
 					
 					try {
-						final OutlineItem importedOutlineItem = VaultDocumentXML.parseVault3File(filePath, password);
-						importedOutlineItem.setTitle(filePath);
+                        var importedOutlineItem = new VaultDocumentXMLPersistence()
+                                .load(filePath, password)
+                                .getContent();
+
+                        importedOutlineItem.setTitle(filePath);
+
 						Globals.getVaultTreeViewer().addItem(importedOutlineItem, OutlineItem.AddDirection.Below);
 					} catch (Throwable ex) {
 						final boolean processedException = DatabaseVersionTooHigh.displayMessaging(ex, filePath);

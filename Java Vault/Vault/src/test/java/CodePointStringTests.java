@@ -18,8 +18,6 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package jUnitTests;
-
 import mainPackage.StringLiterals;
 import org.junit.Assert;
 import mainPackage.CodePointString;
@@ -32,7 +30,7 @@ import org.junit.Test;
  * 
  * See http://java.sun.com/mailers/techtips/corejava/2006/tt0822.html
  */
-public class CodePointStringTests {
+public class CodePointStringTests extends BaseTests {
 	@Test
 	public void charsVersusCharacters() {
 		String testString = "abcd\u5B66\uD800\uDF30"; // 7 chars, 6 characters.

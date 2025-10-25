@@ -1108,7 +1108,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 						Globals.getVaultTextViewer().saveChanges();
 						
 						try {
-							vaultDocument.save();
+                            new VaultDocumentDatabasePersistence().store(vaultDocument, vaultDocument.getFilePath());
 						}
 						catch (Throwable ex) {
 							final Image icon = Globals.getImageRegistry().get(Globals.IMAGE_REGISTRY_VAULT_ICON);
