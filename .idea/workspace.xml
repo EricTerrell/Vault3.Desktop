@@ -14,9 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -415,8 +413,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1" />
       </list>
@@ -804,7 +802,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="271" />
+    <option name="localTasksCounter" value="273" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
