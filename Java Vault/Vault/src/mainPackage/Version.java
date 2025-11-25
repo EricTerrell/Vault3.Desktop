@@ -118,9 +118,10 @@ import java.text.MessageFormat;
  *                                   text.
  *                                   9) Bug Fix: In previous versions, some photos that should have been excluded in
  *                                   slideshows and exports were not excluded.
+ * 0.93             1.3              Finally fixed the "saved dialog box size and position not loaded" bug?
  */
 public class Version {
-	private static final float versionNumber = 0.92f;
+	private static final float versionNumber = 0.93f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

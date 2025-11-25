@@ -18,6 +18,8 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+package test.java;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

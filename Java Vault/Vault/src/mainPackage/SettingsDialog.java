@@ -72,15 +72,13 @@ public class SettingsDialog extends VaultDialog {
 	
 	private Text startupFilePathText, photoExclusionText, photoEditingProgramText;
 	
-	private Canvas colorCanvas, textBackgroundColorCanvas;
+	private Canvas textForegroundColorCanvas, textBackgroundColorCanvas;
 
 	private Color nonErrorBackground, errorBackground;
 	
 	private String previousSubstitutePhotoFolder = null, fontString;
 
-	private RGB fontColor;
-	
-	private RGB textBackgroundColor;
+	private RGB textForegroundColor, textBackgroundColor;
 	
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
@@ -154,9 +152,9 @@ public class SettingsDialog extends VaultDialog {
 		
 		preferenceStore.setValue(PreferenceKeys.DefaultTextFont, fontString);
 		
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFontRed, fontColor.red);
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFontGreen, fontColor.green);
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFontBlue, fontColor.blue);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontRed, textForegroundColor.red);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontGreen, textForegroundColor.green);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontBlue, textForegroundColor.blue);
 		
 		preferenceStore.setValue(PreferenceKeys.TextBackgroundRed, textBackgroundColor.red);
 		preferenceStore.setValue(PreferenceKeys.TextBackgroundGreen, textBackgroundColor.green);
@@ -207,11 +205,8 @@ public class SettingsDialog extends VaultDialog {
 		final TabItem instancesTabItem = new TabItem(tabFolder, SWT.NONE);
 		instancesTabItem.setText("&Instances");
 
-		final TabItem textBackgroundTabItem = new TabItem(tabFolder, SWT.NONE);
-		textBackgroundTabItem.setText("Text Backgroun&d");
-
-		final TabItem defaultTextFontTabItem = new TabItem(tabFolder, SWT.NONE);
-		defaultTextFontTabItem.setText("Default Te&xt Font");
+		final TabItem fontsAndColorsTabItem = new TabItem(tabFolder, SWT.NONE);
+		fontsAndColorsTabItem.setText("Fo&nts && Colors");
 
 		final TabItem photosTabItem = new TabItem(tabFolder, SWT.NONE);
 		photosTabItem.setText("&Photos && Slideshows");
@@ -471,70 +466,55 @@ public class SettingsDialog extends VaultDialog {
 		
 		enableDisableWarnAboutSingleInstance();
 
-		final Composite textBackgroundComposite = new Composite(tabFolder, SWT.NONE);
-
+		final Composite fontsAndColorsComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(2, false);
-		textBackgroundComposite.setLayout(gridLayout);
+		fontsAndColorsComposite.setLayout(gridLayout);
 
-		final Label textBackgroundColorLabel = new Label(textBackgroundComposite, SWT.NONE);
-		textBackgroundColorLabel.setText("Text Background Color:");
-
-		textBackgroundColorCanvas = new Canvas(textBackgroundComposite, SWT.BORDER);
-		textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
-
-		gridData = new GridData();
-		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(textBackgroundColorLabel.getText()).y;
-		textBackgroundColorCanvas.setLayoutData(gridData);
-
-		final Button specifyBackgroundColorButton = new Button(textBackgroundComposite, SWT.NONE);
-		specifyBackgroundColorButton.setText("Specify &Text Background Color...");
-
-		specifyBackgroundColorButton.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				final ColorDialog colorDialog = new ColorDialog(getShell());
-				colorDialog.setText("Text Background Color");
-				colorDialog.setRGB(textBackgroundColor);
-
-				final RGB newColor = colorDialog.open();
-
-				if (newColor != null) {
-					textBackgroundColor = newColor;
-					textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
-				}
-			}
-		});
-
-		final Composite defaultTextFontComposite = new Composite(tabFolder, SWT.NONE);
-		gridLayout = new GridLayout(2, false);
-		defaultTextFontComposite.setLayout(gridLayout);
-		
-		defaultTextFontLabel = new Label(defaultTextFontComposite, SWT.NONE);
+		defaultTextFontLabel = new Label(fontsAndColorsComposite, SWT.NONE);
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 2;
 		defaultTextFontLabel.setLayoutData(gridData);
 
-		final Label defaultTextFontColorLabel = new Label(defaultTextFontComposite, SWT.NONE);
-		defaultTextFontColorLabel.setText("Color:");
+		final Label defaultTextFontColorLabel = new Label(fontsAndColorsComposite, SWT.NONE);
+		defaultTextFontColorLabel.setText("Text Foreground Color:");
 
-		colorCanvas = new Canvas(defaultTextFontComposite, SWT.BORDER);
-		colorCanvas.setBackground(Globals.getColorRegistry().get(fontColor));
+		textForegroundColorCanvas = new Canvas(fontsAndColorsComposite, SWT.BORDER);
+		textForegroundColorCanvas.setBackground(Globals.getColorRegistry().get(textForegroundColor));
 		
 		gridData = new GridData();
 		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(defaultTextFontColorLabel.getText()).y;
-		colorCanvas.setLayoutData(gridData);
+		textForegroundColorCanvas.setLayoutData(gridData);
 
-		Label spacerLabel = new Label(defaultTextFontComposite, SWT.NONE);
+        final Button specifyForegroundColorButton = new Button(fontsAndColorsComposite, SWT.NONE);
+        specifyForegroundColorButton.setText("Specify Text Foreground Co&lor...");
+
+        specifyForegroundColorButton.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetDefaultSelected(SelectionEvent arg0) {
+            }
+
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                final ColorDialog colorDialog = new ColorDialog(getShell());
+                colorDialog.setText("Text Foreground Color");
+                colorDialog.setRGB(textForegroundColor);
+
+                final RGB newColor = colorDialog.open();
+
+                if (newColor != null) {
+                    textForegroundColor = newColor;
+                    textForegroundColorCanvas.setBackground(Globals.getColorRegistry().get(textForegroundColor));
+                }
+            }
+        });
+
+		Label spacerLabel = new Label(fontsAndColorsComposite, SWT.NONE);
 		gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
 
-		final Button specifyFontButton = new Button(defaultTextFontComposite, SWT.NONE);
-		specifyFontButton.setText("Specify &Font...");
+		final Button specifyFontButton = new Button(fontsAndColorsComposite, SWT.NONE);
+		specifyFontButton.setText("Specify Text &Font...");
 		
 		specifyFontButton.addSelectionListener(new SelectionListener() {
 			@Override
@@ -567,29 +547,59 @@ public class SettingsDialog extends VaultDialog {
 					fontList = fontDialog.getFontList();
 					
 					fontString = FontUtils.fontListToString(fontList);
-					fontColor = fontDialog.getRGB();
 
-					// Can't specify font color in Linux even if setEffectsVisible(true) is called, so use the
-					// ColorDialog to specify font color.
-					if (fontColor == null || Globals.getPlatform() != IPlatform.PlatformEnum.Windows) {
-						final ColorDialog colorDialog = new ColorDialog(getShell());
-						colorDialog.setText("Default Font Color");
-						colorDialog.setRGB(defaultColor);
+                    // Color will not be available on Linux.
+                    if (fontDialog.getRGB() != null) {
+                        textForegroundColor = fontDialog.getRGB();
+                    }
 
-						fontColor = colorDialog.open();
-					}
-					
 					updateFontDisplay();
 				}
 			}
 		});
 
-		spacerLabel = new Label(defaultTextFontComposite, SWT.NONE);
+		spacerLabel = new Label(fontsAndColorsComposite, SWT.NONE);
 		gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		spacerLabel.setLayoutData(gridData);
 
-		Composite substituteFolderComposite = new Composite(tabFolder, SWT.NONE);
+        gridLayout = new GridLayout(2, false);
+        fontsAndColorsComposite.setLayout(gridLayout);
+
+        final Label textBackgroundColorLabel = new Label(fontsAndColorsComposite, SWT.NONE);
+        textBackgroundColorLabel.setText("Text Background Color:");
+
+        textBackgroundColorCanvas = new Canvas(fontsAndColorsComposite, SWT.BORDER);
+        textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+
+        gridData = new GridData();
+        gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(textBackgroundColorLabel.getText()).y;
+        textBackgroundColorCanvas.setLayoutData(gridData);
+
+        final Button specifyBackgroundColorButton = new Button(fontsAndColorsComposite, SWT.NONE);
+        specifyBackgroundColorButton.setText("Specify &Text Background Color...");
+
+        specifyBackgroundColorButton.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetDefaultSelected(SelectionEvent arg0) {
+            }
+
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                final ColorDialog colorDialog = new ColorDialog(getShell());
+                colorDialog.setText("Text Background Color");
+                colorDialog.setRGB(textBackgroundColor);
+
+                final RGB newColor = colorDialog.open();
+
+                if (newColor != null) {
+                    textBackgroundColor = newColor;
+                    textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+                }
+            }
+        });
+
+        Composite substituteFolderComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
 		substituteFolderComposite.setLayout(gridLayout);
 		
@@ -839,8 +849,7 @@ public class SettingsDialog extends VaultDialog {
 		syncTabItem.setControl(syncComposite);
 		passwordsTabItem.setControl(passwordsComposite);
 		instancesTabItem.setControl(instancesComposite);
-		textBackgroundTabItem.setControl(textBackgroundComposite);
-		defaultTextFontTabItem.setControl(defaultTextFontComposite);
+		fontsAndColorsTabItem.setControl(fontsAndColorsComposite);
 		photosTabItem.setControl(photosComposite);
 		substituteFolderTabItem.setControl(substituteFolderComposite);
 		updatesTabItem.setControl(updatesComposite);
@@ -860,7 +869,7 @@ public class SettingsDialog extends VaultDialog {
 		final String defaultTextFontLabelText = MessageFormat.format("Default Text Font: {0}", FontUtils.stringToDescription(fontString));
 		defaultTextFontLabel.setText(defaultTextFontLabelText);
 		
-		colorCanvas.setBackground(Globals.getColorRegistry().get(fontColor));
+		textForegroundColorCanvas.setBackground(Globals.getColorRegistry().get(textForegroundColor));
 	}
 	
 	public SettingsDialog(Shell parentShell) {
@@ -868,9 +877,9 @@ public class SettingsDialog extends VaultDialog {
 		
 		preferenceStore = Globals.getPreferenceStore();
 		
-		fontColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
-							preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
-							preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
+		textForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
+                                      preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
+                                      preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
 
 		textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
 									  preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),

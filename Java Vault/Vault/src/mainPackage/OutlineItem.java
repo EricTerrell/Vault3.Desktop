@@ -24,7 +24,6 @@ import java.text.Collator;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.eclipse.swt.graphics.RGB;
 
 import fonts.FontList;
@@ -327,23 +326,25 @@ public class OutlineItem {
     }
 
     public static boolean sort(List<OutlineItem> items) {
+        record ItemWithParentIndex(OutlineItem item, int parentIndex) {}
+
         boolean itemsMoved = false;
 
         final OutlineItem parent = items.getFirst().getParent();
 
-        final List<ImmutablePair<OutlineItem, Integer>> originalItemsWithParentIndex = items
+        final List<ItemWithParentIndex> originalItemsWithParentIndex = items
                 .stream()
-                .map(item -> new ImmutablePair<>(item, parent.getChildren().indexOf(item)))
+                .map(item -> new ItemWithParentIndex(item, parent.getChildren().indexOf(item)))
                 .toList();
 
         items.sort(new StableTitleComparitor());
 
         for (int i = 0; i < items.size(); i++) {
-            final ImmutablePair<OutlineItem, Integer> itemWithParentIndex = originalItemsWithParentIndex.get(i);
+            final ItemWithParentIndex itemWithParentIndex = originalItemsWithParentIndex.get(i);
             final OutlineItem sortedItem = items.get(i);
 
-            if (itemWithParentIndex.left != sortedItem) {
-                parent.getChildren().set(itemWithParentIndex.right, sortedItem);
+            if (itemWithParentIndex.item != sortedItem) {
+                parent.getChildren().set(itemWithParentIndex.parentIndex, sortedItem);
                 itemsMoved = true;
             }
         }

@@ -38,6 +38,8 @@ public class VaultDialog extends Dialog {
 
 	private DialogSettings dialogSettings;
 
+    private Point initialSize, initialLocation;
+
 	protected DialogSettings getDialogSettings() {
 		return dialogSettings;
 	}
@@ -48,12 +50,16 @@ public class VaultDialog extends Dialog {
 	}
 	
 	private String getSettingsFilePath() {
-		return String.format("%s%s%s", FileUtils.getConfigRootPath(), PortabilityUtils.getFileSeparator(), getSettingsFileName());
+		return String.format(
+                "%s%s%s",
+                FileUtils.getConfigRootPath(),
+                PortabilityUtils.getFileSeparator(),
+                getSettingsFileName());
 	}
 
 	/**
-	 * Load fields with content after the minimum dialog box size calculation has been performed. If there are fields with
-	 * content that should be considered for the minimum size calculation, load those fields in createDialogArea. 
+	 * Load fields with content after the minimum dialog box size calculation has been performed. If there are fields
+     * with content that should be considered for the minimum size calculation, load those fields in createDialogArea.
 	 */
 	protected void populateFields() {
 	}
@@ -79,7 +85,11 @@ public class VaultDialog extends Dialog {
 
             logFileContents();
 		} catch (IOException e) {
-            Globals.getLogger().info(String.format("VaultDialog.close: error saving settings to \"%s\": %s", settingsFilePath, e.getMessage()));
+            Globals.getLogger().info(
+                    String.format(
+                            "VaultDialog.close: error saving settings to \"%s\": %s",
+                            settingsFilePath,
+                            e.getMessage()));
 		}
 		
 		return result;
@@ -97,6 +107,24 @@ public class VaultDialog extends Dialog {
 		setShellStyle(shellStyle);
 	}
 
+    @Override
+    protected Point getInitialSize() {
+        final var value = initialSize != null ? initialSize : super.getInitialSize();
+
+        Globals.getLogger().info(String.format("VaultDialog.getInitialSize: %s", value));
+
+        return value;
+    }
+
+    @Override
+    protected Point getInitialLocation(Point initialSize) {
+        final var value = initialLocation != null ? initialLocation : super.getInitialLocation(getInitialSize());
+
+        Globals.getLogger().info(String.format("VaultDialog.getInitialLocation: %s", value));
+
+        return value;
+    }
+
 	@Override
 	public int open() {
 		dialogSettings = new DialogSettings("settings");
@@ -104,13 +132,26 @@ public class VaultDialog extends Dialog {
         final String settingsFilePath = getSettingsFilePath();
 
 		try {
-            Globals.getLogger().info(String.format("VaultDialog.open: loading DialogSettings from %s", settingsFilePath));
+            Globals.getLogger().info(
+                    String.format("VaultDialog.open: loading DialogSettings from %s", settingsFilePath));
 
             logFileContents();
 
 			dialogSettings.load(settingsFilePath);
+
+            var dialogXOrigin = dialogSettings.getInt("DIALOG_X_ORIGIN");
+            var dialogYOrigin = dialogSettings.getInt("DIALOG_Y_ORIGIN");
+            var dialogWidth = dialogSettings.getInt("DIALOG_WIDTH");
+            var dialogHeight = dialogSettings.getInt("DIALOG_HEIGHT");
+
+            initialLocation = new Point(dialogXOrigin, dialogYOrigin);
+            initialSize = new Point(dialogWidth, dialogHeight);
+
+            Globals.getLogger().info(String.format("VaultDialog.open: set initialLocation to %s", initialLocation));
+            Globals.getLogger().info(String.format("VaultDialog.open: set initialSize to %s", initialSize));
 		} catch (IOException e) {
-            Globals.getLogger().info(String.format("VaultDialog.open: error saving settings to \"%s\": %s", settingsFilePath, e.getMessage()));
+            Globals.getLogger().info(String.format("VaultDialog.open: error saving settings to \"%s\": %s",
+                    settingsFilePath, e.getMessage()));
 		}
 		
 		return super.open();

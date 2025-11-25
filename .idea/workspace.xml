@@ -14,7 +14,10 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Version.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Version.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,8 +108,9 @@
     &quot;JUnit.CryptoTests.testInteropWithOtherPlatformsDecrypt.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.CryptoTests.testInteropWithOtherPlatformsEncrypt.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.FontTests.addItemsAndSerializeAndDeserialize.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OutlineItemTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.OutlineItemTests.testSort.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.SearchParametersSerializationDeserializationTests.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SearchParametersSerializationDeserializationTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TestSomething.testSomething.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VaultDocumentDatabasePersistenceTests (1).executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VaultDocumentDatabasePersistenceTests.executor&quot;: &quot;Run&quot;,
@@ -116,12 +120,14 @@
     &quot;JUnit.VaultDocumentDatabasePersistenceTests.testLoadXMLEncryptedDocument.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VaultDocumentDatabasePersistenceTests.testLoadXMLUnencryptedDocument.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.VaultDocumentDatabasePersistenceTests.testRoundTrip.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testverifyExceptionThrownWhenFileIsNewerThanExpected.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VaultDocumentDatabasePersistenceTests.verifyExceptionThrownWhenFileIsNewerThanExpected.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.VaultDocumentVersionTests.testConstructor.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.jUnitTests in Vault.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.jUnitTests in vault3.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.java in vault3.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.test in vault3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.test.java in vault3.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.test.java in vault3.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.tests in CommonCode.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.tests in Vault.executor&quot;: &quot;Debug&quot;,
     &quot;Maven.Vault 3 - Maven.executor&quot;: &quot;Debug&quot;,
@@ -177,7 +183,7 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/erict/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.18831168&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -280,19 +286,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Vault" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VaultDocumentDatabasePersistenceTests.testDatabaseRoundTrip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="vault3" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VaultDocumentDatabasePersistenceTests" />
-      <option name="METHOD_NAME" value="testDatabaseRoundTrip" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Vault" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -304,11 +310,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="java in vault3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="test.java in vault3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="vault3" />
-      <option name="TEST_OBJECT" value="directory" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.java" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <dir value="$PROJECT_DIR$/Java Vault/Vault/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -319,17 +331,6 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="24" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Vault" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Vault" />
-      <option name="filePath" />
       <method v="2" />
     </configuration>
     <configuration name="Vault 3 - Maven" type="MavenRunConfiguration" factoryName="Maven">
@@ -388,6 +389,10 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="build_everything.ps1 (2)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build_everything.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
       <envs />
       <method v="2" />
@@ -403,17 +408,17 @@
     </configuration>
     <list>
       <item itemvalue="JAR Application.Run from Jar" />
-      <item itemvalue="JUnit.VaultDocumentDatabasePersistenceTests.testDatabaseRoundTrip" />
-      <item itemvalue="JUnit.java in vault3" />
+      <item itemvalue="JUnit.test.java in vault3" />
       <item itemvalue="Maven.Vault 3 - Maven" />
+      <item itemvalue="PowerShell.build_everything.ps1" />
       <item itemvalue="PowerShell.ant_build_win_x86_64.ps1" />
       <item itemvalue="PowerShell.build_everything.ps1 (1)" />
-      <item itemvalue="PowerShell.build_everything.ps1" />
+      <item itemvalue="PowerShell.build_everything.ps1 (2)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1 (2)" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1" />
@@ -802,7 +807,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="273" />
+    <option name="localTasksCounter" value="280" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -819,10 +824,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added tests to verify that encryption and decryption are compatible with other platforms." />
-    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven&#10;2)" />
-    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven" />
-    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits." />
     <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings." />
     <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line" />
     <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line&#10;5) Re-write sort logic using built-in sort method." />
@@ -844,7 +845,11 @@
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos" />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
+    <MESSAGE value="Use a record class instead of Apache ImmutablePair." />
+    <MESSAGE value="Merge &quot;Text Background&quot; and &quot;Default Text Font&quot; tabs in SettingsDialog." />
+    <MESSAGE value="Version 0.94&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
+    <MESSAGE value="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1060,26 +1065,6 @@
           <option name="timeStamp" value="266" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
-          <line>565</line>
-          <option name="timeStamp" value="276" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
-          <line>578</line>
-          <option name="timeStamp" value="277" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
-          <line>581</line>
-          <option name="timeStamp" value="278" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
-          <line>573</line>
-          <option name="timeStamp" value="279" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Printing.java</url>
           <line>116</line>
           <option name="timeStamp" value="287" />
@@ -1136,12 +1121,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/test/java/VaultDocumentDatabasePersistenceTests.java</url>
-          <line>57</line>
+          <line>60</line>
           <option name="timeStamp" value="414" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/test/java/VaultDocumentDatabasePersistenceTests.java</url>
-          <line>146</line>
+          <line>149</line>
           <option name="timeStamp" value="415" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1151,18 +1136,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/test/java/OutlineItemTests.java</url>
-          <line>44</line>
+          <line>46</line>
           <option name="timeStamp" value="417" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/test/java/OutlineItemTests.java</url>
-          <line>42</line>
+          <line>44</line>
           <option name="timeStamp" value="418" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItem.java</url>
-          <line>521</line>
+          <line>522</line>
           <option name="timeStamp" value="420" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/VaultDialog.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="428" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1178,6 +1168,7 @@
         <watch expression="oldFont.isDisposed()" language="JAVA" />
       </configuration>
       <configuration name="MavenRunConfiguration">
+        <watch expression="dialogSettings.getSections()" language="JAVA" />
         <watch expression="MainApplicationWindow.class.getResourceAsStream(&quot;/resources/file_new.png&quot;)" language="JAVA" />
         <watch expression="getShellStyle()" language="JAVA" />
         <watch expression="getClass()" language="JAVA" />

@@ -18,6 +18,8 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+package test.java;
+
 import java.io.File;
 import java.net.URL;
 import java.net.URLDecoder;

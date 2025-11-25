@@ -18,6 +18,8 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+package test.java;
+
 import commonCode.VaultDocumentVersion;
 import mainPackage.*;
 import org.junit.Assert;

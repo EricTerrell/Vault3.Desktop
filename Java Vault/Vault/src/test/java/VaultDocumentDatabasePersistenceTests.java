@@ -18,7 +18,10 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+package test.java;
+
 import commonCode.VaultDocumentVersion;
+import commonCode.VaultException;
 import mainPackage.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -174,5 +177,16 @@ public class VaultDocumentDatabasePersistenceTests extends BaseTests {
         Assert.assertFalse(vaultDocument.getIsModified());
 
         validateDocumentMetadata(vaultDocument, filePath);
+    }
+
+    @Test
+    public void verifyExceptionThrownWhenFileIsNewerThanExpected() {
+        var exception = Assert.assertThrows(VaultException.class, () -> {
+            final String filePath = TestUtils.getResourceFilePath("version_1_4.vl3");
+
+            new VaultDocumentDatabasePersistence().load(filePath, null);
+        });
+
+        Assert.assertEquals("Database version is too high", exception.getMessage());
     }
 }

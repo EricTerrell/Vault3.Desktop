@@ -18,6 +18,8 @@
   along with Vault 3.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+package test.java;
+
 import mainPackage.StringLiterals;
 import org.junit.Assert;
 import mainPackage.CodePointString;
