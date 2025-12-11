@@ -16,6 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Version.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Version.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -1073,11 +1074,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.jface/3.38.0/org.eclipse.jface-3.38.0.jar!/org/eclipse/jface/resource/URLImageDescriptor.class</url>
           <line>98</line>
           <option name="timeStamp" value="333" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.jface/3.38.0/org.eclipse.jface-3.38.0.jar!/org/eclipse/jface/resource/URLImageDescriptor.class</url>
-          <line>78</line>
-          <option name="timeStamp" value="334" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/eclipse/platform/org.eclipse.swt.win32.win32.x86_64/3.131.0/org.eclipse.swt.win32.win32.x86_64-3.131.0-sources.jar!/org/eclipse/swt/internal/Library.java</url>
