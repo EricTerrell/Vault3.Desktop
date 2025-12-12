@@ -23,6 +23,17 @@
             </properties>
         </profile>
         <profile>
+            <id>Windows-aarch_64</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <swt-os>win32</swt-os>
+                <swt-arch>aarch64</swt-arch>
+                <osgi.platform>win32.win32.aarch64</osgi.platform>
+            </properties>
+        </profile>
+        <profile>
             <id>Linux-x86_64</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
