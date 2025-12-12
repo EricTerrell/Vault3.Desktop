@@ -33,7 +33,7 @@ the same file format. Any .vl3 file can be read and updated by any version.
 
 Vault 3 relies on many of the same libraries used by the [`Eclipse`](https://www.eclipse.org/) project.
 
-1. Make sure you have a Java Development Kit (JDK) with a version of **17 or later**. I am using version 24 at the moment. You can download a JDK [`here`](https://www.oracle.com/java/technologies/downloads/).
+1. Make sure you have a Java Development Kit (JDK) with a version of **17 or later**. I am using version 24 at the moment. You can download a JDK [`here`](https://www.oracle.com/java/technologies/downloads/). You can download a JDK for Windows on ARM [`here`](https://bell-sw.com/pages/downloads/?version=java-24&package=jdk-full&os=windows&architecture=arm&bitness=64).
 2. Clone the [`Vault3.CommonCode`](https://github.com/EricTerrell/Vault3.CommonCode) repo.
 3. Install Vault3.CommonCode into your local Maven repository (mvn install)
 4. Clone this repo.
