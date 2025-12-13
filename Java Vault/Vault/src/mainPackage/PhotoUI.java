@@ -93,6 +93,10 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 		}
 		
 		if (resizedImage != null) {
+			// The canvas background image is probably set to resizedImage, so null it out before disposing
+			// resizedImage.
+			canvas.setBackgroundImage(null);
+
 			resizedImage.dispose();
 			resizedImage = null;
 		}
@@ -165,6 +169,8 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 		canvas.setLayoutData(gridData);
 
 		canvas.addPaintListener(e -> {
+			Globals.getLogger().info("PhotoUI constructor paint listener");
+
             final Rectangle rect = canvas.getClientArea();
 
             if (resizedImage == null || !resizedImage.getBounds().equals(rect)) {
@@ -223,7 +229,7 @@ public class PhotoUI extends Composite implements ISelectionChangedListener {
 
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
-    	IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+    	final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 
     	if (selection.size() != 1) {
     		setImages(null);

@@ -120,9 +120,12 @@ import java.text.MessageFormat;
  *                                   slideshows and exports were not excluded.
  * 0.93             1.3              Finally fixed the "saved dialog box size and position not loaded" bug?
  * 0.94             1.3              Now using Eclipse v. 4.38 components.
+ * 0.95             1.3              1) Now support Windows on ARM!
+ * 									 2) Bug Fix: In version 0.94, photo might not change when clicking items with
+ * 									 different photos.
  */
 public class Version {
-	private static final float versionNumber = 0.94f;
+	private static final float versionNumber = 0.95f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {
