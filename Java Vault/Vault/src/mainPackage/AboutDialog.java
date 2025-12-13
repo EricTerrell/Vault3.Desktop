@@ -74,7 +74,7 @@ public class AboutDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://www.eclipse.org");
+				Program.launch("https://www.eclipse.org");
 			}
 		});
 		
@@ -90,7 +90,7 @@ public class AboutDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://www.eclipse.org/swt");
+				Program.launch("https://www.eclipse.org/swt");
 			}
 		});
 		
@@ -121,26 +121,26 @@ public class AboutDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://www.sqlite.org");
+				Program.launch("https://www.sqlite.org");
 			}
 		});
 		
-		final Link sqlite4JavaLink = new Link(composite, SWT.NONE);
-		sqlite4JavaLink.setText(MessageFormat.format("{0} uses <a>sqlite4java</a> to manipulate its documents.", StringLiterals.ProgramName));
+		final Link sqliteJdbc = new Link(composite, SWT.NONE);
+		sqliteJdbc.setText(MessageFormat.format("{0} uses <a>sqlite-jdbc</a> to manipulate its documents.", StringLiterals.ProgramName));
 		
-		sqlite4JavaLink.addSelectionListener(new SelectionListener() {
+		sqliteJdbc.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("https://bitbucket.org/almworks/sqlite4java");
+				Program.launch("https://github.com/xerial/sqlite-jdbc");
 			}
 		});
 		
 		final Link iTextLink = new Link(composite, SWT.NONE);
-		iTextLink.setText(MessageFormat.format("{0} uses <a>iText</a> to create PDF files.", StringLiterals.ProgramName));
+		iTextLink.setText(MessageFormat.format("{0} uses <a>itextpdf</a> to create PDF files.", StringLiterals.ProgramName));
 		
 		iTextLink.addSelectionListener(new SelectionListener() {
 			@Override
@@ -149,7 +149,7 @@ public class AboutDialog extends VaultDialog {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				Program.launch("http://itextpdf.com/");
+				Program.launch("https://itextpdf.com/");
 			}
 		});
 
@@ -311,5 +311,4 @@ public class AboutDialog extends VaultDialog {
 		
 		newShell.setText(MessageFormat.format("About {0}", StringLiterals.ProgramName));
 	}
-
 }

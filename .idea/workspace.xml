@@ -14,7 +14,9 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.95&#10;&#10;Added Windows ARM version.&#10;&#10;Bug Fix: In version 0.94, photo would not change after first photo was rendered." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.95&#10;&#10;Updated links in about dialog.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +129,7 @@
     "JUnit.test.java in vault3.executor": "Run",
     "JUnit.tests in CommonCode.executor": "Debug",
     "JUnit.tests in Vault.executor": "Debug",
-    "Maven.Vault 3 - Maven.executor": "Run",
+    "Maven.Vault 3 - Maven.executor": "Debug",
     "Maven.vault3 [clean].executor": "Run",
     "Maven.vault3 [compile].executor": "Run",
     "Maven.vault3 [install].executor": "Run",
@@ -408,9 +410,9 @@
       <list>
         <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.ant_build_win_aarch_64.ps1 (2)" />
         <item itemvalue="PowerShell.ant_build_win_aarch_64.ps1 (1)" />
-        <item itemvalue="PowerShell.ant_build_win_aarch_64.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -803,7 +805,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <option name="localTasksCounter" value="286" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -820,7 +822,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line&#10;5) Re-write sort logic using built-in sort method." />
     <MESSAGE value="Version 0.88&#10;&#10;1) Now use Maven to build, package, etc.&#10;2) Bug Fix: Do a search. Click the Clear button. Text still references the number of search hits.&#10;3) Log errors saving or loading dialog settings.&#10;4) Specify --enable-native-access=ALL-UNNAMED on command-line&#10;5) Re-write sort logic using built-in sort method.&#10;6) Optionally log to file." />
     <MESSAGE value="Version 0.89&#10;&#10;1) Now load (most) components from remote Maven repo." />
     <MESSAGE value="Version 0.89&#10;&#10;Bug Fix: On Ubuntu, when the program launched, if the license terms dialog box was displayed, the radio buttons were not properly rendered." />
@@ -845,7 +846,8 @@
     <MESSAGE value="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
     <MESSAGE value="Version 0.94&#10;&#10;Added Windows ARM version." />
     <MESSAGE value="Version 0.95&#10;&#10;Added Windows ARM version.&#10;&#10;Bug Fix: In version 0.94, photo would not change after first photo was rendered." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.95&#10;&#10;Added Windows ARM version.&#10;&#10;Bug Fix: In version 0.94, photo would not change after first photo was rendered." />
+    <MESSAGE value="Version 0.95&#10;&#10;Updated links in about dialog." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 0.95&#10;&#10;Updated links in about dialog." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
