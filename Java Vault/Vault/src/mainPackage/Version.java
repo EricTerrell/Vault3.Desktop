@@ -123,9 +123,11 @@ import java.text.MessageFormat;
  * 0.95             1.3              1) Now support Windows on ARM!
  * 									 2) Bug Fix: In version 0.94, photo might not change when clicking items with
  * 									 different photos.
+ * 0.96				1.3				 Save and restore dialog box location as screen coordinates, not coordinates
+ * 									 relative to parent shell.
  */
 public class Version {
-	private static final float versionNumber = 0.95f;
+	private static final float versionNumber = 0.96f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {

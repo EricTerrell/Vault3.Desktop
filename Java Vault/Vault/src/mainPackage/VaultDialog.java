@@ -36,6 +36,9 @@ import org.eclipse.swt.widgets.Shell;
 public class VaultDialog extends Dialog {
 	private final static String PADDING = "    ";
 
+	private final static String DIALOG_X_ORIGIN = "DIALOG_X_ORIGIN";
+	private final static String DIALOG_Y_ORIGIN = "DIALOG_Y_ORIGIN";
+
 	private DialogSettings dialogSettings;
 
     private Point initialSize, initialLocation;
@@ -74,12 +77,18 @@ public class VaultDialog extends Dialog {
 	
     @Override
 	public boolean close() {
+		final var dialogScreenLocation = getShell().getLocation();
+
 		final boolean result = super.close();
 
         final String settingsFilePath = getSettingsFilePath();
 
     	try {
             Globals.getLogger().info(String.format("VaultDialog.close: saving DialogSettings to %s", settingsFilePath));
+
+			// Save dialog screen location, not coordinates relative to parent shell!
+			dialogSettings.put(DIALOG_X_ORIGIN, dialogScreenLocation.x);
+			dialogSettings.put(DIALOG_Y_ORIGIN, dialogScreenLocation.y);
 
 			dialogSettings.save(settingsFilePath);
 
@@ -139,8 +148,8 @@ public class VaultDialog extends Dialog {
 
 			dialogSettings.load(settingsFilePath);
 
-            var dialogXOrigin = dialogSettings.getInt("DIALOG_X_ORIGIN");
-            var dialogYOrigin = dialogSettings.getInt("DIALOG_Y_ORIGIN");
+            var dialogXOrigin = dialogSettings.getInt(DIALOG_X_ORIGIN);
+            var dialogYOrigin = dialogSettings.getInt(DIALOG_Y_ORIGIN);
             var dialogWidth = dialogSettings.getInt("DIALOG_WIDTH");
             var dialogHeight = dialogSettings.getInt("DIALOG_HEIGHT");
 
