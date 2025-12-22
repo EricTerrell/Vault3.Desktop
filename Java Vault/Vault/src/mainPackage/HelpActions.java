@@ -106,7 +106,7 @@ public class HelpActions {
 		}
 		
 		public void run() {
-			Program.launch("http://www.EricBT.com");
+			Program.launch("https://www.EricBT.com");
 		}
 	}
 	

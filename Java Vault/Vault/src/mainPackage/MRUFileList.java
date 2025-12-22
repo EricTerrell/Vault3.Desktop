@@ -64,7 +64,7 @@ public class MRUFileList {
 			}
 		}
 		
-		mruFiles.add(0, mruFile);
+		mruFiles.addFirst(mruFile);
 		
 		Globals.getMainApplicationWindow().createFileMenuItems();
 		
@@ -103,7 +103,7 @@ public class MRUFileList {
 		final int maxMRUFiles = Globals.getPreferenceStore().getInt(PreferenceKeys.MaxMRUFiles);
 		
 		while (Globals.getMRUFiles().getMRUFiles().size() > maxMRUFiles) {
-			Globals.getMRUFiles().getMRUFiles().remove(Globals.getMRUFiles().getMRUFiles().size() - 1);
+			Globals.getMRUFiles().getMRUFiles().removeLast();
 		}
 
 		for (int i = 0; i < maxMRUFiles; i++) {

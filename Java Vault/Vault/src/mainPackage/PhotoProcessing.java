@@ -40,12 +40,12 @@ public class PhotoProcessing {
 
 		boolean selectedItemHasPictureFile = false;
 		
-		if (selectedItems.size() == 1 && selectedItems.get(0).getPhotoPath() != null && !selectedItems.get(0).getPhotoPath().trim().isEmpty()) {
-			String photoPath = selectedItems.get(0).getPhotoPath();
+		if (selectedItems.size() == 1 && selectedItems.getFirst().getPhotoPath() != null && !selectedItems.get(0).getPhotoPath().trim().isEmpty()) {
+			String photoPath = selectedItems.getFirst().getPhotoPath();
 			photoPath = PhotoUtils.getPhotoPath(photoPath);
 			
 			if (photoPath != null) {
-				File file = new File(photoPath);
+				final File file = new File(photoPath);
 				
 				selectedItemHasPictureFile = file.exists();
 			}
@@ -57,7 +57,7 @@ public class PhotoProcessing {
 	public static String selectedItemPhotoPath() {
 		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 
-		return selectedItems.get(0).getPhotoPath();
+		return selectedItems.getFirst().getPhotoPath();
 	}
 
 	public static boolean canCopyPictureFile() {

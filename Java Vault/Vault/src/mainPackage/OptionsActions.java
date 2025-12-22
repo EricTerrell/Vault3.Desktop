@@ -55,7 +55,7 @@ public class OptionsActions {
 
 				// Redraw the current photo in case the photo settings changed.
 				if (selectedItems.size() == 1) {
-					Globals.getMainApplicationWindow().getPhotoAndTextUI().getPhotoUI().setImages(selectedItems.get(0).getPhotoPath());
+					Globals.getMainApplicationWindow().getPhotoAndTextUI().getPhotoUI().setImages(selectedItems.getFirst().getPhotoPath());
 				}
 				
 				if (!Globals.getPreferenceStore().getBoolean(PreferenceKeys.CachePasswords)) {

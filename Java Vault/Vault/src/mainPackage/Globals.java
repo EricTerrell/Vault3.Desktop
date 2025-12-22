@@ -49,12 +49,6 @@ public class Globals {
 		return imageRegistry;
 	}
 	
-	private static final ColorRegistry colorRegistry;
-	
-	public static ColorRegistry getColorRegistry() {
-		return colorRegistry;
-	}
-	
 	private static final RGB whiteColor = new RGB(255, 255, 255);
 	
 	public static RGB getWhiteColor() {
@@ -200,8 +194,6 @@ public class Globals {
 
 		getLogger().info(String.format("Properties file path: %s", propertiesFilePath));
 		
-		colorRegistry = new ColorRegistry();
-		
 		preferenceStore = new PreferenceStore(propertiesFilePath);
 
 		try {
@@ -298,7 +290,7 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.MaxSavedSearches, 40);
 		preferenceStore.setDefault(PreferenceKeys.WarnAboutSingleInstance, true);
 		preferenceStore.setDefault(PreferenceKeys.ForceUpperCasePasswords, true);
-		preferenceStore.setDefault(PreferenceKeys.Vault3ForAndroidURL, "http://www.ericbt.com/Vault3ForAndroid");
+		preferenceStore.setDefault(PreferenceKeys.Vault3ForAndroidURL, "https://www.EricBT.com/Vault3ForAndroid");
 		preferenceStore.setDefault(PreferenceKeys.CheckForModificationsMinutes, 0);
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundRed, 255);
 		preferenceStore.setDefault(PreferenceKeys.TextBackgroundGreen, 255);

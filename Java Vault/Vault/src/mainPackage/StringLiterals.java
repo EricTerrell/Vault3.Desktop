@@ -29,8 +29,8 @@ public class StringLiterals {
 	public static final String TextFileTypeWildcardedCaseInsensitive    = "*.txt;*.TXT";
 	public static final String PDFFileTypeWildcardedCaseInsensitive     = "*.pdf;*.PDF";
 	public static final String Wildcard                                 = "*.*;*";
-	public static final String SupportURL                               = "http://ericbt.com/Vault3/Donate";
-	public static final String HomePageURL                              = "http://www.EricBT.com";
+	public static final String SupportURL                               = "https://EricBT.com/Vault3/Donate";
+	public static final String HomePageURL                              = "https://www.EricBT.com";
 	public static final String SearchTextToolTip                        = "Enter words separated by spaces and/or phrases. Phrases must be quoted, e.g. \"the quick brown fox\"";
 	public static final String ExecutableFileType                       = "*.exe;*.EXE";
 	public static final String DisplayWebsiteToolTip                    = "Press the spacebar to display selected website without dismissing this dialog box.";

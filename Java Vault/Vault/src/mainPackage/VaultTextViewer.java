@@ -237,8 +237,8 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		textWidget.setFocus();
 		textWidget.setSelection(0, 0);
 
-		textWidget.setForeground(Globals.getColorRegistry().get(textForegroundColor));
-		textWidget.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+		textWidget.setForeground(new Color(textForegroundColor));
+		textWidget.setBackground(new Color(textBackgroundColor));
 
 		textWidget.setSelection(selection);
 	}
@@ -304,8 +304,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		boolean hasFont = getOutlineItem() != null && getOutlineItem().hasFont();
 
 		if (rgb != null && hasFont) {
-			final Color color = Globals.getColorRegistry().get(rgb);
-			getTextWidget().setForeground(color);
+			getTextWidget().setForeground(new Color(rgb));
 		}
 		else {
 			final PreferenceStore preferenceStore = Globals.getPreferenceStore();
@@ -319,8 +318,8 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 					preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
 					preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
 
-			getTextWidget().setForeground(Globals.getColorRegistry().get(textForegroundColor));
-			getTextWidget().setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+			getTextWidget().setForeground(new Color(textForegroundColor));
+			getTextWidget().setBackground(new Color(textBackgroundColor));
 		}
 		
 		if (forceColorChangeToBeVisible) {

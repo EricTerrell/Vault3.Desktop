@@ -23,7 +23,6 @@ package mainPackage;
 import java.io.File;
 import java.text.MessageFormat;
 
-import commonCode.IPlatform;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.swt.SWT;
@@ -479,7 +478,7 @@ public class SettingsDialog extends VaultDialog {
 		defaultTextFontColorLabel.setText("Text Foreground Color:");
 
 		textForegroundColorCanvas = new Canvas(fontsAndColorsComposite, SWT.BORDER);
-		textForegroundColorCanvas.setBackground(Globals.getColorRegistry().get(textForegroundColor));
+		textForegroundColorCanvas.setBackground(new Color(textForegroundColor));
 		
 		gridData = new GridData();
 		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(defaultTextFontColorLabel.getText()).y;
@@ -503,7 +502,7 @@ public class SettingsDialog extends VaultDialog {
 
                 if (newColor != null) {
                     textForegroundColor = newColor;
-                    textForegroundColorCanvas.setBackground(Globals.getColorRegistry().get(textForegroundColor));
+                    textForegroundColorCanvas.setBackground(new Color(textForegroundColor));
                 }
             }
         });
@@ -570,7 +569,7 @@ public class SettingsDialog extends VaultDialog {
         textBackgroundColorLabel.setText("Text Background Color:");
 
         textBackgroundColorCanvas = new Canvas(fontsAndColorsComposite, SWT.BORDER);
-        textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+        textBackgroundColorCanvas.setBackground(new Color(textBackgroundColor));
 
         gridData = new GridData();
         gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(textBackgroundColorLabel.getText()).y;
@@ -594,7 +593,7 @@ public class SettingsDialog extends VaultDialog {
 
                 if (newColor != null) {
                     textBackgroundColor = newColor;
-                    textBackgroundColorCanvas.setBackground(Globals.getColorRegistry().get(textBackgroundColor));
+                    textBackgroundColorCanvas.setBackground(new Color(textBackgroundColor));
                 }
             }
         });
@@ -869,7 +868,7 @@ public class SettingsDialog extends VaultDialog {
 		final String defaultTextFontLabelText = MessageFormat.format("Default Text Font: {0}", FontUtils.stringToDescription(fontString));
 		defaultTextFontLabel.setText(defaultTextFontLabelText);
 		
-		textForegroundColorCanvas.setBackground(Globals.getColorRegistry().get(textForegroundColor));
+		textForegroundColorCanvas.setBackground(new Color(textForegroundColor));
 	}
 	
 	public SettingsDialog(Shell parentShell) {

@@ -60,7 +60,7 @@ public class GoToWebsites {
 		
 		if (!urls.isEmpty()) {
 			if (urls.size() == 1) {
-				GoToWebsites.launch(urls.get(0), Globals.getMainApplicationWindow().getShell());
+				GoToWebsites.launch(urls.getFirst(), Globals.getMainApplicationWindow().getShell());
 			}
 			else {
 				GoToWebsitesDialog goToWebsitesDialog = new GoToWebsitesDialog(shell, urls);

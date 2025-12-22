@@ -172,7 +172,7 @@ public class VaultTreeViewer extends TreeViewer {
 			Globals.getLogger().info("OSX or Linux");
 
 			getTree().setBackgroundMode(SWT.INHERIT_FORCE);
-			getTree().setBackground(Globals.getColorRegistry().get(Globals.getWhiteColor()));
+			getTree().setBackground(new Color(Globals.getWhiteColor()));
 		}
 	}
 
@@ -247,7 +247,7 @@ public class VaultTreeViewer extends TreeViewer {
 		final int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBlue);
 		
 		if (ColorUtils.rgbValueIsValid(red, green, blue)) {
-			getTree().setForeground(Globals.getColorRegistry().get(red, green, blue));
+			getTree().setForeground(new Color(red, green, blue));
 		}
 	}
 	
@@ -265,7 +265,7 @@ public class VaultTreeViewer extends TreeViewer {
 		final List<OutlineItem> selectedItems = getSelectedItems();
 
 		if (selectedItems.size() == 1) {
-			renderFirstItem(selectedItems.get(0));
+			renderFirstItem(selectedItems.getFirst());
 		}
 	}
 
@@ -273,7 +273,7 @@ public class VaultTreeViewer extends TreeViewer {
 		getControl().forceFocus();
 		
 		if (!Globals.getVaultDocument().getContent().getChildren().isEmpty()) {
-			renderFirstItem(Globals.getVaultDocument().getContent().getChildren().get(0));
+			renderFirstItem(Globals.getVaultDocument().getContent().getChildren().getFirst());
 		}
 	}
 
@@ -491,7 +491,7 @@ public class VaultTreeViewer extends TreeViewer {
 		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		if (selectedItems.size() == 1) {
-			final OutlineItem selectedItem = selectedItems.get(0);
+			final OutlineItem selectedItem = selectedItems.getFirst();
 
 			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
@@ -504,7 +504,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public void moveUp() {
 		if (canMoveUp()) {
 			final List<OutlineItem> selectedItems = getSelectedItems();
-			final OutlineItem selectedItem = selectedItems.get(0);
+			final OutlineItem selectedItem = selectedItems.getFirst();
 			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
 			OutlineItem.swap(selectedItem.getParent(), index, index - 1);
@@ -521,7 +521,7 @@ public class VaultTreeViewer extends TreeViewer {
 		final List<OutlineItem> selectedItems = getSelectedItems();
 		
 		if (selectedItems.size() == 1) {
-			final OutlineItem selectedItem = selectedItems.get(0);
+			final OutlineItem selectedItem = selectedItems.getFirst();
 
 			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
@@ -534,7 +534,7 @@ public class VaultTreeViewer extends TreeViewer {
 	public void moveDown() {
 		if (canMoveDown()) {
 			final List<OutlineItem> selectedItems = getSelectedItems();
-			final OutlineItem selectedItem = selectedItems.get(0);
+			final OutlineItem selectedItem = selectedItems.getFirst();
 			final int index = selectedItem.getParent().getChildren().indexOf(selectedItem);
 			
 			OutlineItem.swap(selectedItem.getParent(), index, index + 1);
@@ -549,7 +549,7 @@ public class VaultTreeViewer extends TreeViewer {
 		boolean itemsAreConsecutiveSiblings = !nodes.isEmpty();
 		
 		if (itemsAreConsecutiveSiblings) {
-			final OutlineItem firstNode = nodes.get(0);
+			final OutlineItem firstNode = nodes.getFirst();
 
 			final int firstNodeIndex = firstNode.getParent().getChildren().indexOf(firstNode);
 			
@@ -574,7 +574,7 @@ public class VaultTreeViewer extends TreeViewer {
 		boolean canIndent = false;
 		
 		if (!selectedItems.isEmpty()) {
-			final OutlineItem firstNode = selectedItems.get(0);
+			final OutlineItem firstNode = selectedItems.getFirst();
 
 			final int index = firstNode.getParent().getChildren().indexOf(firstNode);
 			
@@ -599,7 +599,7 @@ public class VaultTreeViewer extends TreeViewer {
 		final List<OutlineItem> selectedItems = getSelectedItems();
 
 		if (!selectedItems.isEmpty()) {
-			final OutlineItem firstNode = selectedItems.get(0);
+			final OutlineItem firstNode = selectedItems.getFirst();
 			
 			canUnindent = firstNode.getParent() != null && firstNode.getParent().getParent() != null && itemsAreConsecutiveSiblings(selectedItems);
 		}
@@ -640,7 +640,7 @@ public class VaultTreeViewer extends TreeViewer {
 
 				final List<OutlineItem> selectedItems = getSelectedItems();
 
-				final OutlineItem nextOutlineItemToSelect = selectedItems.get(selectedItems.size() - 1).getNextOutlineItemToSelect();
+				final OutlineItem nextOutlineItemToSelect = selectedItems.getLast().getNextOutlineItemToSelect();
 				
 				OutlineItem.remove(selectedItems);
 				Globals.getVaultDocument().setIsModified(true);
@@ -787,7 +787,7 @@ public class VaultTreeViewer extends TreeViewer {
 	
 	public void pasteItems(Shell shell) {
 		final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
-		final OutlineItem selectedNode = selectedItems.get(0);
+		final OutlineItem selectedNode = selectedItems.getFirst();
 		
 		boolean addAtTop = false;
 		boolean cancel = false;
@@ -819,7 +819,7 @@ public class VaultTreeViewer extends TreeViewer {
 		if (canEditOutlineItem()) {
 			final List<OutlineItem> selectedItems = getSelectedItems();
 
-			final OutlineItem selectedItem = selectedItems.get(0);
+			final OutlineItem selectedItem = selectedItems.getFirst();
 
 			final AddItemDialog addItemDialog = new AddItemDialog(shell,false, AddItemDialog.Mode.Edit, selectedItem);
 			
@@ -858,7 +858,7 @@ public class VaultTreeViewer extends TreeViewer {
 		boolean moreThanOneItem;
 		
 		if (selectedItems.size() == 1) {
-			moreThanOneItem = selectedItems.get(0).getChildren().size() > 1;
+			moreThanOneItem = selectedItems.getFirst().getChildren().size() > 1;
 		}
 		else {
 			moreThanOneItem = selectedItems.size() > 1;
@@ -880,7 +880,7 @@ public class VaultTreeViewer extends TreeViewer {
 				final List<OutlineItem> selectedItems = getSelectedItems();
 				
 				if (selectedItems.size() == 1) {
-					itemsMoved = OutlineItem.sort(selectedItems.get(0).getChildren());
+					itemsMoved = OutlineItem.sort(selectedItems.getFirst().getChildren());
 				}
 				else if (selectedItems.size() > 1) {
 					itemsMoved = OutlineItem.sort(selectedItems);

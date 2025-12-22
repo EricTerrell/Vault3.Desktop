@@ -330,7 +330,7 @@ public class SearchUI extends Composite {
                     Globals.getVaultTextViewer().highlightSearchHits();
 
                     if (!searchResults.getResults().isEmpty()) {
-                        listViewer.setSelection(new StructuredSelection(searchResults.getResults().get(0)));
+                        listViewer.setSelection(new StructuredSelection(searchResults.getResults().getFirst()));
                         listViewer.getList().forceFocus();
                         clearButton.setEnabled(true);
                         saveSearchParameters(searchParameters);

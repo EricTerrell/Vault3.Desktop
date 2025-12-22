@@ -125,9 +125,11 @@ import java.text.MessageFormat;
  * 									 different photos.
  * 0.96				1.3				 Save and restore dialog box location as screen coordinates, not coordinates
  * 									 relative to parent shell.
+ * 0.97				1.3				 Removed ColorRegistry which is no longer necessary. Colors do not need to be
+ *									 disposed anymore.
  */
 public class Version {
-	private static final float versionNumber = 0.96f;
+	private static final float versionNumber = 0.97f;
 	private static final int copyrightYear = 2025;
 
 	public static float getVersionNumber() {
