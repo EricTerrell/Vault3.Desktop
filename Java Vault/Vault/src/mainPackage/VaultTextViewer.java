@@ -603,54 +603,44 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	}
 	
 	public void setFont() {
-		final FontDialog fontDialog = new FontDialog(getTextWidget().getShell());
-		fontDialog.setText("Set Font");
+		final FontAndColorsDialog fontAndColorsDialog = new FontAndColorsDialog(
+				getTextWidget().getShell(),
+				"Current Outline Item",
+				getFontString(),
+				getTextWidget().getForeground(),
+				null);
 
-		if (getOutlineItem().getRGB() != null) {
-			fontDialog.setRGB(getOutlineItem().getRGB());
-		}
+		if (fontAndColorsDialog.open() == IDialogConstants.OK_ID) {
+			final FontData[] fontList = FontUtils.stringToFontList(fontAndColorsDialog.getFontString());
 
-		FontData[] fontList = FontUtils.stringToFontList(getFontString());
-		
-		if (fontList != null) {
-			fontDialog.setFontList(fontList);
-		}
-		
-		final FontData fontData = fontDialog.open();
-		
-		if (fontData != null) {
-			fontList = fontDialog.getFontList();
-			
-			String fontString = FontUtils.fontListToString(fontList);
-			
-			final SWTFont font = new SWTFont(fontList[0].getName(), Globals.getPlatform(), fontString);
-			
+			final SWTFont font =
+					new SWTFont(fontList[0].getName(), Globals.getPlatform(), fontAndColorsDialog.getFontString());
+
 			final OutlineItem outlineItem = getOutlineItem();
-			
+
 			if (outlineItem.getFontList() == null) {
 				outlineItem.setFontList(new FontList());
 			}
-			
+
 			String fontListBeforeFontAdded = FontList.serialize(outlineItem.getFontList());
-			
+
 			outlineItem.getFontList().add(font);
-			
+
 			String fontListAfterFontAdded = FontList.serialize(outlineItem.getFontList());
-			
+
 			// Only set the modified flag if the font list really changed.
 			if (!fontListAfterFontAdded.equals(fontListBeforeFontAdded)) {
 				Globals.getVaultDocument().setIsModified(true);
 			}
-			
-			// rgb will be null for Ubuntu.
-			final RGB rgb = fontDialog.getRGB();
-			
+
+			final RGB rgb = fontAndColorsDialog.getForegroundColor().getRGB();
+
 			boolean colorChanged = false;
-			
-			if (rgb != null && !rgb.equals(outlineItem.getRGB())) {
+
+			if (!rgb.equals(outlineItem.getRGB())) {
 				getOutlineItem().setRGB(rgb);
 				Globals.getVaultDocument().setIsModified(true);
-				
+
 				colorChanged = true;
 			}
 
