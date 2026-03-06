@@ -14,7 +14,9 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 0.98&#10;&#10;Users can now specify the background color of the outline on Linux systems. The Options / Settings dialog's Fonts &amp; Colors tab now allows the user to configure both the outline and the text windows.&#10;&#10;Selecting Edit / Set Font, or right-clicking the text pane and selecting Set Font, now allows the user to specify the text foreground color on Linux systems." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Updated on-line help&#10;&#10;Got rid of previous and next links on almost every page. Replaced some content with links to the website.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -408,10 +410,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (4)" />
-        <item itemvalue="PowerShell.ant_build_win_x86_64.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -804,7 +806,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="295" />
+    <option name="localTasksCounter" value="298" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -821,7 +823,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.90&#10;&#10;1) Allow user to specify the number of CPU cores to use for photo exports.&#10;2) Replaced Base64Coder class with Base64Utils class.&#10;3) Updated links on Help/About dialog box." />
     <MESSAGE value="Version 0.91&#10;&#10;1) All VaultDialog derived dialogs are now modal.&#10;2) In InsertUrlDialog, default to https:// protocol." />
     <MESSAGE value="Version 0.91&#10;&#10;1) All VaultDialog derived dialogs are now modal.&#10;2) In InsertUrlDialog, default to https:// protocol.&#10;3) Allow PasswordPromptDialog to use saved size and position, for Windows." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin." />
@@ -846,7 +847,8 @@
     <MESSAGE value="Version 0.97&#10;&#10;ColorRegistry removed - Color objects don't need to be disposed anymore&#10;Code inspection updates" />
     <MESSAGE value="Version 0.98&#10;&#10;User can now specify background of the outline on Linux systems. The Settings dialog / Fonts &amp; Colors tab now allows the user to configure both the outline and the text windows." />
     <MESSAGE value="Version 0.98&#10;&#10;Users can now specify the background color of the outline on Linux systems. The Options / Settings dialog's Fonts &amp; Colors tab now allows the user to configure both the outline and the text windows.&#10;&#10;Selecting Edit / Set Font, or right-clicking the text pane and selecting Set Font, now allows the user to specify the text foreground color on Linux systems." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 0.98&#10;&#10;Users can now specify the background color of the outline on Linux systems. The Options / Settings dialog's Fonts &amp; Colors tab now allows the user to configure both the outline and the text windows.&#10;&#10;Selecting Edit / Set Font, or right-clicking the text pane and selecting Set Font, now allows the user to specify the text foreground color on Linux systems." />
+    <MESSAGE value="Updated on-line help&#10;&#10;Got rid of previous and next links on almost every page. Replaced some content with links to the website." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated on-line help&#10;&#10;Got rid of previous and next links on almost every page. Replaced some content with links to the website." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
