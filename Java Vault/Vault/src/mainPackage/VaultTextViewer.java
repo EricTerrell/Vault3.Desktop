@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2025, Eric Bergman-Terrell
+  (C) Copyright 2026, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -109,7 +109,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 
 		String defaultTextFont = Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont);
 		
-		if (defaultTextFont.isEmpty()) {
+		if (defaultTextFont.isBlank()) {
 			defaultTextFont = FontUtils.fontListToString(getTextWidget().getFont().getFontData());
 			Globals.getPreferenceStore().setValue(PreferenceKeys.DefaultTextFont, defaultTextFont);
 		}
@@ -222,13 +222,13 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	public void setForegroundAndBackgroundColors() {
 		final PreferenceStore preferenceStore = Globals.getPreferenceStore();
 
-		final RGB textForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
-				preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
-				preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
+		final RGB textForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundRed),
+				preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundGreen),
+				preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundBlue));
 
-		final RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
-				preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
-				preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
+		final RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundRed),
+				preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundGreen),
+				preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundBlue));
 
 		final StyledText textWidget = getTextWidget();
 		
@@ -310,13 +310,14 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 			final PreferenceStore preferenceStore = Globals.getPreferenceStore();
 
 			final RGB textForegroundColor = new RGB(
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundRed),
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundGreen),
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundBlue));
 
-			final RGB textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
-					preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
-					preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
+			final RGB textBackgroundColor = new RGB(
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundRed),
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundGreen),
+					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundBlue));
 
 			getTextWidget().setForeground(new Color(textForegroundColor));
 			getTextWidget().setBackground(new Color(textBackgroundColor));

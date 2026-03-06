@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2025, Eric Bergman-Terrell
+  (C) Copyright 2026, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -29,6 +29,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
@@ -292,9 +293,26 @@ public class Globals {
 		preferenceStore.setDefault(PreferenceKeys.ForceUpperCasePasswords, true);
 		preferenceStore.setDefault(PreferenceKeys.Vault3ForAndroidURL, "https://www.EricBT.com/Vault3ForAndroid");
 		preferenceStore.setDefault(PreferenceKeys.CheckForModificationsMinutes, 0);
-		preferenceStore.setDefault(PreferenceKeys.TextBackgroundRed, 255);
-		preferenceStore.setDefault(PreferenceKeys.TextBackgroundGreen, 255);
-		preferenceStore.setDefault(PreferenceKeys.TextBackgroundBlue, 255);
+
+		final Color white = new Color(255, 255, 255);
+		final Color black = new Color(0, 0, 0);
+
+		preferenceStore.setDefault(PreferenceKeys.DefaultTextFontForegroundRed, black.getRed());
+		preferenceStore.setDefault(PreferenceKeys.DefaultTextFontForegroundGreen, black.getGreen());
+		preferenceStore.setDefault(PreferenceKeys.DefaultTextFontForegroundBlue, black.getBlue());
+
+		preferenceStore.setDefault(PreferenceKeys.DefaultTextFontBackgroundRed, white.getRed());
+		preferenceStore.setDefault(PreferenceKeys.DefaultTextFontBackgroundGreen, white.getGreen());
+		preferenceStore.setDefault(PreferenceKeys.DefaultTextFontBackgroundBlue, white.getBlue());
+
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontForegroundRed, black.getRed());
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontForegroundGreen, black.getGreen());
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontForegroundBlue, black.getBlue());
+
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontBackgroundRed, white.getRed());
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontBackgroundGreen, white.getGreen());
+		preferenceStore.setDefault(PreferenceKeys.OutlineFontBackgroundBlue, white.getBlue());
+
 		preferenceStore.setDefault(PreferenceKeys.AlsoDeleteOutlineItem, true);
 
         final int numberOfCores = Runtime.getRuntime().availableProcessors();

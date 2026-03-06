@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2025, Eric Bergman-Terrell
+  (C) Copyright 2026, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -127,10 +127,13 @@ import java.text.MessageFormat;
  * 									 relative to parent shell.
  * 0.97				1.3				 Removed ColorRegistry which is no longer necessary. Colors do not need to be
  *									 disposed anymore.
+ * 0.98				1.3				 Users can now specify the background color of the outline on Linux systems. The
+ * 									 Options / Settings dialog / Fonts & Colors tab now allows the user to configure
+ * 									 both the outline and the text windows.
  */
 public class Version {
-	private static final float versionNumber = 0.97f;
-	private static final int copyrightYear = 2025;
+	private static final float versionNumber = 0.98f;
+	private static final int copyrightYear = 2026;
 
 	public static float getVersionNumber() {
 		return versionNumber;

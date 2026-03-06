@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2025, Eric Bergman-Terrell
+  (C) Copyright 2026, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -22,9 +22,12 @@ package mainPackage;
 
 public class PreferenceKeys {
 	public static final String OutlineFontString                  = "OutlineFontString";
-	public static final String OutlineFontRed                     = "OutlineFontRed";
-	public static final String OutlineFontGreen                   = "OutlineFontGreen";
-	public static final String OutlineFontBlue                    = "OutlineFontBlue";
+	public static final String OutlineFontForegroundRed           = "OutlineFontForegroundRed";
+	public static final String OutlineFontForegroundGreen         = "OutlineFontForegroundGreen";
+	public static final String OutlineFontForegroundBlue          = "OutlineFontForegroundBlue";
+	public static final String OutlineFontBackgroundRed           = "OutlineFontBackgroundRed";
+	public static final String OutlineFontBackgroundGreen         = "OutlineFontBackgroundGreen";
+	public static final String OutlineFontBackgroundBlue          = "OutlineFontBackgroundBlue";
 	public static final String LoadFileOnStartup                  = "LoadFileOnStartup";
 	public static final String LoadMostRecentlyUsedFile           = "LoadMostRecentlyUsedFile";
 	public static final String DoNotAutomaticallyLoadFile         = "DoNotAutomaticallyLoadFile";
@@ -35,12 +38,12 @@ public class PreferenceKeys {
     public static final String IncludeOutlineTextSize             = "IncludeOutlineTextSize";
 	public static final String SaveOldFileWithBakType             = "SaveOldFileWithBakType";
 	public static final String DefaultTextFont                    = "DefaultTextFont";
-	public static final String DefaultTextFontRed                 = "DefaultTextFontRed";
-	public static final String DefaultTextFontGreen               = "DefaultTextFontGreen";
-	public static final String DefaultTextFontBlue                = "DefaultTextFontBlue";
-	public static final String TextBackgroundRed                  = "TextBackgroundRed";
-	public static final String TextBackgroundGreen                = "TextBackgroundGreen";
-	public static final String TextBackgroundBlue                 = "TextBackgroundBlue";
+	public static final String DefaultTextFontForegroundRed       = "DefaultTextFontForegroundRed";
+	public static final String DefaultTextFontForegroundGreen     = "DefaultTextFontForegroundGreen";
+	public static final String DefaultTextFontForegroundBlue      = "DefaultTextFontForegroundBlue";
+	public static final String DefaultTextFontBackgroundRed       = "DefaultTextFontBackgroundRed";
+	public static final String DefaultTextFontBackgroundGreen     = "DefaultTextFontBackgroundGreen";
+	public static final String DefaultTextFontBackgroundBlue      = "DefaultTextFontBackgroundBlue";
 	public static final String MostRecentlyUsedFilePath           = "MostRecentlyUsedFilePath";
 	public static final String StatusBarMessageDuration           = "StatusBarMessageDuration";
 	public static final String TextMarginHeight                   = "TextMarginHeight";

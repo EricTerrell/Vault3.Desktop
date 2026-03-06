@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2025, Eric Bergman-Terrell
+  (C) Copyright 2026, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -157,6 +157,14 @@ public class VaultTreeViewer extends TreeViewer {
 		});
 
 		ensureTextIsVisible();
+
+		String fontString = Globals.getPreferenceStore().getString(PreferenceKeys.OutlineFontString);
+
+		if (fontString.isBlank()) {
+			fontString = FontUtils.fontListToString(this.getTree().getFont().getFontData());
+
+			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontString, fontString);
+		}
 	}
 
 	/**
@@ -242,12 +250,32 @@ public class VaultTreeViewer extends TreeViewer {
 			usingNonDefaultFont = true;
 		}
 
-		final int red   = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontRed);
-		final int green = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontGreen);
-		final int blue  = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBlue);
+		final int foregroundRed   = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontForegroundRed);
+		final int foregroundGreen = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontForegroundGreen);
+		final int foregroundBlue  = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontForegroundBlue);
 		
-		if (ColorUtils.rgbValueIsValid(red, green, blue)) {
-			getTree().setForeground(new Color(red, green, blue));
+		if (ColorUtils.rgbValueIsValid(foregroundRed, foregroundGreen, foregroundBlue)) {
+			getTree().setForeground(new Color(foregroundRed, foregroundGreen, foregroundBlue));
+		}
+
+		/*
+		Only set the background on Linux. If we do this on Windows, and the background is dark:
+
+		1) One cannot see the downward arrow
+		2) When the user hovers over an item, it won't be visible
+
+		Issue 1 may not be fixable since the color of the downward arrow is chosen by the OS. Issue 2 is probably
+		fixable by adding custom drawing code to render the titles.
+		 */
+
+		if (Globals.getPlatform() == IPlatform.PlatformEnum.Linux) {
+			final int backgroundRed = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBackgroundRed);
+			final int backgroundGreen = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBackgroundGreen);
+			final int backgroundBlue = Globals.getPreferenceStore().getInt(PreferenceKeys.OutlineFontBackgroundBlue);
+
+			if (ColorUtils.rgbValueIsValid(backgroundRed, backgroundGreen, backgroundBlue)) {
+				getTree().setBackground(new Color(backgroundRed, backgroundGreen, backgroundBlue));
+			}
 		}
 	}
 	
@@ -911,22 +939,34 @@ public class VaultTreeViewer extends TreeViewer {
 	 * Change the Outline's font
 	 */
 	public void setFont() {
-		final FontDialog fontDialog = new FontDialog(getTree().getShell());
-		fontDialog.setText("Set Font");
-		
-		fontDialog.setRGB(getTree().getForeground().getRGB());
+		final FontAndColorsDialog fontAndColorsDialog = new FontAndColorsDialog(
+				getTree().getShell(),
+				"Outline Window",
+				Globals.getPreferenceStore().getString(PreferenceKeys.OutlineFontString),
+				getTree().getForeground(),
+				Globals.getPlatform() == IPlatform.PlatformEnum.Linux ? getTree().getBackground() : null);
 
-		fontDialog.setFontList(getTree().getFont().getFontData());
+		if (fontAndColorsDialog.open() == IDialogConstants.OK_ID) {
+			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontString,
+					fontAndColorsDialog.getFontString());
 
-		final FontData fontData = fontDialog.open();
-		
-		if (fontData != null) {
-			final String fontString = FontUtils.fontListToString(fontDialog.getFontList());
-			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontString, fontString);
-			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontRed,   fontDialog.getRGB().red);
-			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontGreen, fontDialog.getRGB().green);
-			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontBlue,  fontDialog.getRGB().blue);
-		
+			final Color foregroundColor = fontAndColorsDialog.getForegroundColor();
+
+			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontForegroundRed,   foregroundColor.getRGB().red);
+			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontForegroundGreen, foregroundColor.getRGB().green);
+			Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontForegroundBlue,  foregroundColor.getRGB().blue);
+
+			final Color backgroundColor = fontAndColorsDialog.getBackgroundColor();
+
+			if (backgroundColor != null) {
+				Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontBackgroundRed,
+						backgroundColor.getRGB().red);
+				Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontBackgroundGreen,
+						backgroundColor.getRGB().green);
+				Globals.getPreferenceStore().setValue(PreferenceKeys.OutlineFontBackgroundBlue,
+						backgroundColor.getRGB().blue);
+			}
+
 			applyUserPreferences();
 		}
 	}

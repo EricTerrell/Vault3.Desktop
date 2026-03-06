@@ -1,6 +1,6 @@
 /*
   Vault 3
-  (C) Copyright 2025, Eric Bergman-Terrell
+  (C) Copyright 2026, Eric Bergman-Terrell
   
   This file is part of Vault 3.
 
@@ -23,13 +23,13 @@ package mainPackage;
 import java.io.File;
 import java.text.MessageFormat;
 
+import commonCode.IPlatform;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
@@ -52,8 +52,6 @@ public class SettingsDialog extends VaultDialog {
 		photoEditingProgramText.setText(preferenceStore.getString(PreferenceKeys.PhotoEditingProgramPath));
 		startupFilePathText.setText(preferenceStore.getString(PreferenceKeys.StartupFilePath));
 
-		updateFontDisplay();
-		
 		substituteFolderLabel.setText(preferenceStore.getString(PreferenceKeys.SubstitutePhotoFolder));
 	}
 
@@ -71,13 +69,11 @@ public class SettingsDialog extends VaultDialog {
 	
 	private Text startupFilePathText, photoExclusionText, photoEditingProgramText;
 	
-	private Canvas textForegroundColorCanvas, textBackgroundColorCanvas;
-
 	private Color nonErrorBackground, errorBackground;
 	
-	private String previousSubstitutePhotoFolder = null, fontString;
+	private String previousSubstitutePhotoFolder = null, defaultTextFontString, outlineFontString;
 
-	private RGB textForegroundColor, textBackgroundColor;
+	private RGB defaultTextForegroundColor, defaultTextBackgroundColor, outlineForegroundColor, outlineBackgroundColor;
 	
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
@@ -149,16 +145,28 @@ public class SettingsDialog extends VaultDialog {
 		preferenceStore.setValue(PreferenceKeys.SlideshowFullScreen, slideShowFullScreen.getSelection());
 		preferenceStore.setValue(PreferenceKeys.PhotoExclusions, photoExclusionText.getText());
 		
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFont, fontString);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFont, defaultTextFontString);
 		
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFontRed, textForegroundColor.red);
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFontGreen, textForegroundColor.green);
-		preferenceStore.setValue(PreferenceKeys.DefaultTextFontBlue, textForegroundColor.blue);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontForegroundRed, defaultTextForegroundColor.red);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontForegroundGreen, defaultTextForegroundColor.green);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontForegroundBlue, defaultTextForegroundColor.blue);
 		
-		preferenceStore.setValue(PreferenceKeys.TextBackgroundRed, textBackgroundColor.red);
-		preferenceStore.setValue(PreferenceKeys.TextBackgroundGreen, textBackgroundColor.green);
-		preferenceStore.setValue(PreferenceKeys.TextBackgroundBlue, textBackgroundColor.blue);
-		
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontBackgroundRed, defaultTextBackgroundColor.red);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontBackgroundGreen, defaultTextBackgroundColor.green);
+		preferenceStore.setValue(PreferenceKeys.DefaultTextFontBackgroundBlue, defaultTextBackgroundColor.blue);
+
+		preferenceStore.setValue(PreferenceKeys.OutlineFontString, outlineFontString);
+
+		preferenceStore.setValue(PreferenceKeys.OutlineFontForegroundRed, outlineForegroundColor.red);
+		preferenceStore.setValue(PreferenceKeys.OutlineFontForegroundGreen, outlineForegroundColor.green);
+		preferenceStore.setValue(PreferenceKeys.OutlineFontForegroundBlue, outlineForegroundColor.blue);
+
+		if (outlineBackgroundColor != null) {
+			preferenceStore.setValue(PreferenceKeys.OutlineFontBackgroundRed, outlineBackgroundColor.red);
+			preferenceStore.setValue(PreferenceKeys.OutlineFontBackgroundGreen, outlineBackgroundColor.green);
+			preferenceStore.setValue(PreferenceKeys.OutlineFontBackgroundBlue, outlineBackgroundColor.blue);
+		}
+
 		Globals.getVaultTextViewer().refresh();
 		
 		preferenceStore.setValue(PreferenceKeys.CachePasswords, cachePasswords.getSelection());
@@ -176,7 +184,9 @@ public class SettingsDialog extends VaultDialog {
         preferenceStore.setValue(PreferenceKeys.IncludeOutlineTextSize, includeTextSize.getSelection());
 
 		preferenceStore.setValue(PreferenceKeys.CheckForUpdatesAutomatically, checkForUpdatesCheckBox.getSelection());
-		
+
+		Globals.getVaultTreeViewer().applyUserPreferences();
+
 		super.okPressed();
 	}
 
@@ -466,137 +476,99 @@ public class SettingsDialog extends VaultDialog {
 		enableDisableWarnAboutSingleInstance();
 
 		final Composite fontsAndColorsComposite = new Composite(tabFolder, SWT.NONE);
-		gridLayout = new GridLayout(2, false);
+		gridLayout = new GridLayout(1, false);
 		fontsAndColorsComposite.setLayout(gridLayout);
 
-		defaultTextFontLabel = new Label(fontsAndColorsComposite, SWT.NONE);
-		gridData = new GridData(GridData.FILL_HORIZONTAL);
-		gridData.horizontalSpan = 2;
-		defaultTextFontLabel.setLayoutData(gridData);
+		// Spacer.
+		new Label(fontsAndColorsComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-		final Label defaultTextFontColorLabel = new Label(fontsAndColorsComposite, SWT.NONE);
-		defaultTextFontColorLabel.setText("Text Foreground Color:");
+		final Button outlineButton = new Button(fontsAndColorsComposite, SWT.NONE);
+		outlineButton.setText("&Outline Font and Colors...");
 
-		textForegroundColorCanvas = new Canvas(fontsAndColorsComposite, SWT.BORDER);
-		textForegroundColorCanvas.setBackground(new Color(textForegroundColor));
-		
-		gridData = new GridData();
-		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(defaultTextFontColorLabel.getText()).y;
-		textForegroundColorCanvas.setLayoutData(gridData);
+		// Spacer.
+		new Label(fontsAndColorsComposite, SWT.NONE).setText(StringLiterals.EmptyString);
 
-        final Button specifyForegroundColorButton = new Button(fontsAndColorsComposite, SWT.NONE);
-        specifyForegroundColorButton.setText("Specify Text Foreground Co&lor...");
+		final Button defaultTextButton = new Button(fontsAndColorsComposite, SWT.NONE);
+		defaultTextButton.setText("&Default Text Font and Colors...");
 
-        specifyForegroundColorButton.addSelectionListener(new SelectionListener() {
-            @Override
-            public void widgetDefaultSelected(SelectionEvent arg0) {
-            }
-
-            @Override
-            public void widgetSelected(SelectionEvent arg0) {
-                final ColorDialog colorDialog = new ColorDialog(getShell());
-                colorDialog.setText("Text Foreground Color");
-                colorDialog.setRGB(textForegroundColor);
-
-                final RGB newColor = colorDialog.open();
-
-                if (newColor != null) {
-                    textForegroundColor = newColor;
-                    textForegroundColorCanvas.setBackground(new Color(textForegroundColor));
-                }
-            }
-        });
-
-		Label spacerLabel = new Label(fontsAndColorsComposite, SWT.NONE);
-		gridData = new GridData();
-		gridData.horizontalSpan = 2;
-		spacerLabel.setLayoutData(gridData);
-
-		final Button specifyFontButton = new Button(fontsAndColorsComposite, SWT.NONE);
-		specifyFontButton.setText("Specify Text &Font...");
-		
-		specifyFontButton.addSelectionListener(new SelectionListener() {
+		outlineButton.addSelectionListener(new SelectionListener() {
 			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
+			public void widgetSelected(SelectionEvent selectionEvent) {
+				final Color foregroundColor = new Color(
+						outlineForegroundColor.red,
+						outlineForegroundColor.green,
+						outlineForegroundColor.blue);
+
+				Color backgroundColor = null;
+
+				if (Globals.getPlatform() == IPlatform.PlatformEnum.Linux) {
+					backgroundColor = new Color(
+							outlineBackgroundColor.red,
+							outlineBackgroundColor.green,
+							outlineBackgroundColor.blue);
+				}
+
+				final FontAndColorsDialog fontAndColorsDialog = new FontAndColorsDialog(
+						getShell(),
+						"Outline",
+						Globals.getPreferenceStore().getString(PreferenceKeys.OutlineFontString),
+						foregroundColor,
+						backgroundColor
+				);
+
+				if (fontAndColorsDialog.open() == IDialogConstants.OK_ID) {
+					outlineFontString = fontAndColorsDialog.getFontString();
+					outlineForegroundColor = fontAndColorsDialog.getForegroundColor().getRGB();
+
+					if (fontAndColorsDialog.getBackgroundColor() != null) {
+						outlineBackgroundColor = fontAndColorsDialog.getBackgroundColor().getRGB();
+					}
+				}
 			}
 
 			@Override
-			public void widgetSelected(SelectionEvent e) {
-				final FontDialog fontDialog = new FontDialog(getShell());
-
-				FontData[] fontList = FontUtils.stringToFontList(preferenceStore.getString(PreferenceKeys.DefaultTextFont));
-				
-				if (fontList != null) {
-					fontDialog.setFontList(fontList);
-				}
-				
-				final int red   = preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed);
-				final int green = preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen);
-				final int blue  = preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue);
-
-				final RGB defaultColor = new RGB(red, green, blue);
-
-				fontDialog.setRGB(defaultColor);
-				fontDialog.setText("Specify Font");
-				fontDialog.setEffectsVisible(true);
-
-				final FontData fontData = fontDialog.open();
-				
-				if (fontData != null) {
-					fontList = fontDialog.getFontList();
-					
-					fontString = FontUtils.fontListToString(fontList);
-
-                    // Color will not be available on Linux.
-                    if (fontDialog.getRGB() != null) {
-                        textForegroundColor = fontDialog.getRGB();
-                    }
-
-					updateFontDisplay();
-				}
-			}
+			public void widgetDefaultSelected(SelectionEvent selectionEvent) {}
 		});
 
-		spacerLabel = new Label(fontsAndColorsComposite, SWT.NONE);
-		gridData = new GridData();
-		gridData.horizontalSpan = 2;
-		spacerLabel.setLayoutData(gridData);
+		defaultTextButton.addSelectionListener(new SelectionListener() {
+			@Override
+			public void widgetSelected(SelectionEvent selectionEvent) {
+				final int foregroundRed =
+						Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontForegroundRed);
+				final int foregroundGreen =
+						Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontForegroundGreen);
+				final int foregroundBlue =
+						Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontForegroundBlue);
 
-        gridLayout = new GridLayout(2, false);
-        fontsAndColorsComposite.setLayout(gridLayout);
+				final Color foregroundColor = new Color(foregroundRed, foregroundGreen, foregroundBlue);
 
-        final Label textBackgroundColorLabel = new Label(fontsAndColorsComposite, SWT.NONE);
-        textBackgroundColorLabel.setText("Text Background Color:");
+				final int backgroundRed =
+						Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontBackgroundRed);
+				final int backgroundGreen =
+						Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontBackgroundGreen);
+				final int backgroundBlue =
+						Globals.getPreferenceStore().getInt(PreferenceKeys.DefaultTextFontBackgroundBlue);
 
-        textBackgroundColorCanvas = new Canvas(fontsAndColorsComposite, SWT.BORDER);
-        textBackgroundColorCanvas.setBackground(new Color(textBackgroundColor));
+				final Color backgroundColor = new Color(backgroundRed, backgroundGreen, backgroundBlue);
 
-        gridData = new GridData();
-        gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(textBackgroundColorLabel.getText()).y;
-        textBackgroundColorCanvas.setLayoutData(gridData);
+				final FontAndColorsDialog fontAndColorsDialog = new FontAndColorsDialog(
+						getShell(),
+						"Default Text",
+						Globals.getPreferenceStore().getString(PreferenceKeys.DefaultTextFont),
+						foregroundColor,
+						backgroundColor);
 
-        final Button specifyBackgroundColorButton = new Button(fontsAndColorsComposite, SWT.NONE);
-        specifyBackgroundColorButton.setText("Specify &Text Background Color...");
+				if (fontAndColorsDialog.open() == IDialogConstants.OK_ID) {
+					defaultTextFontString = fontAndColorsDialog.getFontString();
 
-        specifyBackgroundColorButton.addSelectionListener(new SelectionListener() {
-            @Override
-            public void widgetDefaultSelected(SelectionEvent arg0) {
-            }
+					defaultTextForegroundColor = fontAndColorsDialog.getForegroundColor().getRGB();
+					defaultTextBackgroundColor = fontAndColorsDialog.getBackgroundColor().getRGB();
+				}
+			}
 
-            @Override
-            public void widgetSelected(SelectionEvent arg0) {
-                final ColorDialog colorDialog = new ColorDialog(getShell());
-                colorDialog.setText("Text Background Color");
-                colorDialog.setRGB(textBackgroundColor);
-
-                final RGB newColor = colorDialog.open();
-
-                if (newColor != null) {
-                    textBackgroundColor = newColor;
-                    textBackgroundColorCanvas.setBackground(new Color(textBackgroundColor));
-                }
-            }
-        });
+			@Override
+			public void widgetDefaultSelected(SelectionEvent selectionEvent) {}
+		});
 
         Composite substituteFolderComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
@@ -864,28 +836,44 @@ public class SettingsDialog extends VaultDialog {
 		warnAboutSingleInstance.setEnabled(!allowMultipleInstances.getSelection());
 	}
 	
-	private void updateFontDisplay() {
-		final String defaultTextFontLabelText = MessageFormat.format("Default Text Font: {0}", FontUtils.stringToDescription(fontString));
-		defaultTextFontLabel.setText(defaultTextFontLabelText);
-		
-		textForegroundColorCanvas.setBackground(new Color(textForegroundColor));
-	}
-	
 	public SettingsDialog(Shell parentShell) {
 		super(parentShell);
 		
 		preferenceStore = Globals.getPreferenceStore();
 		
-		textForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontRed),
-                                      preferenceStore.getInt(PreferenceKeys.DefaultTextFontGreen),
-                                      preferenceStore.getInt(PreferenceKeys.DefaultTextFontBlue));
+		defaultTextForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundRed),
+                                      		 preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundGreen),
+                                      		 preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundBlue));
 
-		textBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.TextBackgroundRed),
-									  preferenceStore.getInt(PreferenceKeys.TextBackgroundGreen),
-									  preferenceStore.getInt(PreferenceKeys.TextBackgroundBlue));
+		defaultTextBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundRed),
+									  		 preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundGreen),
+											 preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundBlue));
 
-		fontString = preferenceStore.getString(PreferenceKeys.DefaultTextFont);
-		
+		defaultTextFontString = preferenceStore.getString(PreferenceKeys.DefaultTextFont);
+
+		if (defaultTextFontString.isBlank()) {
+			defaultTextFontString = FontUtils.fontListToString(
+					Globals.getVaultTextViewer().getTextWidget().getFont().getFontData());
+		}
+
+		outlineForegroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.OutlineFontForegroundRed),
+										 preferenceStore.getInt(PreferenceKeys.OutlineFontForegroundGreen),
+										 preferenceStore.getInt(PreferenceKeys.OutlineFontForegroundBlue));
+
+		if (Globals.getPlatform() == IPlatform.PlatformEnum.Linux) {
+			outlineBackgroundColor = new RGB(preferenceStore.getInt(PreferenceKeys.OutlineFontBackgroundRed),
+											 preferenceStore.getInt(PreferenceKeys.OutlineFontBackgroundGreen),
+											 preferenceStore.getInt(PreferenceKeys.OutlineFontBackgroundBlue));
+		}
+
+		outlineFontString = preferenceStore.getString(PreferenceKeys.OutlineFontString);
+
+		if (outlineFontString.isBlank()) {
+			outlineFontString = FontUtils.fontListToString(
+					Globals.getVaultTreeViewer().getTree().getFont().getFontData()
+			);
+		}
+
 		previousSubstitutePhotoFolder = preferenceStore.getString(PreferenceKeys.SubstitutePhotoFolder);
 	}
 
