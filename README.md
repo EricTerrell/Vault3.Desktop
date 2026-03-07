@@ -14,7 +14,7 @@ Linux (Intel/AMD 64-bit, ARM 64-bit).
 
 # Copyright
 
-Vault 3 &#169; Copyright 2025, [`Eric Bergman-Terrell`](https://www.ericbt.com)
+Vault 3 &#169; Copyright 2026, [`Eric Bergman-Terrell`](https://www.ericbt.com)
 
 # Links
 

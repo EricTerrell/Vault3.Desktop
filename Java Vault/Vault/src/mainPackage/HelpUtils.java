@@ -49,7 +49,7 @@ public class HelpUtils {
 
 		return String.format("file:///%s", new File(topicFilePath).getAbsolutePath());
 	}
-	
+
 	public static void ProcessHelpRequest() {
 		Program.launch(getHomePageURL());
 	}
@@ -83,7 +83,7 @@ public class HelpUtils {
 		}
 		
 		id = id.replace('$', '_');
-		
+
 		return id;
 	}
 }

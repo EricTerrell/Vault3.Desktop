@@ -436,24 +436,13 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	public boolean canDisplayUrl() {
 		return getSpecifiedUrl() != null;
 	}
-	
+
+	// Get the URL that the text cursor is on.
 	private String getSpecifiedUrl() {
 		String specifiedUrl = null;
 		
 		if (isEnabledAndEditable()) {
-			final Point cursorLocation = Display.getCurrent().getCursorLocation();
-			final Point mappedPoint = Display.getCurrent().map(null, getTextWidget(), cursorLocation);
-			
-			// Try to move the cursor to the current mouse position.
-			
-			int caretOffset = getTextWidget().getCaretOffset();
-			
-			try {
-				caretOffset = getTextWidget().getOffsetAtPoint(mappedPoint);
-			}
-			catch (Throwable ex) {
-				ex.printStackTrace();
-			}
+			final int caretOffset = getTextWidget().getCaretOffset();
 
 			if (caretOffset > -1) {
 				final Pattern pattern = Pattern.compile(Globals.getPreferenceStore().getString(PreferenceKeys.URLRegex));

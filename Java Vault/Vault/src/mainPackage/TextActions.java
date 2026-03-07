@@ -145,7 +145,7 @@ public class TextActions {
 	public static class DisplayUrlAction extends Action {
 		@Override
 		public String getDescription() {
-			return "Display the specified web or file URL";
+			return "Browse the url that the cursor is on";
 		}
 
 		public DisplayUrlAction() {

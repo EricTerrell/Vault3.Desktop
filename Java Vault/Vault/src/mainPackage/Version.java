@@ -127,9 +127,10 @@ import java.text.MessageFormat;
  * 									 relative to parent shell.
  * 0.97				1.3				 Removed ColorRegistry which is no longer necessary. Colors do not need to be
  *									 disposed anymore.
- * 0.98				1.3				 Users can now specify the background color of the outline on Linux systems. The
+ * 0.98				1.3				 1) Users can now specify the background color of the outline on Linux systems. The
  * 									 Options / Settings dialog / Fonts & Colors tab now allows the user to configure
  * 									 both the outline and the text windows.
+ * 									 2) Bug Fix: The Edit / Browse URL menu item now works when the cursor is on a URL.
  */
 public class Version {
 	private static final float versionNumber = 0.98f;

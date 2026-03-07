@@ -67,7 +67,7 @@ public class ViewActions {
 	public static class MoveVerticalSplitAction extends Action {
 		@Override
 		public String getDescription() {
-			return "Move the divider between the ouline and text windows";
+			return "Move the divider between the outline and text windows";
 		}
 
 		public MoveVerticalSplitAction() {
@@ -170,6 +170,7 @@ public class ViewActions {
 
 		public ViewOutlineAndTextPhotos() {
 			super("&Display Outline and Text / Photo", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/view_outline_and_textphotos.png"))));
+			setId(HelpUtils.helpIDFromClass(this));
 		}
 		
 		public void run() {
