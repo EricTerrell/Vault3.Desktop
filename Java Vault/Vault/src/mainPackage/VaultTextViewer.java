@@ -57,7 +57,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.FontDialog;
 import org.eclipse.swt.widgets.Shell;
 
 import fonts.FontList;
@@ -290,7 +289,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 			rgb = getOutlineItem().getRGB();
 		}
 
-		// On windows, color change does not always take effect if text is loaded. For instance, if there is text and the cursor
+		// On Windows, color change does not always take effect if text is loaded. For instance, if there is text and the cursor
 		// is several lines below the text, the text change will not be visible when getTextWidget().setForegroundColor is called.
 		
 		// Save text and caret position.

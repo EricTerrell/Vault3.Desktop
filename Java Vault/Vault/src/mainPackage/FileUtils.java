@@ -56,8 +56,9 @@ public class FileUtils {
 	}
 	
 	/***
-	 * Determines the encoding of the specified file. If a UTF16 Byte Order Mark (BOM) is found an encoding of "UTF16" is returned.
-	 * If a UTF8 BOM is found an encoding of "UTF8" is returned. Otherwise the default encoding is returned.
+	 * Determines the encoding of the specified file. If a UTF16 Byte Order Mark (BOM) is found an encoding of "UTF16"
+	 * is returned. If a UTF8 BOM is found an encoding of "UTF8" is returned. Otherwise, the default encoding is
+	 * returned.
 	 * @param filePath file path
 	 * @return "UTF8", "UTF16", or default encoding.
 	 */
@@ -99,8 +100,8 @@ public class FileUtils {
 	}
 	
 	/***
-	 * Returns the text of the specified file. If a Unicode Byte Order Mark (BOM) is found, the file is read with the corresponding encoding.
-	 * Otherwise the file is read using the default encoding.
+	 * Returns the text of the specified file. If a Unicode Byte Order Mark (BOM) is found, the file is read with the
+	 * corresponding encoding. Otherwise, the file is read using the default encoding.
 	 * @param filePath file path
 	 * @return text of file
 	 * @throws IOException

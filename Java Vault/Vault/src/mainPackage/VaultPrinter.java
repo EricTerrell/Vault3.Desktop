@@ -355,7 +355,7 @@ public class VaultPrinter {
 		
 		// If the current item has a photo...
 		if (textWithFont.photoPath != null) {
-			// Force a page break if there is not sufficient space on the current page.
+			// Force a page break if there is insufficient space on the current page.
 			int remainingVerticalSpace = bounds.height - yPos;
 			
 			if (remainingVerticalSpace < bounds.height * percentPageSizeRequired) {

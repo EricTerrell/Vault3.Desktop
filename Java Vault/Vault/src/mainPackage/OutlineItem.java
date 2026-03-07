@@ -361,7 +361,7 @@ public class OutlineItem {
             nodeToIndent.indent();
         }
 
-        // Only need to fire the event for the first node, because all of the indented nodes have the same parent.
+        // Only need to fire the event for the first node, because of the indented nodes have the same parent.
         final OutlineItem firstNode = nodesToIndent.getFirst();
         firstNode.fireIndent(firstNode);
     }
@@ -383,7 +383,7 @@ public class OutlineItem {
             nodeToUnindent.unindent();
         }
 
-        // Only need to fire the event for the first node, because all of the indented nodes have the same parent.
+        // Only need to fire the event for the first node, because all the indented nodes have the same parent.
         OutlineItem firstNode = nodesToUnindent.getFirst();
         firstNode.fireUnindent(firstNode);
     }

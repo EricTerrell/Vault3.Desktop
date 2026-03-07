@@ -1077,7 +1077,7 @@ public class MainApplicationWindow extends ApplicationWindow {
 	
 	/**
 	 * Saves the current document if it has changed, and if the user chooses to save it.
-	 * @return true if the save was cancelled
+	 * @return true if the save was canceled
 	 */
 	public boolean saveCurrentDocument() {
 		VaultDocument vaultDocument = Globals.getVaultDocument();

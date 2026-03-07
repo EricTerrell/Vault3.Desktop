@@ -54,7 +54,7 @@ public class ExportPhotosToDevice {
 	/**
 	 * Delete the contents of the specified folder and then delete the folder.
 	 * @param destinationFolder folder to delete
-	 * @param progressMonitor allows the process to be cancelled
+	 * @param progressMonitor allows the process to be canceled
 	 */
 	private static void deleteFolderContents(String destinationFolder, IProgressMonitor progressMonitor) {
 		final File destinationFolderObj = new File(destinationFolder);

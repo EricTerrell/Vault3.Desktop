@@ -212,7 +212,7 @@ public class VaultDocumentXMLPersistence implements VaultDocumentPersistence {
         File tempSaveFile = new File(tempSaveFilePath);
         File newFile = new File(filePath);
 
-        // If the destination file exists (for example, if the user has not chosen to save it as a .bak file, that file
+        // If the destination file exists For example, if the user has not chosen to save it as a .bak file, that file
         // must be deleted before renaming the temporary file to it.
         if (newFile.exists()) {
             Globals.getLogger().info(String.format("saveAsXMLFile: deleting file %s", newFile.getPath()));
