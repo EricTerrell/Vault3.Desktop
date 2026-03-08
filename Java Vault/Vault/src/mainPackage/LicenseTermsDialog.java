@@ -126,8 +126,6 @@ public class LicenseTermsDialog extends VaultDialog {
     	rejectTermsRadioButton.setSelection(!accepted);
     	acceptTermsRadioButton.setSelection(accepted);
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_LicenseTermsDialog"));
-    	
     	composite.pack();
     	
 		return composite;

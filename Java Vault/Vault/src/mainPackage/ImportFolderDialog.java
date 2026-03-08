@@ -223,8 +223,6 @@ public class ImportFolderDialog extends VaultDialog implements ISelectionChanged
 			}
 		});
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_ImportFolderDialog"));
-		
 		composite.pack();
 		
 		return composite;

@@ -147,8 +147,6 @@ public class GoToWebsitesDialog extends VaultDialog {
 			}
 		});
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_GoToWebsitesDialog"));
-		
 		composite.pack();
 		
 		return composite;

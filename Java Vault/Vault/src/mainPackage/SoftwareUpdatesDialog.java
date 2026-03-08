@@ -110,8 +110,6 @@ public class SoftwareUpdatesDialog extends VaultDialog {
 			downloadUpdatesButton.setVisible(false);
 		}
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_CheckForUpdatesDialog"));
-
 		new Label(composite, SWT.NONE);
 		
 		new Label(composite, SWT.NONE).setText(MessageFormat.format("Click the Donate button to support continued {0} development.", StringLiterals.ProgramName));

@@ -14,7 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Code inspection updates to on-line help content." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="For VaultDialog subclasses, the code to display a help page when the user clicks F1 has been moved to VaultDialog.&#10;&#10;Subclasses only have to implement getHelpPageName if the help page name needs to be different for different situations. For example, AddItemDialog implements getHelpPageName to specify the correct help page, when that dialog is on &quot;add&quot; or &quot;edit&quot; mode." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -171,7 +171,7 @@
     &quot;PowerShell.build_everything.ps1 (3).executor&quot;: &quot;Run&quot;,
     &quot;PowerShell.build_everything.ps1 (4).executor&quot;: &quot;Run&quot;,
     &quot;PowerShell.build_everything.ps1 (5).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.build_everything.ps1.executor&quot;: &quot;Debug&quot;,
     &quot;PowerShell.build_linux.ps1 (1).executor&quot;: &quot;Run&quot;,
     &quot;PowerShell.build_linux.ps1.executor&quot;: &quot;Run&quot;,
     &quot;PowerShell.build_windows.ps1 (1).executor&quot;: &quot;Run&quot;,
@@ -213,7 +213,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="PowerShell.build_everything.ps1 (1)">
+  <component name="RunManager" selected="PowerShell.build_everything.ps1 (2)">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -409,11 +409,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
-        <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1 (2)" />
         <item itemvalue="PowerShell.build_everything.ps1 (1)" />
-        <item itemvalue="PowerShell.ant_build_win_x86_64.ps1 (1)" />
+        <item itemvalue="PowerShell.ant_build_win_x86_64.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -806,7 +806,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="311" />
+    <option name="localTasksCounter" value="318" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -823,7 +823,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Test artifacts now have test scope." />
@@ -848,7 +847,8 @@
     <MESSAGE value="Updated on-line help&#10;&#10;Got rid of previous and next links on almost every page. Replaced some content with links to the website." />
     <MESSAGE value="Updated on-line help&#10;&#10;Got rid of previous and next links on almost every page. Replaced some content with links to the website.&#10;&#10;Updated on-line help." />
     <MESSAGE value="Code inspection updates to on-line help content." />
-    <option name="LAST_COMMIT_MESSAGE" value="Code inspection updates to on-line help content." />
+    <MESSAGE value="For VaultDialog subclasses, the code to display a help page when the user clicks F1 has been moved to VaultDialog.&#10;&#10;Subclasses only have to implement getHelpPageName if the help page name needs to be different for different situations. For example, AddItemDialog implements getHelpPageName to specify the correct help page, when that dialog is on &quot;add&quot; or &quot;edit&quot; mode." />
+    <option name="LAST_COMMIT_MESSAGE" value="For VaultDialog subclasses, the code to display a help page when the user clicks F1 has been moved to VaultDialog.&#10;&#10;Subclasses only have to implement getHelpPageName if the help page name needs to be different for different situations. For example, AddItemDialog implements getHelpPageName to specify the correct help page, when that dialog is on &quot;add&quot; or &quot;edit&quot; mode." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -939,7 +939,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>172</line>
+          <line>170</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -995,7 +995,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>166</line>
+          <line>164</line>
           <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -1030,7 +1030,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>198</line>
+          <line>196</line>
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1050,7 +1050,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SoftwareUpdatesDialog.java</url>
-          <line>239</line>
+          <line>237</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

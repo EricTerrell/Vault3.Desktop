@@ -47,8 +47,6 @@ public class SyncDialog extends VaultDialog {
 		
 		new Label(composite, SWT.NONE).setText(text);
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_SyncDialog"));
-		
 		composite.pack();
 		
 		return composite;

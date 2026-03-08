@@ -303,8 +303,6 @@ public class ExportPhotosToDeviceDialog extends VaultDialog {
 		
 		shuffleCheckBox.setSelection(Globals.getPreferenceStore().getBoolean(PreferenceKeys.ExportPhotosShuffle));
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_ExportPhotosToDeviceDialog"));
-		
 		composite.pack();
 
 		return composite;

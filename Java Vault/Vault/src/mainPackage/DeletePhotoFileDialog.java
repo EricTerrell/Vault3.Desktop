@@ -49,8 +49,6 @@ public class DeletePhotoFileDialog extends VaultDialog {
 		alsoDeleteOutlineItemButton.setText("&Also delete outline item");
 		alsoDeleteOutlineItemButton.setSelection(Globals.getPreferenceStore().getBoolean(PreferenceKeys.AlsoDeleteOutlineItem));
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_DeletePhotoFileDialog"));
-
 		parent.pack();
 
 		return parent;

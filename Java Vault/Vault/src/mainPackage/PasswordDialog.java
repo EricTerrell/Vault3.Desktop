@@ -240,8 +240,6 @@ public class PasswordDialog extends VaultDialog {
 		
 		passwordText.setFocus();
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_PasswordDialog"));
-		
 		composite.pack();
 		
 		return composite;

@@ -213,8 +213,6 @@ public class InsertUrlDialog extends VaultDialog {
 		gridData.horizontalAlignment = SWT.FILL;
 		hintsText.setLayoutData(gridData);
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_InsertUrlDialog"));
-		
 		composite.pack();
 		
 		return composite;

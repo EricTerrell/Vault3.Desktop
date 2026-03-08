@@ -194,6 +194,11 @@ public class FindAndReplaceDialog extends VaultDialog {
 	}
 
 	@Override
+	protected String getHelpPageName() {
+		return allowReplace ? "Dialogs_ReplaceDialog" : "Dialogs_FindDialog";
+	}
+
+	@Override
 	protected Control createDialogArea(Composite parent) {
 		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, false));
@@ -268,8 +273,6 @@ public class FindAndReplaceDialog extends VaultDialog {
 		
 		downButton.setSelection(true);
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest(allowReplace ? "Dialogs_ReplaceDialog" : "Dialogs_FindDialog"));
-		
 		composite.pack();
 		
 		return composite;

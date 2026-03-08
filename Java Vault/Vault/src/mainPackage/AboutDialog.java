@@ -277,8 +277,6 @@ public class AboutDialog extends VaultDialog {
 			});
 		}
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_AboutDialog"));
-		
 		composite.pack();
 		
 		return composite;

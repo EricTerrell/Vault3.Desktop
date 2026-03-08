@@ -825,8 +825,6 @@ public class SettingsDialog extends VaultDialog {
 		substituteFolderTabItem.setControl(substituteFolderComposite);
 		updatesTabItem.setControl(updatesComposite);
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_SettingsDialog"));
-		
 		composite.pack();
 
 		return composite;

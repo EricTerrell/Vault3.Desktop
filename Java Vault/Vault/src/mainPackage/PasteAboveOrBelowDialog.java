@@ -67,8 +67,6 @@ public class PasteAboveOrBelowDialog extends VaultDialog {
 		belowRadioButton.setText("&Below first item");
 		belowRadioButton.setSelection(true);
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_PasteAboveOrBelowDialog"));
-		
 		composite.pack();
 		
 		return composite;

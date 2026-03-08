@@ -440,8 +440,6 @@ public class SlideshowDialog extends VaultDialog {
 			setImage();
 		}
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_SlideshowDialog"));
-		
 		composite.pack();
 		
 		return composite;

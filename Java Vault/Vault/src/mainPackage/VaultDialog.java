@@ -30,6 +30,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
@@ -66,7 +67,22 @@ public class VaultDialog extends Dialog {
 	 */
 	protected void populateFields() {
 	}
-	
+
+	protected String getHelpPageName() {
+		// Ensure that the proper on-line help topic is displayed when the user clicks F1. Note: Linux users may need
+		// to use Ctrl+F1.
+		return String.format("Dialogs_%s", this.getClass().getSimpleName());
+	}
+
+	@Override
+	protected Control createDialogArea(Composite parent) {
+		final Control result = super.createDialogArea(parent);
+
+		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest(getHelpPageName()));
+
+		return result;
+	}
+
     protected IDialogSettings getDialogBoundsSettings(){
         return dialogSettings;
     }
@@ -77,31 +93,40 @@ public class VaultDialog extends Dialog {
 	
     @Override
 	public boolean close() {
-		final var dialogScreenLocation = getShell().getLocation();
+		final Shell shell = getShell();
 
-		final boolean result = super.close();
+		if (shell != null) {
+			final var dialogScreenLocation = shell.getLocation();
 
-        final String settingsFilePath = getSettingsFilePath();
+			final boolean result = super.close();
 
-    	try {
-            Globals.getLogger().info(String.format("VaultDialog.close: saving DialogSettings to %s", settingsFilePath));
+			final String settingsFilePath = getSettingsFilePath();
 
-			// Save dialog screen location, not coordinates relative to parent shell!
-			dialogSettings.put(DIALOG_X_ORIGIN, dialogScreenLocation.x);
-			dialogSettings.put(DIALOG_Y_ORIGIN, dialogScreenLocation.y);
+			try {
+				Globals.getLogger().info(String.format("VaultDialog.close: saving DialogSettings to %s", settingsFilePath));
 
-			dialogSettings.save(settingsFilePath);
+				// Save dialog screen location, not coordinates relative to parent shell!
+				dialogSettings.put(DIALOG_X_ORIGIN, dialogScreenLocation.x);
+				dialogSettings.put(DIALOG_Y_ORIGIN, dialogScreenLocation.y);
 
-            logFileContents();
-		} catch (IOException e) {
-            Globals.getLogger().info(
-                    String.format(
-                            "VaultDialog.close: error saving settings to \"%s\": %s",
-                            settingsFilePath,
-                            e.getMessage()));
+				dialogSettings.save(settingsFilePath);
+
+				logFileContents();
+			} catch (IOException e) {
+				Globals.getLogger().info(
+						String.format(
+								"VaultDialog.close: error saving settings to \"%s\": %s",
+								settingsFilePath,
+								e.getMessage()));
+			}
+
+			return result;
 		}
-		
-		return result;
+		else {
+			Globals.getLogger().info("VaultDialog.close: null getShell() result");
+
+			return true;
+		}
 	}
 
 	protected VaultDialog(Shell parentShell) {

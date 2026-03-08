@@ -151,6 +151,11 @@ public class AddItemDialog extends VaultDialog {
 	}
 
 	@Override
+	protected String getHelpPageName() {
+		return mode == Mode.Add ? "Dialogs_AddItemDialog" : "Dialogs_EditItemDialog";
+	}
+
+	@Override
 	protected Control createDialogArea(Composite parent) {
 		final Composite composite = (Composite) super.createDialogArea(parent);
 		composite.setLayout(new GridLayout(1, true));
@@ -315,8 +320,6 @@ public class AddItemDialog extends VaultDialog {
 			belowRadioButton.setText("&Below Current Item");
 			belowRadioButton.setSelection(true);
 		}
-		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest(mode == Mode.Add ? "Dialogs_AddItemDialog" : "Dialogs_EditItemDialog"));
 		
 		composite.pack();
 

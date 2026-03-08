@@ -198,8 +198,6 @@ public class PasswordPromptDialog extends VaultDialog {
 	
 		showHidePasswordChars(echoChar);
 		
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_PasswordPromptDialog"));
-
 		forceUpperCasePasswords = new Button(composite, SWT.CHECK);
 		forceUpperCasePasswords.setText("&Force password to be uppercase");
 		gridData = new GridData(SWT.FILL);

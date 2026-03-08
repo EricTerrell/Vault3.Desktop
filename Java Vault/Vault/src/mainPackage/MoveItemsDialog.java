@@ -197,8 +197,6 @@ public class MoveItemsDialog extends VaultDialog implements ISelectionChangedLis
 		vaultTreeViewer.addSelectionChangedListener(this);
 		vaultTreeViewer.addTreeListener(this);
 
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_MoveItemsDialog"));
-		
 		composite.pack();
 		
 		return composite;

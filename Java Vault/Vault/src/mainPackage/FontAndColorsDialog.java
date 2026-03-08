@@ -58,7 +58,7 @@ public class FontAndColorsDialog extends VaultDialog {
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 
-		newShell.setText("Update Font");
+		newShell.setText("Update Font and Colors");
 	}
 
 	/**
@@ -204,8 +204,6 @@ public class FontAndColorsDialog extends VaultDialog {
 				public void widgetDefaultSelected(SelectionEvent selectionEvent) {}
 			});
 		}
-
-		parent.addHelpListener(e -> HelpUtils.ProcessHelpRequest("Dialogs_UpdateFontDialog"));
 
 		composite.pack();
 
