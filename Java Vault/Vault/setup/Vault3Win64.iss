@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Vault 3 for 64-bit Windows (x86)"
-#define MyAppVersion "0.98"
+#define MyAppVersion "0.99"
 #define MyAppPublisher "Eric Bergman-Terrell"
 #define MyAppURL "https://www.ericbt.com/vault3"
 
@@ -28,6 +28,7 @@ SolidCompression=yes
 WizardStyle=modern
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
+UninstallDisplayIcon="{app}\vault3.ico"
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

@@ -1,7 +1,7 @@
 <#
   Vault 3
   (C) Copyright 2026, Eric Bergman-Terrell
-
+  
   This file is part of EBT Weather.
 
   EBT Weather is free software: you can redistribute it and/or modify
@@ -19,8 +19,27 @@
 #>
 
 Push-Location
-cd ..
-mvn clean package -PWindows-x86_64
-Pop-Location
 
-ant -buildfile .\ant_build_win_x86_64.xml
+Write-Output ""
+Write-Output "Creating Windows x64 Setup Zip File"
+
+$ZipPath = "C:\Temp\Vault3\Vault3Win_x86_64.zip"
+
+if (Test-Path $ZipPath)
+{
+    Remove-Item -Path $ZipPath
+}
+
+$BuildPath = "C:\Temp\Vault3\Vault3Win_x86_64"
+
+if (Test-Path $BuildPath)
+{
+    Remove-Item -Path $BuildPath -Recurse
+}
+
+Compress-Archive -Path "..\setup\Output\*" -DestinationPath $ZipPath -Force
+
+Write-Output ""
+Write-Output "Finished creating Windows x64 Setup Zip File"
+
+Pop-Location

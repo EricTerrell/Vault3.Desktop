@@ -54,11 +54,13 @@ public class FontAndColorsDialog extends VaultDialog {
 	public Color getForegroundColor() { return foregroundColor; }
 	public Color getBackgroundColor() { return backgroundColor; }
 
+	private boolean manageColors;
+
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 
-		newShell.setText("Update Font and Colors");
+		newShell.setText(manageColors ? "Update Font and Colors" : "Update Font");
 	}
 
 	/**
@@ -79,21 +81,26 @@ public class FontAndColorsDialog extends VaultDialog {
 		this.fontData = FontUtils.stringToFontList(fontString);
 		this.originalForegroundColor = originalForegroundColor;
 		this.originalBackgroundColor = originalBackgroundColor;
+
+		this.manageColors = true;
 	}
 
-	private Button okButton;
+	public FontAndColorsDialog(Shell parentShell, String whichFont, String fontString)
+	{
+		this(parentShell, whichFont, fontString, null, null);
+
+		this.manageColors = false;
+	}
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		okButton = createButton(parent, IDialogConstants.OK_ID, "&OK", true);
+		createButton(parent, IDialogConstants.OK_ID, "&OK", true).setEnabled(true);
 		createButton(parent, IDialogConstants.CANCEL_ID, "&Cancel", false);
-		
-		okButton.setEnabled(true);
 	}
 
 	@Override
 	protected void buttonPressed(int buttonId) {
-		if (buttonId == IDialogConstants.OK_ID) {
+		if (buttonId == IDialogConstants.OK_ID && manageColors) {
 			foregroundColor = foregroundColorCanvas.getBackground();
 
 			if (originalBackgroundColor != null) {
@@ -155,54 +162,58 @@ public class FontAndColorsDialog extends VaultDialog {
 			}
 		});
 
-		final Composite colorsComposite = new Composite(contentComposite, SWT.NONE);
+		if (manageColors) {
+			final Composite colorsComposite = new Composite(contentComposite, SWT.NONE);
 
-		final int spacingHeight = GraphicsUtils.getTextExtent("|").y;
+			final int spacingHeight = GraphicsUtils.getTextExtent("|").y;
 
-		GridLayout twoColumnGridLayout = new GridLayout(2, false);
-		twoColumnGridLayout.horizontalSpacing = 5;
-		twoColumnGridLayout.marginWidth = 0;
-		twoColumnGridLayout.marginHeight = spacingHeight;
-		colorsComposite.setLayout(twoColumnGridLayout);
+			GridLayout twoColumnGridLayout = new GridLayout(2, false);
+			twoColumnGridLayout.horizontalSpacing = 5;
+			twoColumnGridLayout.marginWidth = 0;
+			twoColumnGridLayout.marginHeight = spacingHeight;
+			colorsComposite.setLayout(twoColumnGridLayout);
 
-		final Button foregroundColorButton = new Button(colorsComposite, SWT.NONE);
-		foregroundColorButton.setText("Fo&reground Color...");
+			final Button foregroundColorButton = new Button(colorsComposite, SWT.NONE);
+			foregroundColorButton.setText("Fo&reground Color...");
 
-		gridData = new GridData();
-		gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(foregroundColorButton.getText()).y;
+			gridData = new GridData();
+			gridData.heightHint = gridData.widthHint = GraphicsUtils.getTextExtent(foregroundColorButton.getText()).y;
 
-		foregroundColorCanvas = new Canvas(colorsComposite, SWT.BORDER);
-		foregroundColorCanvas.setLayoutData(gridData);
-		foregroundColorCanvas.setForeground(originalForegroundColor);
-		foregroundColorCanvas.setBackground(originalForegroundColor);
+			foregroundColorCanvas = new Canvas(colorsComposite, SWT.BORDER);
+			foregroundColorCanvas.setLayoutData(gridData);
+			foregroundColorCanvas.setForeground(originalForegroundColor);
+			foregroundColorCanvas.setBackground(originalForegroundColor);
 
-		foregroundColorButton.addSelectionListener(new SelectionListener() {
-			@Override
-			public void widgetSelected(SelectionEvent selectionEvent) {
-				updateColor("Foreground Color", foregroundColorCanvas);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent selectionEvent) {}
-		});
-
-		if (originalBackgroundColor != null) {
-			final Button backgroundColorButton = new Button(colorsComposite, SWT.NONE);
-			backgroundColorButton.setText("&Background Color...");
-
-			backgroundColorCanvas = new Canvas(colorsComposite, SWT.BORDER);
-			backgroundColorCanvas.setLayoutData(gridData);
-			backgroundColorCanvas.setBackground(originalBackgroundColor);
-
-			backgroundColorButton.addSelectionListener(new SelectionListener() {
+			foregroundColorButton.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetSelected(SelectionEvent selectionEvent) {
-					updateColor("Background Color", backgroundColorCanvas);
+					updateColor("Foreground Color", foregroundColorCanvas);
 				}
 
 				@Override
-				public void widgetDefaultSelected(SelectionEvent selectionEvent) {}
+				public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+				}
 			});
+
+			if (originalBackgroundColor != null) {
+				final Button backgroundColorButton = new Button(colorsComposite, SWT.NONE);
+				backgroundColorButton.setText("&Background Color...");
+
+				backgroundColorCanvas = new Canvas(colorsComposite, SWT.BORDER);
+				backgroundColorCanvas.setLayoutData(gridData);
+				backgroundColorCanvas.setBackground(originalBackgroundColor);
+
+				backgroundColorButton.addSelectionListener(new SelectionListener() {
+					@Override
+					public void widgetSelected(SelectionEvent selectionEvent) {
+						updateColor("Background Color", backgroundColorCanvas);
+					}
+
+					@Override
+					public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+					}
+				});
+			}
 		}
 
 		composite.pack();

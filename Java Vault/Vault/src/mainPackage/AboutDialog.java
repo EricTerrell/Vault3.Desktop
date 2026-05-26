@@ -295,8 +295,7 @@ public class AboutDialog extends VaultDialog {
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		final Button closeButton = createButton(parent, IDialogConstants.CLOSE_ID, IDialogConstants.CLOSE_LABEL, true);
-		closeButton.forceFocus();
+		createButton(parent, IDialogConstants.CLOSE_ID, IDialogConstants.CLOSE_LABEL, true).forceFocus();
 	}
 
 	public AboutDialog(Shell parentShell) {

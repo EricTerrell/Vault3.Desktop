@@ -263,7 +263,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 	 * Specify the font and color for the text. Use the outline item's font and color if it has one, otherwise
 	 * use the default font and color.
 	 */
-	private void setFontAndColor(boolean forceColorChangeToBeVisible) {
+	public void setWidgetFont() {
 		final String newFontString = getFontString();
 
 		final String currentFontString = FontUtils.fontListToString(getTextWidget().getFont().getFontData());
@@ -282,57 +282,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		
 			usingNonDefaultFont = true;
 		}
-		
-		RGB rgb = null;
-		
-		if (getOutlineItem() != null) {
-			rgb = getOutlineItem().getRGB();
-		}
-
-		// On Windows, color change does not always take effect if text is loaded. For instance, if there is text and the cursor
-		// is several lines below the text, the text change will not be visible when getTextWidget().setForegroundColor is called.
-		
-		// Save text and caret position.
-		final int savedCaretOffset = getTextWidget().getCaretOffset();
-		final String savedText = getTextWidget().getText();
-		
-		if (forceColorChangeToBeVisible) {
-			getTextWidget().setText(StringLiterals.EmptyString);
-		}
-
-		boolean hasFont = getOutlineItem() != null && getOutlineItem().hasFont();
-
-		if (rgb != null && hasFont) {
-			getTextWidget().setForeground(new Color(rgb));
-		}
-		else {
-			final PreferenceStore preferenceStore = Globals.getPreferenceStore();
-
-			final RGB textForegroundColor = new RGB(
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundRed),
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundGreen),
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontForegroundBlue));
-
-			final RGB textBackgroundColor = new RGB(
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundRed),
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundGreen),
-					preferenceStore.getInt(PreferenceKeys.DefaultTextFontBackgroundBlue));
-
-			getTextWidget().setForeground(new Color(textForegroundColor));
-			getTextWidget().setBackground(new Color(textBackgroundColor));
-		}
-		
-		if (forceColorChangeToBeVisible) {
-			// Restore text and caret position.
-			getTextWidget().setText(savedText);
-			getTextWidget().setCaretOffset(savedCaretOffset);
-		}
 	}
-	
-	public void setFontAndColor() {
-		setFontAndColor(false);
-	}
-	
 	
 	public void setOutlineItem(OutlineItem outlineItem) {
 		saveChanges();
@@ -344,7 +294,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		
     	final Document document = new Document();
 
-    	setFontAndColor();
+    	setWidgetFont();
 
     	if (outlineItem != null) {
 	    	document.set(outlineItem.getText());
@@ -594,9 +544,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 		final FontAndColorsDialog fontAndColorsDialog = new FontAndColorsDialog(
 				getTextWidget().getShell(),
 				"Current Outline Item",
-				getFontString(),
-				getTextWidget().getForeground(),
-				null);
+				getFontString());
 
 		if (fontAndColorsDialog.open() == IDialogConstants.OK_ID) {
 			final FontData[] fontList = FontUtils.stringToFontList(fontAndColorsDialog.getFontString());
@@ -621,18 +569,7 @@ public class VaultTextViewer extends TextViewer implements ISelectionChangedList
 				Globals.getVaultDocument().setIsModified(true);
 			}
 
-			final RGB rgb = fontAndColorsDialog.getForegroundColor().getRGB();
-
-			boolean colorChanged = false;
-
-			if (!rgb.equals(outlineItem.getRGB())) {
-				getOutlineItem().setRGB(rgb);
-				Globals.getVaultDocument().setIsModified(true);
-
-				colorChanged = true;
-			}
-
-			setFontAndColor(colorChanged);
+			setWidgetFont();
 		}
 	}
 	

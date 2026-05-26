@@ -49,7 +49,7 @@ public class OptionsActions {
 			SettingsDialog settingsDialog = new SettingsDialog(Globals.getMainApplicationWindow().getShell());
 			
 			if (settingsDialog.open() == IDialogConstants.OK_ID) {
-				Globals.getVaultTextViewer().setFontAndColor();
+				Globals.getVaultTextViewer().setWidgetFont();
 
 				final List<OutlineItem> selectedItems = Globals.getVaultTreeViewer().getSelectedItems();
 

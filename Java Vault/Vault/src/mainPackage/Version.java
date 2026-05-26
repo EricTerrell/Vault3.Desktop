@@ -131,9 +131,19 @@ import java.text.MessageFormat;
  * 									 Options / Settings dialog / Fonts & Colors tab now allows the user to configure
  * 									 both the outline and the text windows.
  * 									 2) Bug Fix: The Edit / Browse URL menu item now works when the cursor is on a URL.
+ * 0.99				1.3				 1) Now using Eclipse v. 4.39 components.
+ * 									 2) The app is maybe a little better behaved on Windows systems with multiple
+ * 									 monitors and multiple DPI settings. But still necessary to use High DPI scaling
+ * 									 override. When modal dialogs are dragged from one monitor to another one with a
+ * 									 different DPI setting, the size changes inappropriately and cannot be completely
+ * 									 resized. This is probably due to code in the VaultDialog class.
+ *									 3) The user can no longer specify the color of an outline item when specifying the
+ * 									 font. Reason: If the user specifies the color, the text of that outline item could
+ * 									 be invisible on another machine with a different default text background.
+ * 									 The setup program now causes control panel to display Vault 3's icon.
  */
 public class Version {
-	private static final float versionNumber = 0.98f;
+	private static final float versionNumber = 0.99f;
 	private static final int copyrightYear = 2026;
 
 	public static float getVersionNumber() {

@@ -131,17 +131,17 @@
         </plugins>
     </build>
 
-    <!-- Eclipse 4.38 components, released 2025-12-10 -->
+    <!-- Eclipse 4.39 components, released 2026-03-11 -->
     <dependencies>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.swt.${osgi.platform}</artifactId>
-            <version>3.132.0</version>
+            <version>3.133.0</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.swt.svg</artifactId>
-            <version>3.131.0</version>
+            <version>3.132.0</version>
         </dependency>
 
         <dependency>
@@ -152,7 +152,7 @@
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.core.runtime</artifactId>
-            <version>3.34.100</version>
+            <version>3.34.200</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
@@ -162,29 +162,29 @@
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.jface.text</artifactId>
-            <version>3.29.0</version>
+            <version>3.30.0</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.jface</artifactId>
-            <version>3.38.100</version>
+            <version>3.39.0</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.osgi</artifactId>
-            <version>3.24.0</version>
+            <version>3.24.100</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.text</artifactId>
-            <version>3.14.500</version>
+            <version>3.14.600</version>
         </dependency>
 
         <!-- third party dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.18.0</version>
+            <version>3.20.0</version>
         </dependency>
         <dependency>
             <groupId>org.perf4j</groupId>
@@ -194,12 +194,12 @@
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
-            <version>5.5.13.4</version>
+            <version>5.5.13.5</version>
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-            <version>3.50.3.0</version>
+            <version>3.51.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.imgscalr</groupId>

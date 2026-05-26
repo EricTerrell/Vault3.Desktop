@@ -85,9 +85,7 @@ public class SyncDialog extends VaultDialog {
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, OPEN_ID, "&Open Updated Document", false);
-		final Button cancelButton = createButton(parent, IDialogConstants.CANCEL_ID, "&Cancel", true);
-
-		cancelButton.forceFocus();
+		createButton(parent, IDialogConstants.CANCEL_ID, "&Cancel", true).forceFocus();
 	}
 
 	public SyncDialog(Shell parentShell) {
