@@ -14,7 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -418,8 +418,8 @@
         <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
         <item itemvalue="PowerShell.build_everything.ps1" />
         <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -804,7 +804,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="340" />
+    <option name="localTasksCounter" value="341" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -821,7 +821,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos" />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
     <MESSAGE value="Use a record class instead of Apache ImmutablePair." />
@@ -846,7 +845,8 @@
     <MESSAGE value="Version 1.00&#10;&#10;1) Using 4.40 Eclipse components&#10;2) Allow Linux users to specify Dark Mode in Options / Settings / Fonts &amp; Colors. Checking the Dark Mode checkbox will load more visible graphics in toolbar and menu items." />
     <MESSAGE value="Version 1.00&#10;&#10;1) Using 4.40 Eclipse components&#10;2) Allow Linux users to specify whether or not to use dark mode icons in Options / Settings / Fonts &amp; Colors. Checking the Dark Mode checkbox will load more visible graphics in toolbar and menu items." />
     <MESSAGE value="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
+    <MESSAGE value="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1157,11 +1157,6 @@
           <option name="timeStamp" value="445" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Globals.java</url>
-          <line>323</line>
-          <option name="timeStamp" value="447" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OptionsActions.java</url>
           <line>46</line>
           <option name="timeStamp" value="448" />
@@ -1180,16 +1175,6 @@
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
           <line>579</line>
           <option name="timeStamp" value="451" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/UpdatableAction.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="452" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineActions.java</url>
-          <line>210</line>
-          <option name="timeStamp" value="453" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

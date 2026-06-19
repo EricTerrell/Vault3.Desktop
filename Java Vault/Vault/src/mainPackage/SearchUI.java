@@ -1,7 +1,7 @@
 /*
   Vault 3
   (C) Copyright 2026, Eric Bergman-Terrell
-  
+
   This file is part of Vault 3.
 
   Vault 3 is free software: you can redistribute it and/or modify
@@ -32,19 +32,14 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.*;
 
 public class SearchUI extends Composite {
     private final String searchResultsLabelText = "Search Results:";
@@ -224,6 +219,19 @@ public class SearchUI extends Composite {
             }
         });
 
+        // Simulate press of Search button when user clicks enter while focus is on the search combo box
+        searchComboViewer.getCombo().addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    searchButton.notifyListeners(SWT.Selection, new Event());
+                }
+            }
+        });
         selectAllSearchText();
 
         searchComboViewer.getCombo().addSelectionListener(new SelectionListener() {
