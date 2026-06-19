@@ -37,6 +37,7 @@ public class PreferenceKeys {
     public static final String IncludeOutlineTextInExportedPhotos = "IncludeOutlineTextInExportedPhotos";
     public static final String IncludeOutlineTextSize             = "IncludeOutlineTextSize";
 	public static final String SaveOldFileWithBakType             = "SaveOldFileWithBakType";
+	public static final String UseDarkModeIcons 				  = "UseDarkModeIcons";
 	public static final String DefaultTextFont                    = "DefaultTextFont";
 	public static final String DefaultTextFontForegroundRed       = "DefaultTextFontForegroundRed";
 	public static final String DefaultTextFontForegroundGreen     = "DefaultTextFontForegroundGreen";

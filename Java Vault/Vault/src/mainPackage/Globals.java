@@ -320,5 +320,7 @@ public class Globals {
 
         preferenceStore.setDefault(PreferenceKeys.IncludeOutlineTextInExportedPhotos, false);
         preferenceStore.setDefault(PreferenceKeys.IncludeOutlineTextSize, 12);
+
+		preferenceStore.setDefault(PreferenceKeys.UseDarkModeIcons, false);
 	}
 }

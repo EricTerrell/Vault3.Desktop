@@ -23,31 +23,29 @@ package mainPackage;
 import java.text.MessageFormat;
 import java.util.List;
 
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
 /**
  * @author Eric Bergman-Terrell
  *
  */
 public class OptionsActions {
-	public static class SettingsAction extends Action {
+	public static class SettingsAction extends UpdatableAction {
 		@Override
 		public String getDescription() {
 			return MessageFormat.format("Configure {0} based on your preferences", StringLiterals.ProgramName);
 		}
 
 		public SettingsAction() {
-			super("&Settings...", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/settings.png"))));
+			super("&Settings...", "settings.png");
 			setId(HelpUtils.helpIDFromClass(this));
 		}
 		
 		public void run() {
 			SettingsDialog settingsDialog = new SettingsDialog(Globals.getMainApplicationWindow().getShell());
-			
+
+			var originalDarkModeSetting = Globals.getPreferenceStore().getBoolean(PreferenceKeys.UseDarkModeIcons);
+
 			if (settingsDialog.open() == IDialogConstants.OK_ID) {
 				Globals.getVaultTextViewer().setWidgetFont();
 
@@ -69,6 +67,12 @@ public class OptionsActions {
 				((FileActions.RenamePictureFileAction)Globals.getMainApplicationWindow().getAction(FileActions.RenamePictureFileAction.class)).setEnabled();
 				((FileActions.DeletePictureFileAction)Globals.getMainApplicationWindow().getAction(FileActions.DeletePictureFileAction.class)).setEnabled();
 				((FileActions.EditPictureFileAction)Globals.getMainApplicationWindow().getAction(FileActions.EditPictureFileAction.class)).setEnabled();
+
+				var newDarkModeSetting = Globals.getPreferenceStore().getBoolean(PreferenceKeys.UseDarkModeIcons);
+
+				if (newDarkModeSetting != originalDarkModeSetting) {
+					Globals.getMainApplicationWindow().updateUIForDarkModeChange(originalDarkModeSetting, newDarkModeSetting);
+				}
 			}
 		}
 	}

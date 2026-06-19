@@ -14,11 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;The user can no longer specify the color of an outline item when specifying the font. Reason: If the user specifies the color, the text of that outline item could be invisible on another machine with a different default text background.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/setup/Vault3Win64.iss" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/setup/Vault3Win64.iss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Version.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Version.java" afterDir="false" />
-    </list>
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,8 +32,8 @@
       <list>
         <option value="PowerShell File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -194,7 +190,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/erict/Documents/software development/Vault3.Desktop/Java Vault/Vault/ant build scripts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/erict/Documents/software development/Vault3.Desktop/Java Vault/Vault/src/mainPackage/resources/dark_mode&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.18831168&quot;,
@@ -204,11 +200,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\resources\dark_mode" />
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help" />
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
       <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
-      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\artwork" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\resources" />
@@ -223,7 +219,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.Vault 3 - Maven">
+  <component name="RunManager" selected="PowerShell.build_windows_setup_zip.ps1">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -354,7 +350,7 @@
             </option>
             <option name="passParentEnv" value="true" />
             <option name="skipTests" value="false" />
-            <option name="vmOptions" value="-DConfigPath=&quot;C:\Users\erict\AppData\Roaming\Vault 3&quot; --enable-native-access=ALL-UNNAMED -DLogFilePath=&quot;C:\Temp\Vault 3.log.txt&quot;" />
+            <option name="vmOptions" value="-DConfigPath=&quot;C:\temp\Vault 3.settings&quot; --enable-native-access=ALL-UNNAMED -DLogFilePath=&quot;C:\Temp\Vault 3.log.txt&quot; " />
           </MavenRunnerSettings>
         </option>
         <option name="myRunnerParameters">
@@ -388,7 +384,7 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="build_everything.ps1 (2)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_everything.ps1 (1)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
       <envs />
       <method v="2" />
     </configuration>
@@ -396,7 +392,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build_windows_setup_zip.ps1 (1)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_windows_setup_zip.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_everything.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
       <envs />
       <method v="2" />
     </configuration>
@@ -411,19 +407,19 @@
     <list>
       <item itemvalue="JAR Application.Run from Jar" />
       <item itemvalue="Maven.Vault 3 - Maven" />
-      <item itemvalue="PowerShell.build_everything.ps1 (2)" />
+      <item itemvalue="PowerShell.build_everything.ps1 (1)" />
       <item itemvalue="PowerShell.build_everything.ps1 (3)" />
-      <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (1)" />
+      <item itemvalue="PowerShell.build_everything.ps1" />
       <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (2)" />
       <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (2)" />
-        <item itemvalue="PowerShell.build_everything.ps1 (3)" />
-        <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (1)" />
         <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (2)" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
+        <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+        <item itemvalue="PowerShell.build_everything.ps1" />
       </list>
     </recent_temporary>
   </component>
@@ -445,14 +441,6 @@
         <SvnCopyRootSimple>
           <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
           <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\.idea" />
-          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\.idea" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
-          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -816,7 +804,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="332" />
+    <option name="localTasksCounter" value="340" />
     <servers />
   </component>
   <component name="UnloadedModulesList">
@@ -833,9 +821,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Removed ant_build_common_code.xml" />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml" />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally paint outline text into exported photos" />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos" />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text." />
     <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
@@ -858,7 +843,10 @@
     <MESSAGE value="Version 0.99 - Now using Eclipse v. 4.39 compponents" />
     <MESSAGE value="Version 0.99 - Now using Eclipse v. 4.39 components" />
     <MESSAGE value="Version 1.00&#10;&#10;The user can no longer specify the color of an outline item when specifying the font. Reason: If the user specifies the color, the text of that outline item could be invisible on another machine with a different default text background." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.00&#10;&#10;The user can no longer specify the color of an outline item when specifying the font. Reason: If the user specifies the color, the text of that outline item could be invisible on another machine with a different default text background." />
+    <MESSAGE value="Version 1.00&#10;&#10;1) Using 4.40 Eclipse components&#10;2) Allow Linux users to specify Dark Mode in Options / Settings / Fonts &amp; Colors. Checking the Dark Mode checkbox will load more visible graphics in toolbar and menu items." />
+    <MESSAGE value="Version 1.00&#10;&#10;1) Using 4.40 Eclipse components&#10;2) Allow Linux users to specify whether or not to use dark mode icons in Options / Settings / Fonts &amp; Colors. Checking the Dark Mode checkbox will load more visible graphics in toolbar and menu items." />
+    <MESSAGE value="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1167,6 +1155,41 @@
           <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineItem.java</url>
           <line>99</line>
           <option name="timeStamp" value="445" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/Globals.java</url>
+          <line>323</line>
+          <option name="timeStamp" value="447" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OptionsActions.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="448" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OptionsActions.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="449" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="450" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/SettingsDialog.java</url>
+          <line>579</line>
+          <option name="timeStamp" value="451" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/UpdatableAction.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="452" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Java Vault/Vault/src/mainPackage/OutlineActions.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="453" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -23,6 +23,7 @@ package mainPackage;
 import java.io.File;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -395,7 +396,17 @@ public class MainApplicationWindow extends ApplicationWindow {
 			Display.getCurrent().timerExec(-1, autoSaveRunnable);
 		}
 	}
-	
+
+	public void updateUIForDarkModeChange(boolean originalDarkModeSetting, boolean newDarkModeSetting) {
+		Globals.getLogger().info(String.format("updateUIForDarkModeChange originalDarkModeSetting: %b newDarkModeSetting: %b", originalDarkModeSetting, newDarkModeSetting));
+
+		final UpdatableAction[] updatableActions = new UpdatableAction[] {
+				moveUpAction, moveDownAction, indentAction, unindentAction, sortAction, settingsAction
+		};
+
+		Arrays.stream(updatableActions).toList().forEach(UpdatableAction::updateImage);
+	}
+
 	private void run() {
 		Globals.getLogger().info("MainApplicationWindow.run: start");
 		

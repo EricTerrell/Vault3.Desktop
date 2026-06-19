@@ -131,53 +131,47 @@
         </plugins>
     </build>
 
-    <!-- Eclipse 4.39 components, released 2026-03-11 -->
+    <!-- Eclipse 4.40 components, released 2026-06-01 -->
     <dependencies>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.swt.${osgi.platform}</artifactId>
-            <version>3.133.0</version>
+            <version>3.134.0</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.swt.svg</artifactId>
-            <version>3.132.0</version>
+            <version>3.133.0</version>
         </dependency>
-
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.e4.core.commands</artifactId>
-            <version>1.1.700</version>
-        </dependency>
-        <dependency>
-            <groupId>${eclipse-platform}</groupId>
-            <artifactId>org.eclipse.core.runtime</artifactId>
-            <version>3.34.200</version>
+            <version>1.1.800</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.equinox.common</artifactId>
-            <version>3.20.300</version>
+            <version>3.20.400</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.jface.text</artifactId>
-            <version>3.30.0</version>
+            <version>3.31.0</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.jface</artifactId>
-            <version>3.39.0</version>
+            <version>3.39.100</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.osgi</artifactId>
-            <version>3.24.100</version>
+            <version>3.24.200</version>
         </dependency>
         <dependency>
             <groupId>${eclipse-platform}</groupId>
             <artifactId>org.eclipse.text</artifactId>
-            <version>3.14.600</version>
+            <version>3.14.700</version>
         </dependency>
 
         <!-- third party dependencies -->

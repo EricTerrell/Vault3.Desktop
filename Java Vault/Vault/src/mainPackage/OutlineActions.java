@@ -201,14 +201,14 @@ public class OutlineActions {
 		}
 	}
 	
-	public static class MoveUpAction extends Action implements ISelectionChangedListener {
+	public static class MoveUpAction extends UpdatableAction implements ISelectionChangedListener {
 		@Override
 		public String getDescription() {
 			return "Move the selected outline item up";
 		}
 
 		public MoveUpAction() {
-			super("Move &Up", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/arrow_up.png"))));
+			super("Move &Up", "arrow_up.png");
 			setAccelerator(SWT.ALT | SWT.ARROW_UP);
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));
@@ -230,14 +230,14 @@ public class OutlineActions {
 		}
 	}
 	
-	public static class MoveDownAction extends Action implements ISelectionChangedListener {
+	public static class MoveDownAction extends UpdatableAction implements ISelectionChangedListener {
 		@Override
 		public String getDescription() {
 			return "Move the selected outline item down";
 		}
 
 		public MoveDownAction() {
-			super("Move &Down", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/arrow_down.png"))));
+			super("Move &Down", "arrow_down.png");
 			
 			setAccelerator(SWT.ALT | SWT.ARROW_DOWN);
 			setEnabled(false);
@@ -260,14 +260,14 @@ public class OutlineActions {
 		}
 	}
 	
-	public static class IndentAction extends Action implements ISelectionChangedListener {
+	public static class IndentAction extends UpdatableAction implements ISelectionChangedListener {
 		@Override
 		public String getDescription() {
 			return "Indent selected outline items";
 		}
 
 		public IndentAction() {
-			super("I&ndent", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/arrow_right.png"))));
+			super("I&ndent", "arrow_right.png");
 			setAccelerator(SWT.ALT | SWT.ARROW_RIGHT);
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));
@@ -283,14 +283,14 @@ public class OutlineActions {
 		}
 	}
 	
-	public static class UnindentAction extends Action implements ISelectionChangedListener {
+	public static class UnindentAction extends UpdatableAction implements ISelectionChangedListener {
 		@Override
 		public String getDescription() {
 			return "Unindent selected outline items";
 		}
 
 		public UnindentAction() {
-			super("Uninden&t", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/arrow_left.png"))));
+			super("Uninden&t", "arrow_left.png");
 			setAccelerator(SWT.ALT | SWT.ARROW_LEFT);
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));
@@ -542,14 +542,14 @@ public class OutlineActions {
 		}
 	}
 
-	public static class SortAction extends Action implements ISelectionChangedListener {
+	public static class SortAction extends UpdatableAction implements ISelectionChangedListener {
 		@Override
 		public String getDescription() {
 			return "Sort selected outline items in lexical order";
 		}
 
 		public SortAction() {
-			super("&Sort", ImageDescriptor.createFromImage(new Image(Display.getCurrent(), MainApplicationWindow.class.getResourceAsStream("/resources/sort.png"))));
+			super("&Sort", "sort.png");
 			setEnabled(false);
 			setId(HelpUtils.helpIDFromClass(this));
 		}

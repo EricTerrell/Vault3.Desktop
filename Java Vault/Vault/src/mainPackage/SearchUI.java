@@ -199,8 +199,6 @@ public class SearchUI extends Composite {
         searchButton.setText("Search (&Y)");
         searchButton.setEnabled(false);
 
-        getShell().setDefaultButton(searchButton);
-
         clearButton = new Button(searchClearComposite, SWT.PUSH);
         clearButton.setText("C&lear");
         clearButton.setEnabled(false);
@@ -216,7 +214,15 @@ public class SearchUI extends Composite {
             }
         });
 
-        searchComboViewer.getCombo().addModifyListener(e -> searchButton.setEnabled(!searchComboViewer.getCombo().getText().trim().isEmpty()));
+        searchComboViewer.getCombo().addModifyListener(e -> {
+            var enable = !searchComboViewer.getCombo().getText().trim().isEmpty();
+
+            searchButton.setEnabled(enable);
+
+            if (enable) {
+                getShell().setDefaultButton(searchButton);
+            }
+        });
 
         selectAllSearchText();
 

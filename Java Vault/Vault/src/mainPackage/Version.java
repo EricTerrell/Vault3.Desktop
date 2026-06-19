@@ -141,9 +141,13 @@ import java.text.MessageFormat;
  * 									 font. Reason: If the user specifies the color, the text of that outline item could
  * 									 be invisible on another machine with a different default text background.
  * 									 The setup program now causes control panel to display Vault 3's icon.
+ * 1.00				1.3				 1) Now using Eclipse v. 4.40 components.
+ * 									 2) Added "Use Dark Mode Icons" checkbox in Options / Settings /
+ * 									 Fonts & Colors for Linux users. Checking this checkbox will load toolbar and menu
+ * 									 item graphics that are better suited for dark mode.
  */
 public class Version {
-	private static final float versionNumber = 0.99f;
+	private static final float versionNumber = 1.00f;
 	private static final int copyrightYear = 2026;
 
 	public static float getVersionNumber() {

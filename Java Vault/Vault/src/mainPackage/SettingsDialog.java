@@ -61,7 +61,7 @@ public class SettingsDialog extends VaultDialog {
             loadMostRecentlyUsedFileButton, doNotAutomaticallyLoadFileButton,
             loadPhotosFromOriginalLocationsRadioButton, loadPhotosFromSubstituteFolderRadioButton, okButton,
             cachePasswords, allowMultipleInstances, advancedGraphics, slideShowFullScreen, checkForUpdatesCheckBox,
-            warnAboutSingleInstance, checkForModificationCheckBox, includeTextInPhotoExports;
+            warnAboutSingleInstance, checkForModificationCheckBox, includeTextInPhotoExports, useDarkModeIconsCheckBox;
 
     private Spinner includeTextSize;
 
@@ -144,7 +144,9 @@ public class SettingsDialog extends VaultDialog {
 		preferenceStore.setValue(PreferenceKeys.AdvancedGraphics, advancedGraphics.getSelection());
 		preferenceStore.setValue(PreferenceKeys.SlideshowFullScreen, slideShowFullScreen.getSelection());
 		preferenceStore.setValue(PreferenceKeys.PhotoExclusions, photoExclusionText.getText());
-		
+
+		preferenceStore.setValue(PreferenceKeys.UseDarkModeIcons, useDarkModeIconsCheckBox.getSelection());
+
 		preferenceStore.setValue(PreferenceKeys.DefaultTextFont, defaultTextFontString);
 		
 		preferenceStore.setValue(PreferenceKeys.DefaultTextFontForegroundRed, defaultTextForegroundColor.red);
@@ -569,6 +571,14 @@ public class SettingsDialog extends VaultDialog {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent selectionEvent) {}
 		});
+
+		// Spacer.
+		new Label(fontsAndColorsComposite, SWT.NONE).setText(StringLiterals.EmptyString);
+
+		useDarkModeIconsCheckBox = new Button(fontsAndColorsComposite, SWT.CHECK);
+		useDarkModeIconsCheckBox.setText("Use Da&rk Mode Icons");
+		useDarkModeIconsCheckBox.setSelection(Globals.getPreferenceStore().getBoolean(PreferenceKeys.UseDarkModeIcons));
+		useDarkModeIconsCheckBox.setVisible(Globals.getPlatform() == IPlatform.PlatformEnum.Linux);
 
         Composite substituteFolderComposite = new Composite(tabFolder, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
