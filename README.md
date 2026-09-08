@@ -46,7 +46,9 @@ These scripts will create the folders that you can distribute.
 
 # Encryption
 
-Password-protected Vault 3 documents are encrypted with the AES (Rijndael) algorithm in CBC mode, using 256-bit keys.
+Password-protected Vault 3 documents are encrypted with the AES (Rijndael) algorithm in CBC mode, 
+using 256-bit keys. AES with 256-bit keys is [`quantum-safe`](https://csrc.nist.gov/projects/post-quantum-cryptography/faqs). 
+In other words, it is not considered vulnerable to quantum computers, if they become viable in the future.
 
 # License
 

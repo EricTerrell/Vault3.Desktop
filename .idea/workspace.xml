@@ -14,7 +14,10 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +132,7 @@
     &quot;JUnit.test.java in vault3.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.tests in CommonCode.executor&quot;: &quot;Debug&quot;,
     &quot;JUnit.tests in Vault.executor&quot;: &quot;Debug&quot;,
-    &quot;Maven.Vault 3 - Maven.executor&quot;: &quot;Debug&quot;,
+    &quot;Maven.Vault 3 - Maven.executor&quot;: &quot;Run&quot;,
     &quot;Maven.vault3 [clean].executor&quot;: &quot;Run&quot;,
     &quot;Maven.vault3 [compile].executor&quot;: &quot;Run&quot;,
     &quot;Maven.vault3 [install].executor&quot;: &quot;Run&quot;,
@@ -219,7 +222,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="PowerShell.build_windows_setup_zip.ps1">
+  <component name="RunManager" selected="Maven.Vault 3 - Maven">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -416,10 +419,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
+        <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (2)" />
         <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
+        <item itemvalue="PowerShell.build_everything.ps1 (3)" />
+        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -804,7 +807,7 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="341" />
+    <option name="localTasksCounter" value="343" />
     <servers />
   </component>
   <component name="UnloadedModulesList">

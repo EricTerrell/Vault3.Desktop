@@ -171,7 +171,7 @@ public class VaultTreeViewer extends TreeViewer {
 	 * Work-around for bug in OSX and Linux when "dark mode" is enabled. In this case, the tree is rendered with
 	 * black graphics, and black text, with a black background.
 	 */
-	public void ensureTextIsVisible() {
+	private void ensureTextIsVisible() {
 		Globals.getLogger().info("ensureTextIsVisible");
 
 		final IPlatform.PlatformEnum platform = Globals.getPlatform();
