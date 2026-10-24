@@ -14,8 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="No need to chmod windows build">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,9 +190,20 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/eric/.local/share/JetBrains/IntelliJIdea2026.2/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.build_everything.sh.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.build_linux_gtk_aarch_64.sh.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.build_linux_gtk_x86_64.sh.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.build_win_aarch_64.sh.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.build_win_x86_64.sh.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/erict/Documents/software development/Vault3.Desktop/Java Vault/Vault/src/mainPackage/resources/dark_mode&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/eric/Documents/software development/Vault3.Desktop/Java Vault/Vault/deploy/linux&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.18831168&quot;,
@@ -203,16 +213,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
+      <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/ant_build_scripts" />
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\resources\dark_mode" />
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help" />
-      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\ant build scripts" />
-      <recent name="C:\Users\Eric Terrell\Documents\software development\Vault3.Desktop\Java Vault\Vault\Help\artwork" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy/windows" />
+      <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/ant_build_scripts" />
+      <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy/ant build scripts" />
+      <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy" />
       <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\mainPackage\resources" />
-      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src" />
-      <recent name="C:\Users\erict\Documents\software development\Vault3.Desktop\Java Vault\Vault\src\com\ericbt" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="test.java" />
@@ -222,7 +234,7 @@
       <recent name="jUnitTests" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.Vault 3 - Maven">
+  <component name="RunManager" selected="Shell Script.build_everything.sh">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -297,26 +309,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Vault" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Vault" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -336,6 +328,17 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="24" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Vault" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Vault" />
+      <option name="filePath" />
       <method v="2" />
     </configuration>
     <configuration name="Vault 3 - Maven" type="MavenRunConfiguration" factoryName="Maven">
@@ -387,71 +390,136 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="build_everything.ps1 (1)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_everything.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/build_everything.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build_everything.ps1 (3)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_linux_gtk_aarch_64.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/build_linux_gtk_aarch_64.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build_everything.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_everything.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_linux_gtk_x86_64.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/build_linux_gtk_x86_64.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build_windows_setup_zip.ps1 (2)" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_windows_setup_zip.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_win_aarch_64.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/build_win_aarch_64.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="build_windows_setup_zip.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/Java Vault/Vault/ant build scripts/build_windows_setup_zip.ps1" executablePath="$PROJECT_DIR$/../../../../../Windows/System32/WindowsPowerShell/v1.0/powershell.exe">
+    <configuration name="build_win_x86_64.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux/build_win_x86_64.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="JAR Application.Run from Jar" />
       <item itemvalue="Maven.Vault 3 - Maven" />
-      <item itemvalue="PowerShell.build_everything.ps1 (1)" />
-      <item itemvalue="PowerShell.build_everything.ps1 (3)" />
-      <item itemvalue="PowerShell.build_everything.ps1" />
-      <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (2)" />
-      <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
+      <item itemvalue="Shell Script.build_everything.sh" />
+      <item itemvalue="Shell Script.build_win_aarch_64.sh" />
+      <item itemvalue="Shell Script.build_linux_gtk_aarch_64.sh" />
+      <item itemvalue="Shell Script.build_win_x86_64.sh" />
+      <item itemvalue="Shell Script.build_linux_gtk_x86_64.sh" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PowerShell.build_windows_setup_zip.ps1" />
-        <item itemvalue="PowerShell.build_windows_setup_zip.ps1 (2)" />
-        <item itemvalue="PowerShell.build_everything.ps1" />
-        <item itemvalue="PowerShell.build_everything.ps1 (3)" />
-        <item itemvalue="PowerShell.build_everything.ps1 (1)" />
+        <item itemvalue="Shell Script.build_everything.sh" />
+        <item itemvalue="Shell Script.build_linux_gtk_aarch_64.sh" />
+        <item itemvalue="Shell Script.build_win_aarch_64.sh" />
+        <item itemvalue="Shell Script.build_win_x86_64.sh" />
+        <item itemvalue="Shell Script.build_linux_gtk_x86_64.sh" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration" cleanupOnStartRun="true">
-    <configuration>C:\Users\erict\AppData\Roaming\Subversion</configuration>
+    <configuration>$USER_HOME$/.subversion</configuration>
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="SvnFileUrlMappingImpl">
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
-          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
-          <option name="myCopyRoot" value="C:\Users\erict\Documents\software development\Vault3.Desktop" />
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -807,8 +875,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679773724153</updated>
     </task>
-    <option name="localTasksCounter" value="343" />
+    <option name="localTasksCounter" value="344" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ps1" />
   </component>
   <component name="UnloadedModulesList">
     <module name="CommonCode" />
@@ -824,9 +898,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text." />
-    <MESSAGE value="Version 0.92&#10;&#10;1) Moved tests to folder that Maven expects.&#10;2) Filter out test code in maven-shade-plugin.&#10;3) Don't do a mvn clean before every run.&#10;4) Moved sqlite and XML load and save code to separate classes.&#10;5) New tests.&#10;6) Added Mockito to tests. Removed Mockito warning.&#10;7) Removed ant_build_common_code.xml&#10;8) Can optionally include outline text in exported photos. Can specify size of this text.&#10;9) Bug Fix: In previous versions, some photos that should have been excluded in slideshows and exports were not." />
-    <MESSAGE value="Use a record class instead of Apache ImmutablePair." />
     <MESSAGE value="Merge &quot;Text Background&quot; and &quot;Default Text Font&quot; tabs in SettingsDialog." />
     <MESSAGE value="Version 0.94&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
     <MESSAGE value="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
@@ -849,7 +920,10 @@
     <MESSAGE value="Version 1.00&#10;&#10;1) Using 4.40 Eclipse components&#10;2) Allow Linux users to specify whether or not to use dark mode icons in Options / Settings / Fonts &amp; Colors. Checking the Dark Mode checkbox will load more visible graphics in toolbar and menu items." />
     <MESSAGE value="Version 1.00&#10;&#10;Bug Fix: In previous version, on Linux, search UI didn't make the search button the default button." />
     <MESSAGE value="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 1.00&#10;&#10;Simulate press of Search button when user clicks enter while focus is on the search combo box (need this for Linux version)" />
+    <MESSAGE value="Created Linux build scripts. Upgraded to JDK 25." />
+    <MESSAGE value="Don't create a Windows x64 zip - will have to manually create it after running inno setup." />
+    <MESSAGE value="No need to chmod windows build" />
+    <option name="LAST_COMMIT_MESSAGE" value="No need to chmod windows build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
