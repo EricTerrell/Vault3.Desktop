@@ -145,9 +145,11 @@ import java.text.MessageFormat;
  * 									 2) Added "Use Dark Mode Icons" checkbox in Options / Settings /
  * 									 Fonts & Colors for Linux users. Checking this checkbox will load toolbar and menu
  * 									 item graphics that are better suited for dark mode.
+ * 1.01				1.3				 Updated to Java JDK version that fixed CVE-2026-114938 aka Java4Shell. Although
+ * 									 Java4Shell doesn't affect ARM CPUs, updated those versions too.
  */
 public class Version {
-	private static final float versionNumber = 1.00f;
+	private static final float versionNumber = 1.01f;
 	private static final int copyrightYear = 2026;
 
 	public static float getVersionNumber() {

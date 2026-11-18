@@ -14,7 +14,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="No need to chmod windows build">
+    <list default="true" id="2e770f6e-4dc8-43d6-ab54-1a6fed98417c" name="Default" comment="Version 1.01&#10;&#10;Updates to avoid Java4Shell.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +56,65 @@
   <component name="MavenImportPreferences">
     <option name="explicitlyDisabledProfiles" value="Linux-aarch_64" />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000000646" />
+      <entry key="S2" value="1.0014039162968804" />
+      <entry key="S5" value="1.2072329124474686" />
+      <entry key="S10" value="2.270789825397544" />
+      <entry key="S30" value="5.602479983966369" />
+      <entry key="S60" value="7.435507630812951" />
+      <entry key="M2" value="8.718579584082384" />
+      <entry key="M5" value="9.839094066990661" />
+      <entry key="M10" value="10.355074772261867" />
+      <entry key="M15" value="10.553160445014592" />
+      <entry key="M30" value="10.767377729270228" />
+      <entry key="H1" value="10.881233390180876" />
+      <entry key="H2" value="10.939982264641586" />
+      <entry key="H4" value="10.969829875109085" />
+      <entry key="D1" value="10.994949020336172" />
+      <entry key="W1" value="10.999277874374501" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9526379980439373" />
+      <entry key="MS500" value="0.9903428719330888" />
+      <entry key="S2" value="0.9989778217271159" />
+      <entry key="S5" value="1.2060791686088814" />
+      <entry key="S10" value="2.2697300875267237" />
+      <entry key="S30" value="5.601613637784723" />
+      <entry key="S60" value="7.434908036106819" />
+      <entry key="M2" value="8.71813998716799" />
+      <entry key="M5" value="9.838796469853506" />
+      <entry key="M10" value="10.354883813265085" />
+      <entry key="M15" value="10.553020953756997" />
+      <entry key="M30" value="10.767301006380432" />
+      <entry key="H1" value="10.88119309811497" />
+      <entry key="H2" value="10.939961610697175" />
+      <entry key="H4" value="10.969819417870694" />
+      <entry key="D1" value="10.99494725908517" />
+      <entry key="W1" value="10.99927762231338" />
+    </decayedShown>
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -67,150 +126,150 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Vault 3 - java.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Vault 3.executor&quot;: &quot;Debug&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0&quot;: &quot;0&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1&quot;: &quot;1&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2&quot;: &quot;2&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3&quot;: &quot;3&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4&quot;: &quot;4&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5&quot;: &quot;5&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5&quot;: &quot;299&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0&quot;: &quot;0&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1&quot;: &quot;1&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2&quot;: &quot;2&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3&quot;: &quot;3&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4&quot;: &quot;4&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5&quot;: &quot;5&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4&quot;: &quot;300&quot;,
-    &quot;FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5&quot;: &quot;299&quot;,
-    &quot;JAR Application.Run from Jar.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.All in CommonCode.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in vault3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CodePointStringTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CryptoTests (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CryptoTests.TestEncryptDecryptStringRoundTrip.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CryptoTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CryptoTests.interopWithOtherPlatformsDecrypt.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CryptoTests.interopWithOtherPlatformsEncrypt.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CryptoTests.testInteropWithOtherPlatformsDecrypt.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.CryptoTests.testInteropWithOtherPlatformsEncrypt.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.FontTests.addItemsAndSerializeAndDeserialize.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OutlineItemTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.OutlineItemTests.testSort.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.SearchParametersSerializationDeserializationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestSomething.testSomething.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testDatabaseRoundTrip.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testLoadDocument.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testLoadEncryptedDocument.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testLoadXMLEncryptedDocument.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testLoadXMLUnencryptedDocument.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testRoundTrip.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.testverifyExceptionThrownWhenFileIsNewerThanExpected.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentDatabasePersistenceTests.verifyExceptionThrownWhenFileIsNewerThanExpected.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VaultDocumentVersionTests.testConstructor.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.jUnitTests in Vault.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.jUnitTests in vault3.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.java in vault3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.test in vault3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.test.java in vault3.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.tests in CommonCode.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.tests in Vault.executor&quot;: &quot;Debug&quot;,
-    &quot;Maven.Vault 3 - Maven.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.vault3 [verify].executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (3).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_64.ps1 (4).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_64.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1 (3).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_aarch64.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_aarch_64.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_aarch_64.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1 (3).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1 (4).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1 (5).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_linux_gtk_x86_64.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_aarch_64.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_aarch_64.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_aarch_64.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_x86_64.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_x86_64.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_x86_64.ps1 (3).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_x86_64.ps1 (4).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_x86_64.ps1 (5).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.ant_build_win_x86_64.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_common_code.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_common_code.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_common_code.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1 (3).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1 (4).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1 (5).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_everything.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_linux.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_linux.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows_setup_zip.ps1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows_setup_zip.ps1 (2).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows_setup_zip.ps1 (3).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows_setup_zip.ps1 (4).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows_setup_zip.ps1 (5).executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.build_windows_setup_zip.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/home/eric/.local/share/JetBrains/IntelliJIdea2026.2/Shell Script/shellcheck&quot;,
-    &quot;Shell Script.build_everything.sh.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.build_linux_gtk_aarch_64.sh.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.build_linux_gtk_x86_64.sh.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.build_win_aarch_64.sh.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.build_win_x86_64.sh.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/eric/Documents/software development/Vault3.Desktop/Java Vault/Vault/deploy/linux&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.18831168&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.statistic.project.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Vault 3 - java.executor": "Debug",
+    "Application.Vault 3.executor": "Debug",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Downloaded.Files.Path.Enabled": "false",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0": "0",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1": "1",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2": "2",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3": "3",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4": "4",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5": "5",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5": "299",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0": "0",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1": "1",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2": "2",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3": "3",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4": "4",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5": "5",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4": "300",
+    "FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5": "299",
+    "JAR Application.Run from Jar.executor": "Debug",
+    "JUnit.All in CommonCode.executor": "Run",
+    "JUnit.All in vault3.executor": "Run",
+    "JUnit.CodePointStringTests.executor": "Run",
+    "JUnit.CryptoTests (1).executor": "Run",
+    "JUnit.CryptoTests.TestEncryptDecryptStringRoundTrip.executor": "Run",
+    "JUnit.CryptoTests.executor": "Run",
+    "JUnit.CryptoTests.interopWithOtherPlatformsDecrypt.executor": "Run",
+    "JUnit.CryptoTests.interopWithOtherPlatformsEncrypt.executor": "Run",
+    "JUnit.CryptoTests.testInteropWithOtherPlatformsDecrypt.executor": "Debug",
+    "JUnit.CryptoTests.testInteropWithOtherPlatformsEncrypt.executor": "Debug",
+    "JUnit.FontTests.addItemsAndSerializeAndDeserialize.executor": "Run",
+    "JUnit.OutlineItemTests.executor": "Run",
+    "JUnit.OutlineItemTests.testSort.executor": "Debug",
+    "JUnit.SearchParametersSerializationDeserializationTests.executor": "Run",
+    "JUnit.TestSomething.testSomething.executor": "Run",
+    "JUnit.VaultDocumentDatabasePersistenceTests (1).executor": "Run",
+    "JUnit.VaultDocumentDatabasePersistenceTests.executor": "Run",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testDatabaseRoundTrip.executor": "Run",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testLoadDocument.executor": "Debug",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testLoadEncryptedDocument.executor": "Debug",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testLoadXMLEncryptedDocument.executor": "Run",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testLoadXMLUnencryptedDocument.executor": "Debug",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testRoundTrip.executor": "Debug",
+    "JUnit.VaultDocumentDatabasePersistenceTests.testverifyExceptionThrownWhenFileIsNewerThanExpected.executor": "Run",
+    "JUnit.VaultDocumentDatabasePersistenceTests.verifyExceptionThrownWhenFileIsNewerThanExpected.executor": "Run",
+    "JUnit.VaultDocumentVersionTests.testConstructor.executor": "Debug",
+    "JUnit.jUnitTests in Vault.executor": "Run",
+    "JUnit.jUnitTests in vault3.executor": "Debug",
+    "JUnit.java in vault3.executor": "Run",
+    "JUnit.test in vault3.executor": "Run",
+    "JUnit.test.java in vault3.executor": "Run",
+    "JUnit.tests in CommonCode.executor": "Debug",
+    "JUnit.tests in Vault.executor": "Debug",
+    "Maven.Vault 3 - Maven.executor": "Run",
+    "Maven.vault3 [clean].executor": "Run",
+    "Maven.vault3 [compile].executor": "Run",
+    "Maven.vault3 [install].executor": "Run",
+    "Maven.vault3 [package].executor": "Run",
+    "Maven.vault3 [test].executor": "Run",
+    "Maven.vault3 [validate].executor": "Run",
+    "Maven.vault3 [verify].executor": "Run",
+    "PowerShell.ant_build_linux_gtk_64.ps1 (1).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_64.ps1 (2).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_64.ps1 (3).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_64.ps1 (4).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_64.ps1.executor": "Run",
+    "PowerShell.ant_build_linux_gtk_aarch64.ps1 (1).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_aarch64.ps1 (2).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_aarch64.ps1 (3).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_aarch64.ps1.executor": "Run",
+    "PowerShell.ant_build_linux_gtk_aarch_64.ps1 (1).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_aarch_64.ps1.executor": "Run",
+    "PowerShell.ant_build_linux_gtk_x86_64.ps1 (1).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_x86_64.ps1 (2).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_x86_64.ps1 (3).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_x86_64.ps1 (4).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_x86_64.ps1 (5).executor": "Run",
+    "PowerShell.ant_build_linux_gtk_x86_64.ps1.executor": "Run",
+    "PowerShell.ant_build_win_aarch_64.ps1 (1).executor": "Run",
+    "PowerShell.ant_build_win_aarch_64.ps1 (2).executor": "Run",
+    "PowerShell.ant_build_win_aarch_64.ps1.executor": "Run",
+    "PowerShell.ant_build_win_x86_64.ps1 (1).executor": "Run",
+    "PowerShell.ant_build_win_x86_64.ps1 (2).executor": "Run",
+    "PowerShell.ant_build_win_x86_64.ps1 (3).executor": "Run",
+    "PowerShell.ant_build_win_x86_64.ps1 (4).executor": "Run",
+    "PowerShell.ant_build_win_x86_64.ps1 (5).executor": "Run",
+    "PowerShell.ant_build_win_x86_64.ps1.executor": "Run",
+    "PowerShell.build_common_code.ps1 (1).executor": "Run",
+    "PowerShell.build_common_code.ps1 (2).executor": "Run",
+    "PowerShell.build_common_code.ps1.executor": "Run",
+    "PowerShell.build_everything.ps1 (1).executor": "Run",
+    "PowerShell.build_everything.ps1 (2).executor": "Run",
+    "PowerShell.build_everything.ps1 (3).executor": "Run",
+    "PowerShell.build_everything.ps1 (4).executor": "Run",
+    "PowerShell.build_everything.ps1 (5).executor": "Run",
+    "PowerShell.build_everything.ps1.executor": "Run",
+    "PowerShell.build_linux.ps1 (1).executor": "Run",
+    "PowerShell.build_linux.ps1.executor": "Run",
+    "PowerShell.build_windows.ps1 (1).executor": "Run",
+    "PowerShell.build_windows.ps1.executor": "Run",
+    "PowerShell.build_windows_setup_zip.ps1 (1).executor": "Run",
+    "PowerShell.build_windows_setup_zip.ps1 (2).executor": "Run",
+    "PowerShell.build_windows_setup_zip.ps1 (3).executor": "Run",
+    "PowerShell.build_windows_setup_zip.ps1 (4).executor": "Run",
+    "PowerShell.build_windows_setup_zip.ps1 (5).executor": "Run",
+    "PowerShell.build_windows_setup_zip.ps1.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHELLCHECK.PATH": "/home/eric/.local/share/JetBrains/IntelliJIdea2026.2/Shell Script/shellcheck",
+    "Shell Script.build_everything.sh.executor": "Run",
+    "Shell Script.build_linux_gtk_aarch_64.sh.executor": "Run",
+    "Shell Script.build_linux_gtk_x86_64.sh.executor": "Run",
+    "Shell Script.build_win_aarch_64.sh.executor": "Run",
+    "Shell Script.build_win_x86_64.sh.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/eric/Documents/software development/Vault3.Desktop/Java Vault/Vault/deploy/linux",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.jshint": "",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.18831168",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "consents"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Java Vault/Vault/deploy/linux" />
@@ -478,26 +537,25 @@
       <item itemvalue="JAR Application.Run from Jar" />
       <item itemvalue="Maven.Vault 3 - Maven" />
       <item itemvalue="Shell Script.build_everything.sh" />
-      <item itemvalue="Shell Script.build_win_aarch_64.sh" />
       <item itemvalue="Shell Script.build_linux_gtk_aarch_64.sh" />
-      <item itemvalue="Shell Script.build_win_x86_64.sh" />
       <item itemvalue="Shell Script.build_linux_gtk_x86_64.sh" />
+      <item itemvalue="Shell Script.build_win_aarch_64.sh" />
+      <item itemvalue="Shell Script.build_win_x86_64.sh" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Shell Script.build_everything.sh" />
-        <item itemvalue="Shell Script.build_linux_gtk_aarch_64.sh" />
-        <item itemvalue="Shell Script.build_win_aarch_64.sh" />
         <item itemvalue="Shell Script.build_win_x86_64.sh" />
+        <item itemvalue="Shell Script.build_win_aarch_64.sh" />
         <item itemvalue="Shell Script.build_linux_gtk_x86_64.sh" />
+        <item itemvalue="Shell Script.build_linux_gtk_aarch_64.sh" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
       </set>
     </attachedChunks>
   </component>
@@ -505,6 +563,7 @@
   <component name="SvnConfiguration" cleanupOnStartRun="true">
     <configuration>$USER_HOME$/.subversion</configuration>
     <supportedVersion>125</supportedVersion>
+    <option name="runUnderTerminal" value="true" />
   </component>
   <component name="SvnFileUrlMappingImpl">
     <option name="myMappingRoots">
@@ -882,6 +941,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.iss" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.ps1" />
   </component>
   <component name="UnloadedModulesList">
@@ -898,7 +958,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Merge &quot;Text Background&quot; and &quot;Default Text Font&quot; tabs in SettingsDialog." />
     <MESSAGE value="Version 0.94&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
     <MESSAGE value="Version 0.93&#10;&#10;Finally fixed the &quot;saved dialog box size and position not loaded&quot; bug?" />
     <MESSAGE value="Version 0.94&#10;&#10;Added Windows ARM version." />
@@ -923,7 +982,8 @@
     <MESSAGE value="Created Linux build scripts. Upgraded to JDK 25." />
     <MESSAGE value="Don't create a Windows x64 zip - will have to manually create it after running inno setup." />
     <MESSAGE value="No need to chmod windows build" />
-    <option name="LAST_COMMIT_MESSAGE" value="No need to chmod windows build" />
+    <MESSAGE value="Version 1.01&#10;&#10;Updates to avoid Java4Shell." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.01&#10;&#10;Updates to avoid Java4Shell." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
