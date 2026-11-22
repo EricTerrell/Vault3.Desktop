@@ -147,9 +147,11 @@ import java.text.MessageFormat;
  * 									 item graphics that are better suited for dark mode.
  * 1.01				1.3				 Updated to Java JDK version that fixed CVE-2026-114938 aka Java4Shell. Although
  * 									 Java4Shell doesn't affect ARM CPUs, updated those versions too.
+ * 1.02				1.3				 Bug Fix: In previous versions, when Vault 3 documents were printed, on Linux, the
+ *                                   font size could be very small.
  */
 public class Version {
-	private static final float versionNumber = 1.01f;
+	private static final float versionNumber = 1.02f;
 	private static final int copyrightYear = 2026;
 
 	public static float getVersionNumber() {

@@ -27,11 +27,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.printing.Printer;
 
 // Based on the WrappingPrinter class in "The Definitive Guide to SWT and JFace", pp. 512 - 515.
@@ -182,7 +179,14 @@ public class VaultPrinter {
 				gc = new GC(printer);
 
 				defaultFont = FontUtils.getDefaultFont(gc);
-				
+				FontData[] defaultFontData = defaultFont.getFontData();
+
+				final String fontName = defaultFontData[0].getName();
+				final int fontPoints = defaultFontData[0].getHeight();
+
+				final FontData fontData = new FontData(fontName, fontPoints, SWT.NORMAL);
+				defaultFont = new Font(printer, fontData);
+
 				// Determine tab width--use three spaces for tabs.
 				final int tabWidth = gc.stringExtent("   ").x;
 				
@@ -204,8 +208,7 @@ public class VaultPrinter {
 					final Font previousFont = gc.getFont();
 
 					if (textWithFont.fontString != null && !textWithFont.fontString.isEmpty()) {
-						Font font = FontUtils.stringToFont(gc.getDevice(), textWithFont.fontString);
-						gc.setFont(font);
+						gc.setFont(defaultFont);
 					}
 					else {
 						gc.setFont(defaultFont);

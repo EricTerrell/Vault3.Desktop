@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Vault 3 for 64-bit Windows (x86)"
-#define MyAppVersion "1.01"
+#define MyAppVersion "1.02"
 #define MyAppPublisher "Eric Bergman-Terrell"
 #define MyAppURL "https://www.ericbt.com/vault3"
 
